@@ -1,9 +1,9 @@
 package com.spring.mall.cart.vo;
 
 public class CartVO {
-	private int cart_id;
-	private String user_id;
-	private String n_user_ip;
+	private int cart_id; //장바구니 아이디 
+	private String user_id; //회원아이디 
+	private String n_user_ip; //비회원 아이피 
 	
 	public CartVO() {
 		System.out.println(">> CartVO() 객체 생성~~ ");

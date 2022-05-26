@@ -1,10 +1,10 @@
 package com.spring.mall.cart.vo;
 
 public class CartDetailVO {
-	private int card_detail_id;
-	private int cart_detail_cnt;
-	private int cart_id;
-	private int product_id;
+	private int card_detail_id; //장바구니 상세번호 
+	private int cart_detail_cnt; //장바구니 상세상품 수량
+	private int cart_id; //장바구니 
+	private int product_id; //상품번호
 	
 	public CartDetailVO() {
 		System.out.println(">> CartDetailVO() 객체 생성~~");
