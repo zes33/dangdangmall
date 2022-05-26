@@ -1,5 +1,7 @@
 package com.spring.mall.product.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductVO {
 	private int product_id;
 	private int category_code;
@@ -8,6 +10,11 @@ public class ProductVO {
 	private int product_stock;
 	private String product_info;
 	private int product_discount;
+	
+	private String searchCondition;
+	private String searchKeyword;
+	
+	private MultipartFile uploadFile;
 	
 	public ProductVO() {
 		System.out.println(">> ProductVO() 객체 생성~~");
@@ -80,14 +87,37 @@ public class ProductVO {
 	public void setProduct_discount(int product_discount) {
 		this.product_discount = product_discount;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "ProductVO [product_id=" + product_id + ", category_code=" + category_code + ", product_name="
 				+ product_name + ", product_price=" + product_price + ", product_stock=" + product_stock
-				+ ", product_info=" + product_info + ", product_discount=" + product_discount + "]";
+				+ ", product_info=" + product_info + ", product_discount=" + product_discount + ", searchCondition="
+				+ searchCondition + ", searchKeyword=" + searchKeyword + ", uploadFile=" + uploadFile + "]";
 	}
-	
+
+		//-------------------------------
+		public String getSearchCondition() {
+			return searchCondition;
+		}
+		public void setSearchCondition(String searchCondition) {
+			this.searchCondition = searchCondition;
+		}
+
+		public String getSearchKeyword() {
+			return searchKeyword;
+		}
+		public void setSearchKeyword(String searchKeyword) {
+			this.searchKeyword = searchKeyword;
+		}
+
+		// 파일업로드 관련 ----------------------
+		public MultipartFile getUploadFile() {
+			return uploadFile;
+		}
+		public void setUploadFile(MultipartFile uploadFile) {
+			this.uploadFile = uploadFile;
+		}
 	
 	
 }
