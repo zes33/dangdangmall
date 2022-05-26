@@ -21,6 +21,9 @@
 	crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
 </head>
+<style>
+.
+</style>
 
 <body>
 	<!-- header -->
@@ -31,7 +34,7 @@
 	<main>
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
-			<div class="container">
+			<div class="container" >
 
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				<!-- forEach 시작~ -->
@@ -46,9 +49,7 @@
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 							<div class="card-body">
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
+								<p class="card-text">여긴 상품명-----</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
