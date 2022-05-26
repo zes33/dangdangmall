@@ -21,6 +21,13 @@
 
 <link href="common/styles.css" rel="stylesheet">
 </head>
+<style>
+.css-zjik7 eth8ztg3 {
+	width: 300px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+}
+</style>
 <body>
 	<div class="blog-header py-3">
 		<div class="container">
@@ -109,25 +116,25 @@
                                     }
                                 }
                                 </style>
-                                <div class="css-3bho95 eth8ztg2">WOMEN</div>
+                                <div class="css-3bho95 eth8ztg2">홈</div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">MEN</div>
+                                <div class="css-3bho95 eth8ztg2">인기상품</div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">HOME</div>
+                                <div class="css-3bho95 eth8ztg2">신상품</div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">TECH</div>
+                                <div class="css-3bho95 eth8ztg2">식품</div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">BEAUTY</div>
+                                <div class="css-3bho95 eth8ztg2">운동</div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">LEISURE</div>
+                                <div class="css-3bho95 eth8ztg2">특가</div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">CULTURE</div>
+                                <div class="css-3bho95 eth8ztg2">새벽배송</div>
                             </li>
                         </ul>
                         
