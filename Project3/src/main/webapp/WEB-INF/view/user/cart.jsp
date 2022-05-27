@@ -70,6 +70,7 @@
 					<td>${list.product_price * list.cart_detail_cnt * list.product_discount }</td>
 					<td>무료배송</td>
 					<td>삭제버튼</td>
+					
 				</tr>
 			</c:forEach>
 
@@ -77,6 +78,7 @@
 	</table>
 
 	<hr />
+	<hr><hr>
 	<div class="last_block"></div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
