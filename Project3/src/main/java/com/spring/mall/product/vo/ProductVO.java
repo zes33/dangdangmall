@@ -10,6 +10,7 @@ public class ProductVO {
 	private int product_stock;
 	private String product_info;
 	private int product_discount;
+	private int product_state;
 	
 	private String searchCondition;
 	private String searchKeyword;
@@ -88,12 +89,21 @@ public class ProductVO {
 		this.product_discount = product_discount;
 	}
 	
+	public int getProduct_state() {
+		return product_state;
+	}
+
+	public void setProduct_state(int product_state) {
+		this.product_state = product_state;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [product_id=" + product_id + ", category_code=" + category_code + ", product_name="
 				+ product_name + ", product_price=" + product_price + ", product_stock=" + product_stock
-				+ ", product_info=" + product_info + ", product_discount=" + product_discount + ", searchCondition="
-				+ searchCondition + ", searchKeyword=" + searchKeyword + ", uploadFile=" + uploadFile + "]";
+				+ ", product_info=" + product_info + ", product_discount=" + product_discount + ", product_state="
+				+ product_state + ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword
+				+ ", uploadFile=" + uploadFile + "]";
 	}
 
 		//-------------------------------

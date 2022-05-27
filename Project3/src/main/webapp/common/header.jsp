@@ -43,7 +43,7 @@
 							viewBox="0 0 24 24">
 							<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
 							<path d="M21 21l-5.2-5.2" /></svg>
-					</a> <a class="btn btn-sm btn-outline-secondary" href="">로그인</a>
+					</a> <a class="btn btn-sm btn-outline-secondary" href="login.do">로그인</a>
 					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="#">회원가입</a>
 				</div>
 			</div>
