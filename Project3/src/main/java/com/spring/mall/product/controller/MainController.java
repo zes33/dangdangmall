@@ -14,10 +14,11 @@ public class MainController{
 	@GetMapping("/main.do")
 	public String mainView() {
 		System.out.println("메인페이지(main.jsp)이동 - mainView()");
-		
-		
-		
 		return "store/main";
 	}
+	
+	
+	
+
 
 }

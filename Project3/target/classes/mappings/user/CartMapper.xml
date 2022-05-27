@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cartDAO">
+	<!-- 회원아이디로 장바구니 아이디 체크  -->
+	<select id="getCartId" parameterType="com.spring.mall.cart.vo.CartVO" resultType="com.spring.mall.cart.vo.CartVO">
+		SELECT CART_ID 
+		FROM CART
+		WHERE USER_ID = '1'
+	</select>
+
+	<!-- 장바구니 아이디로  장바구니 세부 상품 리스트로 받아오기 -->
+	<select id="getCartList" parameterType="com.spring.mall.cart.vo.CartDetailProductVO" resultType="com.spring.mall.cart.vo.CartDetailProductVO">
+		SELECT a. CART_ID, a.USER_ID, a.N_USER_IP,
+        		b.CART_DETAIL_ID, b.CART_DETAIL_CNT,
+       			c.PRODUCT_ID, c.CATEGORY_CODE, c.PRODUCT_NAME,c.PRODUCT_PRICE,
+                c.PRODUCT_DISCOUNT, c.PRODUCT_STATE
+		FROM CART a, CART_DETAIL b, PRODUCT c
+		WHERE a.CART_ID = b.CART_ID
+   			 and b.PRODUCT_ID = c.PRODUCT_ID
+    		 and a.user_id = '1'
+	</select>
+	
+	<!--  장바구니 추가하기  -->
+	<!--  -->
+	
+</mapper>
