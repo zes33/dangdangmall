@@ -9,6 +9,27 @@
 
 	<context:component-scan base-package="com.spring.mall" />
 	
+	<!-- 스프링 HandlerMapping 등록 -->
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/main.do">main</prop>
+			</props>
+		</property>
+	</bean> -->
+	
+	<!-- 요청을 처리할 Controller 등록 -->
+<!-- 	<bean id="login" class="com.spring.mall.user.controller.UserLoginController"/>
+	<bean id="main" class="com.spring.mall.product.controller.MainController" /> -->
+	
+	<!-- 스프링에서 제공하는 ViewResolver 등록-->
+	<bean id="viewResolver"
+		 class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		 <property name="prefix" value="/WEB-INF/view/" />
+		 <property name="suffix" value=".jsp" />
+	</bean>
+	
+	
 	<!-- @GetMapping, @PostMapping 사용시 추가 설정 -->
 	<mvc:annotation-driven />
 	
