@@ -22,6 +22,20 @@
 
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
+<style>
+	#container { width: 700px; margin: auto; }
+	h1, h3, p { text-align: center; }
+	table { border-collapse: collapse; }
+	table, th, td {
+		border: 1px solid black;
+		margin: 0 auto;
+		border-bottom: 1px solid #444444;
+	}
+	th { background-color: orange; }
+	.center { text-align: center; }
+	
+	.border-none, .border-none td { border: none; }
+</style>
 </head>
 
 <body>
@@ -33,8 +47,38 @@
 <h1>${getCartList } </h1>
 
 
+	</header>
+	<table border=1>
+		<thead>
+			<tr>
+				<th>상품명</th>
+				<th>상품 수량</th>
+				<th>상품 가격</th>
+				<th>할인적용단</th>
+				<th>소계(수량*할인적용단가)</th>
+				<th>배송비</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="list" items="${getCartList }">
+				<tr>
+					<td>${list.product_name }</td>
+					<td>${list.cart_detail_cnt }</td>
+					<td>${list.product_price}</td>
+					<td>${list.product_discount}</td>
+					<td>${list.product_price * list.cart_detail_cnt * list.product_discount }</td>
+					<td>무료배송</td>
+					<td>삭제버튼</td>
+					
+				</tr>
+			</c:forEach>
+
+		</tbody>
+	</table>
 
 	<hr />
+	<hr><hr>
 	<div class="last_block"></div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
