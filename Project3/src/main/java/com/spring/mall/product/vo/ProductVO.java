@@ -127,7 +127,5 @@ public class ProductVO {
 		}
 		public void setUploadFile(MultipartFile uploadFile) {
 			this.uploadFile = uploadFile;
-		}
-	
-	
+		}	
 }
