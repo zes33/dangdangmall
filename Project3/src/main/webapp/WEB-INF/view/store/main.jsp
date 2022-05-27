@@ -31,7 +31,8 @@
 	<main>
 	
 		<div>
-			<a href="cart/cart.do">장바구니 페이지 </a>
+			<a href="cart/cart.do">장바구니 페이지 </a><br>
+			<a href="tempPrd/tempPrd.do">상품상세 페이지(임시)</a>
 		
 		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
