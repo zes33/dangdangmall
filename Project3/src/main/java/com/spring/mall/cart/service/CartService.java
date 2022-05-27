@@ -9,5 +9,6 @@ public interface CartService {
 	void insertCart(CartDetailVO vo);
 	void updateCart(CartDetailVO vo);
 	void deleteCart(CartDetailVO vo);
+	CartDetailVO getCart(CartDetailVO vo);
 	List<CartDetailVO> getCartList(CartDetailVO vo);
 }

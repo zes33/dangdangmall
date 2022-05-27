@@ -1,7 +1,7 @@
 package com.spring.mall.cart.vo;
 
 public class CartDetailVO {
-	private int card_detail_id; //장바구니 상세번호 
+	private int cart_detail_id; //장바구니 상세번호 
 	private int cart_detail_cnt; //장바구니 상세상품 수량
 	private int cart_id; //장바구니 
 	private int product_id; //상품번호
@@ -12,18 +12,18 @@ public class CartDetailVO {
 	
 	public CartDetailVO(int card_detail_id, int cart_detail_cnt, int cart_id, int product_id) {
 		super();
-		this.card_detail_id = card_detail_id;
+		this.cart_detail_id = card_detail_id;
 		this.cart_detail_cnt = cart_detail_cnt;
 		this.cart_id = cart_id;
 		this.product_id = product_id;
 	}
 
 	public int getCard_detail_id() {
-		return card_detail_id;
+		return cart_detail_id;
 	}
 
 	public void setCard_detail_id(int card_detail_id) {
-		this.card_detail_id = card_detail_id;
+		this.cart_detail_id = card_detail_id;
 	}
 
 	public int getCart_detail_cnt() {
@@ -52,7 +52,7 @@ public class CartDetailVO {
 
 	@Override
 	public String toString() {
-		return "CartDetailVO [card_detail_id=" + card_detail_id + ", cart_detail_cnt=" + cart_detail_cnt + ", cart_id="
+		return "CartDetailVO [card_detail_id=" + cart_detail_id + ", cart_detail_cnt=" + cart_detail_cnt + ", cart_id="
 				+ cart_id + ", product_id=" + product_id + "]";
 	}
 	
