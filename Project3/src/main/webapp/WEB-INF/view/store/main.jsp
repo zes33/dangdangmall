@@ -29,6 +29,11 @@
 
 </header>
 	<main>
+	
+		<div>
+			<a href="cart/cart.do">장바구니 페이지 </a>
+		
+		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
 			<div class="container" >
