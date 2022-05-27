@@ -11,9 +11,11 @@ public class MainController{
 		System.out.println("MainController() 객체 생성");
 	}
 	
-	@GetMapping
+	@GetMapping("/main.do")
 	public String mainView() {
 		System.out.println("메인페이지(main.jsp)이동 - mainView()");
+		
+		
 		
 		return "store/main";
 	}
