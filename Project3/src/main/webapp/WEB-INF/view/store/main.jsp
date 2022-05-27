@@ -33,7 +33,7 @@
 		<div>
 			<a href="cart/cart.do">장바구니 페이지 </a><br>
 			<a href="tempPrd/tempPrd.do">상품상세 페이지(임시)</a>
-		
+			<a href="admin/admin.do">관리자 메인페이지(임시)</a>
 		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
@@ -98,7 +98,6 @@
 				</div>
 			</div>
 		</div>
-
 	</main>
 		
 	<!-- footer -->
