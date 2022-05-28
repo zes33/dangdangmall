@@ -4,13 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cartDAO">
-	<!-- 회원아이디로 장바구니 아이디 체크  -->
-	<select id="getCartId" parameterType="com.spring.mall.cart.vo.CartVO" resultType="com.spring.mall.cart.vo.CartVO">
+	<!-- 회원아이디로 장바구니 아이디 체크 -->
+	<select id="getCartId" resultType="com.spring.mall.cart.vo.CartVO">
 		SELECT CART_ID 
 		FROM CART
-		WHERE USER_ID = '1'
+		WHERE USER_ID 
 	</select>
-
+	
+	<!-- 카트 안에 해당 상품이 있는지 확인  -->
+	<select id="checkCart" resultType="com.spring.mall.cart.vo.CartDetailVO">
+		SELECT * FROM CART_DETAIL
+		WHERE CART_ID = 1 AND PRODUCT_ID=1;
+	</select>
+	
 	<!-- 장바구니 아이디로  장바구니 세부 상품 리스트로 받아오기 -->
 	<select id="getCartList" parameterType="com.spring.mall.cart.vo.CartDetailProductVO" resultType="com.spring.mall.cart.vo.CartDetailProductVO">
 		SELECT a. CART_ID, a.USER_ID, a.N_USER_IP,
@@ -23,7 +29,24 @@
     		 and a.user_id = '1'
 	</select>
 	
-	<!--  장바구니 추가하기  -->
-	<!--  -->
+	<!-- 카트 세부상품 추가 -->
+	<insert id="addCart" parameterType="com.spring.mall.cart.vo.CartDetailVO"  >
+	INSERT INTO CART_DETAIL(CART_DETAIL_ID, CART_DETAIL_CNT, CART_ID,PRODUCT_ID)
+			VALUES(CARTDETAILID_SEQ.nextval, 1, 1, 1)
+	</insert>
+	
+	<!-- 카트 세부 상품 삭제 -->
+	<delete id="deleteCart" parameterType="com.spring.mall.cart.vo.CartDetailVO">
+		DELETE FROM CART_DETAIL 
+		WHERE CART_DETAIL_ID = 1
+	</delete>
+	
+	<!-- 카트 세부 상품 수량 수정 -->
+	<update id="updateCount" parameterType="com.spring.mall.cart.vo.CartDetailVO">
+		UPDATE CART_DETAIL 
+		SET CART_DETAIL_CNT= #{cart_detail_cnt}
+		WHERE CART_DETAIL_ID = 1;
+	</update>
+	
 	
 </mapper>

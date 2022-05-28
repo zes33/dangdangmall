@@ -16,6 +16,11 @@ public class CartDetailProductVO {
 	private String product_info; // 상품 설명
 	private int product_discount; // 상품 할인율
 	private int product_state; // 상품 상태
+	
+	//추가 
+    private int salePrice;
+	private int totalPrice;
+	
 
 	public CartDetailProductVO() {
 		System.out.println(">> CartDetailProductVO() 객체 생성 ");
@@ -125,13 +130,26 @@ public class CartDetailProductVO {
 		this.product_state = product_state;
 	}
 
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public void initSaleTotal() {
+		this.salePrice = (int) (this.product_price * (1-this.product_discount));
+		this.totalPrice = this.salePrice*this.cart_detail_cnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "CartDetailProductVO [cart_detail_id=" + cart_detail_id + ", cart_detail_cnt=" + cart_detail_cnt
 				+ ", product_id=" + product_id + ", cart_id=" + cart_id + ", user_id=" + user_id + ", n_user_ip="
 				+ n_user_ip + ", category_code=" + category_code + ", product_name=" + product_name + ", product_price="
 				+ product_price + ", product_stock=" + product_stock + ", product_info=" + product_info
-				+ ", product_discount=" + product_discount + ", product_state=" + product_state + "]";
+				+ ", product_discount=" + product_discount + ", product_state=" + product_state + "]" ;
 	}
 	
 	

@@ -35,6 +35,10 @@ public class CartController {
 		System.out.println(">> getCartList()");
 		List<CartDetailProductVO> getCartList = cartService.getCartList(vo);
 		return getCartList;
-		
 	}
+	
+	
+	
+	
+	
 }
