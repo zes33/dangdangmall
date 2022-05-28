@@ -5,5 +5,12 @@
   
 <mapper namespace="userDAO">
 
+	<select id="getUser" parameterType="com.spring.mall.user.vo.UserVO" 
+			resultType="com.spring.mall.user.vo.UserVO">
+			SELECT USER_ID, USER_PW, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_GRADE,
+				 USER_POINT, USER_ADDR, USER_ADDR_D, USER_ZIPCODE, USER_STATE, USER_PHONE
+			FROM USERS
+			WHERE USER_ID = #{user_id} AND USER_PW = #{user_pw}
+	</select>
 
 </mapper>
