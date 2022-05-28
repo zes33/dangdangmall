@@ -93,10 +93,10 @@ textarea {
 				<p>등록된 게시물이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="productQna" items="${productQnaList }">
+				<c:forEach var="productQnaNick" items="${productQnaList }">
 				<div class="prdQnaContent">
-					<p>${productQna.qna_content }</p>
-					<p>${productQna.user_id }</p>
+					<p>${productQnaNick.qna_content }</p>
+					<p>${productQnaNick.user_nickname }</p>
 					<hr><br>
 				</div>
 				</c:forEach>

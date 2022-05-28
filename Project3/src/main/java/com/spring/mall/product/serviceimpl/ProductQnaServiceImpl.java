@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.mall.product.dao.ProductQnaDAO;
 import com.spring.mall.product.service.ProductQnaService;
+import com.spring.mall.product.vo.ProductQnaNickVO;
 import com.spring.mall.product.vo.ProductQnaVO;
 
 @Service
@@ -37,14 +38,9 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 		
 	}
 
-	@Override
-	public ProductQnaVO getProductQna(ProductQnaVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public List<ProductQnaVO> getListProductQna(ProductQnaVO vo) {
+	public List<ProductQnaVO> getListProductQna(ProductQnaNickVO vo) {
 		System.out.println("ProductQnaServiceImpl.getListProductQna 실행~~");
 		return productQnaDAO.getProductQnaList(vo);
 	}

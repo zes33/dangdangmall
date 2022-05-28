@@ -22,5 +22,6 @@ public class UserDAO {
 		
 		return mybatis.selectOne("userDAO.getUser", vo);
 	}
+	
 
 }

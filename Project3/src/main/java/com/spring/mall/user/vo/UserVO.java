@@ -18,6 +18,7 @@ public class UserVO {
 		System.out.println(">> UserVO() 객체 생성~~");
 	}
 
+
 	public UserVO(String user_id, String user_pw, String user_name, String user_nickname, String user_email,
 			int user_grade, int user_point, String user_addr, String user_addr_d, String user_zipcode, int user_state,
 			String user_phone) {

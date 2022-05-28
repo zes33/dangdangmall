@@ -22,4 +22,7 @@ public class UserLoginServiceImpl implements UserLoginService{
 		return userDAO.getUser(vo);
 	}
 
+	
+
+	
 }

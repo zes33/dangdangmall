@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.mall.product.vo.ProductQnaNickVO;
 import com.spring.mall.product.vo.ProductQnaVO;
 
 @Repository
@@ -23,7 +24,7 @@ public class ProductQnaDAO {
 		mybatis.insert("productQnaDAO.insertPrdQna",vo);
 	}
 	
-	public List<ProductQnaVO> getProductQnaList(ProductQnaVO vo) {
+	public List<ProductQnaVO> getProductQnaList(ProductQnaNickVO vo) {
 		System.out.println("ProductQnaDAO.getProductQnaList() 실행");
 		return mybatis.selectList("productQnaDAO.getPrdQnaList",vo);
 	}

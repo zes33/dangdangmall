@@ -10,11 +10,14 @@
 		VALUES ((SELECT NVL(MAX(QNA_ID),0) + 1 FROM PRODUCT_QNA),'많이 맵나요',88,'bab') -->
 	</insert>
 	
-	<select id="getPrdQnaList" parameterType="com.spring.mall.product.vo.ProductQnaVO"
-		resultType="com.spring.mall.product.vo.ProductQnaVO">
-		SELECT *
-		FROM PRODUCT_QNA
-		WHERE PRODUCT_ID = #{product_id}
+	
+	<select id="getPrdQnaList" parameterType="com.spring.mall.product.vo.ProductQnaNickVO"
+		resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT QNA.QNA_ID, QNA.QNA_CONTENT, QNA.PRODUCT_ID, USERS.USER_NICKNAME
+		FROM PRODUCT_QNA QNA, USERS
+		WHERE QNA.PRODUCT_ID = #{product_id}
+		AND QNA.USER_ID = USERS.USER_ID
+		ORDER BY QNA_ID DESC
 	</select>
 	
 </mapper>
