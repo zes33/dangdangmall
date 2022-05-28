@@ -1,5 +1,7 @@
 package com.spring.mall.product.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +19,12 @@ public class ProductQnaDAO {
 	}
 	
 	public void insertProductQna(ProductQnaVO vo) {
-		System.out.println("insertProductQna() 실행");
+		System.out.println("ProductQnaDAO.insertProductQna() 실행");
 		mybatis.insert("productQnaDAO.insertPrdQna",vo);
+	}
+	
+	public List<ProductQnaVO> getProductQnaList(ProductQnaVO vo) {
+		System.out.println("ProductQnaDAO.getProductQnaList() 실행");
+		return mybatis.selectList("productQnaDAO.getPrdQnaList",vo);
 	}
 }

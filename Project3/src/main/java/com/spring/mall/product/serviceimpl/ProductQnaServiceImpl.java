@@ -45,8 +45,8 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 
 	@Override
 	public List<ProductQnaVO> getListProductQna(ProductQnaVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ProductQnaServiceImpl.getListProductQna 실행~~");
+		return productQnaDAO.getProductQnaList(vo);
 	}
 
 	

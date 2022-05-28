@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,12 +87,24 @@ textarea {
 			<h3><span>상품문의</span></h3>
 			<br>
 			<!-- forEach 스세요 -->
-			<div class="prdQnaContent">
-				<p>많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요</p>
-				<p>닉네임</p>
-				<hr><br>
-			</div>
+			<c:set var="qna" value="${productQnaList }" />
+			<c:choose>
+			<c:when test="${empty productQnaList }">
+				<p>등록된 게시물이 없습니다.</p>
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="productQna" items="${productQnaList }">
+				<div class="prdQnaContent">
+					<p>${productQna.qna_content }</p>
+					<p>${productQna.user_id }</p>
+					<hr><br>
+				</div>
+				</c:forEach>
+			</c:otherwise>
+			</c:choose>
+			
 			<div class="prdInput">
+			<br>
 			<form action="#">
 				<textarea></textarea>
 				<input type="button" value="등록">
