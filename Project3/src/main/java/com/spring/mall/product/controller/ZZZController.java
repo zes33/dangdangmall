@@ -11,6 +11,7 @@ public class ZZZController {
 		System.out.println("ZZZController() 객체 생성~~");
 	}
 	
+	// 임시로 상세페이지 이동
 	@GetMapping("tempPrd.do")
 	public String tempProductDetail() {
 		System.out.println("상품상세페이지(임시) 이동 - tempProductDetail 실행");
