@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="productQnaDAO">
+
+	<insert id="insertPrdQna" parameterType="com.spring.mall.product.vo.ProductQnaVO">
+		INSERT INTO PRODUCT_QNA (QNA_ID,QNA_CONTENT,PRODUCT_ID,USER_ID)
+		VALUES ((SELECT NVL(MAX(QNA_ID),0) + 1 FROM PRODUCT_QNA),'많이 맵나요',88,'bab')
+	</insert>
+	
+</mapper>
+  
+  
+  

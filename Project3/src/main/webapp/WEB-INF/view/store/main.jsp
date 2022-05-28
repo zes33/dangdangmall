@@ -20,8 +20,24 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
+<script>
+function productDetailView(productid){
+    let f = document.createElement('form');
+    
+    let obj;
+    obj = document.createElement('input');
+    obj.setAttribute('type', 'hidden');
+    obj.setAttribute('name', 'productid');
+    obj.setAttribute('value', productid);
+    
+    f.appendChild(obj);
+    f.setAttribute('method', 'post');
+    //f.setAttribute('action', 'view.do');
+    document.body.appendChild(f);
+    f.submit();
+}
+</script>
 </head>
-
 <body>
 	<!-- header -->
 <header>
@@ -42,16 +58,11 @@
 				<h1>식품</h1><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				<!-- forEach 시작~ -->
-					<div class="col">
+				<!-- <a href="javascript:productDetailView('${list.productid}')"> -->
+					<div class="col" style=" cursor: pointer;" onclick="location.href='#';">
 						<div class="card shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-								aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
+								height="225" >
 							<div class="card-body">
 								<p class="card-text">여긴 상품명-----</p>
 								<div class="d-flex justify-content-between align-items-center">
@@ -66,6 +77,7 @@
 							</div>
 						</div>
 					</div>
+				<!-- </a> -->
 				</div>
 				<br><br><br>
 				<h1>운동</h1><br>

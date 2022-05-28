@@ -20,17 +20,93 @@
 	crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
 </head>
+</head>
+<style>
+.totPage {
+	margin:auto;
+	background-color: #80E6D5;
+	width: 1100px;
+	padding: 30px;
+}
+.card-photo {
+	background-color: aqua;
+}
+.mainPic {
+	width: 1040px;
+	height: 600px;
+}
+.prdNamePrice {
+	background-color: yellow;
+}
+.productInfo {
+	background-color: pink;
+}
+textarea {
+	width: 1040px;
+	height: 100px;
+}
+.prdInfoPic { width: 1040px; }
+</style>
 <body>
 <!-- header -->
 <header>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
 </header>
+<!-- -------------------------------- -->
+
+	<div class="totPage">
+		<div >
+			<div class="card-photo">
+				<img src="../img/고무밴드.jpg" alt="..." class="mainPic">
+			</div>
+			<div class="prdNamePrice">
+				<h3><span>마늘맛 닭가슴살</span></h3>
+				<h4><span>10,000원</span></h4>
+				<p><span>식품</span></p>
+			</div>
+		</div>
+		<div class="productInfo">
+			<img src="../img/고무밴드.jpg" alt="..." class="prdInfoPic">
+		</div>
+		<br><br><br>
+		<div class="reviewZone">
+			<hr>
+			<h3><span>상품후기</span></h3>
+			<p><a>베스트순 </a><a> 최신순</a></p>
+			<!-- forEach 쓰걸아 -->
+				<div class="reviewComment">
+					<div><p>아이디:id</p></div>
+					<p><span>맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절맛있어서기절</span></p>
+					<hr>
+				</div>
+		</div>
+		<br><br>
+		<div class="prdQnaZone">
+			<h3><span>상품문의</span></h3>
+			<br>
+			<!-- forEach 스세요 -->
+			<div class="prdQnaContent">
+				<p>많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요많이맵나요</p>
+				<p>닉네임</p>
+				<hr><br>
+			</div>
+			<div class="prdInput">
+			<form action="#">
+				<textarea></textarea>
+				<input type="button" value="등록">
+			</form>
+			</div>
+		</div>
+	</div>
+ 
 
 
 
 
 
+
+	<!-- -------------------------------- -->
 <!-- footer -->
 <jsp:include page="../common/footer.jsp"></jsp:include>
 <script
