@@ -17,6 +17,14 @@ public class UserVO {
 	public UserVO() {
 		System.out.println(">> UserVO() 객체 생성~~");
 	}
+	
+	
+
+	public UserVO(String user_id,String user_pw) {
+		super();
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+	}
 
 
 	public UserVO(String user_id, String user_pw, String user_name, String user_nickname, String user_email,

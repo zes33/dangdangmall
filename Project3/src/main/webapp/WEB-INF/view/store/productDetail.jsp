@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품상세페이지</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -38,6 +39,7 @@
 }
 .prdNamePrice {
 	background-color: yellow;
+	padding: 30px;
 }
 .productInfo {
 	background-color: pink;
@@ -47,6 +49,7 @@ textarea {
 	height: 100px;
 }
 .prdInfoPic { width: 1040px; }
+.d-grid { padding-top: 15px;}
 </style>
 <body>
 <!-- header -->
@@ -59,16 +62,34 @@ textarea {
 	<div class="totPage">
 		<div >
 			<div class="card-photo">
-				<img src="../img/고무밴드.jpg" alt="..." class="mainPic">
+				<img src="./img/고무밴드.jpg" alt="..." class="mainPic">
 			</div>
 			<div class="prdNamePrice">
-				<h3><span>마늘맛 닭가슴살</span></h3>
-				<h4><span>10,000원</span></h4>
+				<h1>세션 테스트 : ${tempProduct }</h1>
+				<h1><span>마늘맛 닭가슴살</span></h1>
+				<h3><span>10,000원</span></h3>
 				<p><span>식품</span></p>
+				<form>
+					<input type="hidden" name="product_id" value="88">
+					<select name="product_cnt" class="form-select" aria-label="Default select example">
+					  <option selected>수량선택</option>
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					  <option value="5">5</option>
+					  <option value="6">6</option>
+					  <option value="7">7</option>
+					</select>
+					<div class="d-grid gap-2">
+					  <input class="btn btn-primary" type="submit" value="장바구니">
+					  <input class="btn btn-primary" type="submit" value="구매하기">
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="productInfo">
-			<img src="../img/고무밴드.jpg" alt="..." class="prdInfoPic">
+			<img src="./img/고무밴드.jpg" alt="..." class="prdInfoPic">
 		</div>
 		<br><br><br>
 		<div class="reviewZone">
@@ -103,23 +124,47 @@ textarea {
 			</c:otherwise>
 			</c:choose>
 			
-			<div class="prdInput">
 			<br>
-			<form action="#">
-				<textarea></textarea>
-				<input type="button" value="등록">
+			<div id="prdQnaWrite" class="prdInput">
+			<form id="prdQnaForm" 
+			action="productQna/insertPrdQna.do?product_id=88&user_id=${tempUser.user_id }" method="post">
+				 <textarea name="qna_content"></textarea>
+				<button type="button" id="testBtn" onclick="writeQna()">상품문의 등록</button>
 			</form>
 			</div>
 		</div>
 	</div>
- 
+<script>
+
+	function writeQna() {
+		console.log("writeQna() 실행~~")
+		var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
+		console.log("contentBlank : " + contentBlank);
+		if(contentBlank.length == 0){
+			alert("내용이 없어요.")
+		} else {
+			var tempuser = "<c:out value='${tempUser.user_id}'/>";
+			console.log("tempuser : " + tempuser);
+			if(tempuser.length == 0){  // 비회원인 경우
+				if(confirm("비회원은 카톡으로 문의하기만 가능합니다. \n카톡 문의창으로 이동하시겠습니까?")){
+					location.href="productQna/kakaoQnaGo.do";
+				} else {
+					location.href="#testBtn";
+				}
+			} else if(tempuser.length > 0){    // 회원인 경우
+				console.log("회원입니다.");
+				document.forms[1].submit();
+			}
+		}
+		
+		
+	}
+</script>
 
 
 
 
 
-
-	<!-- -------------------------------- -->
 <!-- footer -->
 <jsp:include page="../common/footer.jsp"></jsp:include>
 <script

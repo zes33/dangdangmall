@@ -9,7 +9,7 @@ public class ProductVO {
 	private int product_price;
 	private int product_stock;
 	private String product_info;
-	private int product_discount;
+	private double product_discount;
 	private int product_state;
 	
 	private String searchCondition;
@@ -21,8 +21,17 @@ public class ProductVO {
 		System.out.println(">> ProductVO() 객체 생성~~");
 	}
 
+	
+	
+	public ProductVO(int product_id) {
+		super();
+		this.product_id = product_id;
+	}
+
+
+
 	public ProductVO(int product_id, int category_code, String product_name, int product_price, int product_stock,
-			String product_info, int product_discount) {
+			String product_info, double product_discount) {
 		super();
 		this.product_id = product_id;
 		this.category_code = category_code;
@@ -81,11 +90,11 @@ public class ProductVO {
 		this.product_info = product_info;
 	}
 
-	public int getProduct_discount() {
+	public double getProduct_discount() {
 		return product_discount;
 	}
 
-	public void setProduct_discount(int product_discount) {
+	public void setProduct_discount(double product_discount) {
 		this.product_discount = product_discount;
 	}
 	
@@ -96,6 +105,8 @@ public class ProductVO {
 	public void setProduct_state(int product_state) {
 		this.product_state = product_state;
 	}
+
+	
 
 	@Override
 	public String toString() {

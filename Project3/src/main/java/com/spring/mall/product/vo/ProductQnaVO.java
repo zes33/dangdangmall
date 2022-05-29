@@ -9,6 +9,8 @@ public class ProductQnaVO {
 	public ProductQnaVO() {
 		System.out.println(">> ProductQnaVO() 객체 생성~~");
 	}
+	
+
 
 	public ProductQnaVO(int qna_id, String qna_content, int product_id, String user_id) {
 		super();
