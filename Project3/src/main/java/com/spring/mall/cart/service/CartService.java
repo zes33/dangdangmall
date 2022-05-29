@@ -1,34 +1,32 @@
 package com.spring.mall.cart.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.mall.cart.vo.CartDetailProductVO;
-import com.spring.mall.cart.vo.CartDetailVO;
 import com.spring.mall.cart.vo.CartVO;
 
 public interface CartService {
-	//CRUD 구현 
-	
-	
-	//카트 추가 
-	public void addCart(CartDetailVO vo);
-	
-	// 카트 삭제 
-	public void deleteCart(CartDetailVO vo);
-	
-	// 카트 수량 수정 
-	public void updateCount(CartDetailVO vo);
-	
-	/* 카트 목록 
-	public List<CartDetailProductVO> getCartList(String user_id);	*/
-	public List<CartDetailProductVO> getCartList(CartDetailProductVO vo);
-	
-	// 카트 안에 해당 상품이 있는지 확인 
-	public CartDetailVO checkCart(CartDetailVO vo);
 
-	// 회원아이디로 장바구니 아이디 체크
-	public CartVO getCartId(CartVO vo);
+	// 1. 장바구니 추가
+	public void insert(CartVO vo);
 
-	
-	
+	// 2. 장바구니 목록
+	public List<CartVO> listCart(CartVO vo);
+//	public List<CartVO> listCart(String user_id);
+
+	// 3. 장바구니 삭제
+        public void delete(int cart_id);
+
+	// 4. 장바구니 수정
+        public void modifyCart(CartVO vo);
+
+	// 5. 장바구니 금액 합계
+        public int sumMoney(String user_id);
+
+	// 6. 장바구니 상품 확인
+        public int countCart(int product_id, String user_id);
+
+	// 7. 장바구니 상품 수량 변경
+        public void updateCart(CartVO vo);
 }

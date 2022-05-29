@@ -490,17 +490,17 @@ a:hover {
 									value="${list.product_discount }" /> %
 						</span></td>
 						<td><span id="price"
-							data-amount=<c:out value="${list.product_price}"/>><c:out
-									value="${list.product_price}"/>원</span>
+							data-amount=<c:out value="${list.product_price}"/>><fmt:formatNumber
+									value="${list.product_price}" type="currency" /></span>
 									</td>
 						<td><span id="total"
 							data-amount=<c:out value="${list.product_price * list.cart_detail_cnt}"/>>
-								<c:out
-									value="${(list.product_price * list.cart_detail_cnt) - ( list.product_price / list.product_discount)}" />원
-						</span></td>
+								<fmt:formatNumber
+									value="${(list.product_price * list.cart_detail_cnt) - (list.product_price * list.cart_detail_cnt)/list.product_discount}" type="currency"/>
+						</span></td> 
 						<td>
 							<div style="width: 7%">
-								<input type="checkbox">
+								<input type="checkbox"> 
 							</div>
 						</td>
 					</tr>
@@ -525,119 +525,58 @@ a:hover {
 	</div>
 </c:if>
 
-	<div class="last_block"></div>
 	
-	<div>
-	<form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
-    
-            <input type="hidden" name="cmd" value="order">
-            <div class="basketdiv" id="basket">
-                <div class="row head">
-                    <div class="subdiv">
-                        <div class="check">선택</div>
-                        <div class="img">이미지</div>
-                        <div class="pname">상품명</div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketprice">가격</div>
-                        <div class="num">수량</div>
-                        <div class="sum">합계</div>
-                    </div>
-                    <div class="subdiv">
-    
-                        <div class="basketcmd">삭제</div>
-                    </div>
-                    <div class="split"></div>
-                </div>
-        
-                <div class="row data">
-                    <div class="subdiv">
-                        <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                        <div class="img"><img src="./img/basket1.jpg" width="60"></div>
-                        <div class="pname">
-                            <span>찜마마(XJ-92214/3)</span>
-                        </div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="20000">20,000원</div>
-                        <div class="num">
-                            <div class="updown">
-                                <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2" onkeyup="javascript:basket.changePNum(1);">
-                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-                            </div>
-                        </div>
-                        <div class="sum">40,000원</div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
-                    </div>
-                </div>
-                <div class="row data">
-                    <div class="subdiv">
-                        <div class="check"><input type="checkbox" name="buy" value="261" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                        <div class="img"><img src="./img/basket2.jpg" width="60"></div>
-                        <div class="pname">
-                            <span>노바 요거팜(JP-268T)</span>
-                        </div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price2" class="p_price" value="19000">19,000원</div>
-                        <div class="num">
-                            <div class="updown">
-                                <input type="text" name="p_num2" id="p_num2" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(2);">
-                                <span onclick="javascript:basket.changePNum(2);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                <span onclick="javascript:basket.changePNum(2);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-                            </div>
-                        </div>
-                        <div class="sum">19,000원</div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
-                    </div>
-                </div>
-                <div class="row data">
-                    <div class="subdiv">
-                        <div class="check"><input type="checkbox" name="buy" value="262" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                        <div class="img"><img src="./img/basket3.jpg" width="60"></div>
-                        <div class="pname">
-                            <span>아날도 바시니 보스톤 가방 20인치 (ab-380)</span>
-                        </div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price3" class="p_price" value="15200">15,200원</div>
-                        <div class="num">
-                            <div class="updown">
-                                <input type="text" name="p_num3" id="p_num3" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(3);">
-                                <span onclick="javascript:basket.changePNum(3);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                <span onclick="javascript:basket.changePNum(3);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-                            </div>
-                        </div>
-                        <div class="sum">15,200원</div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
-                    </div>
-                </div>
-        
-            </div>
-    
-            <div class="right-align basketrowcmd">
-                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
-                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
-            </div>
-    
-            <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: 4개</div>
-            <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: 74,200원</div>
-    
-            <div id="goorder" class="">
-                <div class="clear"></div>
-                <div class="buttongroup center-align cmd">
-                    <a href="javascript:void(0);">선택한 상품 주문</a>
-                </div>
-            </div>
+	
+     <h2>장바구니 확인</h2>
+     ${list }
+    <c:choose>
+        <c:when test="${map.count == 0}">
+            장바구니가 비어있습니다.
+        </c:when>
+        <c:otherwise>
+        <form name="form1" id="form1" method="post" action="${path}/cart/update.do">
+            <table border="1">
+                <tr>
+                    <th>상품명</th>
+                    <th>단가</th>
+                    <th>수량</th>
+                    <th>금액</th>
+                    <th>취소</th>
+                </tr>
+                <c:forEach var="row" items="${map.list}" varStatus="i">
+                <tr>
+                    <td>
+                        ${row.productName}
+                    </td>
+                    <td style="width: 80px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.productPrice}"/>
+                    </td>
+                    <td>
+                        <input type="number" style="width: 40px" name="amount" value="${row.amount}" min="1">
+                        <input type="hidden" name="productId" value="${row.productId}">
+                    </td>
+                    <td style="width: 100px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
+                    </td>
+                    <td>
+                        <a href="${path}/shop/cart/delete.do?cartId=${row.cartId}">삭제</a>
+                    </td>
+                </tr>
+                </c:forEach>
+                <tr>
+                    <td colspan="5" align="right">
+                        장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/><br>
+                        배송료 : ${map.fee}<br>
+                        전체 주문금액  :<fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" name="count" value="${map.count}">
+            <button type="submit" id="btnUpdate">수정</button>
         </form>
-        </div>
+        </c:otherwise>
+    </c:choose>
+    <button type="button" id="btnList">상품목록</button>   
         
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -731,231 +670,6 @@ a:hover {
 		};
 		
 	</script>  
-	<script type="text/javascript">
-	$(document).ready(function() {
-		releaseCheck();
-		clickDeleteMenus();
-		clickOrderMenus();
-		allCheck();
-		clickCountButton();
-		checkForCalc();
-	});
-
-	// 화면이 업데이트 될 때마다 체크된 것들이 해제됨
-	function releaseCheck() {
-		if ($("#totalToggle").is(":checked")) {
-			$("#totalToggle").prop("checked", false);
-		}
-		var menus = $(".menuClass").get();
-		for (let i = 0; i < menus.length; i++) {
-			var jMenus = $(menus[i]);
-			var checkBox = jMenus.find(".form-control");
-			if (checkBox.is(":checked")) {
-				checkBox.prop("checked", false);
-			}
-		}
-	}
-
-	// 체크박스가 체크될 때마다 총금액이 변하도록 하는 함수
-	function checkForCalc() {
-		var menus = $(".menuClass").get();
-		for (let i = 0; i < menus.length; i++) {
-			var jMenus = $(menus[i]);
-			var checkBox = jMenus.find(".form-control");
-			checkBox.change(function() {
-				calcAllPrice();
-			});
-		}
-	}
-
-	// 체크되어있는 메뉴들의 가격을 더해서 총 금액에 출력해주는 함수
-	function calcAllPrice() {
-		var allPrice = 0;
-		var menus = $(".menuClass").get();
-		for (let i = 0; i < menus.length; i++) {
-			var jMenus = $(menus[i]);
-			var checkBox = jMenus.find(".form-control");
-
-			// 하나의 메뉴의 총 가격
-			// "5000원"이렇게 넘어옴
-			var amount = jMenus.find("#amount").text();
-			amount = Number(amount.replace(/[^0-9]/g, ""));
-
-			if (checkBox.is(":checked")) {
-				allPrice += amount;
-			}
-		}
-		$("#totalPrice").text(String(allPrice) + "원");
-	}
-
-	// -,+ 버튼을 클릭할 때마다 메뉴의 수량과 가격이 변하도록 하는 함수
-	function clickCountButton() {
-		var menus = $(".menuClass").get();
-		for (let i = 0; i < menus.length; i++) {
-			var jMenus = $(menus[i]);
-			var minusButton = jMenus.find("#minusButton");
-			var plusButton = jMenus.find("#plusButton");
-
-			minusButton.click(function() {
-				var num = Number(($(this).siblings('#num')).text());
-				--num;
-				if (num <= 0) {
-					num = 1;
-				}
-				// 버튼을 통해 메뉴의 수량을 바꿈
-				($(this).siblings("#num")).text(num);
-				// 메뉴 하나의 가격
-				var price = Number(($(this).siblings("#amount")).data("amount"));
-				// 메뉴의 개수만큼의 가격
-				var priceMultNum = String(price * num) + "원";
-				($(this).siblings("#amount")).text(priceMultNum);
-				calcAllPrice();
-			});
-			plusButton.click(function() {
-				var num = Number(($(this).siblings('#num')).text());
-				++num;
-				if (num > 5) {
-					num = 5;
-				}// 버튼을 통해 메뉴의 수량을 바꿈
-				($(this).siblings("#num")).text(num);
-				// 메뉴 하나의 가격
-				var price = Number(($(this).siblings("#amount")).data("amount"));
-				// 메뉴의 개수만큼의 가격
-				var priceMultNum = String(price * num) + "원";
-				($(this).siblings("#amount")).text(priceMultNum);
-				calcAllPrice();
-			});
-		}
-	}
-
-	// 전체선택 박스를 클릭할 때를 처리하는 함수
-	function allCheck() {
-		$("#totalToggle").click(function() {
-			var menus = $(".menuClass").get();
-			for (let i = 0; i < menus.length; i++) {
-				var jMenus = $(menus[i]);
-				var checkBox = jMenus.find(".form-control");
-
-				// 전체선택 박스를 체크하면
-				if ($(this).is(":checked")) {
-					checkBox.prop("checked", true);
-					calcAllPrice();
-				}
-				// 전체선택 박스 체크를 해제하면
-				else {
-					checkBox.prop("checked", false);
-					calcAllPrice();
-				}
-			}
-		});
-	}
-
-	// 선택메뉴삭제버튼을 클릭할 때를 처리하는 함수
-	function clickDeleteMenus() {
-		$("#delete").click(function() {
-			// 삭제할 메뉴아이디가 담길 배열
-			var arr = [];
-			var menus = $(".menuClass").get();
-			for (let i = 0; i < menus.length; i++) {
-				var jMenus = $(menus[i]);
-				var checkBox = jMenus.find(".form-control");
-
-				if (checkBox.is(":checked")) {
-					arr.push(jMenus.data("menuid"));
-				}
-			}
-
-			if (arr.length == 0) {
-				swal.fire({
-					title : "삭제할 메뉴를 선택해주세요"
-				}).then((result) => {
-					if (result.value) {
-						return;
-					}
-				});
-			}
-
-			$.ajax({
-				type : "DELETE",
-				url : "cart",
-				data : {
-					"arr" : arr
-				},
-				success : function(data) {
-					swal.fire({
-						title : data.msg
-					}).then((result) => {
-						if (result.value) {
-							window.location.href = "cart";
-						}
-					});
-				}
-			});
-		});
-	}
-
-	function clickOrderMenus() {
-		$("#order").click(function() {
-			// 주문할 하나의 매장아이디 + 메뉴개수 + 여러 메뉴아이디 + 총 가격을 저장할 배열
-			var arr = [];
-			var arr2 = [];
-			var checkedMenus = 0;
-			var storeId = $("#storeId").data("storeid");
-			var totalPrice = $("#totalPrice").text();
-
-			// 배열의 맨 앞에는 매장아이디를 넣음
-			arr.push(storeId);
-
-			var menus = $(".menuClass").get();
-			for (let i = 0; i < menus.length; i++) {
-				var jMenus = $(menus[i]);
-				var checkBox = jMenus.find(".form-control");
-				if (checkBox.is(":checked")) {
-					++checkedMenus;
-				}
-			}
-
-			// 체크되어있는 메뉴의 개수를 넣음
-			arr.push(checkedMenus);
-
-			// 그 다음에는 체크되어있는 메뉴아이디를 순서대로 넣음
-			for (let i = 0; i < menus.length; i++) {
-				var jMenus = $(menus[i]);
-				var checkBox = jMenus.find(".form-control");
-				if (checkBox.is(":checked")) {
-					arr.push(jMenus.data("menuid"));
-					arr2.push(jMenus.find("#num").text());
-				}
-			}
-
-			// 그리고 마지막에는 총 가격을 넣음
-			arr.push(totalPrice);
-
-			if (arr.length == 3) {
-				swal.fire("주문할 메뉴를 선택해주세요.");
-				return;
-			}
-
-			$.ajax({
-				type : "POST",
-				url : "cart/order",
-				data : {
-					"arr" : arr,
-					"arr2" : arr2
-				},
-				success : function(data) {
-					swal.fire({
-						title : data.msg
-					}).then((result) => { 
-						if (result.value) {
-							window.location.href = "order";
-						}
-					});
-				}
-			});
-		});
-	}
-
-	</script>
+	<div class="last_block"></div>
 </body>
 </html>
