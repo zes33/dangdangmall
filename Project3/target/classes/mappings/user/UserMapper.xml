@@ -9,7 +9,8 @@
 	<select id="getUser" parameterType="com.spring.mall.user.vo.UserVO" 
 			resultType="com.spring.mall.user.vo.UserVO">
 			SELECT USER_ID, USER_PW, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_GRADE,
-				 USER_POINT, USER_ADDR, USER_ADDR_D, USER_ZIPCODE, USER_STATE, USER_PHONE
+				 USER_POINT, USER_ADDR, USER_ADDR_D, USER_ZIPCODE, USER_STATE, USER_PHONE1,
+				 USER_PHONE2, USER_PHONE3
 			FROM USERS
 			WHERE USER_ID = #{user_id} AND USER_PW = #{user_pw}
 	</select>
@@ -17,8 +18,10 @@
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="com.spring.mall.user.vo.UserVO">
 		INSERT INTO USERS
-    		(USER_ID, USER_PW, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE)
-    		VALUES(#{user_id},#{user_pw},#{user_name},#{user_nickname},#{user_email},#{user_phone})
+    		(USER_ID, USER_PW, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE1,
+    		 USER_PHONE2, USER_PHONE3)
+    		VALUES(#{user_id},#{user_pw},#{user_name},#{user_nickname},#{user_email},
+    		#{user_phone1}, #{user_phone2}, #{user_phone3})
 	</insert>
 
 </mapper>

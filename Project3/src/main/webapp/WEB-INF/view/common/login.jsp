@@ -6,14 +6,13 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <style>
-	#container { width: 700px; margin: auto; }
+	.container { width: 700px; margin: auto; }
 	h1 { text-align: center; }
 	table { border-collapse: collapse; }
 	table, th, td {
 		border: 1px solid black;
 		margin: 0 auto;
 	}
-	th { background-color: orange; }
 	.center { text-align: center; }
 	
 	.login
@@ -24,26 +23,16 @@
 <header>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
-
-<div id="container">
+<div id="body-wrapper">
+	<div id="body-content" class="container">
 	
-	<h1>로그인 [login.jsp]</h1>
+	<h2>로그인</h2>
 	<form action="loginAction.do" method="post">
-	<table>
-		<tr>
-			<th>아이디</th>
-			<td><input type="text" name="user_id" placeholder="아이디"></td>
-		</tr>
-		<tr>
-			<th>패스워드</th>
-			<td><input type="text" name="user_pw" placeholder="비밀번호"></td>
-		</tr>
-		<tr>
-			<td colspan="2" class="center login">
+	  아이디 <input type="text" class="form-control" placeholder="영문 소문자/숫자 포함 4~16자"
+                     name="user_id" maxlength="20"><br/>
+	 비밀번호 <input type="text" class="form-control" placeholder="비밀번호"
+                   name="user_pw" maxlength="20"><br/>
 				<input type="submit" value="로그인">
-			</td>
-		</tr>
-	</table>
 	<table>
 		<tr>
 			<a href="#">아이디 찾기</a>

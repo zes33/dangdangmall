@@ -23,7 +23,8 @@ html, body {
 	background-color: #F5F5F5;
     margin-top: 100px;
     padding-bottom: 170px; /* footer의 높이 */
-    padding-left: 430px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 footer {
@@ -45,52 +46,44 @@ footer {
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
 <div id="body-wrapper">
-	<div id="body-content" class="container">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
-			<div class="jumbotron" style="padding-top: 20px;">
-				<form method="post" action="joinAction.do">
-					<h3 style="text-align: center;">회원 정보 입력</h3>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디(영문 소문자/숫자 포함 4~16자)"
-							name="user_id" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="비밀번호"
-							name="user_pw" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="비밀번호 확인"
-							 maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="이름"
-							name="user_name" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="닉네임"
-							name="user_nickname" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="e-mail"
-							name="user_email" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="연락처"
-							name="user_phone" maxlength="20">
-					</div>
-					<input type="submit" class="btn btn-primary form-control"
-						value="회원가입">
-				</form>
-			</div>
-			<div class="col-lg-4"></div>
-		</div>
-	</div>
+	  <div id="body-content" class="container">
+	  <br/></br/>
+   <h2>회원가입</h2>
+   <form action="joinAction.do" method="post">
+      아이디 <input type="text" class="form-control" placeholder="영문 소문자/숫자 포함 4~16자"
+                     name="user_id" maxlength="20"><br/>
+
+      비밀번호 <input type="text" class="form-control" placeholder="비밀번호"
+                     name="user_pw" maxlength="20"><br/>
+   비밀번호 확인 <input type="text" class="form-control" placeholder="비밀번호 확인"
+                      maxlength="20"><br/>
+      이름 <input type="text" class="form-control" placeholder="이름"
+                     name="user_name" maxlength="20"><br/>
+    닉네임  <input type="text" class="form-control" placeholder="닉네임"
+                     name="user_nickname" maxlength="20"><br/>
+  e-mail <input type="text" class="form-control" placeholder="e-mail"
+                     name="user_email" maxlength="20"><br/>
+      전화번호
+      <select name="user_phone1">
+         <option>010</option>
+         <option>02</option>
+         <option>031</option>
+         <option>051</option>
+      </select>
+      - <input type="text" name="user_phone2" size="5">
+      - <input type="text" name="user_phone3" size="5">
+      <br/><br/><br/>
+      <input type="submit" class="btn btn-primary form-control"
+                  value="회원가입">
+	<br/><br/>
+      
+   </form>
+   </div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 	<footer>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	</footer>
-</div>
+ </div>
 </body>
 </html>

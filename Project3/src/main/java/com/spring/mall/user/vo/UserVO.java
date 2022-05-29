@@ -12,7 +12,9 @@ public class UserVO {
 	private String user_addr_d;
 	private String user_zipcode;
 	private int user_state;
-	private String user_phone;
+	private String user_phone1;
+	private String user_phone2;
+	private String user_phone3;
 	
 	public UserVO(String user_id) {
 		System.out.println("user_id" + user_id);
@@ -21,8 +23,6 @@ public class UserVO {
 	public UserVO() {
 		System.out.println(">> UserVO() 생성 ");
 	}
-	
-	
 
 	public UserVO(String user_id,String user_pw) {
 		super();
@@ -30,10 +30,9 @@ public class UserVO {
 		this.user_pw = user_pw;
 	}
 
-
 	public UserVO(String user_id, String user_pw, String user_name, String user_nickname, String user_email,
 			int user_grade, int user_point, String user_addr, String user_addr_d, String user_zipcode, int user_state,
-			String user_phone) {
+			String user_phone1, String user_phone2, String user_phone3) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -46,7 +45,9 @@ public class UserVO {
 		this.user_addr_d = user_addr_d;
 		this.user_zipcode = user_zipcode;
 		this.user_state = user_state;
-		this.user_phone = user_phone;
+		this.user_phone1 = user_phone1;
+		this.user_phone2 = user_phone2;
+		this.user_phone3 = user_phone3;
 	}
 
 	public String getUser_id() {
@@ -137,12 +138,28 @@ public class UserVO {
 		this.user_state = user_state;
 	}
 
-	public String getUser_phone() {
-		return user_phone;
+	public String getUser_phone1() {
+		return user_phone1;
 	}
 
-	public void setUser_phone(String user_phone) {
-		this.user_phone = user_phone;
+	public void setUser_phone1(String user_phone1) {
+		this.user_phone1 = user_phone1;
+	}
+
+	public String getUser_phone2() {
+		return user_phone2;
+	}
+
+	public void setUser_phone2(String user_phone2) {
+		this.user_phone2 = user_phone2;
+	}
+
+	public String getUser_phone3() {
+		return user_phone3;
+	}
+
+	public void setUser_phone3(String user_phone3) {
+		this.user_phone3 = user_phone3;
 	}
 
 	@Override
@@ -150,8 +167,7 @@ public class UserVO {
 		return "UserVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_nickname="
 				+ user_nickname + ", user_email=" + user_email + ", user_grade=" + user_grade + ", user_point="
 				+ user_point + ", user_addr=" + user_addr + ", user_addr_d=" + user_addr_d + ", user_zipcode="
-				+ user_zipcode + ", user_state=" + user_state + ", user_phone=" + user_phone + "]";
+				+ user_zipcode + ", user_state=" + user_state + ", user_phone1=" + user_phone1 + ", user_phone2="
+				+ user_phone2 + ", user_phone3=" + user_phone3 + "]";
 	}
-	
-	
 }
