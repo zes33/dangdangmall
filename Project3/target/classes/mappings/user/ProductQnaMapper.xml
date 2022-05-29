@@ -18,7 +18,7 @@
 		FROM PRODUCT_QNA QNA, USERS
 		WHERE QNA.PRODUCT_ID = #{product_id}
 		AND QNA.USER_ID = USERS.USER_ID
-		ORDER BY QNA_ID DESC
+		ORDER BY QNA_ID
 	</select>
 	
 </mapper>

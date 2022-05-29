@@ -62,7 +62,7 @@ textarea {
 	<div class="totPage">
 		<div >
 			<div class="card-photo">
-				<img src="./img/고무밴드.jpg" alt="..." class="mainPic">
+				<img src="../img/고무밴드.jpg" alt="..." class="mainPic">
 			</div>
 			<div class="prdNamePrice">
 				<h1>세션 테스트 : ${tempProduct }</h1>
@@ -89,7 +89,7 @@ textarea {
 			</div>
 		</div>
 		<div class="productInfo">
-			<img src="./img/고무밴드.jpg" alt="..." class="prdInfoPic">
+			<img src="../img/고무밴드.jpg" alt="..." class="prdInfoPic">
 		</div>
 		<br><br><br>
 		<div class="reviewZone">
@@ -124,7 +124,11 @@ textarea {
 			</c:otherwise>
 			</c:choose>
 			
-			<br>
+			<c:choose>
+			<c:when test="${empty tempUser }">
+				<p>상품문의는 로그인 후 가능합니다.</p> <a href="#">로그인 하기</a>
+			</c:when>
+			<c:otherwise>
 			<div id="prdQnaWrite" class="prdInput">
 			<form id="prdQnaForm" 
 			action="productQna/insertPrdQna.do?product_id=88&user_id=${tempUser.user_id }" method="post">
@@ -132,33 +136,47 @@ textarea {
 				<button type="button" id="testBtn" onclick="writeQna()">상품문의 등록</button>
 			</form>
 			</div>
+			</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 <script>
 
-	function writeQna() {
+	
+
+	
+ 	function writeQna() {
 		console.log("writeQna() 실행~~")
 		var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
 		console.log("contentBlank : " + contentBlank);
 		if(contentBlank.length == 0){
 			alert("내용이 없어요.")
 		} else {
-			var tempuser = "<c:out value='${tempUser.user_id}'/>";
-			console.log("tempuser : " + tempuser);
-			if(tempuser.length == 0){  // 비회원인 경우
-				if(confirm("비회원은 카톡으로 문의하기만 가능합니다. \n카톡 문의창으로 이동하시겠습니까?")){
-					location.href="productQna/kakaoQnaGo.do";
-				} else {
-					location.href="#testBtn";
-				}
-			} else if(tempuser.length > 0){    // 회원인 경우
-				console.log("회원입니다.");
-				document.forms[1].submit();
-			}
+			document.forms[1].submit();
 		}
-		
-		
+	} 
+	
+	/* 
+	function writeQna() {
+		console.log("writeQna() 실행~~")
+		var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
+		console.log("contentBlank : " + contentBlank);
+		if(contentBlank.length == 0){   // 빈칸이면
+			alert("내용이 없어요.")
+		} else {
+			
+			document.forms[1].submit();
+		}
 	}
+	
+	function getQnaList() {
+		var pid = "<c:out value='${productQnaNick.product_id}'/>";
+		console.log("getQnaList() 실행");
+		let vo = {product_id : pid }
+		console.log(JSON.stringify(vo));  
+		
+		$.ajax()
+	} */
 </script>
 
 
