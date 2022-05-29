@@ -55,7 +55,6 @@ public class ZZZController {
 		UserVO tempUser = userLoginService.getUser(user1);
 		
 		model.addAttribute("tempUser", tempUser);
-		
 		return "store/productDetail";
 	}
 	
