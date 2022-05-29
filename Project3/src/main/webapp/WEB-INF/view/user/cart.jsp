@@ -524,11 +524,12 @@ a:hover {
 			id="order" class="btn btn-success two_button">선택 메뉴 주문</button>
 	</div>
 </c:if>
-
+${user}
 	
 	
      <h2>장바구니 확인</h2>
      ${list }
+     ${map }
     <c:choose>
         <c:when test="${map.count == 0}">
             장바구니가 비어있습니다.

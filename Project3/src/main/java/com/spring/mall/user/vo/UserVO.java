@@ -14,8 +14,12 @@ public class UserVO {
 	private int user_state;
 	private String user_phone;
 	
+	public UserVO(String user_id) {
+		System.out.println("user_id" + user_id);
+	}
+	
 	public UserVO() {
-		System.out.println(">> UserVO() 객체 생성~~");
+		System.out.println(">> UserVO() 생성 ");
 	}
 	
 	

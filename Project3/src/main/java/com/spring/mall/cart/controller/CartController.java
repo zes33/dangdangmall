@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.mall.cart.service.CartService;
 import com.spring.mall.cart.vo.CartVO;
+import com.spring.mall.user.vo.UserVO;
 
 
 @Controller
@@ -40,12 +41,13 @@ public class CartController {
 	// 1. 장바구니 추가
     @RequestMapping("insert.do")
     public String insert(@ModelAttribute CartVO vo, HttpSession session){
-        String user_id = (String) session.getAttribute("user_id");
+        //String user_id = (String) session.getAttribute("user_id");
+        String user_id = "1";
         vo.setUser_id(user_id);
         // 장바구니에 기존 상품이 있는지 검사
         int count = cartService.countCart(vo.getProduct_id(), user_id);
         
-        //count == 0 ? cartService.updateCart(vo) : cartService.insert(vo);
+//        count == 0 ? cartService.updateCart(vo) : cartService.insert(vo);
         if(count == 0){
             // 없으면 insert
             cartService.insert(vo);
@@ -57,36 +59,38 @@ public class CartController {
     }
 
     // 2. 장바구니 목록
-//    @ModelAttribute("map")
-//    @RequestMapping("list.do")
-//    public Map<String, Object> list(HttpSession session, Model model){
-//        String user_id = (String) session.getAttribute("user_id"); // session에 저장된 userId
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        List<CartVO> list = cartService.listCart(user_id); // 장바구니 정보 
-//        int sumMoney = cartService.sumMoney(user_id); // 장바구니 전체 금액 호출
-//        // 장바구니 전체 긍액에 따라 배송비 구분
-//        // 배송료(10만원이상 => 무료, 미만 => 2500원)
-//        int fee = sumMoney >= 100000 ? 0 : 2500;
-//        map.put("list", list);                // 장바구니 정보를 map에 저장
-//        map.put("count", list.size());        // 장바구니 상품의 유무
-//        map.put("sumMoney", sumMoney);        // 장바구니 전체 금액
-//        map.put("fee", fee);                 // 배송금액
-//        map.put("allSum", sumMoney+fee);    // 주문 상품 전체 금액
-//        
-//        
-//        model.addAttribute("map",map);
-//        model.addAttribute("list", list);
-//        return map;
-//    }
-
-    @ModelAttribute("list")
-    public List<CartVO> list(CartVO vo, Model model){
-    	System.out.println(">> list() 생성 ");
-    	List<CartVO> list = cartService.listCart(vo);
-    	//model.addAttribute("map", map);
-    	return list;
-    	
+    @ModelAttribute("map")
+    @RequestMapping("list.do")
+    public Map<String, Object> list(HttpSession session, Model model){
+    	UserVO userVO = new UserVO("1");
+        String user_id = (String) session.getAttribute("user_id"); // session에 저장된 user_id
+    	 
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<CartVO> list = cartService.listCart(user_id); // 장바구니 정보 
+        int sumMoney = cartService.sumMoney(user_id); // 장바구니 전체 금액 호출
+        // 장바구니 전체 긍액에 따라 배송비 구분
+        // 배송료(10만원이상 => 무료, 미만 => 2500원)
+        int fee = sumMoney >= 100000 ? 0 : 2500;
+        map.put("list", list);                // 장바구니 정보를 map에 저장
+        map.put("count", list.size());        // 장바구니 상품의 유무
+        map.put("sumMoney", sumMoney);        // 장바구니 전체 금액
+        map.put("fee", fee);                 // 배송금액
+        map.put("allSum", sumMoney+fee);    // 주문 상품 전체 금액
+        
+        
+        model.addAttribute("map",map);
+        model.addAttribute("list", list);
+        return map;
     }
+
+//    @ModelAttribute("list")
+//    public List<CartVO> list(CartVO vo, Model model){
+//    	System.out.println(">> list() 생성 ");
+//    	List<CartVO> list = cartService.listCart(vo);
+//    	//model.addAttribute("map", map);
+//    	return list;
+//    	
+//    }
     
     // 3. 장바구니 삭제
     @RequestMapping("delete.do")
