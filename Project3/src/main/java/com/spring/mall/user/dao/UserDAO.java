@@ -23,5 +23,12 @@ public class UserDAO {
 		return mybatis.selectOne("userDAO.getUser", vo);
 	}
 	
+	//user insert(회원가입 시 사용)
+	public int insertUser(UserVO vo) {
+		System.out.println("MyBatis 사용 insertUser() 실행~");
+		
+		return mybatis.insert("userDAO.insertUser", vo);
+	}
+	
 
 }

@@ -60,11 +60,4 @@ public class UserLoginController {
 		
 		return "store/main";
 	}
-	
-	@GetMapping("/join.do")
-	public String joinView() {
-		System.out.println(">>회원가입 페이지로 이동 -> joinView()");
-		
-		return "common/joinForm";
-	}
 }
