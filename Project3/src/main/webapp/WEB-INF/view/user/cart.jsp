@@ -502,13 +502,12 @@ a:hover {
 
 		<div>
 			<h1>장바구니 목록</h1>
-			${map }
-			<h1>${map.list[1] }</h1>
+			<%-- ${map }
+			<h1>${map.list[1] }</h1> --%>
 			<br>
 		</div>
 		<%-- <p>${list}</p>
 		<h1>userVO : ${user }</h1> --%>
-		<%-- ${getCartList } --%>
 		<div class="text-center">
 			<c:if test="${empty map}">
 				<br />
@@ -525,11 +524,12 @@ a:hover {
 				<table style="width: 90%; padding-top: 3pt;">
 					<tr>
 						<th>상품 이름</th>
+						<th>가격</th>
 						<th>수량</th>
-						<th>금액</th>
+						<th>할인율 반영 전 금액</th>
 						<th>할인율</th>
-						<th>총 금액</th>
-						<th>선택</th>
+						<th>금액</th>
+						<th>삭제</th>
 					</tr>
 
 					<c:forEach items="${map.list }" var="list" varStatus="i">
@@ -538,6 +538,9 @@ a:hover {
 						<tr>
 							<td><span id="amount"> <c:out
 										value="${list.product_name }" />
+							</span></td>
+							<td><span id="amount"> <c:out
+										value="${list.product_price }" />
 							</span></td>
 							<td>
 								<form action="update.do" method="post">
@@ -561,9 +564,8 @@ a:hover {
 										pattern="###,###,###" />
 							</span></td>
 							<td>
-								<div style="width: 7%">
-									<input type="checkbox">
-								</div>
+									<a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a>
+								
 							</td>
 						</tr>
 						</div>
@@ -610,47 +612,49 @@ a:hover {
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script>
-		// -,+ 버튼을 클릭할 때마다 메뉴의 수량과 가격이 변하도록 하는 함수
-		/* function clickCountButton() {
+	// 선택메뉴삭제버튼을 클릭할 때를 처리하는 함수
+	function clickDeleteMenus() {
+		$("#delete").click(function() {
+			// 삭제할 아이디가 담길 배열
+			var arr = [];
 			var menus = $(".menuClass").get();
 			for (let i = 0; i < menus.length; i++) {
 				var jMenus = $(menus[i]);
-				var minusButton = jMenus.find("#minusButton");
-				var plusButton = jMenus.find("#plusButton");
+				var checkBox = jMenus.find(".form-control");
 
-				minusButton.click(function() {
-					var num = Number(($(this).siblings('#num')).text());
-					--num;
-					if (num <= 0) {
-						num = 1;
+				if (checkBox.is(":checked")) {
+					arr.push(jMenus.data("menuid"));
+				}
+			}
+
+			if (arr.length == 0) {
+				swal.fire({
+					title : "삭제할 메뉴를 선택해주세요"
+				}).then((result) => {
+					if (result.value) {
+						return;
 					}
-					// 버튼을 통해 메뉴의 수량을 바꿈
-					($(this).siblings("#num")).text(num);
-					// 메뉴 하나의 가격
-					var price = Number(($(this).siblings("#amount"))
-							.data("amount"));
-					// 메뉴의 개수만큼의 가격
-					var priceMultNum = String(price * num) + "원";
-					($(this).siblings("#amount")).text(priceMultNum);
-					calcAllPrice();
-				});
-				plusButton.click(function() {
-					var num = Number(($(this).siblings('#num')).text());
-					++num;
-					if (num > 5) {
-						num = 5;
-					}// 버튼을 통해 메뉴의 수량을 바꿈
-					($(this).siblings("#num")).text(num);
-					// 메뉴 하나의 가격
-					var price = Number(($(this).siblings("#amount"))
-							.data("amount"));
-					// 메뉴의 개수만큼의 가격
-					var priceMultNum = String(price * num) + "원";
-					($(this).siblings("#amount")).text(priceMultNum);
-					calcAllPrice();
 				});
 			}
-		} */
+
+			$.ajax({
+				type : "DELETE",
+				url : "cart",
+				data : {
+					"arr" : arr
+				},
+				success : function(data) {
+					swal.fire({
+						title : data.msg
+					}).then((result) => {
+						if (result.value) {
+							window.location.href = "cart";
+						}
+					});
+				}
+			});
+		});
+	}
 	</script>
 	<div class="last_block"></div>
 </body>
