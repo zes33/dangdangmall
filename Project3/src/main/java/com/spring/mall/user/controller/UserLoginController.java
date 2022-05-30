@@ -76,23 +76,12 @@ public class UserLoginController {
 		return "common/findIdForm";
 	}
 	
-	@PostMapping("/findId.do")
+	@PostMapping("/findIdAction.do")
 	public String findIdAction(UserVO vo) {
+		System.out.println(">>아이디찾기  - findIdView()");
+		
 		
 		return "common/findIdOK";
 	}
-	
-//	@PostMapping("/findIdAction.do")
-//	public String findId(UserVO vo,Model model) throws Exception{
-//				
-//		if(memberService.findIdCheck(memberVO.getMemberEmail())==0) {
-//		model.addAttribute("msg", "이메일을 확인해주세요");
-//		return "/member/findIdView";
-//		}else {
-//		model.addAttribute("member", memberService.findId(memberVO.getMemberEmail()));
-//		return
-//				"/member/findId";
-//		}
-//	}
 	
 }

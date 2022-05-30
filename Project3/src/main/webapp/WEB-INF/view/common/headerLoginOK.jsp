@@ -52,7 +52,7 @@
 					</a> 
 					<a class="btn btn-sm btn-outline-secondary" href="logout.do">로그아웃</a>
 					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="cart/list.do">장바구니</a>
-					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="#">마이페이지</a>
+					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="myinfo.do">마이페이지</a>
 				</div>
 			</div>
 		</div>

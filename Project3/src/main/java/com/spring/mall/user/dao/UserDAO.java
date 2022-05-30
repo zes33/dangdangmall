@@ -30,7 +30,8 @@ public class UserDAO {
 		return mybatis.insert("userDAO.insertUser", vo);
 	}
 	
-	public String getId(UserVO vo) {
+	//id찾기
+	public UserVO getId(UserVO vo) {
 		System.out.println("vo : " + vo);
 		
 		return mybatis.selectOne("userDAO.getId", vo);

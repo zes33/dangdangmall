@@ -16,12 +16,7 @@
 			<h2>아이디는 :</h2>
 			<br />
 			<ul>
-				<c:forEach items="${member}" var="member">
-
-					<li>${member.memberId}</li>
-					<br />
-
-				</c:forEach>
+					<li>${user}</li>
 			</ul>
 			<h2>입니다</h2>
 			<button type="button" class="btn btn-primary"
