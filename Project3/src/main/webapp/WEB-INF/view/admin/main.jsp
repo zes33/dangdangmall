@@ -5,6 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 메인페이지</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<link rel="canonical"
+	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link href="common/styles.css" rel="stylesheet">
 <style>
   #container { width: 800px; margin: auto; height: 200px; background-color: light;}
 	table, th, td {
@@ -15,19 +29,12 @@
 		border-bottom: 1px solid black;
 	}
 </style>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
 </head>
 <body>
 	
 	<header>
 		<jsp:include page="header.jsp"></jsp:include>
 	</header>
-	
-	
 	<table id="container">
 		<thead>
 			<tr class="fs-4">
@@ -40,7 +47,8 @@
 			</tr>
 		</thead>
 			<tr>
-				<td><button type="button" class="btn btn-light">상품 목록</button></td>
+				<td><a class="btn btn-sm btn-outline-secondary" href="getProductList.do">상품 목록</a>
+					&nbsp;&nbsp;</td>
 				<td><button type="button" class="btn btn-light">회원정보 조회</button></td>
 				<td><button type="button" class="btn btn-light">고객 문의 목록</button></td>
 				<td><button type="button" class="btn btn-light">후기 조회</button></td>
@@ -73,12 +81,6 @@
 			</tr>
 	</table>
 	
-	
-	
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
 </body>
 
 </html>
