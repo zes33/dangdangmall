@@ -62,7 +62,8 @@ public class UserLoginController {
 		System.out.println("로그아웃 처리");
 		session.invalidate();
 		
-		return "store/main";
+		//return "store/main";
+		return "redirect:/main.do";
 	}
 	
 	@GetMapping("/findIdView.do")
