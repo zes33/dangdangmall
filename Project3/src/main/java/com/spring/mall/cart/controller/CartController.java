@@ -91,7 +91,7 @@ public class CartController {
 	@RequestMapping("delete.do")
 	public String delete(@RequestParam int cart_id) {
 		cartService.delete(cart_id);
-		return "redirect:/user/cart/list.do";
+		return "redirect:list.do";
 	}
 
 	// 4. 장바구니 수정
