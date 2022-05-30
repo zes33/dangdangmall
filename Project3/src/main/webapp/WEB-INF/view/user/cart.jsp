@@ -524,8 +524,8 @@ a:hover {
 			id="order" class="btn btn-success two_button">선택 메뉴 주문</button>
 	</div>
 </c:if>
-${user}
-	
+${user.user_id}
+	${user_id }
 	
      <h2>장바구니 확인</h2>
      ${list }

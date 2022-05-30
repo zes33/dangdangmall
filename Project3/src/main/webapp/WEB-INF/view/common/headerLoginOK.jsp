@@ -51,7 +51,7 @@
 							<path d="M21 21l-5.2-5.2" /></svg>
 					</a> 
 					<a class="btn btn-sm btn-outline-secondary" href="logout.do">로그아웃</a>
-					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="cart/cart.do">장바구니</a>
+					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="cart/cartView.do">장바구니</a>
 					&nbsp;&nbsp; <a class="btn btn-sm btn-outline-secondary" href="#">마이페이지</a>
 				</div>
 			</div>

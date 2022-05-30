@@ -31,8 +31,7 @@ public class CartDAO {
 
 	// 2. 장바구니 목록
 	public List<CartVO> listCart(String user_id) {
-//		user_id = "1";
-		return mybatis.selectList("cart.listCart", user_id);
+		return mybatis.selectList("cartDAO.listCart", user_id);
 	}
 //	public List<CartVO> listCart(CartVO vo) {
 //		return mybatis.selectList("cartDAO.listCart", vo);

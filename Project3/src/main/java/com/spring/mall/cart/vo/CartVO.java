@@ -17,7 +17,9 @@ public class CartVO {
 	private String user_addr_d;
 	private String user_zipcode;
 	private int user_state;
-	private String user_phone;
+	private String user_phone1;
+	private String user_phone2;
+	private String user_phone3;
 	
 	private int category_code;
 	private String product_name;
@@ -33,9 +35,9 @@ public class CartVO {
 
 	public CartVO(int cart_id, String user_id, String n_user_ip, int cart_product_qty, int product_id, String user_pw,
 			String user_name, String user_nickname, String user_email, int user_grade, int user_point, String user_addr,
-			String user_addr_d, String user_zipcode, int user_state, String user_phone, int category_code,
-			String product_name, int product_price, int product_stock, String product_info, int product_discount,
-			int product_state) {
+			String user_addr_d, String user_zipcode, int user_state, String user_phone1, String user_phone2,
+			String user_phone3, int category_code, String product_name, int product_price, int product_stock,
+			String product_info, int product_discount, int product_state) {
 		super();
 		this.cart_id = cart_id;
 		this.user_id = user_id;
@@ -52,7 +54,9 @@ public class CartVO {
 		this.user_addr_d = user_addr_d;
 		this.user_zipcode = user_zipcode;
 		this.user_state = user_state;
-		this.user_phone = user_phone;
+		this.user_phone1 = user_phone1;
+		this.user_phone2 = user_phone2;
+		this.user_phone3 = user_phone3;
 		this.category_code = category_code;
 		this.product_name = product_name;
 		this.product_price = product_price;
@@ -182,12 +186,28 @@ public class CartVO {
 		this.user_state = user_state;
 	}
 
-	public String getUser_phone() {
-		return user_phone;
+	public String getUser_phone1() {
+		return user_phone1;
 	}
 
-	public void setUser_phone(String user_phone) {
-		this.user_phone = user_phone;
+	public void setUser_phone1(String user_phone1) {
+		this.user_phone1 = user_phone1;
+	}
+
+	public String getUser_phone2() {
+		return user_phone2;
+	}
+
+	public void setUser_phone2(String user_phone2) {
+		this.user_phone2 = user_phone2;
+	}
+
+	public String getUser_phone3() {
+		return user_phone3;
+	}
+
+	public void setUser_phone3(String user_phone3) {
+		this.user_phone3 = user_phone3;
 	}
 
 	public int getCategory_code() {
@@ -253,10 +273,12 @@ public class CartVO {
 				+ ", user_name=" + user_name + ", user_nickname=" + user_nickname + ", user_email=" + user_email
 				+ ", user_grade=" + user_grade + ", user_point=" + user_point + ", user_addr=" + user_addr
 				+ ", user_addr_d=" + user_addr_d + ", user_zipcode=" + user_zipcode + ", user_state=" + user_state
-				+ ", user_phone=" + user_phone + ", category_code=" + category_code + ", product_name=" + product_name
-				+ ", product_price=" + product_price + ", product_stock=" + product_stock + ", product_info="
-				+ product_info + ", product_discount=" + product_discount + ", product_state=" + product_state + "]";
+				+ ", user_phone1=" + user_phone1 + ", user_phone2=" + user_phone2 + ", user_phone3=" + user_phone3
+				+ ", category_code=" + category_code + ", product_name=" + product_name + ", product_price="
+				+ product_price + ", product_stock=" + product_stock + ", product_info=" + product_info
+				+ ", product_discount=" + product_discount + ", product_state=" + product_state + "]";
 	}
+
 	
 	
 }
