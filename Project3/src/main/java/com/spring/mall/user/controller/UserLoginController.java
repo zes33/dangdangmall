@@ -50,7 +50,9 @@ public class UserLoginController {
 			System.out.println("회원 로그인 성공~");
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
 			session.setAttribute("user_id", user.getUser_id());
-			return "store/mainLoginOK"; 
+			//return "store/mainLoginOK"; 
+			return "redirect:/main.do";
+			
 		}
 	}
 	

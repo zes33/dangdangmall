@@ -24,6 +24,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getProductListCategory(int category) {
 		return productDAO.getProductList_c(category);
 	}
+	
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return productDAO.getProduct(vo);
+	}
+
 
 //	@Override
 //	public void insertProduct(ProductVO vo) {
@@ -40,11 +46,7 @@ public class ProductServiceImpl implements ProductService {
 //		productDAO.deleteProduct(vo);
 //	}
 //	
-//	@Override
-//	public ProductVO getProduct(ProductVO vo) {
-//		return productDAO.getProduct(vo);
-//	}
-//	
+	
 //	public List<ProductVO> getProductList(ProductVO vo) {
 //		return productDAO.getProductList(vo);
 //	}

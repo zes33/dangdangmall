@@ -24,7 +24,11 @@ public class ProductDAO {
 		return list;
 	}
 	
-
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println(">> Mybatis 사용 getProduct() 실행");
+		return mybatis.selectOne("productDAO.getProduct", vo);
+	}
+	
 	
 	
 //	public void insertProduct(ProductVO vo) {
@@ -42,10 +46,6 @@ public class ProductDAO {
 //		mybatis.delete("productDAO.deleteProduct", vo);
 //	}
 //	
-//	public ProductVO getProduct(ProductVO vo) {
-//		System.out.println(">> Mybatis 사용 getProduct() 실행");
-//		return mybatis.selectOne("productDAO.getProduct", vo);
-//	}
 //	
 //	public List<ProductVO> getProductList(ProductVO vo) {
 //		System.out.println(">> Mybatis 사용 getProductList() 실행");

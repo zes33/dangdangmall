@@ -21,14 +21,14 @@
 	crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
 <script>
-function productDetailView(product_id){
+function productDetailView(productid){
     let f = document.createElement('form');
     
     let obj;
     obj = document.createElement('input');
     obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'product_id');
-    obj.setAttribute('value', product_id);
+    obj.setAttribute('name', 'productid');
+    obj.setAttribute('value', productid);
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
@@ -41,14 +41,8 @@ function productDetailView(product_id){
 <body>
 	<!-- header -->
 <header>
-	<c:choose>
-	<c:when test="${empty user }">
-		<jsp:include page="../common/header.jsp"></jsp:include>
-	</c:when>
-	<c:otherwise>
-		<jsp:include page="../common/headerLoginOK.jsp"></jsp:include>
-	</c:otherwise>
-	</c:choose>
+	<jsp:include page="../common/header.jsp"></jsp:include>
+
 </header>
 	<main>
 	
@@ -93,38 +87,7 @@ function productDetailView(product_id){
 				</c:forEach>
 				</div>
 				<br><br><br>
-				<h1>운동</h1><br>
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-				<!-- forEach 시작~ -->
-				<c:forEach var="exercise" items="${exerciseList }" begin="0" end="3">
-				<div class="col" style=" cursor: pointer;" onclick="productDetailView(${exercise.product_id})">
-					<div class="card shadow-sm">
-						<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
-							height="225" >
-						<div class="card-body">
-							<p class="card-text">${exercise.product_name }</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<c:choose>
-									<c:when test="${0 eq exercise.product_discount }">
-										<br>
-										<span>${exercise.product_price }원</span>
-									</c:when>
-									<c:otherwise>
-										<span>할인혜택가</span>
-										<span><strike>${exercise.product_price }원</strike></span><br>
-										<span>${exercise.product_discount * 100}%</span>
-										<span>${exercise.product_price * (1- exercise.product_discount) }원</span>
-									</c:otherwise>
-									</c:choose>
-								</div>
-								<!-- <small class="text-muted">9 mins</small> -->
-							</div>
-						</div>
-					</div>
-				</div>
-				</c:forEach>
-				</div>
+				
 			</div>
 		</div>
 	</main>

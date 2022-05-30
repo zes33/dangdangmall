@@ -32,7 +32,7 @@ function productDetailView(productid){
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    //f.setAttribute('action', 'view.do');
+    f.setAttribute('action', 'tempPrd.do');
     document.body.appendChild(f);
     f.submit();
 }
@@ -52,57 +52,69 @@ function productDetailView(productid){
 			<div class="container" >
 
 				<h1>식품</h1><br>
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
-				<!-- <a href="javascript:productDetailView('${list.productid}')"> -->
-					<div class="col" style=" cursor: pointer;" onclick="location.href='#';">
+				<c:forEach var="food" items="${foodList }" begin="0" end="3">
+					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${food.product_id})">
 						<div class="card shadow-sm">
 							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
 							<div class="card-body">
-								<p class="card-text">여긴 상품명-----</p>
+								<p class="card-text">${food.product_name }</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div>
-										<span>할인혜택가</span>
-										<span><strike>19,000원</strike></span><br>
-										<span>90%</span>
-										<span><a href="#">9,000원</a></span>
+										<c:choose>
+										<c:when test="${0 eq food.product_discount }">
+											<br>
+											<span>${food.product_price }원</span>
+										</c:when>
+										<c:otherwise>
+											<span>할인혜택가</span>
+											<span><strike>${food.product_price }원</strike></span><br>
+											<span>${food.product_discount * 100}%</span>
+											<span>${food.product_price * (1- food.product_discount) }원</span>
+										</c:otherwise>
+										</c:choose>
 									</div>
 									<!-- <small class="text-muted">9 mins</small> -->
 								</div>
 							</div>
 						</div>
 					</div>
-				<!-- </a> -->
+				</c:forEach>
 				</div>
 				<br><br><br>
 				<h1>운동</h1><br>
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
-					<div class="col">
-						<div class="card shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-								aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-							<div class="card-body">
-								<p class="card-text">여긴 상품명-----</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div>
+				<c:forEach var="exercise" items="${exerciseList }" begin="0" end="3">
+				<div class="col" style=" cursor: pointer;" onclick="productDetailView(${exercise.product_id})">
+					<div class="card shadow-sm">
+						<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
+							height="225" >
+						<div class="card-body">
+							<p class="card-text">${exercise.product_name }</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<c:choose>
+									<c:when test="${0 eq exercise.product_discount }">
+										<br>
+										<span>${exercise.product_price }원</span>
+									</c:when>
+									<c:otherwise>
 										<span>할인혜택가</span>
-										<span><strike>19,000원</strike></span><br>
-										<span>90%</span>
-										<span><a href="#">9,000원</a></span>
-									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
+										<span><strike>${exercise.product_price }원</strike></span><br>
+										<span>${exercise.product_discount * 100}%</span>
+										<span>${exercise.product_price * (1- exercise.product_discount) }원</span>
+									</c:otherwise>
+									</c:choose>
 								</div>
+								<!-- <small class="text-muted">9 mins</small> -->
 							</div>
 						</div>
 					</div>
+				</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>

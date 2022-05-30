@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.mall.product.service.ProductQnaService;
+import com.spring.mall.product.service.ProductService;
 import com.spring.mall.product.vo.ProductQnaVO;
 import com.spring.mall.product.vo.ProductVO;
 
@@ -16,7 +17,9 @@ public class ProductQnaController {
 	
 	@Autowired
 	private ProductQnaService productQnaService;
-
+	
+	private ProductService productService;
+	
 	public ProductQnaController() {
 		System.out.println("ProductQnaController() 객체 생성");
 	}
@@ -30,7 +33,7 @@ public class ProductQnaController {
 	}
 	
 	@PostMapping("/insertPrdQna.do")
-	public String insertProductQna(ProductQnaVO vo,ProductVO pvo, RedirectAttributes reatt) {
+	public String insertProductQna(ProductQnaVO vo,ProductVO pv, RedirectAttributes reatt) {
 		System.out.println("ProductQnaController.insertProductQna() 실행");
 		System.out.println("vo : " + vo);
 		

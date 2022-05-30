@@ -67,7 +67,14 @@ textarea {
 			<div class="prdNamePrice">
 				<h1>세션 테스트 : ${product.product_name }</h1>
 				<h1><span>${product.product_name }</span></h1>
-				<h3><span>${product.product_price }</span></h3>
+				<c:choose>
+				<c:when test="${0 eq product.product_discount }">
+					<h3><span>${product.product_price }</span></h3>
+				</c:when>
+				<c:otherwise>
+					<span><strike>${product.product_price * (1- product.product_discount)}원</strike></span>
+				</c:otherwise>
+				</c:choose>
 				<p><span>식품</span></p>
 				<form>
 					<input type="hidden" name="product_id" value="88">
@@ -125,26 +132,23 @@ textarea {
 			</c:choose>
 			
 			<c:choose>
-			<c:when test="${empty tempUser }">
+			<c:when test="${empty user }">
 				<p>상품문의는 로그인 후 가능합니다.</p> <a href="#">로그인 하기</a>
 			</c:when>
 			<c:otherwise>
-			<div id="prdQnaWrite" class="prdInput">
-			<form id="prdQnaForm" 
-			action="productQna/insertPrdQna.do?product_id=88&user_id=${tempUser.user_id }" method="post">
-				 <textarea name="qna_content"></textarea>
-				<button type="button" id="testBtn" onclick="writeQna()">상품문의 등록</button>
-			</form>
-			</div>
+				<div id="prdQnaWrite" class="prdInput">
+				<form id="prdQnaForm" 
+				action="productQna/insertPrdQna.do?product_id=${product.product_id }&user_id=${user.user_id }" method="post">
+					 <textarea name="qna_content"></textarea>
+					<button type="button" id="testBtn" onclick="writeQna()">상품문의 등록</button>
+				</form>
+				</div>
 			</c:otherwise>
 			</c:choose>
 		</div>
 	</div>
+	
 <script>
-
-	
-
-	
  	function writeQna() {
 		console.log("writeQna() 실행~~")
 		var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
