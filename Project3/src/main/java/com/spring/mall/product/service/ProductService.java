@@ -12,5 +12,5 @@ public interface ProductService {
 //	void updateProduct(ProductVO vo);
 //	void deleteProduct(ProductVO vo);
 	ProductVO getProduct(ProductVO vo);
-//	List<ProductVO> getProductList(ProductVO vo);
+	List<ProductVO> getProductList(ProductVO vo);
 }

@@ -24,6 +24,12 @@ public class ProductDAO {
 		return list;
 	}
 	
+	public List<ProductVO> getProductList_admin(ProductVO vo){
+		System.out.println("===> MyBatis 사용 getProductList_admin() 실행");
+		List<ProductVO> list = mybatis.selectList("productDAO.getProductList");
+		return list;
+	}
+	
 	public ProductVO getProduct(ProductVO vo) {
 		System.out.println(">> Mybatis 사용 getProduct() 실행");
 		return mybatis.selectOne("productDAO.getProduct", vo);

@@ -20,20 +20,14 @@
 		WHERE PRODUCT_ID = #{product_id}	
 	</select>
 	
-	<!-- 
-	<select id="getProductList" parameterType="com.spring.mall.product.vo.ProductVO" 
+	
+	<select id="getProductList" parameterType="com.spring.mall.product.vo.ProductVO"
 		resultType="com.spring.mall.product.vo.ProductVO">
-	SELECT * FROM PRODUCT
-		WHERE 1=1
-		<if test="searchCondition == 'PRODUCT_NAME' ">
-		AND PRODUCT_NAME LIKE '%'|| #{searchKeyword} ||'%'
-		</if>
-		<if test="searchCondition == 'PRODUCT_ID' ">
-		AND PRODUCT_ID = #{searchProductID}
-		</if>
+		SELECT * FROM PRODUCT
 		ORDER BY PRODUCT_ID DESC
 	</select>
 	
+	<!-- 
 	<select id="getProductList_N" parameterType="string" 
 		resultType="com.spring.mall.product.vo.ProductVO">
 		SELECT *
@@ -42,7 +36,7 @@
 		ORDER BY PRODUCT_ID DESC
 	</select>
 	
-	<select id="getProductList_I" parameterType="string"
+	<select id="getProductList_I" parameterType="int"
 		resultType="com.spring.mall.product.vo.ProductVO">
 		SELECT *
 		FROM PRODUCT

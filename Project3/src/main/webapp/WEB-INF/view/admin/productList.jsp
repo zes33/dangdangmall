@@ -20,7 +20,16 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+<link rel="canonical"
+	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link href="common/styles.css" rel="stylesheet">
 </head>
+
 <script>
 function productDetailView(productid){
     let f = document.createElement('form');
@@ -48,7 +57,6 @@ function productDetailView(productid){
 	<div class="album py-5 bg-light">
 			<div class="container" >
 
-				<h1>식품</h1><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				<!-- forEach 시작~ -->
 				<!-- <a href="javascript:productDetailView('${list.productid}')"> -->
@@ -73,7 +81,6 @@ function productDetailView(productid){
 				<!-- </a> -->
 				</div>
 				<br><br><br>
-				<h1>운동</h1><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				<!-- forEach 시작~ -->
 					<div class="col">
