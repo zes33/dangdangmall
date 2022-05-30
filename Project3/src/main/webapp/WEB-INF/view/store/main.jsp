@@ -51,7 +51,7 @@ function productDetailView(product_id){
 	</c:choose>
 </header>
 	<main>
-	
+	\${user } : ${user }
 		<div>
 			<a href="cart/cart.do">장바구니 페이지 </a><br>
 			<a href="admin/admin.do">관리자 메인페이지(임시)</a>

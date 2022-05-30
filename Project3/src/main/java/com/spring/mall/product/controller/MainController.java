@@ -3,6 +3,8 @@ package com.spring.mall.product.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +24,9 @@ public class MainController{
 	}
 	
 	@GetMapping("/main.do")
-	public String mainView(Model model) {
+	public String mainView(Model model, HttpSession session) {
 		System.out.println("메인페이지(main.jsp)이동 - mainView()");
+		System.out.println(session.getId());
 		int food = 1;
 		int exercise = 2;
 		

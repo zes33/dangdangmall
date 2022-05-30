@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.mall.user.service.UserLoginService;
 import com.spring.mall.user.vo.UserVO;
@@ -39,7 +40,7 @@ public class UserLoginController {
 		
 		UserVO user = userLoginService.getUser(vo);
 		HttpSession session = request.getSession();
-		
+		System.out.println(session.getId());
 		if(user == null || user.getUser_state() == 0) {
 			System.out.println("존재하지 않는 아이디입니다. 다시 확인해주세요.");
 			return "common/login";
@@ -50,6 +51,7 @@ public class UserLoginController {
 			System.out.println("회원 로그인 성공~");
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
 			session.setAttribute("user_id", user.getUser_id());
+			System.out.println(session.getId());
 			//return "store/mainLoginOK"; 
 			return "redirect:/main.do";
 			
@@ -57,9 +59,11 @@ public class UserLoginController {
 	}
 	
 	@RequestMapping("/logout.do")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session, SessionStatus status) {
 		
 		System.out.println("로그아웃 처리");
+		System.out.println(session.getId());
+		status.setComplete();
 		session.invalidate();
 		
 		//return "store/main";
