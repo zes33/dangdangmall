@@ -25,9 +25,13 @@ public class PagingDAO {
 		return mybatis.selectOne("paging.totalProductCnt_c",category);
 	}
 	
-	public List<ProductVO> productList_food(PagingVO vo){
+	public List<ProductVO> productList_food(int category_code, int start, int end){
 		System.out.println("PagingDAO.productList_c() 실행");
-		List<ProductVO> list = mybatis.selectList("paging.getProductPerPage_food", vo);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("category_code", category_code);
+		map.put("start", start);
+		map.put("end", end);
+		List<ProductVO> list = mybatis.selectList("paging.getProductPerPage_food", map);
 		return list;
 	}
 	

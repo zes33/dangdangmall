@@ -8,5 +8,5 @@ import com.spring.mall.product.vo.ProductVO;
 public interface PagingService {
 	
 	int totalProductCnt_c(int category);
-	List<ProductVO> productList_food(PagingVO vo);
+	List<ProductVO> productList_food(int category_code, int start, int end);
 }

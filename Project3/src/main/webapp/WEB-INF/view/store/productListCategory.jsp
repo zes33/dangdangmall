@@ -21,14 +21,14 @@
 	crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
 <script>
-function productDetailView(productid){
+function productDetailView(product_id){
     let f = document.createElement('form');
     
     let obj;
     obj = document.createElement('input');
     obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'productid');
-    obj.setAttribute('value', productid);
+    obj.setAttribute('name', 'product_id');
+    obj.setAttribute('value', product_id);
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
@@ -54,8 +54,14 @@ function productDetailView(productid){
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
 			<div class="container" >
-
-				<h1>식품</h1><br>
+				<c:choose>
+				<c:when test="${1 eq prd_c }">
+					<h1>식품</h1><br>
+				</c:when>
+				<c:otherwise>
+					<h1>운동</h1><br>
+				</c:otherwise>
+				</c:choose>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="food" items="${viewProduct }">
@@ -95,7 +101,7 @@ function productDetailView(productid){
 				  
 				  <c:if test="${paging.startPage != 1 }">
 				    <li class="page-item">
-				      <a class="page-link" href="paging/paging.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}"
+				      <a class="page-link" href="paging.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}"
 				       aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
@@ -108,15 +114,14 @@ function productDetailView(productid){
 								<li class="page-item"><b class="page-link" >${p }</b></li>
 							</c:when>
 							<c:when test="${p != paging.nowPage }">
-				    			<li class="page-item"><a class="page-link" href="paging/paging.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+				    			<li class="page-item"><a class="page-link" href="paging.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}">${p }</a></li>
 							</c:when>
 						</c:choose>
 					</c:forEach>
 				   
 				    <c:if test="${paging.endPage != paging.lastPage }">
 				    <li class="page-item">
-				      <a class="page-link" href="paging/paging.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}"
-				       aria-label="Previous">
+				      <a class="page-link" href="paging.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}" aria-label="Previous">
 				        <span aria-hidden="true">&raquo;</span>
 				      </a>
 				    </li>

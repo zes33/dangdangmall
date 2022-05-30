@@ -22,8 +22,8 @@ public class PagingServiceImpl implements PagingService {
 	}
 
 	@Override
-	public List<ProductVO> productList_food(PagingVO vo) {
-		return pagingDAO.productList_food(vo);
+	public List<ProductVO> productList_food(int category_code, int start, int end) {
+		return pagingDAO.productList_food(category_code,start,end);
 	}
 
 

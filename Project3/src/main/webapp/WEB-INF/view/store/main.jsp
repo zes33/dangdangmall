@@ -60,7 +60,7 @@ function productDetailView(product_id){
 		<div class="album py-5 bg-light">
 			<div class="container" >
 
-				<a href="paging/paging.do"><h1>식품</h1></a><br>
+				<a href="paging.do?prd_c=1"><h1>식품</h1></a><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="food" items="${foodList }" begin="0" end="3">
@@ -93,7 +93,7 @@ function productDetailView(product_id){
 				</c:forEach>
 				</div>
 				<br><br><br>
-				<h1>운동</h1><br>
+				<a href="paging.do?prd_c=2"><h1>운동</h1></a><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="exercise" items="${exerciseList }" begin="0" end="3">

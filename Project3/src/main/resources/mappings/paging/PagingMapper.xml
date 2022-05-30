@@ -12,11 +12,12 @@
 		WHERE CATEGORY_CODE = #{category_code}
 	</select>
 	
+	<!-- products by category  -->
 	<select id="getProductPerPage_food" parameterType="map" resultType="com.spring.mall.product.vo.ProductVO">
 		SELECT *
 		FROM (SELECT ROWNUM R_NUM, P.*
 		         FROM (SELECT * FROM PRODUCT
-		            WHERE CATEGORY_CODE = 1
+		            WHERE CATEGORY_CODE = #{category_code}
 		            ORDER BY PRODUCT_ID DESC) P)
 		WHERE R_NUM BETWEEN #{start} AND #{end}
 	</select>
