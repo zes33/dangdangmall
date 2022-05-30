@@ -66,8 +66,9 @@
 	</form>
 	<br>
 	<p>
-		<button type="button" class="btn btn-outline-secondary btn-sm">문의 답변하기</button>
-		<button type="button" class="btn btn-outline-secondary btn-sm">문의 수정</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm">답변 수정</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm">답변 삭제</button>
 		<button type="button" class="btn btn-outline-secondary btn-sm">문의 삭제</button>
 	</p>
 </div>	
