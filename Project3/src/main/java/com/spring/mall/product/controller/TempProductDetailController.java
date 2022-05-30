@@ -2,6 +2,8 @@ package com.spring.mall.product.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class TempProductDetailController {
 	
 	// 상품상세페이지 이동 : productControlloer로 이동 예정
 	@RequestMapping("tempPrd.do")
-	public String tempProductDetail(ProductVO vo, ProductQnaNickVO qvo, Model model) {
+	public String tempProductDetail(ProductVO vo, ProductQnaNickVO qvo, Model model, HttpSession session) {
 		System.out.println("상품상세페이지(임시) 이동 - tempProductDetail 실행");
 		System.out.println("productvo : " + vo);
 		System.out.println("ProductQnaNickVO : " + qvo);
@@ -41,6 +43,8 @@ public class TempProductDetailController {
 		
 		model.addAttribute("productQnaList",productQnaList );
 		model.addAttribute("product", product);
+		session.setAttribute("product", product);
+		session.setAttribute("product_discount", product.getProduct_discount());
 		
 		return "store/productDetail";
 	}
