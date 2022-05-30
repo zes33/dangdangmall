@@ -17,7 +17,7 @@ import com.spring.mall.product.vo.ProductQnaVO;
 import com.spring.mall.product.vo.ProductVO;
 
 @Controller
-//@RequestMapping("/tempPrd/**")
+//@RequestMapping("/product/**")
 public class ProductController {
 	
 	@Autowired
@@ -30,6 +30,7 @@ public class ProductController {
 	}
 	
 	// 식품 목록 페이지 이동
+	@RequestMapping("foodList.do")
 	public String getFoodList(Model model) {
 		System.out.println("ProductController.getFoodList() 실행");
 		List<ProductVO> foodList = productService.getProductListCategory(1);

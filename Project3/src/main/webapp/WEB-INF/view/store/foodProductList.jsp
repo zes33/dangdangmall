@@ -41,15 +41,16 @@ function productDetailView(productid){
 <body>
 	<!-- header -->
 <header>
-	<jsp:include page="../common/header.jsp"></jsp:include>
-
+	<c:choose>
+	<c:when test="${empty user }">
+		<jsp:include page="../common/header.jsp"></jsp:include>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../common/headerLoginOK.jsp"></jsp:include>
+	</c:otherwise>
+	</c:choose>
 </header>
 	<main>
-	
-		<div>
-			<a href="cart/cart.do">장바구니 페이지 </a><br>
-			<a href="admin/admin.do">관리자 메인페이지(임시)</a>
-		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
 			<div class="container" >
@@ -57,7 +58,7 @@ function productDetailView(productid){
 				<h1>식품</h1><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
-				<c:forEach var="food" items="${foodList }" begin="0" end="3">
+				<c:forEach var="food" items="${viewProduct }">
 					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${food.product_id})">
 						<div class="card shadow-sm">
 							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
@@ -87,6 +88,42 @@ function productDetailView(productid){
 				</c:forEach>
 				</div>
 				<br><br><br>
+				
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				  
+				  
+				  <c:if test="${paging.startPage != 1 }">
+				    <li class="page-item">
+				      <a class="page-link" href="paging/paging.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}"
+				       aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				   </c:if> 
+				   
+				   <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<li class="page-item"><b class="page-link" >${p }</b></li>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+				    			<li class="page-item"><a class="page-link" href="paging/paging.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+				   
+				    <c:if test="${paging.endPage != paging.lastPage }">
+				    <li class="page-item">
+				      <a class="page-link" href="paging/paging.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}"
+				       aria-label="Previous">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				   </c:if> 
+				    
+				  </ul>
+				</nav>
 				
 			</div>
 		</div>
