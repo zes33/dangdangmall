@@ -26,7 +26,7 @@ public class CartVO {
 	private int product_price;
 	private int product_stock;
 	private String product_info;
-	private int product_discount;
+	private double product_discount;
 	private int product_state;
 	
 	public CartVO() {
@@ -37,7 +37,7 @@ public class CartVO {
 			String user_name, String user_nickname, String user_email, int user_grade, int user_point, String user_addr,
 			String user_addr_d, String user_zipcode, int user_state, String user_phone1, String user_phone2,
 			String user_phone3, int category_code, String product_name, int product_price, int product_stock,
-			String product_info, int product_discount, int product_state) {
+			String product_info, double product_discount, int product_state) {
 		super();
 		this.cart_id = cart_id;
 		this.user_id = user_id;
@@ -250,11 +250,11 @@ public class CartVO {
 		this.product_info = product_info;
 	}
 
-	public int getProduct_discount() {
+	public double getProduct_discount() {
 		return product_discount;
 	}
 
-	public void setProduct_discount(int product_discount) {
+	public void setProduct_discount(double product_discount) {
 		this.product_discount = product_discount;
 	}
 

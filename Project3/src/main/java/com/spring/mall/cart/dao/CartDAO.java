@@ -26,7 +26,7 @@ public class CartDAO {
 
 	// 1. 장바구니 추가
 	public void insert(CartVO vo) {
-		mybatis.insert("cart.insertCart", vo);
+		mybatis.insert("cartDAO.insertCart", vo);
 	}
 
 	// 2. 장바구니 목록
@@ -49,7 +49,7 @@ public class CartDAO {
 
 	// 5. 장바구니 금액 합계
 	public int sumMoney(String user_id) {
-		mybatis.selectOne("cart.sumMoney", user_id);
+		mybatis.selectOne("cartDAO.sumMoney", user_id);
 		return mybatis.selectOne("cartDAO.sumMoney", user_id);
 	}
 
