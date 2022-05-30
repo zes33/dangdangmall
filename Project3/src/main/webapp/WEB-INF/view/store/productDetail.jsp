@@ -54,8 +54,14 @@ textarea {
 <body>
 <!-- header -->
 <header>
-	<jsp:include page="../common/header.jsp"></jsp:include>
-
+	<c:choose>
+	<c:when test="${empty user }">
+		<jsp:include page="../common/header.jsp"></jsp:include>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../common/headerLoginOK.jsp"></jsp:include>
+	</c:otherwise>
+	</c:choose>
 </header>
 <!-- -------------------------------- -->
 
@@ -133,7 +139,7 @@ textarea {
 			
 			<c:choose>
 			<c:when test="${empty user }">
-				<p>상품문의는 로그인 후 가능합니다.</p> <a href="#">로그인 하기</a>
+				<p>상품문의는 로그인 후 가능합니다.</p> <a href="login.do">로그인 하기</a>
 			</c:when>
 			<c:otherwise>
 				<div id="prdQnaWrite" class="prdInput">

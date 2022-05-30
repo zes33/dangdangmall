@@ -17,7 +17,7 @@ public class ProductQnaController {
 	
 	@Autowired
 	private ProductQnaService productQnaService;
-	
+	@Autowired
 	private ProductService productService;
 	
 	public ProductQnaController() {
@@ -37,9 +37,12 @@ public class ProductQnaController {
 		System.out.println("ProductQnaController.insertProductQna() 실행");
 		System.out.println("vo : " + vo);
 		
+		System.out.println("product : " + pv);
 		productQnaService.insertProductQna(vo);
-		reatt.addAttribute("product_id", vo.getProduct_id());
+		ProductVO product = productService.getProduct(pv);
+		System.out.println("product : " + product);
 		
+		reatt.addFlashAttribute("product", product);
 		
 		return "forward:/tempPrd.do";
 	}
