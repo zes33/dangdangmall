@@ -19,18 +19,18 @@ import com.spring.mall.product.vo.ProductVO;
 @Controller
 @SessionAttributes("tmepUser")
 //@RequestMapping("/tempPrd/**")
-public class TempProductDetailController {
+public class ProductController {
 	
 	@Autowired
 	private ProductQnaService productQnaService;
 	@Autowired
 	private ProductService productService;
 	
-	public TempProductDetailController() {
-		System.out.println("ZZZController() 객체 생성~~");
+	public ProductController() {
+		System.out.println("ProductController() 객체 생성~~");
 	}
 	
-	// 상품상세페이지 이동 : productControlloer로 이동 예정
+	// 상품상세페이지 이동 
 	@RequestMapping("tempPrd.do")
 	public String tempProductDetail(ProductVO vo, ProductQnaNickVO qvo, Model model, HttpSession session) {
 		System.out.println("상품상세페이지(임시) 이동 - tempProductDetail 실행");
