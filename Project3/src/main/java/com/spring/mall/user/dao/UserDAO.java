@@ -30,5 +30,11 @@ public class UserDAO {
 		return mybatis.insert("userDAO.insertUser", vo);
 	}
 	
+	public String getId(UserVO vo) {
+		System.out.println("vo : " + vo);
+		
+		return mybatis.selectOne("userDAO.getId", vo);
+	}
+	
 
 }

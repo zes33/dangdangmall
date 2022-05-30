@@ -35,7 +35,7 @@
 				<input type="submit" value="로그인">
 	<table>
 		<tr>
-			<a href="#">아이디 찾기</a>
+			<a href="findIdView.do">아이디 찾기</a>
 			<a href="#">비밀번호 찾기</a>
 		</tr>
 	</table>

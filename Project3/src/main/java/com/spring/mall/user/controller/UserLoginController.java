@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,4 +62,30 @@ public class UserLoginController {
 		
 		return "store/main";
 	}
+	
+	@GetMapping("/findIdView.do")
+	public String findIdView() {
+		System.out.println(">>아이디찾기 화면 이동 - findIdView()");
+		return "common/findIdForm";
+	}
+	
+	@PostMapping("/findId.do")
+	public String findIdAction(UserVO vo) {
+		
+		return "common/findIdOK";
+	}
+	
+//	@PostMapping("/findIdAction.do")
+//	public String findId(UserVO vo,Model model) throws Exception{
+//				
+//		if(memberService.findIdCheck(memberVO.getMemberEmail())==0) {
+//		model.addAttribute("msg", "이메일을 확인해주세요");
+//		return "/member/findIdView";
+//		}else {
+//		model.addAttribute("member", memberService.findId(memberVO.getMemberEmail()));
+//		return
+//				"/member/findId";
+//		}
+//	}
+	
 }
