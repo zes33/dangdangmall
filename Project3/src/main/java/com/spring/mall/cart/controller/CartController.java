@@ -35,14 +35,14 @@ public class CartController {
 		System.out.println(">> CartController() 객체 생성 ");
 	}
 
-	// 헤더 장바구니 버튼을 누르면 장바구니 페이지로 연결
-	@GetMapping("cartView.do")
-	public String cartView() {
-		System.out.println("장바구니 페이지(cart.jsp)이동 - cartView()");
-		return "list.do";
-	}
+//	// 헤더 장바구니 버튼을 누르면 장바구니 페이지로 연결
+//	@GetMapping("cartView.do")
+//	public String cartView() {
+//		System.out.println("장바구니 페이지(cart.jsp)이동 - cartView()");
+//		return "list.do";
+//	}
 
-	@RequestMapping("/list.do")
+	@GetMapping("/list.do")
 	public String list(CartVO vo, Model model, HttpSession session) {
 		System.out.println(">> list.do() 생성 ");
 		String user_id = (String) session.getAttribute("user_id");
@@ -96,7 +96,7 @@ public class CartController {
 	@RequestMapping("delete.do")
 	public String delete(@RequestParam int cart_id) {
 		cartService.delete(cart_id);
-		return "forward:/user/cart/cart.do";
+		return "redirect:/user/cart/list.do";
 	}
 
 	// 4. 장바구니 수정
@@ -113,7 +113,7 @@ public class CartController {
 			cartService.modifyCart(vo);
 		}
 
-		return "forward:/user/cart/cart.do";
+		return "redirect:/user/cart/list.do";
 	}
 
 }

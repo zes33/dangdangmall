@@ -453,16 +453,17 @@ a:hover {
 		<h1>장바구니 목록</h1>
 		<br>
 	</div>
+	<p>${list}</p> 
 	<%-- ${getCartList } --%>
 	<div class="text-center">
-		<c:if test="${empty getCartList}">
+		<c:if test="${empty list}">
 		<br/>
 		장바구니가 비어있습니다.
 		<br/><br/>
 		</c:if>
 		</div>
 
-		<c:if test="${not empty getCartList}">
+		<c:if test="${not empty list}">
 	<!--장바구니 목록-->
 	<div style="font-weight: bold; font-size: 20px;">
 		<form action="updateCart.do" method="post">
