@@ -28,15 +28,11 @@ public class AdminController {
 		return "admin/main";
 	}
 	
-	@GetMapping("/getProductList.do")
-	public String getProductList(Model model) {
-		int food = 1;
-		int exercise = 2;
-		
-		List<ProductVO> foodList = productService.getProductListCategory(food);
-		List<ProductVO> exerciseList = productService.getProductListCategory(exercise);
-		model.addAttribute("foodList",foodList);
-		model.addAttribute("exerciseList",exerciseList);
+	@GetMapping("/adminGetProductList.do")
+	public String adminGetProductList(Model model) {
+		ProductVO vo = null;
+		List<ProductVO> adminProductList = productService.getProductList(vo);
+		model.addAttribute("adminProductList",adminProductList);
 		
 		System.out.println("상품목록페이지(productList.jsp)이동 - getProductList()");
 		return "admin/productList";

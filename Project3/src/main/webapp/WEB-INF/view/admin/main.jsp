@@ -47,7 +47,7 @@
 			</tr>
 		</thead>
 			<tr>
-				<td><a class="btn btn-sm btn-outline-secondary" href="getProductList.do">상품 목록</a>
+				<td><a class="btn btn-sm btn-outline-secondary" href="adminGetProductList.do">상품 목록</a>
 					&nbsp;&nbsp;</td>
 				<td><button type="button" class="btn btn-light">회원정보 조회</button></td>
 				<td><button type="button" class="btn btn-light">고객 문의 목록</button></td>

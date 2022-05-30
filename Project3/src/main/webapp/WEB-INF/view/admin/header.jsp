@@ -46,7 +46,7 @@
 		<div class="container">
 		<div
 			class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-			<a class="blog-header-logo text-dark" href="main.jsp"> <img
+			<a class="blog-header-logo text-dark" href="admin.do"> <img
 				alt="로고" src="../img/logo.png" width="300" height="300" /></a>
 		</div>
 	</div>
