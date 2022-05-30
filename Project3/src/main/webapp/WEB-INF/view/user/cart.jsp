@@ -502,10 +502,11 @@ a:hover {
 
 		<div>
 			<h1>장바구니 목록</h1>
+			${map }
+			<h1>${map.list[1] }</h1>
 			<br>
 		</div>
 		<%-- <p>${list}</p>
-
 		<h1>userVO : ${user }</h1> --%>
 		<%-- ${getCartList } --%>
 		<div class="text-center">
@@ -520,66 +521,64 @@ a:hover {
 		<c:if test="${not empty map}">
 			<!--장바구니 목록-->
 			<div style="font-weight: bold; font-size: 20px;">
-				<form action="update.do" method="post">
-					<table style="width: 90%; padding-top: 3pt;">
+
+				<table style="width: 90%; padding-top: 3pt;">
+					<tr>
+						<th>상품 이름</th>
+						<th>수량</th>
+						<th>금액</th>
+						<th>할인율</th>
+						<th>총 금액</th>
+						<th>선택</th>
+					</tr>
+
+					<c:forEach items="${map.list }" var="list" varStatus="i">
+						<div class="menuClass"
+							data-menuId=<c:out value="${list.cart_id}"/>>
 						<tr>
-							<th>상품 이름</th>
-							<th>수량</th>
-							<th>금액</th>
-							<th>할인율</th>
-							<th>총 금액</th>
-							<th>선택</th>
+							<td><span id="amount"> <c:out
+										value="${list.product_name }" />
+							</span></td>
+							<td>
+								<form action="update.do" method="post">
+										<input type="number" style="width: 80px" name="cart_product_qty"
+										value="${list.cart_product_qty}" min="1"> 
+										<input type="hidden" name="product_id" value="${list.product_id}">
+										<input type="submit" value="수량수정">
+									</form>
+							<td><span id="amount"
+								data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
+										value="${list.product_price * list.cart_product_qty}"
+										pattern="###,###,###" /></span></td>
+							<td><span id="discount" style="color: red;"
+								data-amount=<c:out value="${map.discount }"/>> <fmt:formatNumber
+										value="${map.discount *100 }" type="number" /> %
+							</span></td>
+							<td><span id="total"
+								data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>>
+									<fmt:formatNumber
+										value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* map.discount }"
+										pattern="###,###,###" />
+							</span></td>
+							<td>
+								<div style="width: 7%">
+									<input type="checkbox">
+								</div>
+							</td>
 						</tr>
+						</div>
+					</c:forEach>
 
-						<c:forEach items="${map.list }" var="list" varStatus="i">
-							<div class="menuClass"
-								data-menuId=<c:out value="${list.cart_id}"/>>
-								<tr>
-									<td><span id="amount"> <c:out
-												value="${list.product_name }" />
-									</span></td>
-									<td><span id="num">${list.cart_product_qty } </span>
-										&nbsp; <i id="minusButton" class="fas fa-minus-square pos"></i>
-										<i id="plusButton" class="fas fa-plus-square pos"></i></td>
-
-								<input type="number" style="width: 40px" name="amount"
-								value="${row.cart_product_qty}" min="1"> <input
-								type="hidden" name="productId" value="${row.product_id}">
- 
-									<td><span id="price"
-										data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
-												value="${list.product_price * list.cart_product_qty}"
-												pattern="###,###,###" /></span></td>
-									<td><span id="discount" style="color: red;"
-										data-amount=<c:out value="${map.discount }"/>> <fmt:formatNumber
-												value="${map.discount *100 }" type="number" /> %
-									</span></td>
-									<td><span id="total"
-										data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>>
-											<fmt:formatNumber
-												value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* map.discount }"
-												pattern="###,###,###" />
-									</span></td>
-									<td>
-										<div style="width: 7%">
-											<input type="checkbox">
-										</div>
-									</td>
-								</tr>
-							</div>
-						</c:forEach>
-
-					</table>
+				</table>
 				</form>
 			</div>
 			<div class="text-right" style="margin: 10pt">
 				<br>
 				<tr>
 					<h3 style="font-weight: bold; font-size: 20px;">
-						<td colspan="5" align="right">장바구니 금액 합계 : <fmt:formatNumber
-								pattern="###,###,###" value="${map.sumMoney *(1- map.discount)}" />원
-							<br> 배송비 <fmt:formatNumber value="${map.fee }"
-								pattern="###,###,###" />원<br>
+						<td>장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###"
+								value="${map.sumMoney *(1- map.discount)}" />원 <br> 배송비 <fmt:formatNumber
+								value="${map.fee }" pattern="###,###,###" />원<br>
 					</h3>
 					<h5 style="font-weight: bold; font-size: 30px;">
 						총금액
@@ -601,52 +600,7 @@ a:hover {
 	</div>
 	<br>
 
-	<c:choose>
-		<c:when test="${map.count == 0}">
-            장바구니가 비어있습니다.
-        </c:when>
-		<c:otherwise>
-			<form name="form1" id="form1" method="post"
-				action="${path}/cart/update.do">
-				<table border="1">
-					<tr>
-						<th>상품명</th>
-						<th>단가</th>
-						<th>수량</th>
-						<th>금액</th>
-						<th>취소</th>
-					</tr>
-					<c:forEach var="row" items="${map.list}" varStatus="i">
-						<tr>
-							<td>${row.product_name}</td>
-							<td style="width: 80px" align="right"><fmt:formatNumber
-									pattern="###,###,###" value="${row.product_price}" /></td>
-							<td><input type="number" style="width: 40px" name="amount"
-								value="${row.cart_product_qty}" min="1"> <input
-								type="hidden" name="productId" value="${row.product_id}">
-							</td>
-							<td style="width: 100px" align="right"><fmt:formatNumber
-									pattern="###,###,###"
-									value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)*list.product_discount}" />
-							</td>
-							<td><a
-								href="${path}/shop/cart/delete.do?cartId=${row.cart_id}">삭제</a>
-							</td>
-						</tr>
-					</c:forEach>
-					<tr>
-						<td colspan="5" align="right">장바구니 금액 합계 : <fmt:formatNumber
-								pattern="###,###,###" value="${map.sumMoney}" /><br> 배송료 :
-							${map.fee}<br> 전체 주문금액 :<fmt:formatNumber
-								pattern="###,###,###" value="${map.allSum}" />
-						</td>
-					</tr>
-				</table>
-				<input type="hidden" name="count" value="${map.count}">
-				<button type="submit" id="btnUpdate">수정</button>
-			</form>
-		</c:otherwise>
-	</c:choose>
+
 	<button type="button" id="btnList">상품목록</button>
 
 	<!-- footer -->
@@ -656,108 +610,47 @@ a:hover {
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script>
-		let basket = {
-			totalCount : 0,
-			totalPrice : 0,
-			//체크한 장바구니 상품 비우기
-			delCheckedItem : function() {
-				document.querySelectorAll("input[name=buy]:checked").forEach(
-						function(item) {
-							item.parentElement.parentElement.parentElement
-									.remove();
-						});
-				//AJAX 서버 업데이트 전송
+		// -,+ 버튼을 클릭할 때마다 메뉴의 수량과 가격이 변하도록 하는 함수
+		/* function clickCountButton() {
+			var menus = $(".menuClass").get();
+			for (let i = 0; i < menus.length; i++) {
+				var jMenus = $(menus[i]);
+				var minusButton = jMenus.find("#minusButton");
+				var plusButton = jMenus.find("#plusButton");
 
-				//전송 처리 결과가 성공이면
-				this.reCalc();
-				this.updateUI();
-			},
-			//장바구니 전체 비우기
-			delAllItem : function() {
-				document.querySelectorAll('.row.data').forEach(function(item) {
-					item.remove();
+				minusButton.click(function() {
+					var num = Number(($(this).siblings('#num')).text());
+					--num;
+					if (num <= 0) {
+						num = 1;
+					}
+					// 버튼을 통해 메뉴의 수량을 바꿈
+					($(this).siblings("#num")).text(num);
+					// 메뉴 하나의 가격
+					var price = Number(($(this).siblings("#amount"))
+							.data("amount"));
+					// 메뉴의 개수만큼의 가격
+					var priceMultNum = String(price * num) + "원";
+					($(this).siblings("#amount")).text(priceMultNum);
+					calcAllPrice();
 				});
-				//AJAX 서버 업데이트 전송
-
-				//전송 처리 결과가 성공이면
-				this.totalCount = 0;
-				this.totalPrice = 0;
-				this.reCalc();
-				this.updateUI();
-			},
-			//재계산
-			reCalc : function() {
-				this.totalCount = 0;
-				this.totalPrice = 0;
-				document
-						.querySelectorAll(".p_num")
-						.forEach(
-								function(item) {
-									if (item.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.checked == true) {
-										var count = parseInt(item
-												.getAttribute('value'));
-										this.totalCount += count;
-										var price = item.parentElement.parentElement.previousElementSibling.firstElementChild
-												.getAttribute('value');
-										this.totalPrice += count * price;
-									}
-								}, this); // forEach 2번째 파라메터로 객체를 넘겨서 this 가 객체리터럴을 가리키도록 함. - thisArg
-			},
-			//화면 업데이트
-			updateUI : function() {
-				document.querySelector('#sum_p_num').textContent = '상품갯수: '
-						+ this.totalCount.formatNumber() + '개';
-				document.querySelector('#sum_p_price').textContent = '합계금액: '
-						+ this.totalPrice.formatNumber() + '원';
-			},
-			//개별 수량 변경
-			changePNum : function(pos) {
-				var item = document.querySelector('input[name=p_num' + pos
-						+ ']');
-				var p_num = parseInt(item.getAttribute('value'));
-				var newval = event.target.classList.contains('up') ? p_num + 1
-						: event.target.classList.contains('down') ? p_num - 1
-								: event.target.value;
-
-				if (parseInt(newval) < 1 || parseInt(newval) > 99) {
-					return false;
-				}
-
-				item.setAttribute('value', newval);
-				item.value = newval;
-
-				var price = item.parentElement.parentElement.previousElementSibling.firstElementChild
-						.getAttribute('value');
-				item.parentElement.parentElement.nextElementSibling.textContent = (newval * price)
-						.formatNumber()
-						+ "원";
-				//AJAX 업데이트 전송
-
-				//전송 처리 결과가 성공이면    
-				this.reCalc();
-				this.updateUI();
-			},
-			checkItem : function() {
-				this.reCalc();
-				this.updateUI();
-			},
-			delItem : function() {
-				event.target.parentElement.parentElement.parentElement.remove();
-				this.reCalc();
-				this.updateUI();
+				plusButton.click(function() {
+					var num = Number(($(this).siblings('#num')).text());
+					++num;
+					if (num > 5) {
+						num = 5;
+					}// 버튼을 통해 메뉴의 수량을 바꿈
+					($(this).siblings("#num")).text(num);
+					// 메뉴 하나의 가격
+					var price = Number(($(this).siblings("#amount"))
+							.data("amount"));
+					// 메뉴의 개수만큼의 가격
+					var priceMultNum = String(price * num) + "원";
+					($(this).siblings("#amount")).text(priceMultNum);
+					calcAllPrice();
+				});
 			}
-		}
-
-		// 숫자 3자리 콤마찍기
-		Number.prototype.formatNumber = function() {
-			if (this == 0)
-				return 0;
-			let regex = /(^[+-]?\d+)(\d{3})/;
-			let nstr = (this + '');
-			while (regex.test(nstr))
-				nstr = nstr.replace(regex, '$1' + ',' + '$2');
-			return nstr;
-		};
+		} */
 	</script>
 	<div class="last_block"></div>
 </body>
