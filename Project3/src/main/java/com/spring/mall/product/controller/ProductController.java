@@ -17,7 +17,6 @@ import com.spring.mall.product.vo.ProductQnaVO;
 import com.spring.mall.product.vo.ProductVO;
 
 @Controller
-@SessionAttributes("tmepUser")
 //@RequestMapping("/tempPrd/**")
 public class ProductController {
 	
@@ -28,6 +27,14 @@ public class ProductController {
 	
 	public ProductController() {
 		System.out.println("ProductController() 객체 생성~~");
+	}
+	
+	// 식품 목록 페이지 이동
+	public String getFoodList(Model model) {
+		System.out.println("ProductController.getFoodList() 실행");
+		List<ProductVO> foodList = productService.getProductListCategory(1);
+		model.addAttribute("foodList",foodList );
+		return "store/foodProduct";
 	}
 	
 	// 상품상세페이지 이동 
