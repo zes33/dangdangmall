@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -13,13 +12,11 @@ import com.spring.mall.product.service.ProductQnaService;
 import com.spring.mall.product.vo.ProductQnaNickVO;
 import com.spring.mall.product.vo.ProductQnaVO;
 import com.spring.mall.product.vo.ProductVO;
-import com.spring.mall.user.service.UserLoginService;
-import com.spring.mall.user.vo.UserVO;
 
 @Controller
 @SessionAttributes("tmepUser")
 //@RequestMapping("/tempPrd/**")
-public class ZZZController {
+public class TempProductDetailController {
 	
 	@Autowired
 	private ProductQnaService productQnaService;
@@ -28,7 +25,7 @@ public class ZZZController {
 //	@Autowired
 //	private UserLoginService userLoginService;
 	
-	public ZZZController() {
+	public TempProductDetailController() {
 		System.out.println("ZZZController() 객체 생성~~");
 	}
 	

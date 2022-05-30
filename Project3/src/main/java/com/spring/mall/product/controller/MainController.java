@@ -27,8 +27,8 @@ public class MainController{
 		int food = 1;
 		int exercise = 2;
 		
-		List<ProductVO> foodList = productService.getFoodList(food);
-		List<ProductVO> exerciseList = productService.getExerciseList(exercise);
+		List<ProductVO> foodList = productService.getProductListCategory(food);
+		List<ProductVO> exerciseList = productService.getProductListCategory(exercise);
 		model.addAttribute("foodList",foodList);
 		model.addAttribute("exerciseList",exerciseList);
 		

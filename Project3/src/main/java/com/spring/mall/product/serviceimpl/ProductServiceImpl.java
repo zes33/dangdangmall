@@ -19,16 +19,12 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println(">> ProductServiceImpl() 객체 생성~~");
 	}
 
-	@Override
-	public List<ProductVO> getFoodList(int food) {
-		return productDAO.getFoodList(food);
-	}
 
 	@Override
-	public List<ProductVO> getExerciseList(int exercise) {
-		return productDAO.getExerciseList(exercise);
+	public List<ProductVO> getProductListCategory(int category) {
+		return productDAO.getProductList_c(category);
 	}
-	
+
 //	@Override
 //	public void insertProduct(ProductVO vo) {
 //		productDAO.insertProduct(vo);

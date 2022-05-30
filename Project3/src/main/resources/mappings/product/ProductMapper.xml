@@ -6,14 +6,7 @@
   <mapper namespace="productDAO">
   
 	 <!-- food -->
-	 <select id="getFoodList" parameterType="int" resultType="com.spring.mall.product.vo.ProductVO">
-	 	SELECT *
-		FROM PRODUCT
-		WHERE CATEGORY_CODE = #{category_code}
-		ORDER BY PRODUCT_ID DESC
-	 </select>
-	 
-	 <select id="getListExercise" parameterType="int" resultType="com.spring.mall.product.vo.ProductVO">
+	 <select id="getProductLists_c" parameterType="int" resultType="com.spring.mall.product.vo.ProductVO">
 	 	SELECT *
 		FROM PRODUCT
 		WHERE CATEGORY_CODE = #{category_code}

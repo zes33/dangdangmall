@@ -6,8 +6,7 @@ import com.spring.mall.product.vo.ProductVO;
 
 public interface ProductService {
 	
-	List<ProductVO> getFoodList(int food);
-	List<ProductVO> getExerciseList(int exercise);
+	List<ProductVO> getProductListCategory(int category);
 
 //	void insertProduct(ProductVO vo);
 //	void updateProduct(ProductVO vo);

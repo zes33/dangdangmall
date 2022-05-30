@@ -18,18 +18,14 @@ public class ProductDAO {
 		System.out.println(">> ProductDAOMybatis() 객체 생성");
 	}
 	
-	public List<ProductVO> getFoodList(int food){
+	public List<ProductVO> getProductList_c(int category){
 		System.out.println("===> MyBatis 사용 getFoodList() 실행");
-		List<ProductVO> list = mybatis.selectList("productDAO.getFoodList",food);
+		List<ProductVO> list = mybatis.selectList("productDAO.getProductLists_c",category);
 		return list;
 	}
 	
 
-	public List<ProductVO> getExerciseList(int exercise){
-		System.out.println("===> MyBatis 사용 getExerciseList() 실행");
-		List<ProductVO> list = mybatis.selectList("productDAO.getFoodList",exercise);
-		return list;
-	}
+	
 	
 //	public void insertProduct(ProductVO vo) {
 //		System.out.println("===> MyBatis 사용 insertProduct() 실행");
