@@ -65,9 +65,9 @@ textarea {
 				<img src="../img/고무밴드.jpg" alt="..." class="mainPic">
 			</div>
 			<div class="prdNamePrice">
-				<h1>세션 테스트 : ${tempProduct }</h1>
-				<h1><span>마늘맛 닭가슴살</span></h1>
-				<h3><span>10,000원</span></h3>
+				<h1>세션 테스트 : ${product.product_name }</h1>
+				<h1><span>${product.product_name }</span></h1>
+				<h3><span>${product.product_price }</span></h3>
 				<p><span>식품</span></p>
 				<form>
 					<input type="hidden" name="product_id" value="88">

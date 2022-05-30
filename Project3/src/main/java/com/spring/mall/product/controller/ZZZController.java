@@ -25,8 +25,8 @@ public class ZZZController {
 	private ProductQnaService productQnaService;
 	
 	// 임시
-	@Autowired
-	private UserLoginService userLoginService;
+//	@Autowired
+//	private UserLoginService userLoginService;
 	
 	public ZZZController() {
 		System.out.println("ZZZController() 객체 생성~~");
@@ -48,13 +48,13 @@ public class ZZZController {
 		
 		//임시 개별 상품
 		ProductVO product = vo;
-		model.addAttribute("tempProduct", product);
+		model.addAttribute("product", product);
 		
 		//임시  계정
-		UserVO user1 = new UserVO("bab","bb");
-		UserVO tempUser = userLoginService.getUser(user1);
-		
-		model.addAttribute("tempUser", tempUser);
+//		UserVO user1 = new UserVO("bab","bb");
+//		UserVO tempUser = userLoginService.getUser(user1);
+//		
+//		model.addAttribute("tempUser", tempUser);
 		return "store/productDetail";
 	}
 	

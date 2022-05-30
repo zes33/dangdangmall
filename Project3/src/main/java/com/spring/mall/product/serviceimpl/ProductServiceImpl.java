@@ -18,28 +18,38 @@ public class ProductServiceImpl implements ProductService {
 	public ProductServiceImpl() {
 		System.out.println(">> ProductServiceImpl() 객체 생성~~");
 	}
-	
+
 	@Override
-	public void insertProduct(ProductVO vo) {
-		productDAO.insertProduct(vo);
+	public List<ProductVO> getFoodList(int food) {
+		return productDAO.getFoodList(food);
 	}
-	
+
 	@Override
-	public void updateProduct(ProductVO vo) {
-		productDAO.updateProduct(vo);
+	public List<ProductVO> getExerciseList(int exercise) {
+		return productDAO.getExerciseList(exercise);
 	}
 	
-	@Override
-	public void deleteProduct(ProductVO vo) {
-		productDAO.deleteProduct(vo);
-	}
-	
-	@Override
-	public ProductVO getProduct(ProductVO vo) {
-		return productDAO.getProduct(vo);
-	}
-	
-	public List<ProductVO> getProductList(ProductVO vo) {
-		return productDAO.getProductList(vo);
-	}
+//	@Override
+//	public void insertProduct(ProductVO vo) {
+//		productDAO.insertProduct(vo);
+//	}
+//	
+//	@Override
+//	public void updateProduct(ProductVO vo) {
+//		productDAO.updateProduct(vo);
+//	}
+//	
+//	@Override
+//	public void deleteProduct(ProductVO vo) {
+//		productDAO.deleteProduct(vo);
+//	}
+//	
+//	@Override
+//	public ProductVO getProduct(ProductVO vo) {
+//		return productDAO.getProduct(vo);
+//	}
+//	
+//	public List<ProductVO> getProductList(ProductVO vo) {
+//		return productDAO.getProductList(vo);
+//	}
 }
