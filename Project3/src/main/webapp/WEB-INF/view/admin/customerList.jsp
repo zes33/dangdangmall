@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터(고객문의목록)</title>
+<title>고객목록 조회</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -31,50 +31,43 @@
 	<!-- 검색을 위한 폼 -->
 	<!-- <form action="getBoardList.do" method="get">  -->
 	<form>
+		<input type="hidden" name="seq" value="#">
 	<table class="border-none">
 		<tr>
-			<td>
-				 
+			<td>	 
 				<select name="searchCondition">
-					<option value="TITLE">제목</option>
-					<option value="CONTENT">내용</option>
+					<option value="TITLE">ID</option>
+					<option value="CONTENT">이름</option>
 				</select>
 				<input type="text" name="searchKeyword">
 				<button type="button" class="btn btn-outline-secondary btn-sm" id="ss">검색</button>
 				<!-- <input type="submit" value="검색"> -->	
 			</td>
-		</tr>
-		
+		</tr>	
 	</table>
-	<br>
 	</form>
-	
-	
 	<!-- 데이터 표시 영역 -->
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th width="100" class="center">NO.</th>
-				<th width="200" class="center">상담제목</th>
-				<th width="150" class="center">ID</th>
-				<th width="150" class="center">문의날짜</th>
-				<th width="150" class="center">답변하기</th>
+				<th width="100" class="center">ID</th>
+				<th width="200" class="center">이름</th>
+				<th width="150" class="center">닉네임</th>
+				<th width="150" class="center">회원등급</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td class="center">1</td>
-				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">제목11111111111111111111</span></td>
-				<td class="center">ID</td>
-				<td class="center">2022-05-30</td>
-				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
+				<td class="center">ID1234</td>
+				<td class="center">홍길동</td>
+				<td class="center">홍길동입니다</td>
+				<td class="center">일반회원</td>
 			</tr>
 			<tr>
-				<td class="center">2</td>
-				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">제목222222222222222222</span></td>
-				<td class="center">ID123</td>
-				<td class="center">2022-04-23</td>
-				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
+				<td class="center">ID5555</td>
+				<td class="center">을지문덕</td>
+				<td class="center">을지입니다</td>
+				<td class="center">VIP</td>
 			</tr>
 		</tbody>
 	</table>	
