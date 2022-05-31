@@ -48,7 +48,7 @@
       </thead>
          <tr>
             <td><button type="button" class="btn btn-light" onclick="location.href='adminGetProductList.do'">상품 목록</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">회원정보 조회</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='adminUserList.do'">회원정보 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='adminGetCenterList.do'">고객 문의 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">후기 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">판매내역 조회</button></td>
