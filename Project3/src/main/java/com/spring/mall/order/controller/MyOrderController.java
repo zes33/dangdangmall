@@ -2,6 +2,8 @@ package com.spring.mall.order.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.user.vo.UserVO;
 
 @Controller
-@SessionAttributes("orderList")
+//@SessionAttributes("orderList")
 public class MyOrderController {
 
 	@Autowired
@@ -25,17 +27,17 @@ public class MyOrderController {
 	}
 	
 	@RequestMapping("/myinfo.do")
-	public String myInfoView(UserOrderVO vo, UserVO userVO, Model model) {
+	public String myInfoView(UserOrderVO vo, Model model, HttpSession session) {
 		System.out.println(">>내 주문 내역 보여주기");
 		System.out.println("UserOrderVO vo : " + vo);
 		
-		vo.setUser_id(userVO.getUser_id()); 
+		String user_id = (String) session.getAttribute("user_id");
 		
-		System.out.println("UserOrderVO vo id 세팅 후 : " + vo);
-		List<UserOrderVO> orderList = myOrderService.getMyOrder(vo);
-		System.out.println("orderList.toString() : " +orderList.toString());
+		System.out.println("user_id : "+user_id);
+		vo.setUser_id(user_id);
+		List<UserOrderVO> orderList = myOrderService.getMyOrder(user_id);
 		model.addAttribute("orderList", orderList);
-		
+		System.out.println("orderList : " + orderList.toString());
 		return "user/myInfo";
 	}
 	

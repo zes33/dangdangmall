@@ -14,7 +14,7 @@
 	<div id="body-wrapper">
 		 <div id="body-content" class="container">
 	<h3>내 주문 내역</h3>
-	<p>${userOrder} : ${userOrder}</p>
+	<p>\${orderList} : ${orderList}</p>
 		</div>
 	<!-- footer -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

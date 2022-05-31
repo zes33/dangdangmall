@@ -21,8 +21,8 @@ public class MyOrderServiceImpl implements MyOrderService {
 	}
 	
 	@Override
-	public List<UserOrderVO> getMyOrder(UserOrderVO vo) {
-		return userOrderDAO.getMyOrder(vo);
+	public List<UserOrderVO> getMyOrder(String user_id) {
+		return userOrderDAO.getMyOrder(user_id);
 	}
 
 }

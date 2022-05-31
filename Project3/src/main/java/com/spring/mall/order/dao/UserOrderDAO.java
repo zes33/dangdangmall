@@ -22,9 +22,9 @@ public class UserOrderDAO {
 	
 	//내가 구매한 목록 조회
 	@RequestMapping("/getMyOrderList.do")
-	public List<UserOrderVO> getMyOrder(UserOrderVO vo){
+	public List<UserOrderVO> getMyOrder(String user_id){
 		System.out.println(">>내 주문내역 보여주기");
 		
-		return mybatis.selectList("userOrderDAO.getMyOrder", vo);
+		return mybatis.selectList("userOrderDAO.getMyOrder", user_id);
 	}
 }

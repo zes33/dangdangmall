@@ -6,5 +6,5 @@ import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.user.vo.UserVO;
 
 public interface MyOrderService {
-	List<UserOrderVO> getMyOrder(UserOrderVO vo);
+	List<UserOrderVO> getMyOrder(String user_id);
 }
