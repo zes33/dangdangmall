@@ -147,9 +147,9 @@ table tr:hover td{
 </header>
 	<div id="body-wrapper">
 		 <div id="body-content" class="container">
-	<%-- <p>\${orderList} : ${orderList}</p> --%>
+	<p>\${orderList} : ${orderList}</p>
 	
-		<c:if test="${not empty orderList }">
+		<%-- <c:if test="${not empty orderList }">
 		&nbsp;&nbsp;&nbsp;<h3>내 주문 내역</h3>
 			<table cellspacing='0'>
 				<tr>
@@ -178,7 +178,7 @@ table tr:hover td{
 					</tr>
 				</c:forEach>
 			</table>
-		</c:if>
+		</c:if> --%>
 	
 		</div>
 		

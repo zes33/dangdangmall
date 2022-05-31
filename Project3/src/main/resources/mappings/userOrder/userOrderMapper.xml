@@ -6,13 +6,18 @@
 <mapper namespace="userOrderDAO">
 
 	<!-- 마이페이지 -> 내 주문 내역 출력 시 사용 -->
-	<select id="getMyOrder" parameterType="com.spring.mall.order.vo.UserOrderVO"
-			resultType="com.spring.mall.order.vo.UserOrderVO">
-		SELECT ORDER_ID, ORDER_DATE, ORDER_ADDR, ORDER_ADDR_D, 
-        		ORDER_ZIPCODE, ORDER_RECEIVER, ORDER_PHONE, 
-        		ORDER_TOTAL, USER_STATUS, USER_ID 
-    		FROM USER_ORDER
-    		WHERE USER_ID = #{user_id}
+	<select id="getMyOrder" parameterType="com.spring.mall.user.vo.MyInfoVO"
+			resultType="com.spring.mall.user.vo.MyInfoVO">
+		SELECT UO.ORDER_ID, UO.ORDER_DATE, UO.ORDER_ADDR, UO.ORDER_ADDR_D
+	        ,UO.ORDER_ZIPCODE, UO.ORDER_RECEIVER, UO.ORDER_PHONE
+	        ,UO.ORDER_TOTAL, UO.USER_STATUS, UO.USER_ID
+	        ,UOD.ORDER_DETAIL_ID, UOD.USER_ORDER_CNT, UOD.PRODUCT_ID
+	        ,P.CATEGORY_CODE, P.PRODUCT_NAME, P.PRODUCT_PRICE, P.PRODUCT_STOCK
+	        ,P.PRODUCT_INFO, P.PRODUCT_DISCOUNT, P.PRODUCT_STATE
+	    FROM USER_ORDER UO, USERORDER_DETAIL UOD, PRODUCT P
+	    WHERE UO.ORDER_ID = UOD.ORDER_ID
+	    AND UOD.PRODUCT_ID = P.PRODUCT_ID
+	    AND USER_ID = #{user_id}
 	</select>
  
 </mapper>

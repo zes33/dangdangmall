@@ -28,6 +28,9 @@ public class MyInfoVO {
 	private int product_discount;
 	private int product_state;
 	
+	public MyInfoVO() {
+		System.out.println("MyInfoVO() 객체 생성");
+	}
 	
 	public MyInfoVO(int order_id, String order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id,

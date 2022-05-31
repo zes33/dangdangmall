@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.mall.order.dao.UserOrderDAO;
 import com.spring.mall.order.service.MyOrderService;
-import com.spring.mall.order.vo.UserOrderVO;
-import com.spring.mall.user.vo.UserVO;
+import com.spring.mall.user.vo.MyInfoVO;
 
 @Service("myOrderService")
 public class MyOrderServiceImpl implements MyOrderService {
@@ -21,7 +20,7 @@ public class MyOrderServiceImpl implements MyOrderService {
 	}
 	
 	@Override
-	public List<UserOrderVO> getMyOrder(String user_id) {
+	public List<MyInfoVO> getMyOrder(String user_id) {
 		return userOrderDAO.getMyOrder(user_id);
 	}
 
