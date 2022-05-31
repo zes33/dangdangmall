@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.mall.cart.service.CartService;
 import com.spring.mall.cart.vo.CartVO;
@@ -114,4 +115,10 @@ public class CartController {
 		return "redirect:list.do";
 	}
 
+	@RequestMapping("/productList.do")
+	public String productList(HttpSession session, SessionStatus status) {
+		
+		return "redirect:/main.do";
+	}
+	
 }
