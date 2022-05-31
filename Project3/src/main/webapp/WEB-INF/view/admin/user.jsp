@@ -28,18 +28,18 @@
 		<jsp:include page="header.jsp"></jsp:include>
 	</header>
 <div id="container">
-		<div class="card border-success mb-3" style="max-width: 20rem;">
-		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span class="h3"><strong>홍길동</strong></span>
+		<div class="card border-success mb-3" style="max-width: 35rem;">
+		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span class="h3"><strong>홍길동</strong></span><span><strong>님</strong></span>
 		  	<span class="text-success position-absolute top-0 end-0"><strong>일반회원</strong></span><br>abc123@naver.com</font></font></div>
 		  <div class="card-body">
 		    <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><strong>ID : </strong> ID1234</font></font></h4>
 		    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-		    	<div><strong>닉네임 : </strong>홍길동이다</div>
-		    	<div><strong>비밀번호 : </strong>홍길동pw</div>
-				<div><strong>전화번호 : </strong>010-1234-4321</div>
-		    	<div><strong>주소 : </strong>서울시 강남구 서초동</div>
-		    	<div><strong>상세주소 : </strong>서초빌라 2동 201호</div>
-		    	<div><strong>우편번호 : </strong>12345</div>
+		    	<div><strong>닉네임 : </strong>홍길동이다</div><br>
+		    	<div><strong>비밀번호 : </strong>홍길동pw</div><br>
+				<div><strong>전화번호 : </strong>010-1234-4321</div><br>
+		    	<div><strong>주소 : </strong>서울시 강남구 서초동</div><br>
+		    	<div><strong>상세주소 : </strong>서초빌라 2동 201호</div><br>
+		    	<div><strong>우편번호 : </strong>12345</div><br>
 		    	<div><strong>포인트 : </strong>1,345p</div>
 		    	<br>
 		    	<p>
