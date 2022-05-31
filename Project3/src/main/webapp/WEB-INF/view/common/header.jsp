@@ -57,7 +57,7 @@
 						<c:otherwise>
 							<a class="right" href="#">${user.user_nickname }님</a><br> &nbsp;&nbsp;&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/logout.do">로그아웃</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/list.do">장바구니</a>&nbsp;&nbsp;
+							<a class="btn btn-sm btn-outline-secondary" href="cart/list.do">장바구니</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>
 						</c:otherwise>
 					</c:choose>
