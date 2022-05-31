@@ -147,15 +147,6 @@ textarea {
 			</p>
 			<!-- forEach 쓰걸아 -->
 			<div class="reviewComment">
-			<!-- <ul>
-				<li>아이디 : id</li>
-				<li>맛있어서 기절하겠어</li>
-			</ul>
-				<hr>
-			<ul>
-				<br>
-				<li>[답변완료]기절하지 마세요~</li>
-			</ul> -->
 				<div>
 					<p>아이디:id</p>
 				</div>
@@ -191,8 +182,6 @@ textarea {
 					<c:otherwise>
 						<div class="prdQnaContent">
 							<p>&nbsp;&nbsp;&nbsp;[답변완료] ${productQnaNick.qna_content }</p>
-							<%-- <p>${productQnaNick.user_nickname }</p>
-							 --%>
 							<hr>
 						</div>
 					</c:otherwise>

@@ -20,4 +20,10 @@ public class ProductQnaDAO {
 		return mybatis.selectList("productQnaDAO.qnaNickByProduct",product_id);
 	}
 	
+	public void insertProductQna(ProductQnaVO vo) {
+		System.out.println("ProductQnaDAO.insertProductQna() 실행");
+		mybatis.insert("productQnaDAO.insertProductQna", vo);
+		System.out.println("다오 끝");
+	}
+	
 }

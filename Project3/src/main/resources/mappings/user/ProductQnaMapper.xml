@@ -15,6 +15,14 @@
 		ORDER BY QNA_GROUP, QNA_GROUP_NUMBER
 	</select>
 	
+	<!-- productQna insert (customer) -->
+	<insert id="insertProductQna" parameterType="com.spring.mall.product.vo.ProductQnaVO">
+		INSERT INTO PRODUCT_QNA (QNA_ID, QNA_CONTENT, PRODUCT_ID, USER_ID, Q_OR_A, QNA_GROUP_NUMBER, QNA_GROUP)
+		VALUES ((SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA),#{qna_content},#{product_id},#{user_id},0,0,
+		        (SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA)
+		)
+	</insert>
+	
 </mapper>
   
   
