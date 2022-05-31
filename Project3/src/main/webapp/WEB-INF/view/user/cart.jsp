@@ -13,8 +13,21 @@
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
 <title>장바구니 목록</title>
+
+<!-- 아래 4개 link는 헤더 관련 link -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link rel="canonical"
+	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
+
 <style type="text/css">
 #container {
 	width: 700px;
@@ -484,16 +497,9 @@ a:hover {
 <body>
 	<!-- header -->
 	<header>
-		<c:choose>
-			<c:when test="${empty user }">
-				<jsp:include page="../common/header.jsp"></jsp:include>
-			</c:when>
-			<c:otherwise>
-				<jsp:include page="../common/headerLoginOK.jsp"></jsp:include>
-			</c:otherwise>
-		</c:choose>
+		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-
+	
 	<!--Content-->
 	<div class="container-fluid text-center"
 		style="margin-top: 25pt; margin-bottom: 25px;">

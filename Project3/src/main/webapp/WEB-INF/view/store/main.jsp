@@ -41,14 +41,7 @@ function productDetailView(product_id){
 <body>
 	<!-- header -->
 <header>
-	<c:choose>
-	<c:when test="${empty user }">
 		<jsp:include page="../common/header.jsp"></jsp:include>
-	</c:when>
-	<c:otherwise>
-		<jsp:include page="../common/headerLoginOK.jsp"></jsp:include>
-	</c:otherwise>
-	</c:choose>
 </header>
 	<main>
 	\${user } : ${user }
