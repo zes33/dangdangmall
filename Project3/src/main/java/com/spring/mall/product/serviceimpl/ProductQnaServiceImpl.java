@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.spring.mall.product.dao.ProductQnaDAO;
 import com.spring.mall.product.service.ProductQnaService;
 import com.spring.mall.product.vo.ProductQnaNickVO;
-import com.spring.mall.product.vo.ProductQnaVO;
 
 @Service
 public class ProductQnaServiceImpl implements ProductQnaService {
@@ -16,34 +15,13 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	@Autowired
 	private ProductQnaDAO productQnaDAO;
 	
-	public ProductQnaServiceImpl() {
-		System.out.println("ProductQnaServiceImpl() 객체 생성");
-	}
-
+	// 상품 상세페이지에서 qna 목록 보이기(고객)
 	@Override
-	public void insertProductQna(ProductQnaVO vo) {
-		productQnaDAO.insertProductQna(vo);
-		
+	public List<ProductQnaNickVO> qnaNickList(int product_id) {
+		System.out.println("ProductQnaServiceImpl.qnaNickList() 실행");
+		return productQnaDAO.qnaListByProduct(product_id);
 	}
 
-	@Override
-	public void updateProductQna(ProductQnaVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteProductQna(ProductQnaVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public List<ProductQnaVO> getListProductQna(ProductQnaNickVO vo) {
-		System.out.println("ProductQnaServiceImpl.getListProductQna 실행~~");
-		return productQnaDAO.getProductQnaList(vo);
-	}
-
+	
 	
 }

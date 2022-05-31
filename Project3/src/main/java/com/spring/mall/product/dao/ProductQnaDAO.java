@@ -15,17 +15,9 @@ public class ProductQnaDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public ProductQnaDAO() {
-		System.out.println("ProductQnaDAO() 객체 생성");
+	public List<ProductQnaNickVO> qnaListByProduct(int product_id) {
+		System.out.println("ProductQnaDAO.qnaListByProduct() 실행");
+		return mybatis.selectList("productQnaDAO.qnaNickByProduct",product_id);
 	}
 	
-	public void insertProductQna(ProductQnaVO vo) {
-		System.out.println("ProductQnaDAO.insertProductQna() 실행");
-		mybatis.insert("productQnaDAO.insertPrdQna",vo);
-	}
-	
-	public List<ProductQnaVO> getProductQnaList(ProductQnaNickVO vo) {
-		System.out.println("ProductQnaDAO.getProductQnaList() 실행");
-		return mybatis.selectList("productQnaDAO.getPrdQnaList",vo);
-	}
 }

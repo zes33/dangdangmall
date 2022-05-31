@@ -5,20 +5,14 @@
   
 <mapper namespace="productQnaDAO">
 
-	<insert id="insertPrdQna" parameterType="com.spring.mall.product.vo.ProductQnaVO">
-		INSERT INTO PRODUCT_QNA (QNA_ID,QNA_CONTENT,PRODUCT_ID,USER_ID)
-		VALUES ((SELECT NVL(MAX(QNA_ID),0) + 1 FROM PRODUCT_QNA),
-				#{qna_content},#{product_id},#{user_id})
-	</insert>
-	
-	
-	<select id="getPrdQnaList" parameterType="com.spring.mall.product.vo.ProductQnaNickVO"
-		resultType="com.spring.mall.product.vo.ProductQnaNickVO">
-		SELECT QNA.QNA_ID, QNA.QNA_CONTENT, QNA.PRODUCT_ID, USERS.USER_NICKNAME
-		FROM PRODUCT_QNA QNA, USERS
-		WHERE QNA.PRODUCT_ID = #{product_id}
-		AND QNA.USER_ID = USERS.USER_ID
-		ORDER BY QNA_ID
+	<!-- qnaList by product -->
+	<select id="qnaNickByProduct" parameterType="int" 
+	resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT PRODUCT_QNA.*, USERS.USER_NICKNAME
+		FROM PRODUCT_QNA, USERS
+		WHERE PRODUCT_QNA.PRODUCT_ID = #{product_id}
+		AND USERS.USER_ID =  PRODUCT_QNA.USER_ID
+		ORDER BY QNA_GROUP, QNA_GROUP_NUMBER
 	</select>
 	
 </mapper>

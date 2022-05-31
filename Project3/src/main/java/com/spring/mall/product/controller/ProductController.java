@@ -8,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.mall.product.service.ProductQnaService;
 import com.spring.mall.product.service.ProductService;
 import com.spring.mall.product.vo.ProductQnaNickVO;
-import com.spring.mall.product.vo.ProductQnaVO;
 import com.spring.mall.product.vo.ProductVO;
 
 @Controller
-//@RequestMapping("/product/**")
 public class ProductController {
 	
 	@Autowired
@@ -40,16 +37,14 @@ public class ProductController {
 	
 	// 상품상세페이지 이동 
 	@RequestMapping("tempPrd.do")
-	public String tempProductDetail(ProductVO vo, ProductQnaNickVO qvo, Model model, HttpSession session) {
+	public String tempProductDetail(ProductVO vo, Model model, HttpSession session) {
 		System.out.println("상품상세페이지(임시) 이동 - tempProductDetail 실행");
 		System.out.println("productvo : " + vo);
-		System.out.println("ProductQnaNickVO : " + qvo);
 		
 		ProductVO product = productService.getProduct(vo);
-		List<ProductQnaVO> productQnaList = productQnaService.getListProductQna(qvo);
-		System.out.println(productQnaList.toString());
+		List<ProductQnaNickVO> productQnaList = productQnaService.qnaNickList(vo.getProduct_id());
 		
-		model.addAttribute("productQnaList",productQnaList );
+		model.addAttribute("productQnaList",productQnaList);
 		model.addAttribute("product", product);
 		session.setAttribute("product", product);
 		session.setAttribute("product_discount", product.getProduct_discount());

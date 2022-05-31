@@ -147,6 +147,15 @@ textarea {
 			</p>
 			<!-- forEach 쓰걸아 -->
 			<div class="reviewComment">
+			<!-- <ul>
+				<li>아이디 : id</li>
+				<li>맛있어서 기절하겠어</li>
+			</ul>
+				<hr>
+			<ul>
+				<br>
+				<li>[답변완료]기절하지 마세요~</li>
+			</ul> -->
 				<div>
 					<p>아이디:id</p>
 				</div>
@@ -171,12 +180,23 @@ textarea {
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="productQnaNick" items="${productQnaList }">
+					<c:choose>
+					<c:when test="${0 eq productQnaNick.q_or_a }">
 						<div class="prdQnaContent">
 							<p>${productQnaNick.qna_content }</p>
 							<p>${productQnaNick.user_nickname }</p>
 							<hr>
-							<br>
 						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="prdQnaContent">
+							<p>&nbsp;&nbsp;&nbsp;[답변완료] ${productQnaNick.qna_content }</p>
+							<%-- <p>${productQnaNick.user_nickname }</p>
+							 --%>
+							<hr>
+						</div>
+					</c:otherwise>
+					</c:choose>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
@@ -189,7 +209,7 @@ textarea {
 				<c:otherwise>
 					<div id="prdQnaWrite" class="prdInput">
 						<form id="prdQnaForm"
-							action="productQna/insertPrdQna.do?product_id=${product.product_id }&user_id=${user.user_id }"
+							action="productQna/insertPrdQna.do?product_id=${product.product_id }"
 							method="post">
 							<textarea name="qna_content"></textarea>
 							<button type="button" id="testBtn" onclick="writeQna()">상품문의
