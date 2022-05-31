@@ -113,9 +113,10 @@ textarea {
 						name="user_id" value="${user_id}">
 					<!-- <input type="hidden" name="product_id" value="88"> -->
 
-					<select name="cart_product_qty">
-						<option selected>수량선택</option>
-						<option value="1">1</option>
+					<div>
+					<h3>수량선택</h3>
+					<select name="cart_product_qty"  style="font-size:30px;" >
+						<option value="1" selected>1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
@@ -123,7 +124,7 @@ textarea {
 						<option value="6">6</option>
 						<option value="7">7</option>
 					</select>
-
+					</div>
 					<div class="d-grid gap-2">
 						<input class="btn btn-primary" type="submit" value="장바구니">
 						<input class="btn btn-primary" type="submit" value="구매하기">
@@ -134,9 +135,7 @@ textarea {
 		<div class="productInfo">
 			<img src="../img/고무밴드.jpg" alt="..." class="prdInfoPic">
 		</div>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<div class="reviewZone">
 			<hr>
 			<h3>
@@ -156,8 +155,7 @@ textarea {
 				<hr>
 			</div>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		<div class="prdQnaZone">
 			<h3>
 				<span>상품문의</span>
@@ -171,21 +169,21 @@ textarea {
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="productQnaNick" items="${productQnaList }">
-					<c:choose>
-					<c:when test="${0 eq productQnaNick.q_or_a }">
-						<div class="prdQnaContent">
-							<p>${productQnaNick.qna_content }</p>
-							<p>${productQnaNick.user_nickname }</p>
-							<hr>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="prdQnaContent">
-							<p>&nbsp;&nbsp;&nbsp;[답변완료] ${productQnaNick.qna_content }</p>
-							<hr>
-						</div>
-					</c:otherwise>
-					</c:choose>
+						<c:choose>
+							<c:when test="${0 eq productQnaNick.q_or_a }">
+								<div class="prdQnaContent">
+									<p>${productQnaNick.qna_content }</p>
+									<p>${productQnaNick.user_nickname }</p>
+									<hr>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="prdQnaContent">
+									<p>&nbsp;&nbsp;&nbsp;[답변완료] ${productQnaNick.qna_content }</p>
+									<hr>
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
