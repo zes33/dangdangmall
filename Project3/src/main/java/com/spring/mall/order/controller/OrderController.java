@@ -2,6 +2,8 @@ package com.spring.mall.order.controller;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -41,12 +43,10 @@ public class OrderController {
 
 	// 1. 주문 정보 입력
 	@RequestMapping("order.do")
-	public String order(HttpSession session, UserOrderVO order, UserOrderDetailVO orderDetail) throws Exception {
-		// logger.info("order");
-
-		
-		String user_id = (String) session.getAttribute("user_id");
-
+	public String order(HttpSession session,Model model, UserOrderVO order, UserOrderDetailVO orderDetail) throws Exception {
+		UserVO user = (UserVO) session.getAttribute("user");
+		String user_id = user.getUser_id();
+		session.getAttribute("map");
 		//주문 정보 저장 
 		// 주문 아이디 저장 방식 
 		Calendar cal = Calendar.getInstance();
@@ -59,7 +59,7 @@ public class OrderController {
 			subNum += (int) (Math.random() * 10);
 		}
 
-		String order_id = ymd + "_" + subNum;
+		String order_id = ymd + "-" + subNum;
 		order.setOrder_id(order_id);
 		order.setUser_id(user_id);
 		orderService.insertOrder(order);
@@ -70,7 +70,9 @@ public class OrderController {
 
 		// 결제 칸으로 넘어가면 장바구니 정보 삭제
 		orderService.cartAllDelete(user_id);
+		System.out.println("vo : "+order);
+		//System.out.println("vo :"+ orderDetail );
 
-		return "redirect:/main.do";
+		return "store/shipping";
 	}
 }

@@ -606,7 +606,7 @@ a:hover {
 					id="product" class="btn btn-success two_button" href="productList.do"> <font color = "black">상품목록 </font></a>
 				
 				<a style="font-size: 20px; font-weight: bold;" type="submit"
-					id="order" class="btn btn-success two_button" href="../order/order.do"><font color = "red"> 선택 메뉴 주문 </font></a>
+					id="order" class="btn btn-success two_button" href="../order/orderView.do"><font color = "red"> 선택 메뉴 주문 </font></a>
 			</div>
 		</c:if>
 	</div>

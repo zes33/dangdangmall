@@ -5,8 +5,10 @@
 
 <mapper namespace="orderDAO">
 	<!-- 주문 정보 입력 -->
-	<insert id="insertOrder">
-		INSERT INTO USER_ORDER( ORDER_ID,
+	<insert id="insertOrder"
+		parameterType="com.spring.mall.order.vo.UserOrderVO">
+		INSERT INTO
+		USER_ORDER( ORDER_ID,
 		ORDER_DATE,
 		ORDER_ADDR,
 		ORDER_ADDR_D,
@@ -17,6 +19,7 @@
 		USER_STATUS,
 		USER_ID)
 		VALUES( #{order_id},
+		SYSDATE,
 		#{order_addr},
 		#{order_addr_d},
 		#{order_zipcode},
@@ -44,7 +47,15 @@
 
 	<!-- 카트 비우기 -->
 	<delete id="cartAllDelete">
-		DELETE CART
-		    WHERE USER_ID = #{user_id}
+		DELETE FROM CART
+		WHERE USER_ID =
+		#{user_id}
 	</delete>
+
+	<!-- 특정 유저의 주문 목록 -->
+	<select id="orderList" resultType="com.spring.mall.order.vo.UserOrderVO">
+		SELECT *
+		FROM USER_ORDER
+		WHERE USERID = #{userId}
+	</select>
 </mapper>

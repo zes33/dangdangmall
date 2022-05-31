@@ -12,7 +12,7 @@
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
-<title>장바구니 목록</title>
+<title>결제정보 입력 </title>
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
 <style type="text/css">
@@ -82,11 +82,25 @@ th {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	${user }
-	
-	${map.allSum }
+	${user } ${map }
 	<!--Content-->
-	<div>
+	<div id="body-wrapper">
+	  <div id="body-content" class="container">
+	  <br/></br/>
+   <h2>주문 페이지</h2>
+   <form action="order.do" method="post">
+      수령인 <input type="text" name="order_receiver" maxlength="20"><br/>
+      수령인 연락처 <input type="text" name="order_phone" maxlength="20"><br/>
+      우편번호 <input type="text" name="order_zipcode" maxlength="20"><br/>
+      주소 <input type="text" name="order_addr" maxlength="20"><br/>
+ 		상세 주소  <input type="text" name="order_addr_d" maxlength="20"><br/>
+    
+      <br/><br/><br/>
+      <input type="submit" class="btn btn-sm btn-outline-secondary" value="결제하기">
+   </form>
+	<br/><br/>
+   </div>
+	
 		<!--제목-->
 		<div class="container-fluid text-center" style="margin-top: 15pt">
 			<h1>주문 페이지</h1>
@@ -94,54 +108,6 @@ th {
 				width="100" />
 		</div>
 
-		<hr />
-		<div class="orderInfo">
-			<form role="form" method="post" autocomplete="off">
-				<input type="hidden" name="order_total" value="${map.allSum }" />
-
-				<div class="inputArea">
-					<label for="">수령인</label> 
-					<input type="text" name="order_receiver" id="order_receiver" required="required" />
-				</div>
-
-				<div class="inputArea">
-					<label for="orderPhon">수령인 연락처</label> 
-					<input type="text" name="order_phone" id="order_phone" required="required" />
-				</div>
-
-				<div class="inputArea">
-					<label for="userAddr1">우편번호</label> 
-					<input type="text" name="order_zipcode" id="order_zipcode" required="required" />
-				</div>
-
-				<div class="inputArea">
-					<label for="userAddr2">1차 주소</label> 
-					<input type="text" name="order_addr" id="order_addr" required="required" />
-				</div>
-
-				<div class="inputArea">
-					<label for="userAddr3">2차 주소</label> 
-					<input type="text" name="order_addr_d" id="order_addr_d" required="required" />
-				</div>
-
-				<div class="inputArea">
-					<button type="submit" class="order_btn">주문</button>
-					<script>
-						$(".orderOpne_bnt").click(function() {
-							$(".orderInfo").slideDown();
-							$(".orderOpne_bnt").slideUp();
-						});
-					</script>
-					<button type="button" class="cancel_btn">취소</button>
-					<script>
-						$(".cancel_btn").click(function() {
-							$(".orderInfo").slideUp();
-							$(".orderOpne_bnt").slideDown();
-						});
-					</script>
-				</div>
-
-			</form>
 		</div>
 
 		<hr />

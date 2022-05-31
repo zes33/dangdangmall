@@ -66,6 +66,7 @@ public class CartController {
 //	        mav.addObject("map", map);  
 	        model.addAttribute("map", map);
 	        model.addAttribute("list", list);
+	        session.setAttribute("map", map);
 		return "user/cart";
 
 	}
