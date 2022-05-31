@@ -3,9 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet"
@@ -15,6 +17,7 @@
 <title>결제정보 입력 </title>
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
+
 <style type="text/css">
 #container {
 	width: 700px;
@@ -82,6 +85,13 @@ th {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+	<!--제목-->
+		<div class="container-fluid text-center" style="margin-top: 15pt">
+			<h1>주문 페이지</h1>
+			<img src="../img/fast.png" class="img-title" alt="no title"
+				width="100" />
+		</div>
+		
 	${user } ${map }
 	<!--Content-->
 	<div id="body-wrapper">
@@ -91,8 +101,10 @@ th {
    <form action="order.do" method="post">
       수령인 <input type="text" name="order_receiver" maxlength="20"><br/>
       수령인 연락처 <input type="text" name="order_phone" maxlength="20"><br/>
-      우편번호 <input type="text" name="order_zipcode" maxlength="20"><br/>
-      주소 <input type="text" name="order_addr" maxlength="20"><br/>
+     <!--  우편번호 <input type="text" name="order_zipcode" maxlength="20"><br/>
+      주소 <input type="text" name="order_addr" maxlength="20"><br/> -->
+     	우편번호	 <input id="member_post"  maxlength="20" name="order_zipcode" type="text" placeholder="Zip Code" readonly onclick="findAddr()">
+ 		도로명 주소 <input id="member_addr"  maxlength="20" name="order_addr" type="text" placeholder="Address" readonly> <br>
  		상세 주소  <input type="text" name="order_addr_d" maxlength="20"><br/>
     
       <br/><br/><br/>
@@ -100,19 +112,40 @@ th {
    </form>
 	<br/><br/>
    </div>
-	
-		<!--제목-->
-		<div class="container-fluid text-center" style="margin-top: 15pt">
-			<h1>주문 페이지</h1>
-			<img src="../img/fast.png" class="img-title" alt="no title"
-				width="100" />
-		</div>
-
 		</div>
 
 		<hr />
 		<div class="last_block"></div>
-
+<!-- <p>카카오(다음) 주소찾기</p>
+<div>Company Address</div>
+  <input id="member_post" name="order_zipcode" type="text" placeholder="Zip Code" readonly onclick="findAddr()">
+  <input id="member_addr" name="order_addr" type="text" placeholder="Address" readonly> <br>
+  <input type="text" placeholder="Detailed Address"> -->
+</body>
+<script>
+function findAddr(){
+	new daum.Postcode({
+        oncomplete: function(data) {
+        	
+        	console.log(data);
+        	
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var jibunAddr = data.jibunAddress; // 지번 주소 변수
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('member_post').value = data.zonecode;
+            if(roadAddr !== ''){
+                document.getElementById("member_addr").value = roadAddr;
+            } 
+            else if(jibunAddr !== ''){
+                document.getElementById("member_addr").value = jibunAddr;
+            }
+        }
+    }).open();
+}
+</script>
 
 		<!-- footer -->
 		<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -125,4 +158,5 @@ th {
 		</script>
 		<div class="last_block"></div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>
