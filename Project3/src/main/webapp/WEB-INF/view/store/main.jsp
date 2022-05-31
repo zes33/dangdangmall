@@ -36,7 +36,7 @@ function productDetailView(product_id){
     document.body.appendChild(f);
     f.submit();
 }
-</script>
+</script> 
 </head>
 <body>
 	<!-- header -->
@@ -47,7 +47,8 @@ function productDetailView(product_id){
 	\${user } : ${user }
 		<div>
 			<a href="order/orderView.do">주문 입력 (임시) </a><br>
-			<a href="admin/admin.do">관리자 메인페이지(임시)</a>
+			<a href="admin/admin.do">관리자 메인페이지(임시)</a><br>
+			<a href="productQna/viewMypage.do"><b>마이페이지(임시)</b></a>
 		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
@@ -57,7 +58,7 @@ function productDetailView(product_id){
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="food" items="${foodList }" begin="0" end="3">
-					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${food.product_id})">
+					<div class="col" style="cursor: pointer;" onclick="productDetailView(${food.product_id})">
 						<div class="card shadow-sm">
 							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
