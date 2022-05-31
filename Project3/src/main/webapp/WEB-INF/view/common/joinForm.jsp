@@ -6,6 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<!-- 헤더 관련 링크는 아래 4개 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<link rel="canonical"
+	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link href="common/styles.css" rel="stylesheet">
+<!-- 여기까지 헤더링크 -->
 <style>
 
 html, body {
@@ -72,7 +87,7 @@ footer {
       - <input type="text" name="user_phone2" size="5">
       - <input type="text" name="user_phone3" size="5">
       <br/><br/><br/>
-      <input type="submit" class="btn btn-primary form-control"
+      <input type="submit" class="btn btn-sm btn-outline-secondary"
                   value="회원가입">
 	<br/><br/>
       
