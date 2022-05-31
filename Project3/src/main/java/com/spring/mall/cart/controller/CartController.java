@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,13 +71,15 @@ public class CartController {
 
 	// 1. 장바구니 추가
 	@RequestMapping("insert.do")
-	public String insert(@ModelAttribute CartVO vo, HttpSession session) {
+	public String insert( @ModelAttribute CartVO vo, HttpSession session) {
 		String user_id = (String) session.getAttribute("user_id");
-
+		
+		vo.setUser_id(user_id);
+//		
 		// 장바구니에 기존 상품이 있는지 검사
 		int count = cartService.countCart(vo.getProduct_id(), user_id);
 
-//        count == 0 ? cartService.updateCart(vo) : cartService.insert(vo);
+       // count == 0 ? cartService.updateCart(vo) : cartService.insert(vo);
 		if (count == 0) {
 			// 없으면 insert
 			cartService.insert(vo);
@@ -84,7 +87,7 @@ public class CartController {
 			// 있으면 update
 			cartService.updateCart(vo);
 		}
-		return "cart.do";
+		return "redirect:list.do";
 	}
 
 	// 3. 장바구니 삭제

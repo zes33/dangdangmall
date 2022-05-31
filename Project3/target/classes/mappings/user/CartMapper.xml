@@ -72,12 +72,10 @@
 
 	<!-- 7. 장바구니에 동일한 상품이 존재하면 수정 -->
 	<update id="updateCart">
-		UPDATE cart
-		SET CART_PRODUCT_QTY = CART_PRODUCT_QTY +
-		#{CART_PRODUCT_QTY}
+		UPDATE CART
+		SET CART_PRODUCT_QTY = CART_PRODUCT_QTY + #{cart_product_qty}
 		WHERE user_id= #{user_id}
-		AND product_id =
-		#{product_id}
+		AND product_id = #{product_id}
 	</update>
 
 </mapper>

@@ -498,10 +498,12 @@ a:hover {
 	<div class="container-fluid text-center"
 		style="margin-top: 25pt; margin-bottom: 25px;">
 		<img src="../img/shopbag.svg" class="img-title" alt="no title"
-			width="200" />
+			width="100" />
 
 		<div>
+		<br><br>
 			<h1>장바구니 목록</h1>
+			<br><br>
 			<%-- ${map }
 			<h1>${map.list[1] }</h1> --%>
 			<br>
@@ -593,8 +595,7 @@ a:hover {
 			</div>
 			<div class="container-fluid margin_first">
 				<button style="font-size: 20px; font-weight: bold;" type="button"
-					id="delete" class="btn btn-success two_button float-right">선택
-					메뉴 삭제</button>
+					id="order" class="btn btn-success two_button" href="#">상품목록 </button>
 				<button style="font-size: 20px; font-weight: bold;" type="button"
 					id="order" class="btn btn-success two_button">선택 메뉴 주문</button>
 			</div>
@@ -603,8 +604,6 @@ a:hover {
 	<br>
 
 
-	<button type="button" id="btnList">상품목록</button>
-
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script
@@ -612,49 +611,6 @@ a:hover {
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script>
-	// 선택메뉴삭제버튼을 클릭할 때를 처리하는 함수
-	function clickDeleteMenus() {
-		$("#delete").click(function() {
-			// 삭제할 아이디가 담길 배열
-			var arr = [];
-			var menus = $(".menuClass").get();
-			for (let i = 0; i < menus.length; i++) {
-				var jMenus = $(menus[i]);
-				var checkBox = jMenus.find(".form-control");
-
-				if (checkBox.is(":checked")) {
-					arr.push(jMenus.data("menuid"));
-				}
-			}
-
-			if (arr.length == 0) {
-				swal.fire({
-					title : "삭제할 메뉴를 선택해주세요"
-				}).then((result) => {
-					if (result.value) {
-						return;
-					}
-				});
-			}
-
-			$.ajax({
-				type : "DELETE",
-				url : "cart",
-				data : {
-					"arr" : arr
-				},
-				success : function(data) {
-					swal.fire({
-						title : data.msg
-					}).then((result) => {
-						if (result.value) {
-							window.location.href = "cart";
-						}
-					});
-				}
-			});
-		});
-	}
 	</script>
 	<div class="last_block"></div>
 </body>

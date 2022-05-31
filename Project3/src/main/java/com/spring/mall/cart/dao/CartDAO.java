@@ -63,6 +63,6 @@ public class CartDAO {
 
 	// 7. 장바구니 상품수량 변경
 	public void updateCart(CartVO vo) {
-		mybatis.update("cartDAO.sumCart", vo);
+		mybatis.update("cartDAO.updateCart", vo);
 	}
 }
