@@ -486,13 +486,72 @@ a:hover {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	
-	
-	
-	
-<%-- ${user } --%>
+	<%-- ${user } --%>
 	<!--Content-->
-	
+	<div>
+		<!--제목-->
+		<div class="container-fluid text-center" style="margin-top: 15pt">
+			<h1>주문 페이지</h1>
+			<img src="../img/fast.png" class="img-title" alt="no title"
+				width="100" />
+		</div>
+
+		<hr />
+
+		<div class="container-fluid">
+			<div class="form-group row">
+				<label
+					style="font-family: 'Do Hyeon'; font-size: 23px; font-weight: bold;"
+					for="user_name" class="col-3 col-form-label">주문자</label>
+				<div class="col-9">
+					<input style="font-size: 20px" type="text" class="form-control"
+						id="user_name" value="${loginUser.name}" readonly>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label
+					style="font-family: 'Do Hyeon'; font-size: 23px; font-weight: bold;"
+					for="phone" class="col-3 col-form-label">전화번호</label>
+				<div class="col-9">
+					<input style="font-size: 20px" type="text" class="form-control"
+						id="phone" value="${loginUser.phone}" placeholder="- 없이 입력해주세요"
+						readonly>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label
+					style="font-family: 'Do Hyeon'; font-size: 23px; font-weight: bold; float: left;"
+					for="get_time" class="col-3 col-form-label">수령소요시간</label>
+				<div class="col-9">
+					<input style="font-size: 20px" type="text" class="form-control"
+						id="get_time" placeholder="분 단위로 입력해주세요">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label
+					style="font-family: 'Do Hyeon'; font-size: 23px; font-weight: bold;"
+					for="pay_total" class="col-3 col-form-label">결제금액(원)</label>
+				<div class="col-9">
+					<%-- <input style="font-size:20px" type="text" class="form-control" id="pay_total" value=<%=/* totalPrice */%> readonly> --%>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid margin_first">
+			<button style="font-size: 20px; font-weight: bold;" type="button"
+				class="btn btn-outline-success two_button float-right"
+				onclick="history.back(-1);">뒤로이동</button>
+			<button style="font-size: 20px; font-weight: bold;" type="button"
+				id="order" class="btn btn-outline-success two_button">결제하기</button>
+		</div>
+	</div>
+	<hr />
+	<div class="last_block"></div>
+
+
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script
@@ -500,6 +559,7 @@ a:hover {
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script>
+		
 	</script>
 	<div class="last_block"></div>
 </body>

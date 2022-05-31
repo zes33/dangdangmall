@@ -30,15 +30,17 @@
 	</insert>
 	
 	<!-- 주문 상세 정보 입력 -->
-	<insert id="">
+	<insert id="insertOrderDetail">
 		 INSERT INTO USERORDER_DETAIL(
             		ORDER_DETAIL_ID,
             		USER_ORDER_CNT, 
             		ORDER_ID, 
             		PRODUCT_ID)
-    	 VALUES (ORDERDETAIL_SEQ.NEXTVAL, 
-           			#{cart_product_qty}, 
+    	 SELECT ORDERDETAIL_SEQ.NEXTVAL, 
+           			cart.CART_PRODUCT_QTY, 
             		#{order_id}, 
-            		#{product_id})
+            		cart.PRODUCT_ID
+         FROM CART
 	</insert>
+	
 </mapper>
