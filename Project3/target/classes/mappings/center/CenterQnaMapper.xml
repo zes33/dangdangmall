@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="centerQnaDAO">
-	
-
+	<select id="getCenterQna_T" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
+	resultType="com.spring.mall.center.vo.CenterQnaVO">
+		SELECT * 
+		FROM CENTER_QNA 
+		ORDER BY CENTER_QNA_ID DESC
+	</select>
 </mapper>
