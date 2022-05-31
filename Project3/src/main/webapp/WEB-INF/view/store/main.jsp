@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +40,60 @@ function productDetailView(product_id){
     f.submit();
 }
 </script> 
+<style>
+.categoryName {
+	text-decoration: none;
+	color: black;
+	font-weight: 550;
+	font-size: 50px;
+}
+.cost {
+	font-size: 25px;
+	font-weight: 700;
+	
+	background-color: orange;
+}
+.discountInfo {
+	color: #F74E2C;
+	font-weight: 700;
+}
+strike {
+	color: #B7B7B7;
+	
+	font-weight: 700;
+}
+.discountPct {
+	font-size: 25px;
+	font-weight: 700;
+	color: #F74E2C;
+}
+.discountCost {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+
+
+
+.testcost {
+	font-weight: 700;
+	font-size: 20px;
+}
+.testdcPrice {
+	font-weight: 700;
+	font-size: 20px;
+}
+.testPct {
+	font-size: 18px;
+}
+
+.testdiscountPct {
+	font-size: 19px;
+	color: #F74E2C;
+	font-weight: 700;
+}
+
+</style>
 </head>
 <body>
 	<!-- header -->
@@ -54,7 +111,7 @@ function productDetailView(product_id){
 		<div class="album py-5 bg-light">
 			<div class="container" >
 
-				<a href="paging.do?prd_c=1"><h1>식품</h1></a><br>
+				<a class="categoryName" href="paging.do?prd_c=1">식품   &raquo;가격스타일 뭐가 갠춘? -은송</a><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="food" items="${foodList }" begin="0" end="3">
@@ -63,19 +120,30 @@ function productDetailView(product_id){
 							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
 							<div class="card-body">
-								<p class="card-text">${food.product_name }</p>
+									<p class="card-text">${food.product_name }</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div>
 										<c:choose>
 										<c:when test="${0 eq food.product_discount }">
-											<br>
-											<span>${food.product_price }원</span>
+											<span class="cost">
+											<fmt:formatNumber value="${food.product_price }" pattern="#,###" />
+											</span>
+											<span class="won">원</span>
 										</c:when>
 										<c:otherwise>
-											<span>할인혜택가</span>
-											<span><strike>${food.product_price }원</strike></span><br>
-											<span>${food.product_discount * 100}%</span>
-											<span>${food.product_price * (1- food.product_discount) }원</span>
+											<span class="discountInfo">할인혜택가</span>
+											<span>
+												<strike>
+													<fmt:formatNumber value="${food.product_price }" pattern="#,###" />원
+												</strike>
+											</span>
+											<br>
+											<span class="discountPct">
+												<fmt:formatNumber value="${food.product_discount * 100}" pattern="#,###" />%
+											</span>
+											<span class="discountCost">
+												<fmt:formatNumber value="${food.product_price * (1- food.product_discount) }" pattern="#,###" />원
+											</span>
 										</c:otherwise>
 										</c:choose>
 									</div>
@@ -87,36 +155,47 @@ function productDetailView(product_id){
 				</c:forEach>
 				</div>
 				<br><br><br>
-				<a href="paging.do?prd_c=2"><h1>운동</h1></a><br>
+				<a class="categoryName" href="paging.do?prd_c=2">운동   &gt;</a><br>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="exercise" items="${exerciseList }" begin="0" end="3">
-				<div class="col" style=" cursor: pointer;" onclick="productDetailView(${exercise.product_id})">
-					<div class="card shadow-sm">
-						<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
-							height="225" >
-						<div class="card-body">
-							<p class="card-text">${exercise.product_name }</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<c:choose>
-									<c:when test="${0 eq exercise.product_discount }">
-										<br>
-										<span>${exercise.product_price }원</span>
-									</c:when>
-									<c:otherwise>
-										<span>할인혜택가</span>
-										<span><strike>${exercise.product_price }원</strike></span><br>
-										<span>${exercise.product_discount * 100}%</span>
-										<span>${exercise.product_price * (1- exercise.product_discount) }원</span>
-									</c:otherwise>
-									</c:choose>
+					<div class="col" style="cursor: pointer;" onclick="productDetailView(${exercise.product_id})">
+						<div class="card shadow-sm">
+							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
+								height="225" >
+							<div class="card-body">
+									<p class="card-text">${exercise.product_name }</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div>
+										<c:choose>
+										<c:when test="${0 eq exercise.product_discount }">
+											<span class="testcost"><!-- 원가 -->
+											<fmt:formatNumber value="${exercise.product_price }" pattern="#,###" />
+											</span>
+											<span class="won">원</span>
+										</c:when>
+										<c:otherwise>
+											<span class="testdcPrice"><!-- 할인가 -->
+												<fmt:formatNumber value="${exercise.product_price * (1- exercise.product_discount) }" pattern="#,###" />
+											</span>
+											<span class="won">원</span>
+											<span>
+												<strike class="testPct" >
+													<fmt:formatNumber value="${exercise.product_price }" pattern="#,###" />원
+												</strike>
+											</span>
+											<span class="testdiscountPct">
+												<fmt:formatNumber value="${exercise.product_discount * 100}" pattern="#,###" />%
+											</span>
+											
+										</c:otherwise>
+										</c:choose>
+									</div>
+									<!-- <small class="text-muted">9 mins</small> -->
 								</div>
-								<!-- <small class="text-muted">9 mins</small> -->
 							</div>
 						</div>
 					</div>
-				</div>
 				</c:forEach>
 				</div>
 			</div>
