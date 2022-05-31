@@ -3,6 +3,7 @@ package com.spring.mall.order.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.mall.cart.vo.CartVO;
 import com.spring.mall.order.dao.OrderDAO;
 import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
@@ -27,8 +28,14 @@ public class OrderServiceImpl implements OrderService {
 
 	//2. 주문 상세 정보 입력
 	@Override
-	public void insertOrderDetail(int order_id) {
-		orderDAO.insertOrderDetail(order_id);
+	public void insertOrderDetail(UserOrderDetailVO vo) {
+		orderDAO.insertOrderDetail(vo);
+	}
+	
+	//3. 카트 비우기 
+	@Override
+	public void cartAllDelete(String user_id) {
+		orderDAO.cartAllDelete(user_id);
 	}
 
 }

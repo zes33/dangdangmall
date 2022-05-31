@@ -6,41 +6,45 @@
 <mapper namespace="orderDAO">
 	<!-- 주문 정보 입력 -->
 	<insert id="insertOrder">
-		INSERT INTO USER_ORDER( ORDER_ID, 
-								ORDER_DATE, 
-								ORDER_ADDR,
-								ORDER_ADDR_D, 
-								ORDER_ZIPCODE, 
-								ORDER_RECEIVER,
-								ORDER_PHONE, 
-								ORDER_TOTAL,
-								USER_STATUS,
-								USER_ID)
-		VALUES(ORDER_SEQ.NEXTVAL, 
-				SYSDATE, 
-				#{order_addr},
-				#{order_addr_d}, 
-				#{order_zipcode},
-				#{order_receiver},
-				#{order_phone},
-				#{order_total}, 
-				#{user_status},
-				#{user_id}
-				)
+		INSERT INTO USER_ORDER( ORDER_ID,
+		ORDER_DATE,
+		ORDER_ADDR,
+		ORDER_ADDR_D,
+		ORDER_ZIPCODE,
+		ORDER_RECEIVER,
+		ORDER_PHONE,
+		ORDER_TOTAL,
+		USER_STATUS,
+		USER_ID)
+		VALUES( #{order_id},
+		#{order_addr},
+		#{order_addr_d},
+		#{order_zipcode},
+		#{order_receiver},
+		#{order_phone},
+		#{order_total},
+		1,
+		#{user_id}
+		)
 	</insert>
-	
+
 	<!-- 주문 상세 정보 입력 -->
 	<insert id="insertOrderDetail">
-		 INSERT INTO USERORDER_DETAIL(
-            		ORDER_DETAIL_ID,
-            		USER_ORDER_CNT, 
-            		ORDER_ID, 
-            		PRODUCT_ID)
-    	 SELECT ORDERDETAIL_SEQ.NEXTVAL, 
-           			cart.CART_PRODUCT_QTY, 
-            		#{order_id}, 
-            		cart.PRODUCT_ID
-         FROM CART
+		INSERT INTO USERORDER_DETAIL(
+		ORDER_DETAIL_ID,
+		USER_ORDER_CNT,
+		ORDER_ID,
+		PRODUCT_ID)
+		SELECT ORDERDETAIL_SEQ.NEXTVAL,
+		cart.CART_PRODUCT_QTY,
+		#{order_id},
+		cart.PRODUCT_ID
+		FROM CART
 	</insert>
-	
+
+	<!-- 카트 비우기 -->
+	<delete id="cartAllDelete">
+		DELETE CART
+		    WHERE USER_ID = #{user_id}
+	</delete>
 </mapper>

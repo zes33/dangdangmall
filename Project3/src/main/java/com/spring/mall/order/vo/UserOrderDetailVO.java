@@ -3,14 +3,14 @@ package com.spring.mall.order.vo;
 public class UserOrderDetailVO {
 	private int order_detail_id;
 	private int user_order_cnt;
-	private int order_id;
+	private String order_id;
 	private int product_id;
 	
 	public UserOrderDetailVO() {
 		System.out.println(">> UserOrderDetailVO() 객체 생성~~");
 	}
 
-	public UserOrderDetailVO(int order_detail_id, int user_order_cnt, int order_id, int product_id) {
+	public UserOrderDetailVO(int order_detail_id, int user_order_cnt, String order_id, int product_id) {
 		super();
 		this.order_detail_id = order_detail_id;
 		this.user_order_cnt = user_order_cnt;
@@ -34,11 +34,11 @@ public class UserOrderDetailVO {
 		this.user_order_cnt = user_order_cnt;
 	}
 
-	public int getOrder_id() {
+	public String getOrder_id() {
 		return order_id;
 	}
 
-	public void setOrder_id(int order_id) {
+	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
 	}
 

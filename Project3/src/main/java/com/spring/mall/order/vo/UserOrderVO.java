@@ -3,7 +3,7 @@ package com.spring.mall.order.vo;
 import java.sql.Date;
 
 public class UserOrderVO {
-	private int order_id;
+	private String order_id;
 	private Date order_date;
 	private String order_addr;
 	private String order_addr_d;
@@ -18,7 +18,7 @@ public class UserOrderVO {
 		System.out.println(">> UserOrderVO() 객체 생성~~");
 	}
 
-	public UserOrderVO(int order_id, Date order_date, String order_addr, String order_addr_d, String order_zipcode,
+	public UserOrderVO(String order_id, Date order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id) {
 		super();
 		this.order_id = order_id;
@@ -33,11 +33,11 @@ public class UserOrderVO {
 		this.user_id = user_id;
 	}
 
-	public int getOrder_id() {
+	public String getOrder_id() {
 		return order_id;
 	}
 
-	public void setOrder_id(int order_id) {
+	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
 	}
 
