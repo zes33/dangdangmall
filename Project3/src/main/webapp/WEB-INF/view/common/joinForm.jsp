@@ -20,7 +20,6 @@ html, body {
 }
 
 #body-content {
-	background-color: #F5F5F5;
     margin-top: 100px;
     padding-bottom: 170px; /* footer의 높이 */
     padding-left: 200px;
