@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orderDAO">
+	<!-- 주문 정보 입력 -->
+	<insert id="insertOrder">
+		INSERT INTO USER_ORDER( ORDER_ID, 
+								ORDER_DATE, 
+								ORDER_ADDR,
+								ORDER_ADDR_D, 
+								ORDER_ZIPCODE, 
+								ORDER_RECEIVER,
+								ORDER_PHONE, 
+								ORDER_TOTAL,
+								USER_STATUS,
+								USER_ID)
+		VALUES(ORDER_SEQ.NEXTVAL, 
+				SYSDATE, 
+				#{order_addr},
+				#{order_addr_d}, 
+				#{order_zipcode},
+				#{order_receiver},
+				#{order_phone},
+				#{order_total}, 
+				#{user_status},
+				#{user_id}
+				)
+	</insert>
+	
+	<!-- 주문 상세 정보 입력 -->
+	<insert id="">
+		 INSERT INTO USERORDER_DETAIL(
+            		ORDER_DETAIL_ID,
+            		USER_ORDER_CNT, 
+            		ORDER_ID, 
+            		PRODUCT_ID)
+    	 VALUES (ORDERDETAIL_SEQ.NEXTVAL, 
+           			#{cart_product_qty}, 
+            		#{order_id}, 
+            		#{product_id})
+	</insert>
+</mapper>
