@@ -499,7 +499,11 @@ a:hover {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+<<<<<<< HEAD
 	
+=======
+<%-- ${user } --%>
+>>>>>>> master
 	<!--Content-->
 	<div class="container-fluid text-center"
 		style="margin-top: 25pt; margin-bottom: 25px;">
@@ -600,10 +604,11 @@ a:hover {
 
 			</div>
 			<div class="container-fluid margin_first">
-				<button style="font-size: 20px; font-weight: bold;" type="button"
-					id="order" class="btn btn-success two_button" href="#">상품목록 </button>
-				<button style="font-size: 20px; font-weight: bold;" type="button"
-					id="order" class="btn btn-success two_button">선택 메뉴 주문</button>
+				<a style="font-size: 20px; font-weight: bold; " type="submit" 
+					id="order" class="btn btn-success two_button" href="productList.do"> <font color = "black">상품목록 </font></a>
+				
+				<a style="font-size: 20px; font-weight: bold;" type="submit"
+					id="order" class="btn btn-success two_button"><font color = "blue"> 선택 메뉴 주문 </font></a>
 			</div>
 		</c:if>
 	</div>

@@ -76,14 +76,7 @@ textarea {
 	</script>
 	<!-- header -->
 	<header>
-		<c:choose>
-			<c:when test="${empty user }">
-				<jsp:include page="../common/header.jsp"></jsp:include>
-			</c:when>
-			<c:otherwise>
-				<jsp:include page="../common/headerLoginOK.jsp"></jsp:include>
-			</c:otherwise>
-		</c:choose>
+		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	<!-- -------------------------------- -->
 	${user_id }
@@ -221,27 +214,6 @@ textarea {
 			}
 		}
 
-		/* 
-		function writeQna() {
-			console.log("writeQna() 실행~~")
-			var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
-			console.log("contentBlank : " + contentBlank);
-			if(contentBlank.length == 0){   // 빈칸이면
-				alert("내용이 없어요.")
-			} else {
-				
-				document.forms[1].submit();
-			}
-		}
-		
-		function getQnaList() {
-			var pid = "<c:out value='${productQnaNick.product_id}'/>";
-			console.log("getQnaList() 실행");
-			let vo = {product_id : pid }
-			console.log(JSON.stringify(vo));  
-			
-			$.ajax()
-		} */
 	</script>
 
 
