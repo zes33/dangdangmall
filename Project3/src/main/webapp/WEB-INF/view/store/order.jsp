@@ -13,21 +13,8 @@
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
 <title>장바구니 목록</title>
-
-<!-- 아래 4개 link는 헤더 관련 link -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<link rel="canonical"
-	href="https://getbootstrap.kr/docs/5.1/examples/album/">
-<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
-
 <style type="text/css">
 #container {
 	width: 700px;
@@ -500,124 +487,12 @@ a:hover {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	
+	
+	
+	
 <%-- ${user } --%>
 	<!--Content-->
-	<div class="container-fluid text-center"
-		style="margin-top: 25pt; margin-bottom: 25px;">
-		<img src="../img/shopbag.svg" class="img-title" alt="no title"
-			width="100" />
-
-		<div>
-		<br><br>
-			<h1>장바구니 목록</h1>
-			<br><br>
-			<%-- ${map }
-			<h1>${map.list[1] }</h1> --%>
-			<br>
-		</div>
-		<%-- <p>${list}</p>
-		<h1>userVO : ${user }</h1> --%>
-		<div class="text-center">
-			<c:if test="${empty map}">
-				<br />
-		장바구니가 비어있습니다.
-		<br />
-				<br />
-			</c:if>
-		</div>
-
-		<c:if test="${not empty map}">
-			<!--장바구니 목록-->
-			<div style="font-weight: bold; font-size: 20px;">
-
-				<table style="width: 90%; padding-top: 3pt;">
-					<tr>
-						<th>상품 이름</th>
-						<th>가격</th>
-						<th>수량</th>
-						<th>할인율 반영 전 금액</th>
-						<th>할인율</th>
-						<th>금액</th>
-						<th>삭제</th>
-					</tr>
-
-					<c:forEach items="${map.list }" var="list" varStatus="i">
-							<input type="hidden" value="" name="">
-							
-							
-							
-							
-							
-						<div class="menuClass"
-							data-menuId=<c:out value="${list.cart_id}"/>>
-						<tr>
-							<td><span id="amount"> <c:out
-										value="${list.product_name }" />
-							</span></td>
-							<td><span id="amount"> <c:out
-										value="${list.product_price }" />
-							</span></td>
-							<td>
-								<form action="update.do" method="post">
-										<input type="number" style="width: 80px" name="cart_product_qty"
-										value="${list.cart_product_qty}" min="1"> 
-										<input type="hidden" name="product_id" value="${list.product_id}">
-										<input type="submit" value="수량수정">
-									</form>
-							<td><span id="amount"
-								data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
-										value="${list.product_price * list.cart_product_qty}"
-										pattern="###,###,###" /></span></td>
-							<td><span id="discount" style="color: red;"
-								data-amount=<c:out value="${map.discount }"/>> <fmt:formatNumber
-										value="${map.discount *100 }" type="number" /> %
-							</span></td>
-							<td><span id="total"
-								data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>>
-									<fmt:formatNumber
-										value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* map.discount }"
-										pattern="###,###,###" />
-							</span></td>
-							<td>
-									<a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a>
-								
-							</td>
-						</tr>
-						</div>
-					</c:forEach>
-
-				</table>
-				</form>
-			</div>
-			<div class="text-right" style="margin: 10pt">
-				<br>
-				<tr>
-					<h3 style="font-weight: bold; font-size: 20px;">
-						<td>장바구니 금액 합계 : 
-						<fmt:formatNumber pattern="###,###,###" value="${map.sumMoney *(1- map.discount)}" />원 <br> 
-						배송비 <fmt:formatNumber value="${map.fee }" pattern="###,###,###" />원<br>
-					</h3>
-					<h5 style="font-weight: bold; font-size: 30px;">
-						총금액
-						<fmt:formatNumber value="${map.allSum }" pattern="###,###,###" />
-						원
-						</td>
-					</h5>
-				</tr>
-
-			</div>
-			<div class="container-fluid margin_first">
-				<a style="font-size: 20px; font-weight: bold; " type="submit" 
-					id="order" class="btn btn-success two_button" href="productList.do"> <font color = "black">상품목록 </font></a>
-				
-				<a style="font-size: 20px; font-weight: bold;" type="submit"
-					id="order" class="btn btn-success two_button"><font color = "red"> 선택 메뉴 주문 </font></a>
-			</div>
-		</c:if>
-	</div>
-	<br>
-
-
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script

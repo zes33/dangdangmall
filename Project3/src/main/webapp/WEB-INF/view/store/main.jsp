@@ -46,7 +46,7 @@ function productDetailView(product_id){
 	<main>
 	\${user } : ${user }
 		<div>
-			<a href="cart/cart.do">장바구니 페이지 </a><br>
+			<a href="order/orderView.do">주문 입력 (임시) </a><br>
 			<a href="admin/admin.do">관리자 메인페이지(임시)</a>
 		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
