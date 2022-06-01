@@ -63,34 +63,59 @@ footer {
 	  <div id="body-content" class="container">
 	  <br/></br/>
    <h2>회원가입</h2>
-   <form action="joinAction.do" method="post">
-      아이디 <input type="text" class="form-control" placeholder="영문 소문자/숫자 포함 4~16자"
-                     name="user_id" maxlength="20"><br/>
-
-      비밀번호 <input type="text" class="form-control" placeholder="비밀번호"
-                     name="user_pw" maxlength="20"><br/>
-   비밀번호 확인 <input type="text" class="form-control" placeholder="비밀번호 확인"
-                      maxlength="20"><br/>
-      이름 <input type="text" class="form-control" placeholder="이름"
-                     name="user_name" maxlength="20"><br/>
-    닉네임  <input type="text" class="form-control" placeholder="닉네임"
-                     name="user_nickname" maxlength="20"><br/>
-  e-mail <input type="text" class="form-control" placeholder="e-mail"
-                     name="user_email" maxlength="20"><br/>
-      전화번호
-      <select name="user_phone1">
-         <option>010</option>
-         <option>02</option>
-         <option>031</option>
-         <option>051</option>
-      </select>
-      - <input type="text" name="user_phone2" size="5">
-      - <input type="text" name="user_phone3" size="5">
-      <br/><br/><br/>
-      <input type="submit" class="btn btn-sm btn-outline-secondary"
-                  value="회원가입">
-	<br/><br/>
-      
+   <form id="signFrm" name="signFrm" action="joinAction.do" method="post">
+   <table>
+      <tbody>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" id="user_id" name="user_id" placeholder="아이디"
+					 ></td>
+					<td><input type="button" id="check" value="중복체크"></td>
+				</tr>
+				<tr>
+					<td colspan=3 id="idCheck"></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td colspan="2"><input id="user_pw" name="user_pw" type="password" placeholder="비밀번호"
+					></td>
+				</tr>
+				<tr>
+					<td>패스워드 확인</td>
+					<td colspan="2"><input id="passwdCheck" name="passwdCheck" type="password" placeholder="비밀번호 확인"
+					maxlength="20" class="form-control"></td>
+				</tr>
+				<tr>
+					<td>이름 </td>
+					<td colspan="2"><input id="user_name" name="user_name" type="text" placeholder="이름"
+					maxlength="20" class="form-control"></td>
+				</tr>
+				<tr>
+					<td>닉네임</td>
+					<td colspan="2"><input id="user_nickname" name="user_nickname" type="text" placeholder="닉네임"
+					maxlength="20" class="form-control"></td>
+				</tr>
+				<tr>
+					<td>e-mail</td>
+					<td colspan="2"><input type="email" class="form-control" placeholder="e-mail"
+                     name="user_email" maxlength="20"></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td colspan="2"><select name="user_phone1">
+						<option>010</option>
+						<option>02</option>
+						<option>031</option>
+						<option>051</option>
+					</select> -
+					<input type="text" name="user_phone2" size="5"> -
+					<input type="text" name="user_phone3" size="5"></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="button" id="signUp" value="회원가입"></td>
+				</tr>
+			</tbody>
+      </table>
    </form>
    </div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -100,4 +125,62 @@ footer {
 	</footer>
  </div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(e){
+		
+		var idx = false;
+		
+		$('#signUp').click(function(){
+			if($.trim($('#user_id').val()) == ''){
+				alert("아이디 입력.");
+				$('#user_id').focus();
+				return;
+			}else if($.trim($('#user_pw').val()) == ''){
+				alert("패스워드 입력.");
+				$('#user_pw').focus();
+				return;
+			}
+			//패스워드 확인
+			else if($('#user_pw').val() != $('#passwdCheck').val()){
+				alert('패스워드가 다릅니다.');
+				$('#user_pw').focus();
+				return;
+			}
+			
+			if(idx==false){
+				alert("아이디 중복체크를 해주세요.");
+				return;
+			}else{
+				$('#signFrm').submit();
+			}
+		});
+		
+		$('#check').click(function(){
+			$.ajax({
+				url: "${pageContext.request.contextPath}/idCheck.do",
+				type: "GET",
+				data:{
+					"user_id":$('#user_id').val()
+				},
+				success: function(data){
+					if(data == 0 && $.trim($('#user_id').val()) != '' ){
+						idx=true;
+						$('#user_id').attr("readonly",true);
+						var html="<tr><td colspan='3' style='color: green'>사용가능</td></tr>";
+						$('#idCheck').empty();
+						$('#idCheck').append(html);
+					}else{
+
+						var html="<tr><td colspan='3' style='color: red'>사용불가능한 아이디 입니다.</td></tr>";
+						$('#idCheck').empty();
+						$('#idCheck').append(html);
+					}
+				},
+				error: function(){
+					alert("서버에러");
+				}
+			});
+		});
+	});
+</script>
 </html>

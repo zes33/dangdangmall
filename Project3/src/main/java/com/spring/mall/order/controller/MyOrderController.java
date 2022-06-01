@@ -39,7 +39,12 @@ public class MyOrderController {
 	}
 	
 	@RequestMapping("/myprivateinfo.do")
-	public String myPrivateInfoView(MyInfoVO vo, Model model) {
+	public String myPrivateInfoView(MyInfoVO vo, Model model, HttpSession session) {
+		System.out.println(">>내 정보 보기");
+		String user_id = (String) session.getAttribute("user_id");
+		vo.setUser_id(user_id);
+		List<MyInfoVO> orderList = myOrderService.getMyOrder(user_id);
+		model.addAttribute("orderList", orderList);
 		
 		return "user/myPrivateInfo";
 	}

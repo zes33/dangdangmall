@@ -1,5 +1,7 @@
 package com.spring.mall.user.dao;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,6 +37,28 @@ public class UserDAO {
 		System.out.println("vo : " + vo);
 		
 		return mybatis.selectOne("userDAO.getId", vo);
+	}
+
+	//아이디 체크
+	public int idCheck(String user_id) {
+		System.out.println("===> Mybatis로 idCheck");
+		int result = mybatis.selectOne("userDAO.idCheck",user_id);
+		return result;
+	}
+
+	//패스워드 체크
+	public int passCheck(UserVO vo) {
+		int result=mybatis.selectOne("userDAO.loginCheck",vo);
+
+		return result;
+	}
+
+	//회원탈퇴
+	public void secession(UserVO vo,HttpSession session) {
+		
+		mybatis.update("userDAO.secession",vo);
+		//세션 삭제
+		session.invalidate();
 	}
 	
 

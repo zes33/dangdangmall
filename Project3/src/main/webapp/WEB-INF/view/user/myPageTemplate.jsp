@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,13 +112,18 @@
 	        			<td>vip회원</td>
 	        		</c:if>
 	        		<!-- ================================= -->
-	        		<fmt:formatNumber value="${sum}" type = "number"/>
-	        			<c:forEach var="list" items="${orderList }" >
-	        				<c:if test="${list.user_status == 2 }">
-	        					<c:set var="sum" value="${sum+1}" />
-	        				</c:if>
-	        			</c:forEach>
-	        		<td><c:out value="${sum }"/>건</td> 
+	        			<c:set var="sum" value="0" />
+						<c:forEach var="list" items="${orderList }">
+							<c:if test="${list.user_status == 2 }">
+								<c:set var="sum" value="${sum+1}" />
+							</c:if>
+						</c:forEach>
+						<c:if test="${sum ==0}">
+							<td>0건</td>
+						</c:if>
+						<c:if test="${sum ne 0}">
+							<td><c:out value="${sum }" />건</td>
+						</c:if>
 	        		<!-- ================================= -->
 	        		<td>${user.user_point }p</td>
 	        	</tr>

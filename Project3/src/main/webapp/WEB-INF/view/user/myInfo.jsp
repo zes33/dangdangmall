@@ -113,14 +113,19 @@
 	        			<td>vip회원</td>
 	        		</c:if>
 	        		<!-- ================================= -->
-	        		<fmt:formatNumber value="${sum}" type = "number"/>
-	        			<c:forEach var="list" items="${orderList }" >
-	        				<c:if test="${list.user_status == 2 }">
-	        					<c:set var="sum" value="${sum+1}" />
-	        				</c:if>
-	        			</c:forEach>
-	        		<td><c:out value="${sum }"/>건</td> 
-	        		<!-- ================================= -->
+						<c:set var="sum" value="0" />
+						<c:forEach var="list" items="${orderList }">
+							<c:if test="${list.user_status == 2 }">
+								<c:set var="sum" value="${sum+1}" />
+							</c:if>
+						</c:forEach>
+						<c:if test="${sum == 0}">
+							<td>0건</td>
+						</c:if>
+						<c:if test="${sum ne 0}">
+							<td><c:out value="${sum }" />건</td>
+						</c:if>
+						<!-- ================================= -->
 	        		<td>${user.user_point }p</td>
 	        	</tr>
 	        </table>
@@ -145,7 +150,11 @@
           <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></p>
           <br><br>
           <div>
-             <strong>결제완료</strong>
+          		<c:choose>
+          		<c:when test="${orderList.user_status == 1 }"><strong>결제완료</strong></c:when>
+          		<c:when test="${orderList.user_status == 2 }"><strong>배송중</strong></c:when>
+          		<c:otherwise><strong>배송완료</strong></c:otherwise>
+          		</c:choose>
          </div>
          <div><small class="text-muted text-black-50">결제가 완료되었습니다. 이용해주셔서 감사합니다.</small></div><br>
         </div>
