@@ -3,7 +3,7 @@ package com.spring.mall.user.vo;
 public class MyInfoVO {
 
 	//USER_ORDER 테이블 
-	private int order_id;
+	private String order_id;
 	private String order_date;
 	private String order_addr;
 	private String order_addr_d;
@@ -32,7 +32,7 @@ public class MyInfoVO {
 		System.out.println("MyInfoVO() 객체 생성");
 	}
 	
-	public MyInfoVO(int order_id, String order_date, String order_addr, String order_addr_d, String order_zipcode,
+	public MyInfoVO(String order_id, String order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id,
 			int order_detail_id, int user_order_cnt, int product_id, int category_code, String product_name,
 			int product_price, int product_stock, String product_info, int product_discount, int product_state) {
@@ -60,12 +60,12 @@ public class MyInfoVO {
 	}
 
 
-	public int getOrder_id() {
+	public String getOrder_id() {
 		return order_id;
 	}
 
 
-	public void setOrder_id(int order_id) {
+	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
 	}
 
