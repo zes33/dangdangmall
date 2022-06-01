@@ -46,6 +46,7 @@ public class ProductQnaController {
 		return "forward:/tempPrd.do";
 	}
 	
+	// 페이지 테스트
 	@RequestMapping("/viewMypage.do")
 	public String viewMyPage() {
 		

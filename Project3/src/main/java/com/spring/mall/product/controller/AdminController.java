@@ -25,7 +25,7 @@ public class AdminController {
 	@GetMapping("admin.do")
 	public String adminView() {
 		System.out.println("관리자메인페이지(main.jsp)이동 - adminView()");
-		return "admin/main";
+		return "admin/adminMain";
 	}
 	
 	@GetMapping("/adminGetProductList.do")

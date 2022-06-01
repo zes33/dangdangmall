@@ -63,13 +63,17 @@
 	p {
 		display: table-cell;
 		font-size: 20px;
+		text-align: center;
 		
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		
+		width: 200px;
 	}
 	
+
 	
 </style>
 </head>
@@ -111,14 +115,17 @@
 		        <div><p><b>주문내역</b></p></div>
 		        <div><p><b>나의 정보</b></p></div>
 		        <div><p><b>장바구니</b></p></div>
-		        <div><p><b>문의내역</b></p></div>
+		        <div><p><b>상품문의 내역</b></p></div>
+		        <div><p><b>기타문의 내역</b></p></div>
 		        <div><p><b>후기내역</b></p></div>
 	        </div>
-	        <div class="col-md-9">
+	        <div class="col-md-9 whoru">
 				<h3>여기 본문</h3>
 			</div>
 	    </div>
-	    <div class="row"></div>
+	    <!-- <div class="row wru">
+	    	<h3>넌 머야</h3>
+	    </div> -->
 	</div>
 
 
