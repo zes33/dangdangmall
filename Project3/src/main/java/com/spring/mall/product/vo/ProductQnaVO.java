@@ -1,5 +1,7 @@
 package com.spring.mall.product.vo;
 
+import java.sql.Date;
+
 public class ProductQnaVO {
 	private int qna_id;
 	private String qna_content;
@@ -8,17 +10,43 @@ public class ProductQnaVO {
 	private int q_or_a;
 	private int qna_group_number;
 	private int qna_group;
+	private Date product_qna_date;
+	private int product_qna_state;
 	
 	public ProductQnaVO() {
 		System.out.println("ProductQnaVO() 객체 생성~");
 	}
 
+
 	@Override
 	public String toString() {
 		return "ProductQnaVO [qna_id=" + qna_id + ", qna_content=" + qna_content + ", product_id=" + product_id
 				+ ", user_id=" + user_id + ", q_or_a=" + q_or_a + ", qna_group_number=" + qna_group_number
-				+ ", qna_group=" + qna_group + "]";
+				+ ", qna_group=" + qna_group + ", product_qna_date=" + product_qna_date + ", product_qna_state="
+				+ product_qna_state + "]";
 	}
+
+
+
+	public int getProduct_qna_state() {
+		return product_qna_state;
+	}
+
+
+	public void setProduct_qna_state(int product_qna_state) {
+		this.product_qna_state = product_qna_state;
+	}
+
+
+	public Date getProduct_qna_date() {
+		return product_qna_date;
+	}
+
+
+	public void setProduct_qna_date(Date product_qna_date) {
+		this.product_qna_date = product_qna_date;
+	}
+
 
 	public int getQna_id() {
 		return qna_id;

@@ -29,6 +29,28 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 		productQnaDAO.insertProductQna(vo);
 	}
 
+	@Override
+	public List<ProductQnaVO> productQnaListAdmin() {
+		return productQnaDAO.getProductQnaListAdmin();
+	}
+
+	@Override
+	public ProductQnaNickVO getProductQnaNick(ProductQnaNickVO vo) {
+		return productQnaDAO.getProductQnaNick(vo);
+	}
+
+	@Override
+	public void updateProductQnaState(ProductQnaNickVO vo) {
+		productQnaDAO.updateProductQnaState(vo);
+		
+	}
+
+	@Override
+	public void insertAdminProductQna(String qna_content, String product_id, String user_id, String qna_group) {
+		productQnaDAO.insertAdminProductQna(qna_content, product_id, user_id, qna_group);
+	}
+
+
 	
 	
 }

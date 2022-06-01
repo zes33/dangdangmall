@@ -1,5 +1,7 @@
 package com.spring.mall.product.vo;
 
+import java.sql.Date;
+
 public class ProductQnaNickVO {
 
 	private int qna_id;
@@ -10,17 +12,56 @@ public class ProductQnaNickVO {
 	private int qna_group_number;
 	private int qna_group;
 	private String user_nickname;
+	private Date product_qna_date;
+	private String product_name;
+	private int product_qna_state;
 	
 	public ProductQnaNickVO() {
 		System.out.println("ProductQnaNickVO() 객체 생성");
 	}
 
+
 	@Override
 	public String toString() {
 		return "ProductQnaNickVO [qna_id=" + qna_id + ", qna_content=" + qna_content + ", product_id=" + product_id
 				+ ", user_id=" + user_id + ", q_or_a=" + q_or_a + ", qna_group_number=" + qna_group_number
-				+ ", qna_group=" + qna_group + ", user_nickname=" + user_nickname + "]";
+				+ ", qna_group=" + qna_group + ", user_nickname=" + user_nickname + ", product_qna_date="
+				+ product_qna_date + ", product_name=" + product_name + ", product_qna_state=" + product_qna_state
+				+ "]";
 	}
+
+
+	public int getProduct_qna_state() {
+		return product_qna_state;
+	}
+
+
+	public void setProduct_qna_state(int product_qna_state) {
+		this.product_qna_state = product_qna_state;
+	}
+
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+
+
+	public Date getProduct_qna_date() {
+		return product_qna_date;
+	}
+
+
+	public void setProduct_qna_date(Date product_qna_date) {
+		this.product_qna_date = product_qna_date;
+	}
+
 
 	public int getQna_id() {
 		return qna_id;

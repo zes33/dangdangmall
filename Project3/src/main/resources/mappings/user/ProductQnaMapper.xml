@@ -4,22 +4,63 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="productQnaDAO">
+	
+	<!-- 상품문의 답변 입력(관리자) -->
+	<insert id="insertAdminProductQna" parameterType="map">
+		INSERT INTO PRODUCT_QNA (QNA_ID, QNA_CONTENT, PRODUCT_ID, USER_ID, Q_OR_A, 
+	    QNA_GROUP_NUMBER, QNA_GROUP,PRODUCT_QNA_DATE, PRODUCT_QNA_STATE)
+	    VALUES ((SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA),#{qna_content},
+	    		TO_NUMBER(#{product_id}),#{user_id},1,
+	            (SELECT MAX(QNA_GROUP_NUMBER)+1 FROM PRODUCT_QNA WHERE QNA_GROUP = TO_NUMBER(#{qna_group})),
+	            TO_NUMBER(#{qna_group}), SYSDATE, 0
+	)
+	</insert>
+	
+	<!-- 답변상태 1로 변경 -->
+	<update id="updateQnaState" parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
+		UPDATE PRODUCT_QNA SET
+		PRODUCT_QNA_STATE = 1
+		WHERE QNA_ID = #{qna_id}
+	</update>
+	
+	<!-- qna_id로 상품문의 조회(상품명, 닉네임 포함) -->
+	<select id="getProductQnaNick" parameterType="com.spring.mall.product.vo.ProductQnaNickVO"
+		resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT PRODUCT_QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
+		FROM PRODUCT_QNA, USERS, PRODUCT
+		WHERE PRODUCT_QNA.QNA_ID = #{qna_id}
+		AND PRODUCT_QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		AND PRODUCT_QNA.USER_ID = USERS.USER_ID
+	</select>
 
-	<!-- qnaList by product -->
+	<!-- 전체 상품문의 조회(운영자) -->
+	<select id="getProductQnaListAdmin" resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
+		FROM PRODUCT_QNA QNA, PRODUCT, USERS
+		WHERE QNA.Q_OR_A = 0
+		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		AND QNA.USER_ID = USERS.USER_ID
+		ORDER BY QNA_ID DESC
+	</select>
+
+	<!-- 해당 상품의 문의 목록(상품 상세페이지) -->
 	<select id="qnaNickByProduct" parameterType="int" 
 	resultType="com.spring.mall.product.vo.ProductQnaNickVO">
-		SELECT PRODUCT_QNA.*, USERS.USER_NICKNAME
-		FROM PRODUCT_QNA, USERS
-		WHERE PRODUCT_QNA.PRODUCT_ID = #{product_id}
-		AND USERS.USER_ID =  PRODUCT_QNA.USER_ID
-		ORDER BY QNA_GROUP, QNA_GROUP_NUMBER
+		SELECT QNA.*, PRODUCT.PRODUCT_NAME 
+		FROM PRODUCT_QNA QNA, PRODUCT, USERS
+		WHERE QNA.PRODUCT_ID = #{product_id}
+		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		AND QNA.USER_ID = USERS.USER_ID
+		ORDER BY QNA.QNA_GROUP, QNA.QNA_GROUP_NUMBER
+		
 	</select>
 	
-	<!-- productQna insert (customer) -->
+	<!-- 상품문의 입력(고객) -->
 	<insert id="insertProductQna" parameterType="com.spring.mall.product.vo.ProductQnaVO">
-		INSERT INTO PRODUCT_QNA (QNA_ID, QNA_CONTENT, PRODUCT_ID, USER_ID, Q_OR_A, QNA_GROUP_NUMBER, QNA_GROUP)
+		INSERT INTO PRODUCT_QNA (QNA_ID, QNA_CONTENT, PRODUCT_ID, USER_ID, Q_OR_A, 
+		QNA_GROUP_NUMBER, QNA_GROUP,PRODUCT_QNA_DATE, PRODUCT_QNA_STATE)
 		VALUES ((SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA),#{qna_content},#{product_id},#{user_id},0,0,
-		        (SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA)
+		        (SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA), SYSDATE, 0
 		)
 	</insert>
 	
