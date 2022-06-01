@@ -8,6 +8,7 @@ import com.spring.mall.order.dao.OrderDAO;
 import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
+import com.spring.mall.pay.vo.PaymentVO;
 
 @Service("OrderService")
 public class OrderServiceImpl implements OrderService {
@@ -36,6 +37,18 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void cartAllDelete(String user_id) {
 		orderDAO.cartAllDelete(user_id);
+	}
+
+	//4. 결제창에서 쓰일 최근 주문 정보 가져오기
+	@Override
+	public UserOrderVO getOrder(String user_id) {
+		return orderDAO.getOrder(user_id);
+	}
+
+	//5. 결제 완료 후, 결제 테이블로 넘기기
+	@Override
+	public void insertPayment(PaymentVO vo) {
+		orderDAO.insertPayment(vo);
 	}
 
 }

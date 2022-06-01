@@ -499,9 +499,9 @@ a:hover {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	
+<%-- 	
  ${list} 
- ${user_id} 
+ ${user_id}  --%>
 	<!--Content-->
 	<div class="container-fluid text-center"
 		style="margin-top: 25pt; margin-bottom: 25px;">

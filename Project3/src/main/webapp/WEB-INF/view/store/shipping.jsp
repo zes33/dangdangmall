@@ -6,26 +6,247 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문정보 </title>
+<title>주문정보</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon"
+	href="/docs/5.1/assets/img/favicons/apple-touch-icon.png"
+	sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png"
+	sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png"
+	sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon"
+	href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg"
+	color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="form-validation.css" rel="stylesheet">
+<title>결제정보 입력</title>
+<!-- css 스크립트 삽입 -->
+<link href="common/styles.css" rel="stylesheet">
+<!-- kakao -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
-	<h1>shipping</h1>
-	${map } ${user }
+	<!-- header -->
+	<header>
+		<jsp:include page="../common/header.jsp"></jsp:include>
+	</header>
 
-	<h1>결제정보 입력 </h1>
-	
-	
-	<h3 style="font-weight: bold; font-size: 20px;">
-	금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}" />원 <br> 
-	배송비 <fmt:formatNumber value="${map.fee }" pattern="###,###,###" />원<br>
-	</h3>
-	<h5 style="font-weight: bold; font-size: 30px;">
-		총금액
-	<fmt:formatNumber value="${map.allSum }" pattern="###,###,###" />
-		원
-	</h5>
-	
-	
 
+	<div class="container-fluid text-center"
+		style="margin-top: 25pt; margin-bottom: 25px;">
+		<img src="../img/bill.png" class="img-title" alt="no title"
+			width="100" /> <br>
+		<h1>결제정보 입력</h1>
+
+		<div class="container">
+			<h3>map</h3>
+			${map }
+
+			<h3>user</h3>
+			${user }
+
+			<h3>배송정보</h3>
+			${orderInfo }
+			<hr>
+
+			<h1>주문자 정보</h1>
+			<table
+				style="width: 90%; padding-top: 3pt;">
+				<tr>
+					<td>이름</td>
+					<td>${orderInfo.order_receiver }</td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td>${user.user_email }</td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td>${orderInfo.order_phone }</td>
+				</tr>
+				<tr>
+					<td>배송지</td>
+					<td>${orderInfo.order_addr }${orderInfo.order_addr_d }</td>
+				</tr>
+				<tr>
+					<td>우편번호</td>
+					<td>${orderInfo.order_zipcode }</td>
+				</tr>
+			</table>
+			<hr>
+		</div>
+		<div class="container">
+			<h3>주문상품 정보</h3>
+			<h4>주문번호 : ${orderInfo.order_id }</h4>
+			<div style="font-weight: bold; font-size: 20px;">
+
+				<table style="width: 90%; padding-top: 3pt;">
+					<tr>
+						<th>상품 이름</th>
+						<th>가격</th>
+						<th>수량</th>
+						<th>할인율 반영 전 금액</th>
+						<th>할인율</th>
+						<th>금액</th>
+					</tr>
+
+					<c:forEach items="${map.list }" var="list" varStatus="i">
+						<div class="menuClass"
+							data-menuId=<c:out value="${list.cart_id}"/>>
+							<tr>
+								<td><span id="amount"> <c:out
+											value="${list.product_name }" />
+								</span></td>
+								<td><span id="amount"> <c:out
+											value="${list.product_price }" />
+								</span></td>
+								<td><span type="number" style="width: 80px"
+									name="cart_product_qty" min="1">
+										${list.cart_product_qty}</span>
+								<td><span id="amount"
+									data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
+											value="${list.product_price * list.cart_product_qty}"
+											pattern="###,###,###" /></span></td>
+								<td><span id="discount" style="color: red;"
+									data-amount=<c:out value="${map.discount }"/>> <fmt:formatNumber
+											value="${map.discount *100 }" type="number" /> %
+								</span></td>
+								<td><span id="total"
+									data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>>
+										<fmt:formatNumber
+											value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* map.discount }"
+											pattern="###,###,###" />
+								</span></td>
+
+							</tr>
+						</div>
+					</c:forEach>
+
+				</table>
+			</div>
+			<br><br>
+			<hr>
+			<table style="width: 90%; padding-top: 3pt;">
+				<tr>
+					<td>총상품 금액 :</td>
+					<td><fmt:formatNumber pattern="###,###,###"
+							value="${map.sumMoney *(1- map.discount)}" />원</td>
+				</tr>
+				<tr>
+					<td>쿠폰 사용 :</td>
+					<!-- <form class="card p-2">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Promo code">
+							<button type="submit" class="btn btn-secondary">Redeem</button>
+						</div>
+					</form> -->
+					<td><fmt:formatNumber pattern="###,###,###" value="" />0
+						point</td>
+				</tr>
+				<tr>
+					<td>마일리지 사용 :</td>
+					<td>0 point</td>
+				</tr>
+				<tr>
+					<td>배송비 :</td>
+					<td><fmt:formatNumber value="${map.fee }"
+							pattern="###,###,###" />원</td>
+				</tr>
+				<tr>
+					<td>총 결제금액 :</td>
+					<td><fmt:formatNumber value="${map.allSum }"
+							pattern="###,###,###" />원</td>
+				</tr>
+			</table>
+			<hr>
+
+		</div>
+		<div class="container">
+			<br>결제 및 계좌 안내 시 상호명은 (주)당당몰로 표기되니 참고 부탁드립니다.<br><br> 이용약관 및 개인정보 제3자
+			제공사항에 대해 확인하였으며 결제에 동의합니다.<br><br> 결제대행 서비스 이용약관 <a
+				style="color: gray;" href="https://www.inicis.com/terms">(주)KG이니시스</a><br><br>
+
+			<button   class="w-100 btn btn-primary btn-lg" id="check_module" type="button">결제 하기</button>
+			<br>
+			<script>
+			$("#check_module").click(function() {
+				var IMP = window.IMP; // 생략가능
+				IMP.init('imp65953649');
+				// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+				// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
+				IMP.request_pay({
+					pg : 'inicis',
+					pay_method : 'card',
+					merchant_uid : 'TC0ONETIME' + new Date().getTime(),
+					/* 
+					 *  merchant_uid에 경우 
+					 *  https://docs.iamport.kr/implementation/payment
+					 *  위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+					 */
+					name : '당당몰',
+					// 결제창에서 보여질 이름
+					// name: '주문명 : ${auction.a_title}',
+					amount : ${map.allSum},
+					// 가격 
+					buyer_name : '${user.user_name}',
+					//buyer_postcode : '123-456',
+				}, function(rsp) {
+					console.log(rsp);
+					if (rsp.success) {
+						var msg = '결제가 완료되었습니다.';
+						msg += '결제 금액 : ' + rsp.paid_amount;
+						// success.submit();
+						// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
+						// 자세한 설명은 구글링으로 보시는게 좋습니다.
+					} else {
+						var msg = '결제에 실패하였습니다.';
+						msg += '에러내용 : ' + rsp.error_msg;
+					}
+					alert(msg);
+				});
+			});
+		</script>
+		</div>
+	</div>
+
+
+	<!-- footer -->
+	<jsp:include page="../common/footer.jsp"></jsp:include>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<div class="last_block"></div>
 </body>
 </html>

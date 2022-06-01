@@ -71,7 +71,14 @@
 				width="100" />
 		</div>
 
-		${user } ${map }
+		${user } 
+		
+		<h1>${map }</h1>
+		
+		<hr>
+		
+		
+		<hr>
 		<!--Content-->
 		<div id="body-wrapper">
 			<div id="body-content" class="container">
@@ -173,121 +180,20 @@
 						</div>
 					</div>
 				</form>
-				<br /> <br />
-				<hr class="my-4">
-
-				<h4 class="mb-3">결제 수단</h4>
-
-				<div class="my-3">
-					<div class="form-check">
-						<input id="credit" name="paymentMethod" type="radio"
-							class="form-check-input" checked required> <label
-							class="form-check-label" for="credit">Credit card</label>
-					</div>
-					<div class="form-check">
-						<input id="debit" name="paymentMethod" type="radio"
-							class="form-check-input" required> <label
-							class="form-check-label" for="debit">Debit card</label>
-					</div>
-					<div class="form-check">
-						<input id="paypal" name="paymentMethod" type="radio"
-							class="form-check-input" required> <label
-							class="form-check-label" for="paypal">PayPal</label>
-					</div>
-				</div>
-
-				<div class="row gy-3">
-					<div class="col-md-6">
-						<label for="cc-name" class="form-label">Name on card</label> <input
-							type="text" class="form-control" id="cc-name" placeholder=""
-							required> <small class="text-muted">Full name as
-							displayed on card</small>
-						<div class="invalid-feedback">Name on card is required</div>
-					</div>
-
-					<div class="col-md-6">
-						<label for="cc-number" class="form-label">Credit card
-							number</label> <input type="text" class="form-control" id="cc-number"
-							placeholder="" required>
-						<div class="invalid-feedback">Credit card number is required
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<label for="cc-expiration" class="form-label">Expiration</label> <input
-							type="text" class="form-control" id="cc-expiration"
-							placeholder="" required>
-						<div class="invalid-feedback">Expiration date required</div>
-					</div>
-
-					<div class="col-md-3">
-						<label for="cc-cvv" class="form-label">CVV</label> <input
-							type="text" class="form-control" id="cc-cvv" placeholder=""
-							required>
-						<div class="invalid-feedback">Security code required</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<h1>카카오 결제 테스트</h1>
-		<button id="check_module" type="button">카카오 테스트 결제</button>
-		<script>
-			$("#check_module").click(function() {
-				var IMP = window.IMP; // 생략가능
-				IMP.init('imp65953649');
-				// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-				// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
-				IMP.request_pay({
-					pg : 'kakao',
-					pay_method : 'card',
-					merchant_uid : 'TC0ONETIME' + new Date().getTime(),
-					/* 
-					 *  merchant_uid에 경우 
-					 *  https://docs.iamport.kr/implementation/payment
-					 *  위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
-					 */
-					name : '주문명 : 아메리카노',
-					// 결제창에서 보여질 이름
-					// name: '주문명 : ${auction.a_title}',
-					// 위와같이 model에 담은 정보를 넣어 쓸수도 있습니다.
-					amount : 100,
-					// amount: ${bid.b_bid},
-					// 가격 
-					buyer_name : '김채린',
-					// 구매자 이름, 구매자 정보도 model값으로 바꿀 수 있습니다.
-					// 구매자 정보에 여러가지도 있으므로, 자세한 내용은 맨 위 링크를 참고해주세요.
-					buyer_postcode : '123-456',
-				}, function(rsp) {
-					console.log(rsp);
-					if (rsp.success) {
-						var msg = '결제가 완료되었습니다.';
-						msg += '결제 금액 : ' + rsp.paid_amount;
-						// success.submit();
-						// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
-						// 자세한 설명은 구글링으로 보시는게 좋습니다.
-					} else {
-						var msg = '결제에 실패하였습니다.';
-						msg += '에러내용 : ' + rsp.error_msg;
-					}
-					alert(msg);
-				});
-			});
-		</script>
-
-		<!-- <form class="card p-2">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Promo code">
-				<button type="submit" class="btn btn-secondary">Redeem</button>
-			</div>
-		</form> -->
-	</div>
-	<div class="col-md-7 col-lg-8"></div>
-	<hr class="my-4">
+				
 
 
 	<div class="last_block"></div>
 
 </body>
+
+<!-- footer -->
+<jsp:include page="../common/footer.jsp"></jsp:include>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+<div class="last_block"></div>
 <script>
 	function findAddr() {
 		new daum.Postcode({
@@ -311,17 +217,6 @@
 		}).open();
 	}
 </script>
-<!-- footer -->
-<jsp:include page="../common/footer.jsp"></jsp:include>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
-<script>
-	
-</script>
-<div class="last_block"></div>
-
 </body>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

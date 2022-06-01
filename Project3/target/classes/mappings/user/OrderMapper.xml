@@ -52,10 +52,31 @@
 		#{user_id}
 	</delete>
 
-	<!-- 특정 유저의 주문 목록 -->
-	<select id="orderList" resultType="com.spring.mall.order.vo.UserOrderVO">
+	<!-- 결제창에서 쓰일 최근 주문 정보 가져오기 -->
+	<select id="getOrder"
+		resultType="com.spring.mall.order.vo.UserOrderVO">
 		SELECT *
 		FROM USER_ORDER
-		WHERE USERID = #{userId}
+		WHERE USER_ID= #{user_id}
+		AND ROWNUM= 1
 	</select>
+
+	<!-- 주문 완료 후, 결제 테이블로 넘기기 -->
+	<insert id="insertPayment">
+		INSERT INTO PAYMENT(
+		BUYER_ADDR,
+		BUYER_NAME,
+		BUYER_POSTCODE,
+		BUYER_TEL,
+		IAMPORT_IMP_UID)
+		SELECT ORDER_ADDR ||' '||ORDER_ADDR_D as ADDR,
+		ORDER_RECEIVER,
+		ORDER_ZIPCODE,
+		ORDER_PHONE,
+		ORDER_ID
+		FROM USER_ORDER
+		WHERE USER_ID= #{user_id}
+		AND ROWNUM= 1
+	</insert>
+
 </mapper>

@@ -43,12 +43,14 @@ public class OrderController {
 
 	// 1. 주문 정보 입력
 	@RequestMapping("order.do")
-	public String order(HttpSession session,Model model, UserOrderVO order, UserOrderDetailVO orderDetail) throws Exception {
+	public String order(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail)
+			throws Exception {
 		UserVO user = (UserVO) session.getAttribute("user");
 		String user_id = user.getUser_id();
 		session.getAttribute("map");
-		//주문 정보 저장 
-		// 주문 아이디 저장 방식 
+
+		// 주문 정보 저장
+		// 주문 아이디 저장 방식
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
@@ -67,12 +69,29 @@ public class OrderController {
 		// 상세정보 바구니로 저장
 		orderDetail.setOrder_id(order_id);
 		orderService.insertOrderDetail(orderDetail);
+		session.setAttribute("user", user);
 
 		// 결제 칸으로 넘어가면 장바구니 정보 삭제
 		orderService.cartAllDelete(user_id);
-		System.out.println("vo : "+order);
-		//System.out.println("vo :"+ orderDetail );
+		System.out.println("vo : " + order);
 
+		// 결제창에서 쓰일 최근 주문 정보 가져오기
+		UserOrderVO orderInfo = new UserOrderVO();
+		orderInfo = orderService.getOrder(user_id);
+		session.setAttribute("orderInfo", orderInfo);
+		
 		return "store/shipping";
 	}
+
+//	@RequestMapping("pay.do")
+//	public String pay(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail)
+//			throws Exception {
+//		UserVO user = (UserVO) session.getAttribute("user");
+//		String user_id = user.getUser_id();
+//
+//		return "redirect:/store/shipping";
+//	}
+
+	// 2. 결제 완료 후, 결제 테이블에 정보 삽입
+
 }
