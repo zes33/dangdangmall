@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문내역</title>
+<title>나의 정보</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -72,23 +70,18 @@
 		transform: translate(-50%, -50%);
 	}
 	
-#container { width: 800px; margin: auto;}
-   table { border-collapse: collapse; }
-   table, th, td {
-      border: 1px solid black;
-      margin: 0 auto;
-      padding-bottom: 10px;
-   }
-   .center { text-align: center; }
-   .border-none, .border-none td { border: none; }
 	
 </style>
 </head>
 <body>
+
 <!-- header -->
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+
+
+
 	<div class="container">
 	    <div class="row rowMan">
 	        <div class="col-xs-12 rowManBaby">
@@ -136,33 +129,18 @@
 		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">후기내역</a></b></p></div>
 	        </div>
 	        <div class="col-md-9">
-	        <c:forEach var="orderList" items="${orderList }">
-	          <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><strong>${orderList.product_name }</strong></font></font></h3>
-          <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>${orderList.product_price }원 | ${orderList.order_date } 주문</span></font></font></h5>
-          <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></p>
-          <br><br>
-          <div>
-             <strong>결제완료</strong>
-         </div>
-         <div><small class="text-muted text-black-50">결제가 완료되었습니다. 이용해주셔서 감사합니다.</small></div><br>
-        </div>
-           <span class="position-absolute top-0 end-0">
-              <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
-              <br><br>
-            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">환불 신청</button></div><br>
-            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">리뷰 작성</button></div>
-         </span>
-      </div>
-   </div>
-				</c:forEach>
+				<h3>여기 본문</h3>
 			</div>
 	    </div>
 	    <div class="row"></div>
 	</div>
-	<%-- <p>\${map } : ${map }</p> --%>
+
+
+
+
+
+
+
 
 <!-- footer -->
 	<footer>

@@ -103,21 +103,34 @@
 	        		<th>포인트</th>
 	        	</tr>
 	        	<tr>
-	        		<td>일반회원</td>
-	        		<td>2건</td>
-	        		<td>1,080p</td>
+	        		<c:if test="${user.user_grade== 1 }">
+	        			<td>일반회원</td>
+	        		</c:if>
+	        		<c:if test="${user.user_grade == 2 }">
+	        			<td>vip회원</td>
+	        		</c:if>
+	        		<!-- ================================= -->
+	        		<fmt:formatNumber value="${sum}" type = "number"/>
+	        			<c:forEach var="list" items="${orderList }" >
+	        				<c:if test="${list.user_status == 2 }">
+	        					<c:set var="sum" value="${sum+1}" />
+	        				</c:if>
+	        			</c:forEach>
+	        		<td><c:out value="${sum }"/>건</td> 
+	        		<!-- ================================= -->
+	        		<td>${user.user_point }p</td>
 	        	</tr>
 	        </table>
 	        </div>
 	    </div>
 	    <div class="row">
 	        <div class="col-md-2 colMan">
-		        <div><p><b>주문내역</b></p></div>
-		        <div><p><b>나의 정보</b></p></div>
-		        <div><p><b>장바구니</b></p></div>
-		        <div><p><b>상품문의 내역</b></p></div>
-		        <div><p><b>기타문의 내역</b></p></div>
-		        <div><p><b>후기내역</b></p></div>
+		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">주문내역</a></b></p></div>
+		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myprivateinfo.do">나의 정보</a></b></p></div>
+		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="cart/list.do">장바구니</a></b></p></div>
+		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">상품 문의내역</a></b></p></div>
+		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">기타 문의내역</a></b></p></div>
+		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">후기내역</a></b></p></div>
 	        </div>
 	        <div class="col-md-9 whoru">
 				<h3>여기 본문</h3>

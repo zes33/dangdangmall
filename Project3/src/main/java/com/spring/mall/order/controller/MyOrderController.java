@@ -38,9 +38,10 @@ public class MyOrderController {
 		return "user/myInfo";
 	}
 	
-//	public String getOrderList(UserOrderVO vo) {
-//		
-//		
-//		return "user/myInfo";
-//	}
+	@RequestMapping("/myprivateinfo.do")
+	public String myPrivateInfoView(MyInfoVO vo, Model model) {
+		
+		return "user/myPrivateInfo";
+	}
+
 }
