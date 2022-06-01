@@ -70,14 +70,11 @@
 			<img src="../img/fast.png" class="img-title" alt="no title"
 				width="100" />
 		</div>
+		<h1>user</h1>
+		${user }
 
-		${user } 
-		
-		<h1>${map }</h1>
-		
-		<hr>
-		
-		
+		<h1>map</h1>
+		${map }
 		<hr>
 		<!--Content-->
 		<div id="body-wrapper">
@@ -85,106 +82,91 @@
 				<br /></br>
 				<form action="order.do" method="post">
 					<h3>주문 정보 입력</h3>
-					수령인 <input type="text" name="order_receiver" maxlength="20"><br />
-					수령인 연락처 <input type="text" name="order_phone" maxlength="20"><br />
-					<!--  우편번호 <input type="text" name="order_zipcode" maxlength="20"><br/>
-      주소 <input type="text" name="order_addr" maxlength="20"><br/> -->
-					우편번호 <input id="member_post" maxlength="20" name="order_zipcode"
-						type="text" placeholder="우편번호 찾기" readonly onclick="findAddr()">
-					도로명 주소 <input id="member_addr" maxlength="20" name="order_addr"
-						type="text" placeholder="도로명주소" readonly> <br> 상세 주소
-					<input type="text" name="order_addr_d" maxlength="20"><br />
-
-					<br /> <br /> <br /> <input type="submit"
-						class="btn btn-sm btn-outline-secondary" value="결제하기">
-				</form>
-				<form class="needs-validation" novalidate>
-					<div class="row g-3">
-						<div class="col-sm-6">
-							<label for="firstName" class="form-label">First name</label> <input
-								type="text" class="form-control" id="firstName" placeholder=""
-								value="" required>
-							<div class="invalid-feedback">Valid first name is required.
-							</div>
-						</div>
-
-						<div class="col-sm-6">
-							<label for="lastName" class="form-label">Last name</label> <input
-								type="text" class="form-control" id="lastName" placeholder=""
-								value="" required>
-							<div class="invalid-feedback">Valid last name is required.
-							</div>
-						</div>
-
-						<div class="col-12">
-							<label for="username" class="form-label">Username</label>
+					<br> <br>
+					<div class="col-md-3">
+						<div class="col-md-3">
+							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
-								<span class="input-group-text">@</span> <input type="text"
-									class="form-control" id="username" placeholder="Username"
-									required>
-								<div class="invalid-feedback">Your username is required.</div>
+								<input type="text" name="order_receiver" maxlength="20" required><br />
 							</div>
-						</div>
-
-						<div class="col-12">
-							<label for="email" class="form-label">Email <span
-								class="text-muted">(Optional)</span></label> <input type="email"
-								class="form-control" id="email" placeholder="you@example.com">
-							<div class="invalid-feedback">Please enter a valid email
-								address for shipping updates.</div>
-						</div>
-						<br>
-						<br>
-						<hr class="my-4">
-						<h4 class="mb-3">배송 정보 등록</h4>
-						<div class="col-12">
-							<label for="address" class="form-label">Address</label> <input
-								type="text" class="form-control" id="address"
-								placeholder="1234 Main St" required>
-							<div class="invalid-feedback">Please enter your shipping
-								address.</div>
-						</div>
-
-						<div class="col-12">
-							<label for="address2" class="form-label">Address 2 <span
-								class="text-muted">(Optional)</span></label> <input type="text"
-								class="form-control" id="address2"
-								placeholder="Apartment or suite">
-						</div>
-
-						<div class="col-md-5">
-							<label for="country" class="form-label">Country</label> <select
-								class="form-select" id="country" required>
-								<option value="">Choose...</option>
-								<option>United States</option>
-							</select>
-							<div class="invalid-feedback">Please select a valid
-								country.</div>
-						</div>
-
-						<div class="col-md-4">
-							<label for="state" class="form-label">State</label> <select
-								class="form-select" id="state" required>
-								<option value="">Choose...</option>
-								<option>California</option>
-							</select>
-							<div class="invalid-feedback">Please provide a valid state.
-							</div>
+							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
 
 						<div class="col-md-3">
-							<label for="zip" class="form-label">Zip</label> <input
-								type="text" class="form-control" id="zip" placeholder=""
-								required>
-							<div class="invalid-feedback">Zip code required.</div>
+							<label for="username" class="form-label"> 수령인 연락처</label>
+							<div class="input-group has-validation">
+								<input type="text" name="order_phone" maxlength="20" required><br />
+							</div>
+							<div class="invalid-feedback">필수입력 항목입니다.</div>
+						</div>
+
+						<div class="col-md-3">
+							<label for="username" class="form-label">우편번호 </label>
+							<div class="input-group has-validation">
+								<input id="member_post" maxlength="20" name="order_zipcode"
+									type="text" placeholder="우편번호 찾기" readonly onclick="findAddr()"
+									required> <br>
+							</div>
+							<div class="invalid-feedback">필수입력 항목입니다.</div>
+						</div>
+
+						<div class="col-md-3">
+							<label for="username" class="form-label"> 도로명 주소 </label>
+							<div class="input-group has-validation">
+							<input
+								id="member_addr" maxlength="20" name="order_addr" type="text"
+								placeholder="도로명주소" readonly></div>
+								<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
 					</div>
-				</form>
-				
+					<div class="col-md-3">
+						<label for="username" class="form-label"> 상세 주소</label>
+						 <div class="input-group has-validation">
+						 <input type="text" name="order_addr_d"
+							maxlength="20" required><br /></div>
+							<div class="invalid-feedback">필수입력 항목입니다.</div>
+					</div>
+					<div class="col-md-3">
+					<label for="zip" class="form-label">Zip</label> <input type="text"
+						class="form-control" id="zip" placeholder="" required>
+					<div class="invalid-feedback">Zip code required.</div>
+				</div>
+			</div>
+			<br /> 
+			<div class="row g-3">
+				</div>
+				<br> <br>
+				<hr class="my-4">
+				<h4 class="mb-3">배송 정보 등록</h4>
+				<div class="col-12">
+					<label for="address" class="form-label">Address</label> <input
+						type="text" class="form-control" id="address"
+						placeholder="1234 Main St" required>
+					<div class="invalid-feedback">Please enter your shipping
+						address.</div>
+				</div>
 
+				<div class="col-12">
+					<label for="address2" class="form-label">Address 2 <span
+						class="text-muted">(Optional)</span></label> <input type="text"
+						class="form-control" id="address2"
+						placeholder="Apartment or suite">
+				</div>
+
+				<div class="col-md-3">
+					<label for="zip" class="form-label">Zip</label> <input type="text"
+						class="form-control" id="zip" placeholder="" required>
+					<div class="invalid-feedback">Zip code required.</div>
+				</div>
+			</div>
+			<br> <br> <input type="submit"
+				class="w-100 btn btn-primary btn-lg" value="결제하기">
+			</form>
+
+		</div>
+	</div>
 
 	<div class="last_block"></div>
-
 </body>
 
 <!-- footer -->

@@ -108,7 +108,7 @@
 		</div>
 		<div class="container">
 			<h3>주문상품 정보</h3>
-			<h4>주문번호 : ${orderInfo.order_id }</h4>
+			<%-- <h4>주문번호 : ${orderInfo.order_id }</h4> --%>
 			<div style="font-weight: bold; font-size: 20px;">
 
 				<table style="width: 90%; padding-top: 3pt;">
@@ -196,8 +196,7 @@
 			<br>결제 및 계좌 안내 시 상호명은 (주)당당몰로 표기되니 참고 부탁드립니다.<br><br> 이용약관 및 개인정보 제3자
 			제공사항에 대해 확인하였으며 결제에 동의합니다.<br><br> 결제대행 서비스 이용약관 <a
 				style="color: gray;" href="https://www.inicis.com/terms">(주)KG이니시스</a><br><br>
-
-			<button   class="w-100 btn btn-primary btn-lg" id="check_module" type="button">결제 하기</button>
+			<button class="w-100 btn btn-primary btn-lg" id="check_module" type="button">결제 하기</button>
 			<br>
 			<script>
 			$("#check_module").click(function() {
@@ -226,7 +225,8 @@
 					if (rsp.success) {
 						var msg = '결제가 완료되었습니다.';
 						msg += '결제 금액 : ' + rsp.paid_amount;
-						// success.submit();
+						//success.submit();
+						document.location.href="pay.do"; //alert창 확인 후 이동할 url 설정
 						// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
 						// 자세한 설명은 구글링으로 보시는게 좋습니다.
 					} else {

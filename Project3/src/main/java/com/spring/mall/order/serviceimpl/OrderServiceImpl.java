@@ -41,8 +41,8 @@ public class OrderServiceImpl implements OrderService {
 
 	//4. 결제창에서 쓰일 최근 주문 정보 가져오기
 	@Override
-	public UserOrderVO getOrder(String user_id) {
-		return orderDAO.getOrder(user_id);
+	public UserOrderVO getOrder(String user_id, String order_id) {
+		return orderDAO.getOrder(user_id,order_id);
 	}
 
 	//5. 결제 완료 후, 결제 테이블로 넘기기

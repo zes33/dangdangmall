@@ -513,21 +513,21 @@ a:hover {
 			<h1>장바구니 목록</h1>
 			<br><br>
 			<%-- ${map }
-			<h1>${map.list[1] }</h1> --%>
+			<h1>${map.list[1] }</h1>  --%>
 			<br>
 		</div>
-		<%-- <p>${list}</p>
-		<h1>userVO : ${user }</h1> --%>
+		 <%-- <p>${list}</p>
+		<h1>userVO : ${user }</h1>  --%>
 		<div class="text-center">
-			<c:if test="${empty map}">
+			<c:if test="${empty map.list}">
 				<br />
-		장바구니가 비어있습니다.
+		<h2>장바구니가 비어있습니다.</h2>
 		<br />
 				<br />
 			</c:if>
 		</div>
 
-		<c:if test="${not empty map}">
+		<c:if test="${not empty map.list}">
 			<!--장바구니 목록-->
 			<div style="font-weight: bold; font-size: 20px;">
 

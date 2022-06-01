@@ -1,5 +1,8 @@
 package com.spring.mall.order.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,8 +39,11 @@ public class OrderDAO {
 	}
 	
 	//4. 결제창에서 쓰일 최근 주문 정보 가져오기
-	public UserOrderVO getOrder(String user_id) {
-		return mybatis.selectOne("orderDAO.getOrder", user_id);
+	public UserOrderVO getOrder(String user_id, String order_id) {
+		Map<String, String> orderMap = new HashMap<String, String>();
+		orderMap.put("user_id", user_id);
+		orderMap.put("order_id", order_id);
+		return mybatis.selectOne("orderDAO.getOrder", orderMap);
 	}
 	
 	//5. 주문 완료 후, 결제 테이블로 넘기기 

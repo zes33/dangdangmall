@@ -16,8 +16,10 @@ public interface OrderService {
 	public void cartAllDelete(String user_id);
 	
 	//4. 결제창에서 쓰일 최근 주문 정보 가져오기
-	public UserOrderVO getOrder(String user_id);
+	public UserOrderVO getOrder(String user_id, String order_id);
 	
 	//5. 주문 완료 후, 결제 테이블로 넘기기 
 	public void insertPayment(PaymentVO vo);
+
+//	void insertPayment(PaymentVO vo, String order_id);
 }

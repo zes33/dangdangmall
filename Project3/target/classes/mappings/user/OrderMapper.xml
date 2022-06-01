@@ -58,25 +58,24 @@
 		SELECT *
 		FROM USER_ORDER
 		WHERE USER_ID= #{user_id}
-		AND ROWNUM= 1
+		AND ORDER_ID= #{order_id}
 	</select>
 
 	<!-- 주문 완료 후, 결제 테이블로 넘기기 -->
 	<insert id="insertPayment">
-		INSERT INTO PAYMENT(
-		BUYER_ADDR,
-		BUYER_NAME,
-		BUYER_POSTCODE,
-		BUYER_TEL,
-		IAMPORT_IMP_UID)
-		SELECT ORDER_ADDR ||' '||ORDER_ADDR_D as ADDR,
-		ORDER_RECEIVER,
-		ORDER_ZIPCODE,
-		ORDER_PHONE,
-		ORDER_ID
-		FROM USER_ORDER
-		WHERE USER_ID= #{user_id}
-		AND ROWNUM= 1
+		INSERT INTO PAYMENT p(
+			p.BUYER_ADDR,
+			p.BUYER_NAME,
+			p.BUYER_POSTCODE,
+			p.BUYER_TEL,
+			p.IAMPORT_IMP_UID)
+		SELECT u.ORDER_ADDR ||' '||u.ORDER_ADDR_D as ADDR,
+			u.ORDER_RECEIVER,
+			u.ORDER_ZIPCODE,
+			u.ORDER_PHONE,
+			u.ORDER_ID
+		FROM USER_ORDER u
+			WHERE u.ORDER_ID= #{order_id}
 	</insert>
 
 </mapper>

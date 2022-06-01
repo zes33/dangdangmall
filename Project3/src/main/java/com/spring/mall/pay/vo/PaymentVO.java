@@ -7,18 +7,22 @@ public class PaymentVO {
 	private String buyer_tel;
 	private String iamport_imp_uid;
 	
+	// 결제창이후 insertPayment 용 
+	private String order_id;
+
 	public PaymentVO() {
 		System.out.println(">> PaymentVO() 객체 생성~~");
 	}
 
-	public PaymentVO(String buyer_addr, String buyer_name, int buyer_postcode, String buyer_tel,
-			String iamport_imp_uid) {
+	public PaymentVO(String buyer_addr, String buyer_name, int buyer_postcode, String buyer_tel, String iamport_imp_uid,
+			String order_id) {
 		super();
 		this.buyer_addr = buyer_addr;
 		this.buyer_name = buyer_name;
 		this.buyer_postcode = buyer_postcode;
 		this.buyer_tel = buyer_tel;
 		this.iamport_imp_uid = iamport_imp_uid;
+		this.order_id = order_id;
 	}
 
 	public String getBuyer_addr() {
@@ -61,11 +65,22 @@ public class PaymentVO {
 		this.iamport_imp_uid = iamport_imp_uid;
 	}
 
+	
+	public String getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+
 	@Override
 	public String toString() {
 		return "PaymentVO [buyer_addr=" + buyer_addr + ", buyer_name=" + buyer_name + ", buyer_postcode="
-				+ buyer_postcode + ", buyer_tel=" + buyer_tel + ", iamport_imp_uid=" + iamport_imp_uid + "]";
+				+ buyer_postcode + ", buyer_tel=" + buyer_tel + ", iamport_imp_uid=" + iamport_imp_uid + ", order_id="
+				+ order_id + "]";
 	}
+
 	
-	
+
 }
