@@ -56,14 +56,14 @@
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
 						</c:when>
 						<c:when test="${user.user_state eq 2}">
-							<a class="btn btn-sm btn-outline-secondary" href="admin/admin.do">관리자</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary" href="main.do">고객뷰</a>&nbsp;&nbsp;
+							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/admin/admin.do">관리자</a>&nbsp;&nbsp;
+							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/main.do">고객뷰</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/logout.do">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<a class="right" href="#">${user.user_nickname }님</a><br> &nbsp;&nbsp;&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/logout.do">로그아웃</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary" href="cart/list.do">장바구니</a>&nbsp;&nbsp;
+							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/cart/list.do">장바구니</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
 						</c:otherwise>
