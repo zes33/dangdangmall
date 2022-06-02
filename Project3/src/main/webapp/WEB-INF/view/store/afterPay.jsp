@@ -40,9 +40,12 @@
 		<br><br>
 			<a style="font-size: 20px; font-weight: bold;" type="submit"
 				id="product" class="btn btn-success two_button"
-				href="productList.do"> <font color="black">내 주문 내역 확인하기</font></a> <a
+				href="${pageContext.request.contextPath }/myinfo.do"> <font color="black">내 주문 내역 확인하기</font></a> 
+				
+				
+				<a
 				style="font-size: 20px; font-weight: bold;" type="submit" id="order"
-				class="btn btn-success two_button" href="${pageContext.request.contextPath }/myinfo.do"><font
+				class="btn btn-success two_button" href="${pageContext.request.contextPath }/main.do"><font
 				color="red"> 메인으로 돌아가기 </font></a>
 				<br><br>
 		</div><br>
