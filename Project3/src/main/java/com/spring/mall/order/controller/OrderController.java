@@ -62,13 +62,14 @@ public class OrderController {
 			subNum += (int) (Math.random() * 10);
 		}
 
+		// 주문 테이블로 주문 정보 저장 
 		String order_id = ymd + "-" + subNum;
 		order.setOrder_id(order_id);
 		//order.setOrder_total(order_total);
 		order.setUser_id(user_id);
 		orderService.insertOrder(order);
 
-		// 상세정보 바구니로 저장
+		// 상세 주문 정보 저장
 		orderDetail.setOrder_id(order_id);
 		orderService.insertOrderDetail(orderDetail);
 		session.setAttribute("user", user);
@@ -85,6 +86,10 @@ public class OrderController {
 		UserOrderVO orderInfo = new UserOrderVO();
 		orderInfo =  orderService.getOrder(user_id,order_id);
 		session.setAttribute("orderInfo", orderInfo);
+		
+		
+		// getUserAddr 회원가입시 작성한 주소 가져오기 
+		
 		
 		// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 		pvo.setOrder_id(order_id);

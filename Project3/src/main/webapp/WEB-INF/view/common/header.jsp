@@ -69,7 +69,7 @@
 		<div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
 			
 					<a class="blog-header-logo text-dark" href="${pageContext.request.contextPath }/main.do">
-					<img alt="로고" src="${pageContext.request.contextPath }/img/logo.png" width="500" height="200" /></a>
+					<img alt="로고" src="${pageContext.request.contextPath }/img/logo1.png" width="500" height="200" /></a>
 		</div>
 	</div>
 			<!-- <ul class="nav nav-pills justify-content-center">

@@ -91,8 +91,8 @@ input {
 			<!-- <h1>주문 페이지</h1> -->
 			
 		
-		<%-- <h1>user</h1> ${user }
-		<h1>map</h1> ${map }
+		<h1>user</h1> ${user }
+		<%-- <h1>map</h1> ${map }
 		<h2>${map.allSum}</h2>
 		<hr> --%>
 		<!--Content-->
