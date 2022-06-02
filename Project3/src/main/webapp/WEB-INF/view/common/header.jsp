@@ -37,7 +37,7 @@
 			<div
 				class="row flex-nowrap justify-content-between align-items-center">
 				<div class="col-1 text-center"></div>
-				<div class="col-4 d-flex justify-content-end align-items-center">
+				<div class="col-8 d-flex justify-content-end align-items-center">
 				
 					<a class="link-secondary" href="#" aria-label="Search"> <svg
 							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -53,6 +53,10 @@
 						<c:when test="${empty user }">
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/join.do">회원가입</a>
+						</c:when>
+						<c:when test="${user.user_grade eq 2}">
+							<a class="btn btn-sm btn-outline-secondary" href="main.do">고객뷰</a>
+							<a class="btn btn-sm btn-outline-secondary" href="#">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<a class="right" href="#">${user.user_nickname }님</a><br> &nbsp;&nbsp;&nbsp;&nbsp;
