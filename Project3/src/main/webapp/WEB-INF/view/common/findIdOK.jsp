@@ -51,8 +51,8 @@
 		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><strong>${getUser.user_id}</strong></div>
 		  <hr>
 		  <div class="text-center">
-			<button type="button" class="btn btn-outline-secondary">아이디 목록 다시보기</button>
 		  	<button type="button" class="btn btn-outline-success">로그인 하러가기</button>
+			<button type="button" class="btn btn-outline-secondary">비밀번호 찾기</button>
 		  </div>
 		  </font></font></div>
 		</div>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디찾기</title>
 <!-- 헤더 관련 링크는 아래 4개 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -77,6 +77,7 @@
 		  </div>
 		  </font></font></div>
 		</div>
+		<p>비밀번호가 기억나지 않는다면? <a href="#">비밀번호 찾기 바로가기</a></p>
 		</div>
 	
 	
