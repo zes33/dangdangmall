@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <!-- Bootstrap core CSS -->
@@ -87,11 +86,12 @@ input {
 	</header>
 	<div class="container">
 		<!--제목-->
-		
-			<!-- <h1>주문 페이지</h1> -->
-			
-		
-		<h1>user</h1> ${user }
+
+		<!-- <h1>주문 페이지</h1> -->
+
+
+		<h1>user</h1>
+		${user }
 		<%-- <h1>map</h1> ${map }
 		<h2>${map.allSum}</h2>
 		<hr> --%>
@@ -102,17 +102,19 @@ input {
 				<form action="order.do" method="post">
 					<br />
 					<div class="container-fluid text-center" style="margin-top: 10pt">
-					<h1>주문 정보 입력</h1>
-					<img src="../img/fast.png" class="img-title" alt="no title"
-				width="200" /></div>
+						<h1>주문 정보 입력</h1>
+						<img src="../img/fast.png" class="img-title" alt="no title"
+							width="200" />
+					</div>
 					<br> <br>
 					<div class="col-md-3">
 						<div class="col-md-3">
 							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
 								<input type="text" name="order_receiver" maxlength="20"
-									placeholder="수령인 이름" required><br /> 
-									<input type="hidden" id="order_total" name="order_total" value="${map.allSum}">
+									placeholder="수령인 이름" required><br /> <input
+									type="hidden" id="order_total" name="order_total"
+									value="${map.allSum}">
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
@@ -120,8 +122,8 @@ input {
 						<div class="col-md-3">
 							<label for="username" class="form-label"> 수령인 연락처 </label>
 							<div class="input-group has-validation">
-								<input type="text" name="order_phone" maxlength="40"
-									placeholder="수령인 연락처" required><br />
+								<input type="text" name="order_phone" placeholder="핸드폰번호 입력"
+									oninput="orderPhone(this)" maxlength="13" required /><br />
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
@@ -146,8 +148,7 @@ input {
 						</div>
 					</div>
 					<div class="col-md-3">
-					<br>
-						<label for="username" class="form-label"> 상세 주소</label>
+						<br> <label for="username" class="form-label"> 상세 주소</label>
 						<div class="input-group has-validation">
 							<input type="text" name="order_addr_d" maxlength="50"
 								placeholder="상품을 수령받을 상세 주소 입력" required><br />
@@ -161,44 +162,11 @@ input {
 				</form>
 			</div>
 		</div>
-		<!-- <div class="col-md-3">
-					<label for="zip" class="form-label">Zip</label> <input type="text"
-						class="form-control" id="zip" placeholder="" required>
-					<div class="invalid-feedback">Zip code required.</div>
-				</div>
-			</div>
-			<br /> 
-			<div class="row g-3">
-				</div>
-				<br> <br>
-				<hr class="my-4">
-				<h4 class="mb-3">배송 정보 등록</h4>
-				<div class="col-12">
-					<label for="address" class="form-label">Address</label> <input
-						type="text" class="form-control" id="address"
-						placeholder="1234 Main St" required>
-					<div class="invalid-feedback">Please enter your shipping
-						address.</div>
-				</div>
-
-				<div class="col-12">
-					<label for="address2" class="form-label">Address 2 <span
-						class="text-muted">(Optional)</span></label> <input type="text"
-						class="form-control" id="address2"
-						placeholder="Apartment or suite">
-				</div>
-
-				<div class="col-md-3">
-					<label for="zip" class="form-label">Zip</label> <input type="text"
-						class="form-control" id="zip" placeholder="" required>
-					<div class="invalid-feedback">Zip code required.</div>
-				</div>
-			</div> -->
-</div>
+	</div>
 
 
 
-		<div class="last_block"></div>
+	<div class="last_block"></div>
 </body>
 
 <!-- footer -->
@@ -230,6 +198,12 @@ input {
 			}
 		}).open();
 	}
+
+	const orderPhone = (target) => {
+		 target.value = target.value
+		   .replace(/[^0-9]/g, '')
+		  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+		}
 </script>
 </body>
 <script

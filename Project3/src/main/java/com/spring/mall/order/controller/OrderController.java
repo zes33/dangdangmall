@@ -79,6 +79,7 @@ public class OrderController {
 		session.setAttribute("orderInfo", orderInfo);
 
 		// getUserAddr 회원가입시 작성한 주소 가져오기
+		
 
 		// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 		pvo.setOrder_id(order_id);
