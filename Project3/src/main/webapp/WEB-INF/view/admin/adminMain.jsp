@@ -33,7 +33,7 @@
 <body>
    
    <header>
-      <jsp:include page="header.jsp"></jsp:include>
+      <jsp:include page="../common/header.jsp"></jsp:include>
    </header>
    <table id="container">
       <thead>

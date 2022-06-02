@@ -25,7 +25,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	<div id="container">
 	<!-- 검색을 위한 폼 -->
