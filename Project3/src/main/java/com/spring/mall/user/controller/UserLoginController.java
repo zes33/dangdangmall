@@ -46,7 +46,7 @@ public class UserLoginController {
 			return "common/login";
 		}else if(user.getUser_state() == 2) {
 			System.out.println("관리자 로그인 성공~");
-			return "admin/main"; 
+			return "admin/adminMain"; 
 		}else{
 			System.out.println("회원 로그인 성공~");
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
