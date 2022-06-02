@@ -55,7 +55,9 @@ public class CartController {
 		int sumMoney = cartService.sumMoney(user_id); // 장바구니 전체 금액 호출
 		int fee = sumMoney >= 100000 ? 0 : 2500;
 		double discount = 0.05;
-		double allSum = (sumMoney*(1-discount))+fee ;
+		double allSum1 = (sumMoney*(1-discount))+fee ;
+		int allSum = (int)allSum1;
+		
 	        map.put("list", list);                // 장바구니 정보를 map에 저장
 	        map.put("count", list.size());        // 장바구니 상품의 유무
 	        map.put("sumMoney", sumMoney);        // 장바구니 전체 금액
