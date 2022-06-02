@@ -126,6 +126,9 @@
 							maxlength="20" required><br /></div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 					</div>
+					<br> <br> <input type="submit"
+				class="w-100 btn btn-primary btn-lg" value="결제하기">
+			
 					</form>
 					<!-- <div class="col-md-3">
 					<label for="zip" class="form-label">Zip</label> <input type="text"
@@ -160,8 +163,6 @@
 					<div class="invalid-feedback">Zip code required.</div>
 				</div>
 			</div> -->
-			<br> <br> <input type="submit"
-				class="w-100 btn btn-primary btn-lg" value="결제하기">
 			
 
 		</div>
