@@ -111,9 +111,8 @@ input {
 							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
 								<input type="text" name="order_receiver" maxlength="20"
-									placeholder="수령인 이름" required><br /> <input
-									type="hidden" id="order_total" name="order_total"
-									value="${map.allSum}">
+									placeholder="수령인 이름" required><br /> 
+									<input type="hidden" id="order_total" name="order_total" value="${map.allSum}">
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>

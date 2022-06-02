@@ -33,16 +33,15 @@
 
 	<!-- 주문 상세 정보 입력 -->
 	<insert id="insertOrderDetail">
-		INSERT INTO USERORDER_DETAIL(
-		ORDER_DETAIL_ID,
+		INSERT INTO USERORDER_DETAIL(ORDER_DETAIL_ID,
 		USER_ORDER_CNT,
 		ORDER_ID,
-		PRODUCT_ID)
-		SELECT ORDERDETAIL_SEQ.NEXTVAL,
-		cart.CART_PRODUCT_QTY,
-		#{order_id},
-		cart.PRODUCT_ID
+		PRODUCT_ID,
+		USER_ID)
+		SELECT ORDERDETAIL_SEQ.NEXTVAL, cart.CART_PRODUCT_QTY, #{order_id}, cart.PRODUCT_ID,
+		#{user_id}
 		FROM CART
+		
 	</insert>
 
 	<!-- 카트 비우기 -->
@@ -71,27 +70,21 @@
 		p.BUYER_TEL,
 		p.IAMPORT_IMP_UID,
 		p.ALLSUM)
-		SELECT u.ORDER_ADDR ||' '||u.ORDER_ADDR_D as ADDR,
+		SELECT
+		u.ORDER_ADDR ||' '||u.ORDER_ADDR_D as ADDR,
 		u.ORDER_RECEIVER,
 		u.ORDER_ZIPCODE,
 		u.ORDER_PHONE,
 		u.ORDER_ID,
 		u.ORDER_TOTAL
-		FROM USER_ORDER u
+		FROM USER_ORDER
+		u
 		WHERE u.ORDER_ID= #{order_id}
 	</insert>
 
 	<!-- 주문 정보 입력폼, 주문자 주소록 가져오기 -->
-	<!-- <select id="getUserAddr" resultType="com.spring.mall.order.vo.UserVO" >
-		SELECT
-			USER_NAME,
-			USER_EMAIL,
-			USER_GRADE,
-			USER_POINT,
-			USER_ADDR ||' '|| USER_ADDR_D as USER_ADDR,
-			USER_ZIPCODE,
-			USER_PHONE
-			FROM USERS
-		WHERE USER_ID = #{user_id}
-	</select> -->
+	<!-- <select id="getUserAddr" resultType="com.spring.mall.order.vo.UserVO" 
+		> SELECT USER_NAME, USER_EMAIL, USER_GRADE, USER_POINT, USER_ADDR ||' '|| 
+		USER_ADDR_D as USER_ADDR, USER_ZIPCODE, USER_PHONE FROM USERS WHERE USER_ID 
+		= #{user_id} </select> -->
 </mapper>

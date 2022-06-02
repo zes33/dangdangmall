@@ -10,9 +10,10 @@ public class UserOrderVO {
 	private String order_zipcode;
 	private String order_receiver;
 	private String order_phone;
+	private String user_id;
+	
 	private int order_total;
 	private int user_status;
-	private String user_id;
 	
 	public UserOrderVO() {
 		System.out.println(">> UserOrderVO() 객체 생성~~");

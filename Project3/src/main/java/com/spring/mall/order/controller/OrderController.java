@@ -44,12 +44,12 @@ public class OrderController {
 
 	// 1. 주문 정보 입력
 	@RequestMapping("order.do")
-	public String order(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail, PaymentVO pvo)
-			throws Exception {
+	public String order(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail,
+			PaymentVO pvo) throws Exception {
 		UserVO user = (UserVO) session.getAttribute("user");
 		String user_id = user.getUser_id();
 		session.getAttribute("map");
-		//int order_total = (int) session.getAttribute("map.allSum");
+		// int order_total = (int) session.getAttribute("map.allSum");
 		// 주문 정보 저장
 		// 주문 아이디 저장 방식
 		Calendar cal = Calendar.getInstance();
@@ -62,50 +62,54 @@ public class OrderController {
 			subNum += (int) (Math.random() * 10);
 		}
 
-		// 주문 테이블로 주문 정보 저장 
+		// 주문 테이블로 주문 정보 저장
 		String order_id = ymd + "-" + subNum;
 		order.setOrder_id(order_id);
-		//order.setOrder_total(order_total);
+		// order.setOrder_total(order_total);
 		order.setUser_id(user_id);
 		orderService.insertOrder(order);
-
-		// 상세 주문 정보 저장
-		orderDetail.setOrder_id(order_id);
-		orderService.insertOrderDetail(orderDetail);
-		session.setAttribute("user", user);
-
-		// 결제 칸으로 넘어가면 장바구니 정보 삭제
-		orderService.cartAllDelete(user_id);
-		System.out.println("vo : " + order);
 
 		// 결제창에서 쓰일 최근 주문 정보 가져오기
 		Map<String, String> orderMap = new HashMap<String, String>();
 		orderMap.put("user_id", user_id);
 		orderMap.put("order_id", order_id);
-		
+
 		UserOrderVO orderInfo = new UserOrderVO();
-		orderInfo =  orderService.getOrder(user_id,order_id);
+		orderInfo = orderService.getOrder(user_id, order_id);
 		session.setAttribute("orderInfo", orderInfo);
-		
-		
-		// getUserAddr 회원가입시 작성한 주소 가져오기 
-		
-		
+
+		// getUserAddr 회원가입시 작성한 주소 가져오기
+
 		// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 		pvo.setOrder_id(order_id);
 		orderService.insertPayment(pvo);
 		session.setAttribute("payment", pvo);
-		
+
 		return "store/shipping";
 	}
 
 	@RequestMapping("pay.do")
-	public String pay(HttpSession session, Model model)
-			throws Exception {
+	public String pay(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail,
+			PaymentVO pvo) throws Exception {
 		session.getAttribute("payment");
 		session.getAttribute("orderInfo");
+		UserVO user = (UserVO) session.getAttribute("user");
+		String user_id = user.getUser_id();
+		
+		// 상세 주문 정보 저장
+		UserOrderVO orderInfo =  (UserOrderVO) session.getAttribute("orderInfo");
+		String order_id = orderInfo.getOrder_id();
+		
+		orderDetail.setOrder_id(order_id);
+		orderDetail.setUser_id(user_id);
+		orderService.insertOrderDetail(orderDetail);
+		
+		
+		// 결제 칸으로 넘어가면 장바구니 정보 삭제
+		orderService.cartAllDelete(user_id);
+		System.out.println("vo : " + order);
+		
 		return "store/afterPay";
 	}
-
 
 }

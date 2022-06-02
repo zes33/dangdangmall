@@ -5,17 +5,19 @@ public class UserOrderDetailVO {
 	private int user_order_cnt;
 	private String order_id;
 	private int product_id;
-	
+	private String user_id;
+
 	public UserOrderDetailVO() {
 		System.out.println(">> UserOrderDetailVO() 객체 생성~~");
 	}
 
-	public UserOrderDetailVO(int order_detail_id, int user_order_cnt, String order_id, int product_id) {
+	public UserOrderDetailVO(int order_detail_id, int user_order_cnt, String order_id, int product_id, String user_id) {
 		super();
 		this.order_detail_id = order_detail_id;
 		this.user_order_cnt = user_order_cnt;
 		this.order_id = order_id;
 		this.product_id = product_id;
+		this.user_id = user_id;
 	}
 
 	public int getOrder_detail_id() {
@@ -50,11 +52,18 @@ public class UserOrderDetailVO {
 		this.product_id = product_id;
 	}
 
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	@Override
 	public String toString() {
 		return "UserOrderDetailVO [order_detail_id=" + order_detail_id + ", user_order_cnt=" + user_order_cnt
-				+ ", order_id=" + order_id + ", product_id=" + product_id + "]";
+				+ ", order_id=" + order_id + ", product_id=" + product_id + ", user_id=" + user_id + "]";
 	}
-	
-	
+
 }
