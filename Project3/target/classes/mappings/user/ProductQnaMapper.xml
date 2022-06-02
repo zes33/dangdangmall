@@ -5,6 +5,17 @@
   
 <mapper namespace="productQnaDAO">
 	
+	<!-- 상품문의 클릭시 문의+답변 조회 -->
+	<select id="viewPrdQnaSet" parameterType="com.spring.mall.product.vo.ProductQnaNickVO"
+						resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT QNA.*, PRODUCT.PRODUCT_NAME 
+		FROM PRODUCT_QNA QNA, PRODUCT, USERS
+		WHERE QNA.QNA_GROUP = #{qna_group}
+		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		AND QNA.USER_ID = USERS.USER_ID
+		ORDER BY QNA.QNA_GROUP, QNA.QNA_GROUP_NUMBER
+	</select>
+	
 	<!-- 상품문의 답변 입력(관리자) -->
 	<insert id="insertAdminProductQna" parameterType="map">
 		INSERT INTO PRODUCT_QNA (QNA_ID, QNA_CONTENT, PRODUCT_ID, USER_ID, Q_OR_A, 
@@ -16,7 +27,7 @@
 	)
 	</insert>
 	
-	<!-- 답변상태 1로 변경 -->
+	<!-- 문의 답변 완료 : 답변상태 1로 변경 -->
 	<update id="updateQnaState" parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
 		UPDATE PRODUCT_QNA SET
 		PRODUCT_QNA_STATE = 1

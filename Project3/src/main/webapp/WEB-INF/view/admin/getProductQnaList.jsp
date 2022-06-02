@@ -17,6 +17,17 @@
 	.center { text-align: center; }
 	
 	.border-none, .border-none td { border: none; }
+	
+	.colorBtn {
+		background-color: white;
+		border-color: #ECECEC;
+		border-radius: 10%;
+	}
+	
+	.qnaTitle {
+		text-decoration: none;
+		color: black;
+	}
 </style>
 <script>
 function goInsertQna(qna_id){
@@ -34,6 +45,8 @@ function goInsertQna(qna_id){
     document.body.appendChild(f);
     f.submit();
 }
+
+
 </script>
 </head>
 
@@ -94,7 +107,12 @@ function goInsertQna(qna_id){
 				<td class="center">${productQna.qna_id }</td>
 				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.product_name }</span></td>
 				<td class="center">${productQna.product_id }</td>
-				<td class="center">${productQna.qna_content }</td>
+				<!-- 누르면 문의(+답변) 모두 보이는 페이지로 이동 -->
+				<td class="center">
+					<a class="qnaTitle" href="adminViewPrdQnaOne.do?qna_group=${productQna.qna_group }">
+					${productQna.qna_content }</a>
+				</td>
+				
 				<td class="center">${productQna.user_id }</td>
 				<td class="center">${productQna.product_qna_date }</td>
 				<c:choose>
@@ -106,8 +124,16 @@ function goInsertQna(qna_id){
 				</c:otherwise>
 				</c:choose>
 				<td class="center">
+				<c:choose>
+				<c:when test="${0 eq productQna.product_qna_state }">
 					<button type="button" onclick="goInsertQna(${productQna.qna_id})"
 					class="btn btn-outline-secondary btn-sm">답변하기</button>
+				</c:when>
+				<c:otherwise>
+					<button type="disable" onclick="goInsertQna(${productQna.qna_id})"
+					class="colorBtn btn-outline-secondary">추가답변</button>
+				</c:otherwise>
+				</c:choose>
 				</td>
 			</tr>
 		</c:otherwise>

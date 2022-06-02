@@ -6,6 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>상품문의 답변하기</title>
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+   crossorigin="anonymous">
+
+<link rel="canonical"
+   href="https://getbootstrap.kr/docs/5.1/examples/album/">
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+   crossorigin="anonymous">
+<link href="common/styles.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -13,7 +27,7 @@
 </header>
 
 	<div>
-	<form action="SubmitAdminProductQna.do" method="post">
+	<form action="${pageContext.request.contextPath }/submitAdminProductQna.do" method="post">
 		<table>
 			<tr>
 				<th>작성자</th>
@@ -46,7 +60,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="button" value="등록" >
+		<input type="submit" value="등록" >
 		<input type="hidden" name="qna_id" value="${productQna.qna_id  }">
 		</form>
 	</div>

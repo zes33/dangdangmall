@@ -17,6 +17,12 @@ public class ProductQnaDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 상품문의 + 답변 한 세트 조회
+	public List<ProductQnaNickVO> viewPrdQnaSet(ProductQnaNickVO vo) {
+		System.out.println("ProductQnaDAO.viewPrdQnaOne() 실행");
+		return mybatis.selectList("productQnaDAO.viewPrdQnaSet",vo);
+	}
+	
 	// 상품문의 답변 입력
 	public void insertAdminProductQna(String qna_content, String product_id,
 										String user_id, String qna_group) {
@@ -47,11 +53,13 @@ public class ProductQnaDAO {
 		return mybatis.selectList("productQnaDAO.getProductQnaListAdmin");
 	}
 	
+	// 상품별 문의 목록(고객)
 	public List<ProductQnaNickVO> qnaListByProduct(int product_id) {
 		System.out.println("ProductQnaDAO.qnaListByProduct() 실행");
 		return mybatis.selectList("productQnaDAO.qnaNickByProduct",product_id);
 	}
 	
+	// 상품문의 등록(고객)
 	public void insertProductQna(ProductQnaVO vo) {
 		System.out.println("ProductQnaDAO.insertProductQna() 실행");
 		mybatis.insert("productQnaDAO.insertProductQna", vo);

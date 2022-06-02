@@ -50,6 +50,11 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 		productQnaDAO.insertAdminProductQna(qna_content, product_id, user_id, qna_group);
 	}
 
+	@Override
+	public List<ProductQnaNickVO> viewPrdQnaSet(ProductQnaNickVO vo) {
+		return productQnaDAO.viewPrdQnaSet(vo);
+	}
+
 
 	
 	

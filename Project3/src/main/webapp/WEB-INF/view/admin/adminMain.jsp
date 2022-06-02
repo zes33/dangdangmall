@@ -64,7 +64,7 @@
          </tr>
          <tr>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 삭제</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='productQna/adminProductQnaList.do'">상품 문의 조회</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
             <td></td>
             <td></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">환불 요청 목록</button></td>
