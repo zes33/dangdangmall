@@ -75,19 +75,28 @@
 		text-align: center;
 	}
 	
-#container { width: 800px; margin: auto;}
+/*  #container { width: 800px; margin: auto;}
    table { border-collapse: collapse; }
    table, th, td {
       border: 1px solid black;
       margin: 0 auto;
       padding-bottom: 10px;
-   }
+   } 
    .center { text-align: center; }
    .border-none, .border-none td { border: none; }
-	
+ */
 	b > a {
 		text-decoration: none;
 		color: black;
+	}
+	
+	.wru {
+		/* background-color: aqua; */
+		padding-top: 30px;
+	}
+	.card {
+		margin-bottom: 12px;
+		padding-top: 10px;
 	}
 </style>
 </head>
@@ -147,32 +156,32 @@
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
-	        <div class="col-md-9">
+	        <div class="col-md-10 wru">
 	        <c:forEach var="orderList" items="${orderList }">
 	          <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><strong>${orderList.product_name }</strong></font></font></h3>
-          <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>${orderList.product_price }원 | ${orderList.order_date } 주문</span></font></font></h5>
-          <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></p>
-          <br><br>
-          <div>
-          		<c:choose>
-          		<c:when test="${orderList.user_status == 1 }"><strong>결제완료</strong></c:when>
-          		<c:when test="${orderList.user_status == 2 }"><strong>배송중</strong></c:when>
-          		<c:otherwise><strong>배송완료</strong></c:otherwise>
-          		</c:choose>
-         </div>
-         <div><small class="text-muted text-black-50">결제가 완료되었습니다. 이용해주셔서 감사합니다.</small></div><br>
-        </div>
-           <span class="position-absolute top-0 end-0">
-              <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
-              <br><br>
-            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">환불 신청</button></div><br>
-            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">리뷰 작성</button></div>
-         </span>
-      </div>
-   </div>
+			      <div class="card">
+			        <div class="card-body">
+			          <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><strong>${orderList.product_name }</strong></font></font></h3>
+			          <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>${orderList.product_price }원 | ${orderList.order_date } 주문</span></font></font></h5>
+			          <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></p>
+			          <br><br>
+			          <div>
+			          		<c:choose>
+			          		<c:when test="${orderList.user_status == 1 }"><strong>결제완료</strong></c:when>
+			          		<c:when test="${orderList.user_status == 2 }"><strong>배송중</strong></c:when>
+			          		<c:otherwise><strong>배송완료</strong></c:otherwise>
+			          		</c:choose>
+			         </div>
+			         <div><small class="text-muted text-black-50">결제가 완료되었습니다. 이용해주셔서 감사합니다.</small></div><br>
+			        </div>
+			           <span class="position-absolute top-0 end-0">
+			              <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
+			              <br><br>
+			            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">환불 신청</button></div><br>
+			            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">리뷰 작성</button></div>
+			         </span>
+			      </div>
+			   </div>
 				</c:forEach>
 			</div>
 	    </div>
