@@ -116,7 +116,8 @@ th {
 	</div>
 	<div class="col-sm-11 row btnZone">
 		<div class="col-sm-6">
-			<button type="button" class="btn btn-outline-secondary">목록</button>
+			<button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'"
+			type="button" class="btn btn-outline-secondary">목록</button>
 		</div>
         <div class="col-sm-6 rightBtn">
         	<div class="plzRight">
