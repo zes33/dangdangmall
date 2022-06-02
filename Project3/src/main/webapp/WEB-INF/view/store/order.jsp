@@ -43,6 +43,28 @@
 		font-size: 3.5rem;
 	}
 }
+
+label {
+	display: inline-block;
+	width: 120px;
+}
+
+input {
+	width: 800px;
+	padding: 10px 20px;
+	margin: 10px 0;
+	box-sizing: border-box;
+	border: none;
+	color: #0A6EFF;
+}
+
+#body-content {
+	background-color: #F3F3F3;
+	margin-top: 100px;
+	padding-bottom: 170px; /* footer의 높이 */
+	padding-left: 300px;
+	padding-right: 300px;
+}
 </style>
 
 
@@ -65,41 +87,42 @@
 	</header>
 	<div class="container">
 		<!--제목-->
-		<div class="container-fluid text-center" style="margin-top: 15pt">
-			<h1>주문 페이지</h1>
-			<img src="../img/fast.png" class="img-title" alt="no title"
-				width="100" />
-		</div>
-		<h1>user</h1>
-		${user }
-
-		<h1>map</h1>
-		${map }
 		
-		<h2>${map.allSum} </h2>
-		<hr>
+			<!-- <h1>주문 페이지</h1> -->
+			
+		
+		<%-- <h1>user</h1> ${user }
+		<h1>map</h1> ${map }
+		<h2>${map.allSum}</h2>
+		<hr> --%>
 		<!--Content-->
 		<div id="body-wrapper">
 			<div id="body-content" class="container">
 				<br /></br>
 				<form action="order.do" method="post">
-				<br />
-					<h3>주문 정보 입력</h3>
+					<br />
+					<div class="container-fluid text-center" style="margin-top: 10pt">
+					<h1>주문 정보 입력</h1>
+					<img src="../img/fast.png" class="img-title" alt="no title"
+				width="200" /></div>
 					<br> <br>
 					<div class="col-md-3">
 						<div class="col-md-3">
 							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
-								<input type="text" name="order_receiver" maxlength="20" required><br />
-								<input type="hidden" id="order_total" name="order_total" value="${map.allSum}">
+								<input type="text" name="order_receiver" maxlength="20"
+									placeholder="수령인 이름" required><br /> <input
+									type="hidden" id="order_total" name="order_total"
+									value="${map.allSum}">
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
 
 						<div class="col-md-3">
-							<label for="username" class="form-label"> 수령인 연락처</label>
+							<label for="username" class="form-label"> 수령인 연락처 </label>
 							<div class="input-group has-validation">
-								<input type="text" name="order_phone" maxlength="20" required><br />
+								<input type="text" name="order_phone" maxlength="40"
+									placeholder="수령인 연락처" required><br />
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
@@ -117,24 +140,29 @@
 						<div class="col-md-3">
 							<label for="username" class="form-label"> 도로명 주소 </label>
 							<div class="input-group has-validation">
-							<input
-								id="member_addr" maxlength="20" name="order_addr" type="text"
-								placeholder="도로명주소" readonly></div>
-								<div class="invalid-feedback">필수입력 항목입니다.</div>
+								<input id="member_addr" maxlength="20" name="order_addr"
+									type="text" placeholder="도로명주소" readonly>
+							</div>
+							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
 					</div>
 					<div class="col-md-3">
+					<br>
 						<label for="username" class="form-label"> 상세 주소</label>
-						 <div class="input-group has-validation">
-						 <input type="text" name="order_addr_d"
-							maxlength="20" required><br /></div>
-							<div class="invalid-feedback">필수입력 항목입니다.</div>
+						<div class="input-group has-validation">
+							<input type="text" name="order_addr_d" maxlength="50"
+								placeholder="상품을 수령받을 상세 주소 입력" required><br />
+						</div>
+						<div class="invalid-feedback">필수입력 항목입니다.</div>
 					</div>
+
 					<br> <br> <input type="submit"
-				class="w-100 btn btn-primary btn-lg" value="결제 하러가기 ">
-			
-					</form>
-					<!-- <div class="col-md-3">
+						class="w-100 btn btn-primary btn-lg" value="결제 하러가기 ">
+
+				</form>
+			</div>
+		</div>
+		<!-- <div class="col-md-3">
 					<label for="zip" class="form-label">Zip</label> <input type="text"
 						class="form-control" id="zip" placeholder="" required>
 					<div class="invalid-feedback">Zip code required.</div>
@@ -167,12 +195,11 @@
 					<div class="invalid-feedback">Zip code required.</div>
 				</div>
 			</div> -->
-			
+</div>
 
-		</div>
-	</div>
 
-	<div class="last_block"></div>
+
+		<div class="last_block"></div>
 </body>
 
 <!-- footer -->
