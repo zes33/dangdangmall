@@ -49,7 +49,7 @@ public class OrderController {
 		UserVO user = (UserVO) session.getAttribute("user");
 		String user_id = user.getUser_id();
 		session.getAttribute("map");
-
+		//int order_total = (int) session.getAttribute("map.allSum");
 		// 주문 정보 저장
 		// 주문 아이디 저장 방식
 		Calendar cal = Calendar.getInstance();
@@ -64,6 +64,7 @@ public class OrderController {
 
 		String order_id = ymd + "-" + subNum;
 		order.setOrder_id(order_id);
+		//order.setOrder_total(order_total);
 		order.setUser_id(user_id);
 		orderService.insertOrder(order);
 

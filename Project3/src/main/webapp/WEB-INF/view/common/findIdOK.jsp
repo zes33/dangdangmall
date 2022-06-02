@@ -43,20 +43,20 @@
 	<!-- header -->
 <header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
-</header>
-	<div id="body-wrapper">
-		<div id="body-content" class="container">
-			<div class="card o-hidden border-0 shadow-lg my-5">
-				<div class="jumbotron">
-					<h2>회원님의 아이디는</h2>
-					<br /> <h1>${getUser.user_id}</h1><br />
-					<h2>입니다</h2>
-					<button type="button" class="btn btn-sm btn-outline-secondary"
-						onclick="location.href='/member/loginView'">로그인페이지</button>
-					<button type="button" class="btn btn-sm btn-outline-secondary"
-						onclick="location.href='/board/list'">메인페이지</button>
-				</div>
-			</div>
+</header>	
+			<div class="container">
+			<a href="#"><img src="./img/아이디찾기.png" alt="아이디찾기로고" width="450"></a>
+			<div><strong>아이디 찾기</strong>가 완료되었습니다</div><br>
+		<div class="card border-success mb-3" style="max-width: 30rem; max-width: 600px;">
+		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><strong>${getUser.user_id}</strong></div>
+		  <hr>
+		  <div class="text-center">
+			<button type="button" class="btn btn-outline-secondary">아이디 목록 다시보기</button>
+		  	<button type="button" class="btn btn-outline-success">로그인 하러가기</button>
+		  </div>
+		  </font></font></div>
+		</div>
+		</div>
 			<!-- footer -->
 			<footer>
 				<jsp:include page="../common/footer.jsp"></jsp:include>

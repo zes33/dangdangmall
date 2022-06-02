@@ -75,12 +75,15 @@
 
 		<h1>map</h1>
 		${map }
+		
+		<h2>${map.allSum} </h2>
 		<hr>
 		<!--Content-->
 		<div id="body-wrapper">
 			<div id="body-content" class="container">
 				<br /></br>
 				<form action="order.do" method="post">
+				<br />
 					<h3>주문 정보 입력</h3>
 					<br> <br>
 					<div class="col-md-3">
@@ -88,6 +91,7 @@
 							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
 								<input type="text" name="order_receiver" maxlength="20" required><br />
+								<input type="hidden" id="order_total" name="order_total" value="${map.allSum}">
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>

@@ -68,12 +68,14 @@
 			p.BUYER_NAME,
 			p.BUYER_POSTCODE,
 			p.BUYER_TEL,
-			p.IAMPORT_IMP_UID)
+			p.IAMPORT_IMP_UID,
+			p.ALLSUM)
 		SELECT u.ORDER_ADDR ||' '||u.ORDER_ADDR_D as ADDR,
 			u.ORDER_RECEIVER,
 			u.ORDER_ZIPCODE,
 			u.ORDER_PHONE,
-			u.ORDER_ID
+			u.ORDER_ID,
+			u.ORDER_TOTAL
 		FROM USER_ORDER u
 			WHERE u.ORDER_ID= #{order_id}
 	</insert>

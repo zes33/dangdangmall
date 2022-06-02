@@ -43,7 +43,8 @@ public class AdminController {
 		return "admin/productList";
 	}
 	
-	// 상품문의 답변 작성 페이지 이동(qna컨트롤러에서 됐었는데 왜 다시)
+	
+	// 상품문의 답변 작성 페이지 이동(qna컨트롤러에서 됐었는데 왜 다시)------------------------
 	@RequestMapping("/adminInsertProductQna.do")
 	public String adminInsertProductQna(ProductQnaNickVO vo, Model model) {
 		System.out.println("adminInsertProductQna() 실행");
