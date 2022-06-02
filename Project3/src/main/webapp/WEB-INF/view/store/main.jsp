@@ -93,6 +93,10 @@ strike {
 	font-weight: 700;
 }
 
+.cat {
+	margin-bottom: 15px;
+}
+
 </style>
 </head>
 <body>
@@ -101,7 +105,6 @@ strike {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
 	<main>
-	\${user } : ${user }
 		<div>
 			<a href="order/orderView.do">주문 입력 (임시) </a><br>
 			<a href="admin/admin.do">관리자 메인페이지(임시)</a><br>
@@ -110,14 +113,17 @@ strike {
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
 			<div class="container" >
-
-				<a class="categoryName" href="paging.do?prd_c=1">식품   &raquo;가격스타일 뭐가 갠춘? -은송</a><br>
+			
+				<div class="cat">
+				<a class="categoryName" href="paging.do?prd_c=1">식품  &gt;</a><br>
+				</div>
+				
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="food" items="${foodList }" begin="0" end="3">
 					<div class="col" style="cursor: pointer;" onclick="productDetailView(${food.product_id})">
 						<div class="card shadow-sm">
-							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
+							<img src="${pageContext.request.contextPath }/img/셀러드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
 							<div class="card-body">
 									<p class="card-text">${food.product_name }</p>
@@ -125,24 +131,23 @@ strike {
 									<div>
 										<c:choose>
 										<c:when test="${0 eq food.product_discount }">
-											<span class="cost">
+											<span class="testcost"><!-- 원가 -->
 											<fmt:formatNumber value="${food.product_price }" pattern="#,###" />
 											</span>
 											<span class="won">원</span>
 										</c:when>
 										<c:otherwise>
-											<span class="discountInfo">할인혜택가</span>
+											<span class="testdcPrice"><!-- 할인가 -->
+												<fmt:formatNumber value="${food.product_price * (1- food.product_discount) }" pattern="#,###" />
+											</span>
+											<span class="won">원</span>
 											<span>
-												<strike>
+												<strike class="testPct" >
 													<fmt:formatNumber value="${food.product_price }" pattern="#,###" />원
 												</strike>
 											</span>
-											<br>
-											<span class="discountPct">
+											<span class="testdiscountPct">
 												<fmt:formatNumber value="${food.product_discount * 100}" pattern="#,###" />%
-											</span>
-											<span class="discountCost">
-												<fmt:formatNumber value="${food.product_price * (1- food.product_discount) }" pattern="#,###" />원
 											</span>
 										</c:otherwise>
 										</c:choose>
@@ -155,13 +160,15 @@ strike {
 				</c:forEach>
 				</div>
 				<br><br><br>
-				<a class="categoryName" href="paging.do?prd_c=2">운동   &gt;</a><br>
+				<div class="cat">
+					<a class="categoryName" href="paging.do?prd_c=2">운동   &gt;</a><br>
+				</div>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="exercise" items="${exerciseList }" begin="0" end="3">
 					<div class="col" style="cursor: pointer;" onclick="productDetailView(${exercise.product_id})">
 						<div class="card shadow-sm">
-							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
+							<img src="${pageContext.request.contextPath }/img/아령세트.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
 							<div class="card-body">
 									<p class="card-text">${exercise.product_name }</p>

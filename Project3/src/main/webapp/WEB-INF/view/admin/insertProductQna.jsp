@@ -25,8 +25,32 @@
 <header>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
+	
+	<div class="col-sm-9">
+		<table class="col-sm-9">
+			<tr>
+				<th>작성자</th>
+				<td>qq</td>
+				<th>작성일</th>
+				<td>2022-06-03</td>
+			</tr>
+			<tr>
+				<th>상품명</th>
+				<td>콩고기</td>
+				<th>상품번호</th>
+				<td>37</td>
+			</tr>
+			<tr>
+				<td class="qnaCon" colspan="4">
+					<div class="qnaConBaby">[상품문의]</div>
+					<div class="qnaConBaby fat">언제나 맛있나요?</div>
+				</td>
+			</tr>
+			
+		</table>
+	</div>
 
-	<div>
+	<%-- <div>
 	<form action="${pageContext.request.contextPath }/submitAdminProductQna.do" method="post">
 		<table>
 			<tr>
@@ -64,7 +88,7 @@
 		<input type="hidden" name="qna_id" value="${productQna.qna_id  }">
 		</form>
 	</div>
-
+ --%>
 
 
 

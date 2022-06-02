@@ -52,7 +52,7 @@
 					<c:choose>
 						<c:when test="${empty user }">
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/join.do">회원가입</a>
+							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/join.do">회원가입</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
 						</c:when>
 						<c:when test="${user.user_grade eq 2}">
@@ -63,7 +63,7 @@
 							<a class="right" href="#">${user.user_nickname }님</a><br> &nbsp;&nbsp;&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/logout.do">로그아웃</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="cart/list.do">장바구니</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>
+							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
 						</c:otherwise>
 					</c:choose>
@@ -107,6 +107,10 @@
                             display: flex;
                         }
                         </style>
+                        <div class="col-sm-8 navCenter">
+                        <style>
+                        .navCenter { margin: auto;}
+                        </style>
                         <ul class="css-zjik7 eth8ztg3">
                             <style data-emotion="css 1a76w4f">
                             .css-1a76w4f {
@@ -120,46 +124,71 @@
                             .css-1a76w4f:hover .eth8ztg1 {
                                 display: block;
                             }
+                            ul {
+	                          	list-style: none;
+	                        }
+	                            
                             </style>
                             <li class="css-1a76w4f eth8ztg0">
                                 <style data-emotion="css 3bho95">
                                 .css-3bho95 {
                                     border-bottom: 4px solid transparent;
                                     padding: 6px 0;
-                                    font-size: 16px;
+                                    font-size: 26px;
                                     font-weight: 600;
                                     color: #000000;
                                     cursor: pointer;
                                 }
+	                            
 
                                 @media screen and (max-width: 1280px) {
                                     .css-3bho95 {
                                         font-size: 14px;
                                     }
+                                } 
+                                .hi {
+                                	text-decoration: none;
+                                	color: black;
+                                	
+                                	margin-left:10px;
+                                }
+                                a:hover {
+                                	text-decoration: none;
+                                	color: black;
                                 }
                                 </style>
-                                <div class="css-3bho95 eth8ztg2">홈</div>
+                                <div class="css-3bho95 eth8ztg2">
+                                	<a class="hi" href="#">홈</a>
+                                </div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">인기상품</div>
+                                <div class="css-3bho95 eth8ztg2">
+                                	<a class="hi" href="#">신상품</a>
+                                </div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">신상품</div>
+                                <div class="css-3bho95 eth8ztg2">
+                                	<a class="hi" href="paging.do?prd_c=1">식품</a>
+                                </div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">식품</div>
+                                <div class="css-3bho95 eth8ztg2">
+                                	<a class="hi" href="paging.do?prd_c=2">운동</a>
+                                </div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">운동</div>
+                                <div class="css-3bho95 eth8ztg2">
+                                	<a class="hi" href="#">특가</a>
+                                </div>
                             </li>
                             <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">특가</div>
-                            </li>
-                            <li class="css-1a76w4f eth8ztg0">
-                                <div class="css-3bho95 eth8ztg2">새벽배송</div>
+                                <div class="css-3bho95 eth8ztg2">
+                                	<a class="hi" href="#">새벽배송</a>
+                                </div>
                             </li>
                         </ul>
                         
+                        </div>
                            
                     </div>
                 </div>

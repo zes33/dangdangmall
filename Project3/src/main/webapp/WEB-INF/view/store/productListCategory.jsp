@@ -37,6 +37,18 @@ function productDetailView(product_id){
     f.submit();
 }
 </script>
+<style>
+.categoryName {
+	text-decoration: none;
+	color: black;
+	font-weight: 550;
+	font-size: 50px;
+}
+
+.cat {
+	margin-bottom: 15px;
+}
+</style>
 </head>
 <body>
 <!-- header -->
@@ -49,10 +61,12 @@ function productDetailView(product_id){
 			<div class="container" >
 				<c:choose>
 				<c:when test="${1 eq prd_c }">
-					<h1>식품</h1><br>
+				<div class="cat">
+					<p class="categoryName">식품</p>
+				</div>
 				</c:when>
 				<c:otherwise>
-					<h1>운동</h1><br>
+					<p class="categoryName">운동</p>
 				</c:otherwise>
 				</c:choose>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
@@ -60,7 +74,7 @@ function productDetailView(product_id){
 				<c:forEach var="food" items="${viewProduct }">
 					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${food.product_id})">
 						<div class="card shadow-sm">
-							<img src="./img/고무밴드.jpg" class="bd-placeholder-img card-img-top" width="100%"
+							<img src="${pageContext.request.contextPath }/img/셀러드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
 							<div class="card-body">
 								<p class="card-text">${food.product_name }</p>
