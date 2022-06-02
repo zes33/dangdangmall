@@ -37,7 +37,7 @@
 			<div
 				class="row flex-nowrap justify-content-between align-items-center">
 				<div class="col-1 text-center"></div>
-				<div class="col-4 d-flex justify-content-end align-items-center">
+				<div class="col-8 d-flex justify-content-end align-items-center">
 				
 					<a class="link-secondary" href="#" aria-label="Search"> <svg
 							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
