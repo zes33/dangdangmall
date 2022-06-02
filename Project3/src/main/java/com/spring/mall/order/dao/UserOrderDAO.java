@@ -30,12 +30,12 @@ public class UserOrderDAO {
 	}
 
 	
-	  //회원정보 조회 시 비밀번호 확인
-	  
-		@PostMapping("/getPW.do")
-		public String getPW(UserVO vo) {
-
-			return mybatis.selectOne("userOrderDAO.userPWCheck", vo);
-		}
+	/*
+	 * //회원정보 조회 시 비밀번호 확인
+	 * 
+	 * @PostMapping("/getPW.do") public String getPW(UserVO vo) {
+	 * 
+	 * return mybatis.selectOne("userOrderDAO.userPWCheck", vo); }
+	 */
 
 }

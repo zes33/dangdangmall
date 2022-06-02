@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.mall.order.service.MyOrderService;
 import com.spring.mall.user.vo.MyInfoVO;
@@ -53,16 +54,16 @@ public class MyOrderController {
 	}
 	
 	@RequestMapping("/pwConfirm.do")
-	public String myPrivate(UserVO vo, Model model, HttpSession session, String pwCheck) {
+	public String myPrivate(HttpSession session, String pwCheck) {
 		System.out.println(">>내 정보 보기");
 		UserVO user = (UserVO) session.getAttribute("user");
+		System.out.println("user : " + user);
 		
-		model.addAttribute("user", user);
-		vo.setUser_pw(pwCheck);
-		
-		String pw = myOrderService.getPW(vo);
-		System.out.println("pw : " + pw);
-		return "user/myPrivateInfo";
+		if(pwCheck.equals(user.getUser_pw())) {
+			return "user/myPrivateInfo";
+		}else {
+			return "common/userConfirm";
+		}
 	}
 
 }

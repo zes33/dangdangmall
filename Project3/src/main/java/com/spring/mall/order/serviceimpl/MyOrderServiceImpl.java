@@ -25,10 +25,10 @@ public class MyOrderServiceImpl implements MyOrderService {
 		return userOrderDAO.getMyOrder(user_id);
 	}
 
-	@Override
-	public String getPW(UserVO vo) {
-		
-		return userOrderDAO.getPW(vo);
-	}
+	/*
+	 * @Override public String getPW(UserVO vo) {
+	 * 
+	 * return userOrderDAO.getPW(vo); }
+	 */
 
 }

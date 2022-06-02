@@ -76,6 +76,9 @@
 		padding-top: 15px;
 	}
 	
+	a {
+		text-decoration: none;
+	}
 	
 </style>
 </head>
@@ -132,15 +135,15 @@
 	    </div>
 	    <div class="row">
 	        <div class="col-md-2 colMan">
-		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">주문내역</a></b></p></div>
-		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myprivateinfo.do">나의 정보</a></b></p></div>
-		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="cart/list.do">장바구니</a></b></p></div>
-		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">상품 문의내역</a></b></p></div>
-		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">기타 문의내역</a></b></p></div>
-		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">후기내역</a></b></p></div>
+		        <div><p><b><a href="${pageContext.request.contextPath }/myinfo.do">주문내역</a></b></p></div>
+		        <div><p><b><a href="${pageContext.request.contextPath }/myprivateinfo.do">나의 정보</a></b></p></div>
+		        <div><p><b><a href="cart/list.do">장바구니</a></b></p></div>
+		        <div><p><b><a href="#">상품 문의내역</a></b></p></div>
+		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
+		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
 	        <div class="col-md-9 wrapper">
-					<h3 class="padding">회원 정보 수정 ${orderList }</h3>
+					<h3 class="padding">회원 정보 수정</h3>
 					<a href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a>
 				<table>
 					<thead>

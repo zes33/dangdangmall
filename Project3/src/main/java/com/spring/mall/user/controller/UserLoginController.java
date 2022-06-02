@@ -79,10 +79,12 @@ public class UserLoginController {
 		return "common/findIdForm";
 	}
 	
-	@PostMapping("/findIdAction.do")
-	public String findIdAction(UserVO vo, Model model) {
+	@RequestMapping("/findIdAction.do")
+	public String findIdAction(UserVO vo, Model model, String user_email) {
 		System.out.println(">>아이디찾기  - findIdView()");
+		vo.setUser_email(user_email);
 		UserVO getUser = userLoginService.gerId(vo);
+		System.out.println("getUser : " + getUser);
 		model.addAttribute("getUser", getUser);
 		
 		return "common/findIdOK";

@@ -7,5 +7,5 @@ import com.spring.mall.user.vo.UserVO;
 
 public interface MyOrderService {
 	List<MyInfoVO> getMyOrder(String user_id);
-	String getPW(UserVO vo);
+	//String getPW(UserVO vo);
 }
