@@ -143,7 +143,7 @@ Bootstrap core CSS
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
-	        <div class="col-md-9 whoru">
+	        <div class="col-md-10 whoru">
 				<h3>여기 본문</h3>
 			</div>
 	    </div>

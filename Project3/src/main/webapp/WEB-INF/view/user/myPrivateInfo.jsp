@@ -144,7 +144,7 @@
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
-	        <div class="col-md-9 wrapper">
+	        <div class="col-md-10 wrapper">
 					<h3 class="padding">회원 정보 수정</h3>
 					<a href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a>
 				<table>
