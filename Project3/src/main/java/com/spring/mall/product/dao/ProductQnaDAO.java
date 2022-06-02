@@ -37,7 +37,7 @@ public class ProductQnaDAO {
 	
 	// 상품문의 1개 조회(상품명, 닉네임)
 	public ProductQnaNickVO getProductQnaNick(ProductQnaNickVO vo) {
-		System.out.println("ProductQnaDAO.getProductQnaByQnaId() 실행");
+		System.out.println("ProductQnaDAO.getProductQnaNick() 실행");
 		return mybatis.selectOne("productQnaDAO.getProductQnaNick", vo);
 	}
 	
