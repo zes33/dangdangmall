@@ -54,7 +54,7 @@ public class CartController {
 		List<CartVO> list = cartService.listCart(user_id); // 장바구니 정보
 		int sumMoney = cartService.sumMoney(user_id); // 장바구니 전체 금액 호출
 		int fee = sumMoney >= 100000 ? 0 : 2500;
-		double discount = 0.05;
+		double discount = 0.1;
 		double allSum1 = (sumMoney*(1-discount))+fee ;
 		int allSum = (int)allSum1;
 		
