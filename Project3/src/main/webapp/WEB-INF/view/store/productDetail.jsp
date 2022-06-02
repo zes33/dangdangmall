@@ -194,7 +194,6 @@ textarea {
 					<%-- <a href="login.do?product_id=${product.product_id }">로그인 하기</a> --%>
 					<form action="login.do">
 					<input type="submit" value="로그인">
-					<input type="hidden" name="product_id" value="${product.product_id }">
 					</form>
 				</c:when>
 				<c:otherwise>

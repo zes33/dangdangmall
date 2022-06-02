@@ -55,9 +55,10 @@
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/join.do">회원가입</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
 						</c:when>
-						<c:when test="${user.user_grade eq 2}">
-							<a class="btn btn-sm btn-outline-secondary" href="main.do">고객뷰</a>
-							<a class="btn btn-sm btn-outline-secondary" href="#">로그아웃</a>
+						<c:when test="${user.user_state eq 2}">
+							<a class="btn btn-sm btn-outline-secondary" href="admin/admin.do">관리자</a>&nbsp;&nbsp;
+							<a class="btn btn-sm btn-outline-secondary" href="main.do">고객뷰</a>&nbsp;&nbsp;
+							<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/logout.do">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<a class="right" href="#">${user.user_nickname }님</a><br> &nbsp;&nbsp;&nbsp;&nbsp;

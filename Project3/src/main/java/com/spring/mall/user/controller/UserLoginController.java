@@ -28,23 +28,16 @@ public class UserLoginController {
 	}
 
 	@RequestMapping("/login.do")
-	public String loginView(ProductVO vo, Model model) {
+	public String loginView(Model model) {
 		System.out.println(">>로그인 화면 이동 - loginView()");
-		System.out.println("vo : " + vo);
-		int what = vo.getProduct_id();
-		if(what != 0) {
-			model.addAttribute("product_id", vo.getProduct_id());
-		} 
+	
 		return "common/login";
 	}
 	
 	@PostMapping("/loginAction.do")
-	public String loginAction(UserVO vo, ProductVO pv, 
-			HttpServletRequest request, RedirectAttributes rdatt) {
+	public String loginAction(UserVO vo,HttpServletRequest request) {
 		System.out.println(">>> 로그인 처리 - loginAction()");
 		System.out.println("vo : " + vo);
-		
-		System.out.println("pv : " + pv);
 		
 		UserVO user = userLoginService.getUser(vo);
 		HttpSession session = request.getSession();
@@ -55,6 +48,8 @@ public class UserLoginController {
 			location = "common/login";
 		}else if(user.getUser_state() == 2) {
 			System.out.println("관리자 로그인 성공~");
+			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
+			session.setAttribute("user_id", user.getUser_id());
 			location = "admin/adminMain"; 
 		}else{
 			System.out.println("회원 로그인 성공~");
@@ -62,10 +57,7 @@ public class UserLoginController {
 			session.setAttribute("user_id", user.getUser_id());
 			System.out.println(session.getId());
 			
-			if(pv.getProduct_id() != 0) {
-				rdatt.addAttribute("product_id", pv.getProduct_id());
-				location = "redirect:/productDetail.do";
-			}
+			location = "redirect:/main.do";
 		}
 		return location;
 	}
@@ -78,7 +70,6 @@ public class UserLoginController {
 		status.setComplete();
 		session.invalidate();
 		
-		//return "store/main";
 		return "redirect:/main.do";
 	}
 	

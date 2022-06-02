@@ -61,7 +61,6 @@
                      name="user_id" maxlength="20"><br/>
 	 비밀번호 <input type="text" class="form-control" placeholder="비밀번호"
                    name="user_pw" maxlength="20"><br/>
-                   <input type="hidden" name="product_id" value="${product_id }">
 				<input type="submit" value="로그인">
 	<table>
 		<tr>
