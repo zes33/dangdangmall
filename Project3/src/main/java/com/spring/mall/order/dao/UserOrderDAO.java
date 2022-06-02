@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.mall.user.vo.MyInfoVO;
+import com.spring.mall.user.vo.UserVO;
 
 @Repository
 public class UserOrderDAO {
@@ -26,5 +27,11 @@ public class UserOrderDAO {
 		System.out.println(">>내 주문내역 보여주기");
 		
 		return mybatis.selectList("userOrderDAO.getMyOrder", user_id);
+	}
+
+	//회원정보 조회 시 비밀번호 확인
+	@PostMapping("/getPW.do")
+	public String getPW(UserVO vo) {
+		return mybatis.selectOne("userOrderDAO.userPWCheck", vo);
 	}
 }

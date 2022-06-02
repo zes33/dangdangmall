@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 정보</title>
+<title>회원 확인</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -53,7 +53,7 @@
 		padding: 0px;
 		/* background-color: orange; */
 	}
-	.colMan > div {
+	.colMan > div{
 		background-color: #E8E8E8; 
 		margin-top: 2px;
 		margin-bottom: 5px;
@@ -65,17 +65,36 @@
 	p {
 		display: table-cell;
 		font-size: 20px;
+		text-align: center;
 		
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		
+		width: 200px;
 	}
 	
 	.padding{
-		padding-top: 15px;
+		padding: 15px;
 	}
 	
+	.font-size{
+		font-size: 15px;
+		padding-left: 300px;
+	}
+	
+	.border{
+		border-style: 1px solid aqua;
+		background-color: #F3F3F3;
+		padding-top: 40px;
+		margin: 40px;
+		text-align: center;
+	}
+
+	.left{
+		margin-left: 400px;
+	}
 	
 </style>
 </head>
@@ -139,23 +158,35 @@
 		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">기타 문의내역</a></b></p></div>
 		        <div><p><b><a class="btn btn-sm btn-outline-secondary" href="#">후기내역</a></b></p></div>
 	        </div>
-	        <div class="col-md-9 wrapper">
-					<h3 class="padding">회원 정보 수정 ${orderList }</h3>
-					<a href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a>
+	        <div class="col-md-9 whoru border">
+				<form clas="center" action="pwConfirm.do" method="post">
+					<h1 class="padding">회원 정보 확인</h1>
+					&nbsp;&nbsp;&nbsp;<strong>${user.user_nickname }님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</strong>
 				<table>
-					<thead>
-						<tr>
-							<th>
-						</tr>
-					</thead>
 					<tbody>
-					
+						<tr>
+							<th class="font-size">아이디 : </th>
+							<td><input type="text" value="${user_id }" readonly></td>
+						</tr>
+						<tr>
+							<th class="font-size">비밀번호 : </th>
+							<td><input name="pwCheck" type="password" placeholder="비밀번호"></td>
+						</tr>
 					</tbody>
 				</table>
+					<input class="left btn btn-sm btn-outline-secondary" type="submit" value="확인">
+				</form>
 			</div>
 	    </div>
-	    <div class="row"></div>
 	</div>
+
+
+
+
+
+
+
+
 <!-- footer -->
 	<footer>
 	<jsp:include page="../common/footer.jsp"></jsp:include>

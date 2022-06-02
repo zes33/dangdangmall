@@ -11,6 +11,7 @@ import com.spring.mall.cart.vo.CartVO;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
+import com.spring.mall.user.vo.UserVO;
 
 
 @Repository
@@ -45,6 +46,11 @@ public class OrderDAO {
 		orderMap.put("order_id", order_id);
 		return mybatis.selectOne("orderDAO.getOrder", orderMap);
 	}
+// 4-1 주문 정보 입력폼, 주문자 주소록 가져오기
+//	public UserVO getUserAddr(String user_id) {
+//		return mybatis.selectOne("orderDAO.getUserAddr", user_id);
+//	}
+	
 	
 	//5. 주문 완료 후, 결제 테이블로 넘기기 
 	public void insertPayment(PaymentVO vo) {

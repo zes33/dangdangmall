@@ -58,26 +58,40 @@
 		SELECT *
 		FROM USER_ORDER
 		WHERE USER_ID= #{user_id}
-		AND ORDER_ID= #{order_id}
+		AND
+		ORDER_ID= #{order_id}
 	</select>
 
 	<!-- 주문 완료 후, 결제 테이블로 넘기기 -->
 	<insert id="insertPayment">
 		INSERT INTO PAYMENT p(
-			p.BUYER_ADDR,
-			p.BUYER_NAME,
-			p.BUYER_POSTCODE,
-			p.BUYER_TEL,
-			p.IAMPORT_IMP_UID,
-			p.ALLSUM)
+		p.BUYER_ADDR,
+		p.BUYER_NAME,
+		p.BUYER_POSTCODE,
+		p.BUYER_TEL,
+		p.IAMPORT_IMP_UID,
+		p.ALLSUM)
 		SELECT u.ORDER_ADDR ||' '||u.ORDER_ADDR_D as ADDR,
-			u.ORDER_RECEIVER,
-			u.ORDER_ZIPCODE,
-			u.ORDER_PHONE,
-			u.ORDER_ID,
-			u.ORDER_TOTAL
+		u.ORDER_RECEIVER,
+		u.ORDER_ZIPCODE,
+		u.ORDER_PHONE,
+		u.ORDER_ID,
+		u.ORDER_TOTAL
 		FROM USER_ORDER u
-			WHERE u.ORDER_ID= #{order_id}
+		WHERE u.ORDER_ID= #{order_id}
 	</insert>
 
+	<!-- 주문 정보 입력폼, 주문자 주소록 가져오기 -->
+	<!-- <select id="getUserAddr" resultType="com.spring.mall.order.vo.UserVO" >
+		SELECT
+			USER_NAME,
+			USER_EMAIL,
+			USER_GRADE,
+			USER_POINT,
+			USER_ADDR ||' '|| USER_ADDR_D as USER_ADDR,
+			USER_ZIPCODE,
+			USER_PHONE
+			FROM USERS
+		WHERE USER_ID = #{user_id}
+	</select> -->
 </mapper>

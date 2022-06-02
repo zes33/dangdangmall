@@ -9,6 +9,7 @@ import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
+import com.spring.mall.user.vo.UserVO;
 
 @Service("OrderService")
 public class OrderServiceImpl implements OrderService {
@@ -44,6 +45,13 @@ public class OrderServiceImpl implements OrderService {
 	public UserOrderVO getOrder(String user_id, String order_id) {
 		return orderDAO.getOrder(user_id,order_id);
 	}
+	
+	// 4-1 주문 정보 입력폼, 주문자 주소록 가져오기
+//	@Override
+//	public UserVO getUserAddr(String user_id) {
+//		return orderDAO.getUserAddr(user_id);
+//	}
+
 
 	//5. 결제 완료 후, 결제 테이블로 넘기기
 	@Override
@@ -51,4 +59,5 @@ public class OrderServiceImpl implements OrderService {
 		orderDAO.insertPayment(vo);
 	}
 
+	
 }

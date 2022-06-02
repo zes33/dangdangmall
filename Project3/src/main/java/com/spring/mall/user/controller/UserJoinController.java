@@ -33,9 +33,12 @@ public class UserJoinController {
 	}
 	
 	@RequestMapping("/joinAction.do")
-	public String joinAction(UserVO vo, HttpServletRequest request) {
+	public String joinAction(UserVO vo, HttpServletRequest request, String user_phone1, String user_phone2, String user_phone3) {
 		System.out.println(">>회원가입 - joinAction()");
 		
+		String user_phone = user_phone1 + user_phone2 + user_phone3;
+		vo.setUser_phone(user_phone);
+		System.out.println("user_phone : " + user_phone);
 		userJoinService.insertUser(vo);
 		
 		HttpSession session = request.getSession();
