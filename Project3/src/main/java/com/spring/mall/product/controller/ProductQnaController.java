@@ -94,7 +94,7 @@ public class ProductQnaController {
 		productQnaService.insertProductQna(vo);
 		rdatt.addAttribute("product_id",pvo.getProduct_id());
 		
-		return "forward:/tempPrd.do";
+		return "forward:/productDetail.do";
 	}
 	
 	

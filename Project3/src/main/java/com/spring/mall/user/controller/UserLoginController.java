@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.user.service.UserLoginService;
 import com.spring.mall.user.vo.UserVO;
 
@@ -26,36 +27,47 @@ public class UserLoginController {
 		System.out.println(":::: UserLoginController() 객체 생성");
 	}
 
-	@GetMapping("/login.do")
-	public String loginView() {
+	@RequestMapping("/login.do")
+	public String loginView(ProductVO vo, Model model) {
 		System.out.println(">>로그인 화면 이동 - loginView()");
-		
+		System.out.println("vo : " + vo);
+		int what = vo.getProduct_id();
+		if(what != 0) {
+			model.addAttribute("product_id", vo.getProduct_id());
+		} 
 		return "common/login";
 	}
 	
 	@PostMapping("/loginAction.do")
-	public String loginAction(UserVO vo, HttpServletRequest request) {
+	public String loginAction(UserVO vo, ProductVO pv, 
+			HttpServletRequest request, RedirectAttributes rdatt) {
 		System.out.println(">>> 로그인 처리 - loginAction()");
 		System.out.println("vo : " + vo);
+		
+		System.out.println("pv : " + pv);
 		
 		UserVO user = userLoginService.getUser(vo);
 		HttpSession session = request.getSession();
 		System.out.println(session.getId());
+		String location = "";
 		if(user == null || user.getUser_state() == 0) {
 			System.out.println("존재하지 않는 아이디입니다. 다시 확인해주세요.");
-			return "common/login";
+			location = "common/login";
 		}else if(user.getUser_state() == 2) {
 			System.out.println("관리자 로그인 성공~");
-			return "admin/adminMain"; 
+			location = "admin/adminMain"; 
 		}else{
 			System.out.println("회원 로그인 성공~");
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
 			session.setAttribute("user_id", user.getUser_id());
 			System.out.println(session.getId());
-			//return "store/mainLoginOK"; 
-			return "redirect:/main.do";
 			
+			if(pv.getProduct_id() != 0) {
+				rdatt.addAttribute("product_id", pv.getProduct_id());
+				location = "redirect:/productDetail.do";
+			}
 		}
+		return location;
 	}
 	
 	@RequestMapping("/logout.do")

@@ -86,7 +86,7 @@ function goInsertQna(qna_id){
 			<tr>
 				<th class="center">NO.</th>
 				<th class="center">상품명</th>
-				<th class="center">상품id</th>
+				<th class="center">상품번호</th>
 				<th class="center">내용</th>
 				<th class="center">ID</th>
 				<th class="center">문의날짜</th>

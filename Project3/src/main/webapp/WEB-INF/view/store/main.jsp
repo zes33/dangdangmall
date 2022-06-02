@@ -35,7 +35,7 @@ function productDetailView(product_id){
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'tempPrd.do');
+    f.setAttribute('action', 'productDetail.do');
     document.body.appendChild(f);
     f.submit();
 }
@@ -106,7 +106,6 @@ strike {
 </header>
 	<main>
 		<div>
-			<a href="order/orderView.do">주문 입력 (임시) </a><br>
 			<a href="admin/admin.do">관리자 메인페이지(임시)</a><br>
 			<a href="viewMypage.do"><b>마이페이지(임시)</b></a>
 		</div>

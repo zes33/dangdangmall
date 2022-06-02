@@ -191,7 +191,11 @@ textarea {
 			<c:choose>
 				<c:when test="${empty user }">
 					<p>상품문의는 로그인 후 가능합니다.</p>
-					<a href="login.do">로그인 하기</a>
+					<%-- <a href="login.do?product_id=${product.product_id }">로그인 하기</a> --%>
+					<form action="login.do">
+					<input type="submit" value="로그인">
+					<input type="hidden" name="product_id" value="${product.product_id }">
+					</form>
 				</c:when>
 				<c:otherwise>
 					<div id="prdQnaWrite" class="prdInput">
@@ -220,7 +224,7 @@ textarea {
 				document.forms[1].submit();
 			}
 		}
-
+		
 	</script>
 
 

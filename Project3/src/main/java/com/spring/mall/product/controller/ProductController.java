@@ -27,7 +27,7 @@ public class ProductController {
 	}
 	
 	// 식품 목록 페이지 이동
-	@RequestMapping("foodList.do")
+	@RequestMapping("/foodList.do")
 	public String getFoodList(Model model) {
 		System.out.println("ProductController.getFoodList() 실행");
 		List<ProductVO> foodList = productService.getProductListCategory(1);
@@ -36,7 +36,7 @@ public class ProductController {
 	}
 	
 	// 상품상세페이지 이동 
-	@RequestMapping("tempPrd.do")
+	@RequestMapping("/productDetail.do")
 	public String tempProductDetail(ProductVO vo, Model model, HttpSession session) {
 		System.out.println("상품상세페이지(임시) 이동 - tempProductDetail 실행");
 		System.out.println("productvo : " + vo);
