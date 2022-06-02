@@ -70,6 +70,9 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		
+		width:200px;		
+		text-align: center;
 	}
 	
 #container { width: 800px; margin: auto;}
@@ -82,8 +85,9 @@
    .center { text-align: center; }
    .border-none, .border-none td { border: none; }
 	
-	a {
+	b > a {
 		text-decoration: none;
+		color: black;
 	}
 </style>
 </head>

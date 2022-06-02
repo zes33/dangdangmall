@@ -35,6 +35,7 @@ public class ProductQnaController {
 	public String adminViewPrdQnaOne(ProductQnaNickVO vo, Model model) {
 		System.out.println("adminViewPrdQnaOne() 실행");
 		List<ProductQnaNickVO> list = productQnaService.viewPrdQnaSet(vo);
+		System.out.println("list : " + list);
 		model.addAttribute("productQnaSet", list);
 		return "admin/veiwProductQnaSet";
 	}

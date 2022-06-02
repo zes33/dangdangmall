@@ -75,8 +75,9 @@ Bootstrap core CSS
 		width: 200px;
 	}
 	
-	a {
+	b > a {
 		text-decoration: none;
+		color: black;
 	}
 
 	

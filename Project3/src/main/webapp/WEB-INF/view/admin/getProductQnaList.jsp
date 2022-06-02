@@ -91,7 +91,7 @@ function goInsertQna(qna_id){
 				<th class="center">ID</th>
 				<th class="center">문의날짜</th>
 				<th class="center">답변상태</th>
-				<th class="center">답변하기</th>
+				<th class="center"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -127,11 +127,13 @@ function goInsertQna(qna_id){
 				<c:choose>
 				<c:when test="${0 eq productQna.product_qna_state }">
 					<button type="button" onclick="goInsertQna(${productQna.qna_id})"
-					class="btn btn-outline-secondary btn-sm">답변하기</button>
+					class="btn btn-outline-secondary btn-sm">답변작성</button>
 				</c:when>
 				<c:otherwise>
-					<button type="disable" onclick="goInsertQna(${productQna.qna_id})"
+					<%-- <button type="disable" onclick="goInsertQna(${productQna.qna_id})"
 					class="colorBtn btn-outline-secondary">추가답변</button>
+					 --%>
+					 <!-- <p>답변완료</p> -->
 				</c:otherwise>
 				</c:choose>
 				</td>

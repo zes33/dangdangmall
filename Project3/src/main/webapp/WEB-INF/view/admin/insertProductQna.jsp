@@ -20,77 +20,136 @@
    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
    crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
+<style>
+
+.sin {
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 60px;
+}
+.whereIsIt {
+	/* background-color: #CCCCFF; */
+	margin: auto;
+	font-size: 23px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+table,td,th {
+	margin: auto;
+}
+.tableParent {
+	margin: auto;
+}
+.qnaConBaby {
+	margin: 15px;
+}
+.dateInfo {
+	font-weight: 600;
+}
+.regDate {
+	font-size: 15px;
+	color: gray;
+}
+th {
+	font-size: 17px;
+}
+.tdZone {
+	padding-left: 10px;
+}
+
+
+</style>
+<script>
+	function submitAnswer() {
+		console.log("submitAnswer() 실행");
+		let fm = document.forms[0];
+		fm.submit();
+	}
+</script>
 </head>
 <body>
 <header>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
+<div class="col-sm-7 sin">
+	<form method="post" action="submitAdminProductQna.do">
 	
-	<div class="col-sm-9">
-		<table class="col-sm-9">
+	<div class="col-sm-11 whereIsIt">상품문의 조회</div>
+	<div class="col-sm-11 tableParent">
+	
+		<table class="table table-bordered">
+		<colgroup>
+			<col width="20%">
+			<col width="80%">
+		</colgroup>
 			<tr>
-				<th>작성자</th>
-				<td>qq</td>
-				<th>작성일</th>
-				<td>2022-06-03</td>
+				<th class="align-middle thZone" style="background-color: #F0F0F3" height="50px">상품번호/상품명</th>
+				<td class="align-middle tdZone">${productQna.product_id} / ${productQna.product_name}</td>
 			</tr>
 			<tr>
-				<th>상품명</th>
-				<td>콩고기</td>
-				<th>상품번호</th>
-				<td>37</td>
+				<th class="align-middle thZone" style="background-color: #F0F0F3" height="50px">작성자</th>
+				<td class="align-middle tdZone">${productQna.user_id}</td>
 			</tr>
-			<tr>
+			<tr height="100px">
 				<td class="qnaCon" colspan="4">
+					<div class="qnaConBaby">
+						<span class="dateInfo">작성일</span>
+						<span class="regDate">${productQna.product_qna_date}</span>
+					</div>
 					<div class="qnaConBaby">[상품문의]</div>
-					<div class="qnaConBaby fat">언제나 맛있나요?</div>
+					<div class="qnaConBaby fat">
+					 ${productQna.qna_content}
+					</div>
 				</td>
-			</tr>
-			
+			 </tr>
+			 <tr>
+			 	<td class="qnaCon txtArea" colspan="4">
+			 		<div class="txtDiv">
+			 		<textarea rows="10" cols="132" name="qna_content" ></textarea>
+			 		</div>
+			 	</td>
+			 </tr>
 		</table>
+		<input type="hidden" name="qna_id" value="${productQna.qna_id}">
+		
+	
 	</div>
-
-	<%-- <div>
-	<form action="${pageContext.request.contextPath }/submitAdminProductQna.do" method="post">
-		<table>
-			<tr>
-				<th>작성자</th>
-				<td>${productQna.user_id }</td>
-			</tr>
-			<tr>
-				<th>날짜</th>
-				<td>${productQna.product_qna_date }</td>
-			</tr>
-			<tr>
-				<th>상품명</th>
-				<td>${productQna.product_name }</td>
-			</tr>
-			<tr>
-				<th>상품id</th>
-				<td>${productQna.product_id }</td>
-			</tr>
-			<tr>
-				<th>문의내용</th>
-				<td>${productQna.qna_content }</td>
-			</tr>
-			<tr>
-				<th>답변상태</th>
-				<td>${productQna.product_qna_state}</td>
-			</tr>
-			<tr>
-				<th>답변</th>
-				<td>
-					<textarea rows="7" cols="30" name="qna_content"></textarea>
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="등록" >
-		<input type="hidden" name="qna_id" value="${productQna.qna_id  }">
-		</form>
+	<div class="col-sm-11 row btnZone">
+		<div class="col-sm-6">
+			<button type="button" class="btn btn-outline-secondary">목록</button>
+		</div>
+        <div class="col-sm-6 rightBtn">
+        	<div class="plzRight">
+        	
+        	<input type="submit" class="btn btn-outline-secondary" value="등록">
+        	<!-- <button type="button" class="btn btn-danger">문의삭제</button> -->
+        	</div>
+        </div>
 	</div>
- --%>
+	</form>
+<style>
+.btnZone {
+	/* background-color: aqua; */
+	margin: auto;
+}
+.rightBtn {
+	/* background-color: aqua; */
+}
+.plzRight {
+	float:right;
+}
+.txtArea {
+	height: 300px;
+	
+}
+.txtDiv {
+	text-align: center;
+	
+	margin-top: 18px;
+}
 
-
+</style>	
+</div>
 
 </body>
 </html>

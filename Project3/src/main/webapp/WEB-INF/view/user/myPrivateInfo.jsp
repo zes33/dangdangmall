@@ -76,9 +76,11 @@
 		padding-top: 15px;
 	}
 	
-	a {
+	b > a {
 		text-decoration: none;
+		color: black;
 	}
+
 	
 </style>
 </head>

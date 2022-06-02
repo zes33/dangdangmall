@@ -96,8 +96,9 @@
 		margin-left: 400px;
 	}
 	
-	a {
+	b > a {
 		text-decoration: none;
+		color: black;
 	}
 	
 </style>
