@@ -26,9 +26,10 @@
 <style>
 .totPage {
 	margin: auto;
-	background-color: #80E6D5;
 	width: 1100px;
 	padding: 30px;
+	
+	border: 1px solid gray;
 }
 
 .card-photo {
@@ -79,8 +80,6 @@ textarea {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	<!-- -------------------------------- -->
-	${user_id }
-
 	<div class="totPage">
 		<div>
 			<div class="card-photo">
@@ -211,6 +210,7 @@ textarea {
 		</div>
 	</div>
 
+
 	<script>
 		function writeQna() {
 			console.log("writeQna() 실행~~")
@@ -225,9 +225,6 @@ textarea {
 		}
 		
 	</script>
-
-
-
 
 
 	<!-- footer -->
