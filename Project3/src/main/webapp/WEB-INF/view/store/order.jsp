@@ -159,11 +159,11 @@
 						class="form-control" id="zip" placeholder="" required>
 					<div class="invalid-feedback">Zip code required.</div>
 				</div>
-			</div>
+			</div> -->
 			<br> <br> <input type="submit"
 				class="w-100 btn btn-primary btn-lg" value="결제하기">
 			
- -->
+
 		</div>
 	</div>
 
