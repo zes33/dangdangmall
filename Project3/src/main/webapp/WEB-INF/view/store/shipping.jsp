@@ -42,6 +42,27 @@
 		font-size: 3.5rem;
 	}
 }
+
+#body-content {
+	background-color: #F3F3F3;
+	padding-bottom: 170px; /* footer의 높이 */
+	padding-left: 300px;
+	padding-right: 300px;
+}
+
+table {
+	width: 100%;
+	/* border-top: 1px solid #444444; */
+	border-collapse: collapse;
+}
+
+tr, td ,br{
+	border-bottom: 1px solid #444444;
+	border-left: 1px solid #444444;
+	padding: 10px;
+	font-size: 15px;
+	text-align: left;
+}
 </style>
 
 
@@ -61,56 +82,48 @@
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+	<%-- <h3>map</h3> ${map }
+			<h3>user</h3> ${user }
+			<h3>배송정보</h3> ${orderInfo } --%>
 
-
-	<div class="container-fluid text-center"
-		style="margin-top: 25pt; margin-bottom: 25px;">
-		<img src="../img/bill.png" class="img-title" alt="no title"
-			width="100" /> <br>
-		<h1>결제정보 입력</h1>
-
-		<div class="container">
-			<h3>map</h3>
-			${map }
-
-			<h3>user</h3>
-			${user }
-
-			<h3>배송정보</h3>
-			${orderInfo }
-			<hr>
-
-			<h1>주문자 정보</h1>
-			<table
-				style="width: 90%; padding-top: 3pt;">
-				<tr>
-					<td>이름</td>
-					<td>${orderInfo.order_receiver }</td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td>${user.user_email }</td>
-				</tr>
-				<tr>
-					<td>전화번호</td>
-					<td>${orderInfo.order_phone }</td>
-				</tr>
-				<tr>
-					<td>배송지</td>
-					<td>${orderInfo.order_addr }${orderInfo.order_addr_d }</td>
-				</tr>
-				<tr>
-					<td>우편번호</td>
-					<td>${orderInfo.order_zipcode }</td>
-				</tr>
-			</table>
-			<hr>
-		</div>
-		<div class="container">
+	<div id="body-wrapper">
+		<div id="body-content" class="container">
+			<div class="container-fluid text-center"
+				style="margin-top: 10pt; margin-bottom: 25px;">
+				<br> <br> <img src="../img/bill.png" class="img-title"
+					alt="no title" width="250" /> <br> 
+				<div class="container">
+					<br>
+					<h1>주문자 정보</h1>
+					<br>
+					<table style="width: 90%; padding-top: 10px;">
+						<tr>
+							<td>이름</td>
+							<td>${orderInfo.order_receiver }</td>
+						</tr>
+						<tr>
+							<td>이메일</td>
+							<td>${user.user_email }</td>
+						</tr>
+						<tr>
+							<td>전화번호</td>
+							<td>${orderInfo.order_phone }</td>
+						</tr>
+						<tr>
+							<td>배송지</td>
+							<td>${orderInfo.order_addr }${orderInfo.order_addr_d }</td>
+						</tr>
+						<tr>
+							<td>우편번호</td>
+							<td>${orderInfo.order_zipcode }</td>
+						</tr>
+					</table>
+					<hr>
+				</div>
+			</div>
+		<!-- </div>
+		<div class="container"> -->
 			<h3>주문상품 정보</h3>
-			<%-- <h4>주문번호 : ${orderInfo.order_id }</h4> --%>
-			<div style="font-weight: bold; font-size: 20px;">
-
 				<table style="width: 90%; padding-top: 3pt;">
 					<tr>
 						<th>상품 이름</th>
@@ -154,8 +167,7 @@
 					</c:forEach>
 
 				</table>
-			</div>
-			<br><br>
+			<br> <br>
 			<hr>
 			<table style="width: 90%; padding-top: 3pt;">
 				<tr>
@@ -190,13 +202,15 @@
 				</tr>
 			</table>
 			<hr>
-
-		</div>
 		<div class="container">
-			<br>결제 및 계좌 안내 시 상호명은 (주)당당몰로 표기되니 참고 부탁드립니다.<br><br> 이용약관 및 개인정보 제3자
-			제공사항에 대해 확인하였으며 결제에 동의합니다.<br><br> 결제대행 서비스 이용약관 <a
-				style="color: gray;" href="https://www.inicis.com/terms">(주)KG이니시스</a><br><br>
-			<button class="w-100 btn btn-primary btn-lg" id="check_module" type="button">결제 하기</button>
+			<br >결제 및 계좌 안내 시 상호명은 (주)당당몰로 표기되니 참고 부탁드립니다.<br> <br>
+			이용약관 및 개인정보 제3자 제공사항에 대해 확인하였으며 결제에 동의합니다.<br> <br> 결제대행
+			서비스 이용약관 <a style="color: gray;" href="https://www.inicis.com/terms">(주)KG이니시스</a><br>
+			<br>
+			
+		</div></div>
+		<button class="w-100 btn btn-primary btn-lg" id="check_module"
+				type="button">결제 하기</button>
 			<br>
 			<script>
 			$("#check_module").click(function() {
@@ -237,8 +251,9 @@
 				});
 			});
 		</script>
+	
 		</div>
-	</div>
+		
 
 
 	<!-- footer -->
