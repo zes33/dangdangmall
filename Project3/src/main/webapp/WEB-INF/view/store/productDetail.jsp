@@ -196,7 +196,7 @@ textarea {
 				<c:otherwise>
 					<div id="prdQnaWrite" class="prdInput">
 						<form id="prdQnaForm"
-							action="productQna/insertPrdQna.do?product_id=${product.product_id }"
+							action="insertPrdQna.do?product_id=${product.product_id }"
 							method="post">
 							<textarea name="qna_content"></textarea>
 							<button type="button" id="testBtn" onclick="writeQna()">상품문의

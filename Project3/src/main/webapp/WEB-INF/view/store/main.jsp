@@ -105,7 +105,7 @@ strike {
 		<div>
 			<a href="order/orderView.do">주문 입력 (임시) </a><br>
 			<a href="admin/admin.do">관리자 메인페이지(임시)</a><br>
-			<a href="productQna/viewMypage.do"><b>마이페이지(임시)</b></a>
+			<a href="viewMypage.do"><b>마이페이지(임시)</b></a>
 		</div>
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
