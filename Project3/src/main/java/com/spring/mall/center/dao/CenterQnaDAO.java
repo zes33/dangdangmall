@@ -1,6 +1,7 @@
 package com.spring.mall.center.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +44,12 @@ public class CenterQnaDAO {
 		}
 		
 	//문의 목록 조회
-	public List<CenterQnaVO> getCenterQnaList(CenterQnaVO vo) {
+	public List<Map<String, Object>> getCenterQnaList(CenterQnaVO vo) {
 		System.out.println("===> MyBatis 사용 getCenterQnaList() 실행");
-		List<CenterQnaVO> list = null;
-		return mybatis.selectList("centerQnaDAO.getCenterQna_T", vo);
+		//<Map<String, Object>> list = null;
+		List<Map<String, Object>> centerQnaList = mybatis.selectList("centerQnaDAO.getCenterQnaList");
+		
+		return centerQnaList;
 	}
 		
 //		//답변 목록 조회 - 제목 또는 작성자 닉네임으로 검색

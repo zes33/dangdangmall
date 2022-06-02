@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,12 @@
 	.center { text-align: center; }
 	
 	.border-none, .border-none td { border: none; }
+	
 </style>
 </head>
 <body>
 	<header>
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	<div id="container">
 	<!-- 검색을 위한 폼 -->
@@ -56,13 +58,19 @@
 		<thead>
 			<tr>
 				<th width="100" class="center">NO.</th>
-				<th width="200" class="center">상담제목</th>
+				<th width="200" class="center">문의제목</th>
+				<!-- 
 				<th width="150" class="center">ID</th>
+				 -->
+				<th width="150" class="center">닉네임</th>
 				<th width="150" class="center">문의날짜</th>
+				<!--  
 				<th width="150" class="center">답변하기</th>
+				-->
 			</tr>
 		</thead>
 		<tbody>
+		<!-- 
 			<tr>
 				<td class="center">1</td>
 				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">제목11111111111111111111</span></td>
@@ -77,6 +85,23 @@
 				<td class="center">2022-04-23</td>
 				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
 			</tr>
+			 -->
+			 <c:forEach items="${getCenterList }" var="center">
+			 	<tr>
+					<td class="center">${center.CENTER_QNA_ID }</td>
+					<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${center.CENTER_QNA_TITLE }</span></td>
+					<!-- 
+					<td class="center">${center.user_id }</td>
+					 -->
+					<td class="center">${center.USER_NICKNAME }</td>
+					<td class="center"><fmt:formatDate value="${center.CENTER_QNA_DATE}" pattern="yyyy/MM/dd"/></td>
+					<!--
+					<td class="center">${center.CENTER_QNA_DATE }</td>
+					<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
+					 -->
+			    </tr>
+			 </c:forEach>
+			 
 		</tbody>
 	</table>	
 </div>	

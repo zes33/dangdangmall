@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터 문의</title>
+<title>고객센터 문의 등록</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -29,13 +29,13 @@
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 <div id="container">
-	<form action="insertCenterReply.do" method="post" enctype="multipart/form-data">
+	<form action="insertCenterQna.do" method="post">
 		<input type="hidden" name="seq" value="">
 	<table class="table table-hover">
 		<tr>
 			<th class="center">문의제목</th>
 			<td>
-				<input type="text" name="title" value="${centerQna. }">
+				<input type="text" name="title">
 			</td>
 		</tr>
 		<tr>
@@ -53,28 +53,15 @@
 		<tr>
 			<th class="center">문의내용</th>
 			<td>
-				<textarea name="content" rows="10" cols="40" disabled="disabled"></textarea>
+				<textarea name="content" rows="10" cols="40"></textarea>
 			</td>
 		</tr>
-		<c:if test="${user.user_grade eq 2 }">
-		<tr>
-			<th class="center">답변하기</th>
-			<td>
-				<textarea name="content" rows="10" cols="40">${board.content }</textarea>
-			</td>
-		</tr>
-		</c:if>
 	</table>
 	
 	<br>
 	<p>
-		<c:if test="${user.user_grade eq 2 }">
-		<button type="submit" class="btn btn-outline-secondary btn-sm">답변 하기</button>
-		<button type="button" class="btn btn-outline-secondary btn-sm">답변 수정</button>
-		<button type="button" class="btn btn-outline-secondary btn-sm">답변 삭제</button>
-		<button type="button" class="btn btn-outline-secondary btn-sm">문의 삭제</button>
+		<button type="submit" class="btn btn-outline-secondary btn-sm">문의 하기</button>
 		<button type="reset" class="btn btn-outline-secondary btn-sm">초기화</button>
-		</c:if>
 	</p>
 	</form>
 </div>	

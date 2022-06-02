@@ -1,6 +1,7 @@
 package com.spring.mall.center.serviceimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class CenterQnaServiceImpl implements CenterQnaService{
 	}
 
 	@Override
-	public List<CenterQnaVO> getCenterQnaList(CenterQnaVO vo) {
+	public List<Map<String, Object>> getCenterQnaList(CenterQnaVO vo) {
 		return centerQnaDAO.getCenterQnaList(vo);
 	}
 
