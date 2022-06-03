@@ -16,7 +16,7 @@
 <link rel="canonical"
 	href="https://getbootstrap.kr/docs/5.1/examples/album/">
 
-Bootstrap core CSS
+<!-- Bootstrap core CSS -->
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
@@ -139,7 +139,7 @@ Bootstrap core CSS
 		        <div><p><b><a href="${pageContext.request.contextPath }/myinfo.do">주문내역</a></b></p></div>
 		        <div><p><b><a href="${pageContext.request.contextPath }/myprivateinfo.do">나의 정보</a></b></p></div>
 		        <div><p><b><a href="cart/list.do">장바구니</a></b></p></div>
-		        <div><p><b><a href="#">상품 문의내역</a></b></p></div>
+		        <div><p><b><a href="${pageContext.request.contextPath }/goMyPrdQna.do">상품 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>

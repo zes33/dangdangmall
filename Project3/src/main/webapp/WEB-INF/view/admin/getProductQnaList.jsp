@@ -50,7 +50,8 @@ function goInsertQna(qna_id){
 </script>
 <style>
 	.bowl {
-		background-color: orange;
+		text-align: center;
+		margin: auto;
 	}
 </style>
 </head>
@@ -60,7 +61,7 @@ function goInsertQna(qna_id){
 </header>
 
 <div class="row">
-	<div class="col-sm-11 bowl">
+	<div class="col-sm-8 bowl">
 	<!-- 검색을 위한 폼 -->
 	<!-- <form action="getBoardList.do" method="get">  -->
 	<form>
@@ -84,14 +85,14 @@ function goInsertQna(qna_id){
 	
 	
 	<!-- 데이터 표시 영역 -->
-	<table class="table table-hover">
+	<table class="table table-hover table1">
 		<thead>
 			<tr>
-				<th class="center">NO.</th>
-				<th class="center">상품명</th>
-				<th class="center">상품번호</th>
-				<th class="center">내용</th>
-				<th class="center">ID</th>
+				<th class="center" width="7%" >NO.</th>
+				<th class="center" width="15%" >상품명</th>
+				<th class="center" width="7%">상품번호</th>
+				<th class="center" width="37%">내용</th>
+				<th class="center" width="10%">ID</th>
 				<th class="center">문의날짜</th>
 				<th class="center">답변상태</th>
 				<th class="center"></th>
@@ -111,8 +112,8 @@ function goInsertQna(qna_id){
 				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.product_name }</span></td>
 				<td class="center">${productQna.product_id }</td>
 				<!-- 누르면 문의(+답변) 모두 보이는 페이지로 이동 -->
-				<td class="center">
-					<a class="qnaTitle" href="adminViewPrdQnaOne.do?qna_group=${productQna.qna_group }">
+				<td class="center ">
+					<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${productQna.qna_group }">
 					${productQna.qna_content }</a>
 				</td>
 				
@@ -123,7 +124,7 @@ function goInsertQna(qna_id){
 					<td class="center">답변대기</td>
 				</c:when>
 				<c:otherwise>
-					<td class="center">답변완료</td>
+					<td class="center" style="color: #C9C7C7;">답변완료</td>
 				</c:otherwise>
 				</c:choose>
 				<td class="center">
