@@ -54,14 +54,16 @@ public class MyOrderController {
 	}
 	
 	@RequestMapping("/pwConfirm.do")
-	public String myPrivate(HttpSession session, String pwCheck) {
+	public String myPrivate(Model model, HttpSession session, String pwCheck) {
 		System.out.println(">>내 정보 보기");
 		UserVO user = (UserVO) session.getAttribute("user");
 		System.out.println("user : " + user);
 		
+		String msg = "";
 		if(pwCheck.equals(user.getUser_pw())) {
 			return "user/myPrivateInfo";
 		}else {
+			model.addAttribute("msg", "암호가 일치하지 않습니다. 다시 입력해 주세요.");
 			return "common/userConfirm";
 		}
 	}

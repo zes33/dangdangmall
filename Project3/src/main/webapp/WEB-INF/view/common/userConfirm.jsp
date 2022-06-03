@@ -175,7 +175,7 @@
 						<tr>
 							<th class="font-size">비밀번호 : </th>
 							<td><input name="pwCheck" type="password" placeholder="비밀번호"></td>
-						</tr>
+						</tr><div style="color: red;">${msg }</div>
 					</tbody>
 				</table>
 					<input class="left btn btn-sm btn-outline-secondary" type="submit" value="확인">
