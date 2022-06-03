@@ -105,10 +105,10 @@ strike {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
 	<main>
-		<div>
+		<!-- <div>
 			<a href="admin/admin.do">관리자 메인페이지(임시)</a><br>
 			<a href="viewMypage.do"><b>마이페이지(임시)</b></a>
-		</div>
+		</div> -->
 		<h1 class="visually-hidden">Headers examples</h1>
 		<div class="album py-5 bg-light">
 			<div class="container" >

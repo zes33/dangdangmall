@@ -96,9 +96,8 @@
 		margin-left: 400px;
 	}
 	
-	b > a {
+	a {
 		text-decoration: none;
-		color: black;
 	}
 	
 </style>
@@ -163,7 +162,7 @@
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
-	        <div class="col-md-10 whoru border">
+	        <div class="col-md-9 whoru border">
 				<form clas="center" action="pwConfirm.do" method="post">
 					<h1 class="padding">회원 정보 확인</h1>
 					&nbsp;&nbsp;&nbsp;<strong>${user.user_nickname }님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</strong>
