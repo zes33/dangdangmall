@@ -74,17 +74,7 @@
 		width:200px;		
 		text-align: center;
 	}
-	
-/*  #container { width: 800px; margin: auto;}
-   table { border-collapse: collapse; }
-   table, th, td {
-      border: 1px solid black;
-      margin: 0 auto;
-      padding-bottom: 10px;
-   } 
-   .center { text-align: center; }
-   .border-none, .border-none td { border: none; }
- */
+
 	b > a {
 		text-decoration: none;
 		color: black;
@@ -177,7 +167,7 @@
 			           <span class="position-absolute top-0 end-0">
 			              <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
 			              <br><br>
-			            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">환불 신청</button></div><br>
+			            <div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.product_id})" value="환불 신청" /></div><br>
 			            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">리뷰 작성</button></div>
 			         </span>
 			      </div>
@@ -186,9 +176,17 @@
 			</div>
 	    </div>
 	    <div class="row"></div>
+	    <script>
+	    
+	    function refundView(product_id){
+	    	
+	    	//alert("버튼 클릭");
+	    	location.href = "refundForm.do?product_id="+product_id;
+	    }
+	    
+	    </script>
 	</div>
-	<%-- <p>\${map } : ${map }</p> --%>
-
+	
 <!-- footer -->
 	<footer>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
