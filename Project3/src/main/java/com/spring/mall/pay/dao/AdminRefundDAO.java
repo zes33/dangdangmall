@@ -23,5 +23,8 @@ public class AdminRefundDAO {
 		return mybatis.selectList("adminRefundDAO.refundList");
 	}
 	
-	//2. 
+	//2. 환불 상태 변경 
+	public void updateStatus(RefundTotalVO vo) {
+		mybatis.update("adminRefundDAO.updateStatus", vo);
+	}
 }

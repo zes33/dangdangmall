@@ -24,9 +24,20 @@
 		u.ORDER_PHONE,
 		u.ORDER_TOTAL,
 		u.USER_STATUS
-		from USERORDER_REFUND r, USERORDER_DETAIL d, USER_ORDER u
-		where r.ORDER_DETAIL_ID = d.ORDER_DETAIL_ID
+		from
+		USERORDER_REFUND r, USERORDER_DETAIL d, USER_ORDER u
+		where
+		r.ORDER_DETAIL_ID = d.ORDER_DETAIL_ID
 		and d.ORDER_ID = u.ORDER_ID
+		ORDER
+		BY r.refund_id DESC
 	</select>
+
+	<!-- 환불 상태 변경 -->
+	<update id="updateStatus" >
+		UPDATE USERORDER_REFUND
+		SET REFUND_STATUS = #{refund_status}
+		WHERE REFUND_ID= ${refund_id}
+	</update> 
 
 </mapper>

@@ -25,4 +25,10 @@ public class AdminRefundServiceImpl implements AdminRefundService {
 		return adminRefundDAO.refundList(vo);
 	}
 
+	@Override
+	public void updateStatus(RefundTotalVO vo) {
+		 adminRefundDAO.updateStatus(vo);
+		
+	}
+
 }

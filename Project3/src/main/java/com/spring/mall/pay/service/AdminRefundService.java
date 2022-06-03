@@ -8,4 +8,7 @@ public interface AdminRefundService {
 	
 	//1. 관리자 페이지 환불 요청 리스트
 	public List<RefundTotalVO> refundList(RefundTotalVO vo);
+	
+	//2.환불 상태 변경 
+	public void updateStatus(RefundTotalVO vo);
 }
