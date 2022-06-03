@@ -5,7 +5,7 @@
   
   <mapper namespace="productDAO">
   
-	 <!-- food -->
+	 <!-- food OR EXERCISE -->
 	 <select id="getProductLists_c" parameterType="int" resultType="com.spring.mall.product.vo.ProductVO">
 	 	SELECT *
 		FROM PRODUCT
