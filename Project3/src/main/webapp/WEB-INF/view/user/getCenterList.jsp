@@ -25,6 +25,20 @@
 	.border-none, .border-none td { border: none; }
 	
 </style>
+<script>
+function go_qna(user_id) {
+	if(user_id == null) {
+		var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
+		if (con) {
+			location.href = "${pageContext.request.contextPath }/login.do";
+		}
+	}
+	else {
+		location.href = "insertCenterQna.do";
+	}
+	
+}
+</script>
 </head>
 <body>
 	<header>
@@ -58,12 +72,13 @@
 		<thead>
 			<tr>
 				<th width="100" class="center">NO.</th>
-				<th width="200" class="center">문의제목</th>
+				<th width="300" class="center">문의제목</th>
 				<!-- 
 				<th width="150" class="center">ID</th>
 				 -->
 				<th width="150" class="center">닉네임</th>
 				<th width="150" class="center">문의날짜</th>
+				<th width="150" class="center">답변상태</th>
 				<!--  
 				<th width="150" class="center">답변하기</th>
 				-->
@@ -94,7 +109,16 @@
 					<td class="center">${center.user_id }</td>
 					 -->
 					<td class="center">${center.USER_NICKNAME }</td>
-					<td class="center"><fmt:formatDate value="${center.CENTER_QNA_DATE}" pattern="yyyy/MM/dd"/></td>
+					<td class="center"><fmt:formatDate value="${center.CENTER_QNA_DATE}" pattern="yyyy-MM-dd"/></td>
+					<!-- 아래 c:choose 구문은 reply테이블에 해당하는 답변이 비어있으면 답변대기, 데이터가 있으면 답변완료 -->
+					<c:choose>
+						<c:when test="${empty center.USER_NICKNAME }">
+							<td class="center">답변대기</td>
+						</c:when>
+						<c:otherwise>
+							<td class="center">답변완료</td>
+						</c:otherwise>
+					</c:choose>
 					<!--
 					<td class="center">${center.CENTER_QNA_DATE }</td>
 					<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
@@ -103,11 +127,21 @@
 			 </c:forEach>
 			 
 		</tbody>
-	</table>	
+	</table>
+	
+	<div style="float:right;">
+		<a class="btn btn-sm btn-outline-secondary" href="javascript:void(0);" onclick="go_qna(${user_id});">문의하기</a>
+	</div>
+	
 </div>	
+	<!-- footer -->
+	<footer>
+		<jsp:include page="../common/footer.jsp"></jsp:include>
+	</footer>
+	
 	<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-			crossorigin="anonymous"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 </body>
 </html>
