@@ -26,6 +26,9 @@ public class RefundTotalVO {
 	private String refund_reason;
 	private int refund_status;
 	
+	//PRODUCT 테이블
+	private String product_name;
+	
 	public RefundTotalVO() {
 		System.out.println("RefundTotalVO() 객체 생성");
 	}
@@ -33,7 +36,7 @@ public class RefundTotalVO {
 	public RefundTotalVO(String order_id, Date order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id,
 			int order_detail_id, int user_order_cnt, int product_id, int refund_id, String refund_reason,
-			int refund_status) {
+			int refund_status, String product_name) {
 		super();
 		this.order_id = order_id;
 		this.order_date = order_date;
@@ -51,6 +54,15 @@ public class RefundTotalVO {
 		this.refund_id = refund_id;
 		this.refund_reason = refund_reason;
 		this.refund_status = refund_status;
+		this.product_name = product_name;
+	}
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
 	public String getOrder_id() {
@@ -188,6 +200,8 @@ public class RefundTotalVO {
 				+ order_receiver + ", order_phone=" + order_phone + ", order_total=" + order_total + ", user_status="
 				+ user_status + ", user_id=" + user_id + ", order_detail_id=" + order_detail_id + ", user_order_cnt="
 				+ user_order_cnt + ", product_id=" + product_id + ", refund_id=" + refund_id + ", refund_reason="
-				+ refund_reason + ", refund_status=" + refund_status + "]";
+				+ refund_reason + ", refund_status=" + refund_status + ", product_name=" + product_name + "]";
 	}
+
+	
 }

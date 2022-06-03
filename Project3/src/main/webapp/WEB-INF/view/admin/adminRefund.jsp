@@ -92,12 +92,14 @@ table, th, td {
 						<th class="center" width="5%">NO.</th>
 						<th class="center" width="10%">고객 아이디</th>
 						<th class="center" width="10%">주문 아이디</th>
-						<th class="center" width="8%">상세 아이디</th>
+						<th class="center" width="13%"> 주문 상세 아이디</th>
 						<th class="center" width="10%">상품 아이디</th>
-						<th class="center" width="10%">구매 수량</th>
-						<th class="center" width="20%">환불 사유</th>
+						<th class="center" width="10%">상품명</th>
+						<th class="center" width="8%">구매 수량</th>
+						<th class="center" width="15%">환불 사유</th>
 						<th class="center" width="10%">구매 날짜</th>
 						<th class="center" width="10%" colspan="2">답변상태</th>
+						<th class="center" width="10%" colspan="2">상태변경</th>
 						<!-- <th class="center" width="30%">상태 변경하기 </th> -->
 					</tr>
 				</thead>
@@ -109,6 +111,7 @@ table, th, td {
 							<td class="center">${list.order_id }</td>
 							<td class="center ">${list.order_detail_id }</td>
 							<td class="center">${list.product_id }</td>
+							<td class="center">${list.product_name }</td>
 							<td class="center">${list.user_order_cnt }</td>
 							<td class="center">${list.refund_reason}</td>
 							<td class="center"><fmt:formatDate value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
