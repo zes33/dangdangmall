@@ -16,15 +16,28 @@
 		INSERT INTO CENTER_QNA 
 		(CENTER_QNA_ID, CENTER_QNA_TITLE, USER_ID, CENTER_QNA_CONTENT, CENTER_QNA_DATE) 
 		VALUES 
-		(CENTERQNA_SEQ.NEXTVAL, #{center_qna_title}, #{user_id}, #{center_qna_content}, SYSDATE)
+		(SELECT NVL(MAX(CENTER_QNA_ID), 0) + 1 FROM CENTER_QNA, #{center_qna_title}, #{user_id}, #{center_qna_content}, SYSDATE)
 	</insert>
 	
 	<select id="getCenterQnaList" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
 	resultType="map">
-		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE 
-		FROM CENTER_QNA C, USERS U 
-		WHERE C.USER_ID = U.USER_ID 
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
 		ORDER BY C.CENTER_QNA_ID DESC
 	</select>
+	
+	<select id="getCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+        AND C.CENTER_QNA_ID = #{center_qna_id}	
+	</select>
+	
 	
 </mapper>

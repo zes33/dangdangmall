@@ -38,10 +38,10 @@ public class CenterQnaDAO {
 	}
 	
 	//문의 하나 조회
-		public CenterQnaVO getCenterQna(CenterQnaVO vo) {
-			System.out.println("===> MyBatis 사용 getCenterQna() 실행");
-			return mybatis.selectOne("centerQnaDAO.getCenterQna", vo);
-		}
+	public Map<String, Object> getCenterQna(CenterQnaVO vo) {
+		System.out.println("===> MyBatis 사용 getCenterQna() 실행");
+		return mybatis.selectOne("centerQnaDAO.getCenterQna", vo);
+	}
 		
 	//문의 목록 조회
 	public List<Map<String, Object>> getCenterQnaList(CenterQnaVO vo) {

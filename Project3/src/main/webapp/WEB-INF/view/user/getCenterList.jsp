@@ -26,6 +26,8 @@
 	
 </style>
 <script>
+
+//문의하기 버튼을 누르면 활성화되는 함수
 function go_qna(user_id) {
 	if(user_id == null) {
 		var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
@@ -36,8 +38,15 @@ function go_qna(user_id) {
 	else {
 		location.href = "insertCenterQna.do";
 	}
-	
 }
+
+//문의글의 제목을 누르면 글의 내용과 답변이 한눈에 보이는 상세페이지로 이동하는 함수
+function go_getCenter(center_qna_id) {
+	alert(center_qna_id);
+	location.href = "getCenterQna.do?center_qna_id="+center_qna_id;
+}
+
+
 </script>
 </head>
 <body>
@@ -101,10 +110,17 @@ function go_qna(user_id) {
 				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
 			</tr>
 			 -->
-			 <c:forEach items="${getCenterList }" var="center">
+			 <c:if test="${empty getCenterList }">
+				<tr>
+					<td>등록된 고객문의가 없습니다.</td>
+				</tr>
+			 </c:if>
+			 <c:forEach items="${getCenterList }" var="center" varStatus="status">
 			 	<tr>
 					<td class="center">${center.CENTER_QNA_ID }</td>
-					<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${center.CENTER_QNA_TITLE }</span></td>
+					<td><span class="d-inline-block text-truncate" style="max-width: 180px; cursor:pointer;" onclick="go_getCenter(${center.CENTER_QNA_ID });">
+						${center.CENTER_QNA_TITLE }</span>
+					</td>
 					<!-- 
 					<td class="center">${center.user_id }</td>
 					 -->

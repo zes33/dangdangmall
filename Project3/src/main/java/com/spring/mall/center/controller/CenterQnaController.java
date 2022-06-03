@@ -23,17 +23,6 @@ public class CenterQnaController {
 		System.out.println("======= CenterQnaController() 객체 생성~~");
 	}
 	
-//	@GetMapping("/adminGetCenterList.do")
-//	public String adminGetCenterList(Model model) {
-//		CenterQnaVO vo = null;
-//		List<CenterQnaVO> adminGetCenterList = centerQnaService.getCenterQnaList(vo);
-//		model.addAttribute("adminGetCenterList", adminGetCenterList);
-//		
-//		System.out.println("관리자 고객 문의 목록 페이지(getCenterList.jsp)이동 - adminGetCenterList()");
-//		
-//		return "admin/getCenterList";
-//	}
-	
 	@RequestMapping("/getCenterList.do")
 	public String getCenterList(Model model) {
 		CenterQnaVO vo = null;
@@ -41,8 +30,16 @@ public class CenterQnaController {
 		model.addAttribute("getCenterList", getCenterList);
 		System.out.println(getCenterList);
 		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
-		
 		return "user/getCenterList";
+	}
+	
+	@RequestMapping("/getCenterQna.do")
+	public String getCenterQna(CenterQnaVO vo, Model model) {
+		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
+		model.addAttribute("getCenter", getCenter);
+		System.out.println(getCenter);
+		System.out.println("고객 문의 상세페이지(getCenter.jsp)이동 - getCenterqna()");
+		return "user/getCenter";
 	}
 	
 	@RequestMapping("/insertCenterQna.do")
@@ -55,13 +52,24 @@ public class CenterQnaController {
 	public String insertCenterQnaWrite(CenterQnaVO vo) throws IllegalArgumentException, IOException {
 		System.out.println(">>> 고객문의 입력");
 		System.out.println("insert vo : " + vo);
-		
 		centerQnaService.insertCenterQna(vo);
-		
 		System.out.println(">>> 고객 문의 목록 페이지로 이동(getCenterList.do)이동 - insertCenterQnaWrite()");
-		
 		return "redirect:getCenterList.do";
 	}
+	
+	
+	
+	
+//	@GetMapping("/adminGetCenterList.do")
+//	public String adminGetCenterList(Model model) {
+//		CenterQnaVO vo = null;
+//		List<CenterQnaVO> adminGetCenterList = centerQnaService.getCenterQnaList(vo);
+//		model.addAttribute("adminGetCenterList", adminGetCenterList);
+//		
+//		System.out.println("관리자 고객 문의 목록 페이지(getCenterList.jsp)이동 - adminGetCenterList()");
+//		
+//		return "admin/getCenterList";
+//	}
 //	
 //	@GetMapping("/adminGetProductList.do")
 //	public String adminGetProductList(Model model) {
