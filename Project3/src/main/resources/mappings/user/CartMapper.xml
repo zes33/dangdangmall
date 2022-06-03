@@ -25,13 +25,15 @@
 		u.user_name ,
 		p.product_name,
 		c.CART_PRODUCT_QTY,
-        p.product_discount,
+		p.product_discount,
 		p.product_price,
 		(product_price * CART_PRODUCT_QTY) money
 		FROM
-		USERS u, PRODUCT p, CART c
+		USERS u,
+		PRODUCT p, CART c
 		WHERE u.user_id = c.user_id
-		AND p.product_id = c.product_id
+		AND p.product_id =
+		c.product_id
 		AND
 		c.user_id =#{user_id}
 		ORDER BY c.cart_id
@@ -42,7 +44,8 @@
 		SELECT NVL(SUM(PRODUCT_PRICE *
 		CART_PRODUCT_QTY), 0) MONEY
 		FROM CART C, PRODUCT P
-		WHERE C.PRODUCT_ID = P.PRODUCT_ID
+		WHERE C.PRODUCT_ID =
+		P.PRODUCT_ID
 		AND C.USER_ID = #{user_id}
 	</select>
 
@@ -73,9 +76,11 @@
 	<!-- 7. 장바구니에 동일한 상품이 존재하면 수정 -->
 	<update id="updateCart">
 		UPDATE CART
-		SET CART_PRODUCT_QTY = CART_PRODUCT_QTY + #{cart_product_qty}
+		SET CART_PRODUCT_QTY = CART_PRODUCT_QTY +
+		#{cart_product_qty}
 		WHERE user_id= #{user_id}
-		AND product_id = #{product_id}
+		AND product_id =
+		#{product_id}
 	</update>
 
 </mapper>

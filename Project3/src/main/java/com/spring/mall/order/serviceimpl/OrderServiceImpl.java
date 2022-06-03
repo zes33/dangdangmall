@@ -9,6 +9,7 @@ import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
+import com.spring.mall.user.vo.UserOrderPointVO;
 import com.spring.mall.user.vo.UserVO;
 
 @Service("OrderService")
@@ -57,6 +58,13 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void insertPayment(PaymentVO vo) {
 		orderDAO.insertPayment(vo);
+	}
+
+	// 6. 포인트 적립 
+	@Override
+	public void updatePoint(UserOrderPointVO vo) {
+		orderDAO.updatePoint(vo);
+		
 	}
 
 	

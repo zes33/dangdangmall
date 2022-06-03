@@ -3,6 +3,7 @@ package com.spring.mall.order.service;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
+import com.spring.mall.user.vo.UserOrderPointVO;
 import com.spring.mall.user.vo.UserVO;
 
 public interface OrderService {
@@ -24,5 +25,8 @@ public interface OrderService {
 	
 	//5. 주문 완료 후, 결제 테이블로 넘기기 
 	public void insertPayment(PaymentVO vo);
+	
+	// 6. 포인트 적립 
+	public void updatePoint(UserOrderPointVO vo);
 
 }

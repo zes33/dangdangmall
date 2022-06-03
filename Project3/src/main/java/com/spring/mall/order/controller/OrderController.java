@@ -19,6 +19,7 @@ import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
+import com.spring.mall.user.vo.UserOrderPointVO;
 import com.spring.mall.user.vo.UserVO;
 
 @Controller
@@ -91,7 +92,7 @@ public class OrderController {
 
 	@RequestMapping("pay.do")
 	public String pay(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail,
-			PaymentVO pvo) throws Exception {
+			PaymentVO pvo, UserOrderPointVO point) throws Exception {
 		session.getAttribute("payment");
 		session.getAttribute("orderInfo");
 		UserVO user = (UserVO) session.getAttribute("user");
@@ -105,6 +106,10 @@ public class OrderController {
 		orderDetail.setUser_id(user_id);
 		orderService.insertOrderDetail(orderDetail);
 		
+		//포인트 결제금액의 5% 적립 
+		point.setOrder_id(order_id);
+		point.setUser_id(user_id);
+		orderService.updatePoint(point);
 		
 		// 결제 칸으로 넘어가면 장바구니 정보 삭제
 		orderService.cartAllDelete(user_id);
