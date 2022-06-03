@@ -48,16 +48,19 @@ function goInsertQna(qna_id){
 
 
 </script>
+<style>
+	.bowl {
+		background-color: orange;
+	}
+</style>
 </head>
-
 <body>
 <header>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
 
-<div id="container">
 <div class="row">
-	<div class="col-sm-9">
+	<div class="col-sm-11 bowl">
 	<!-- 검색을 위한 폼 -->
 	<!-- <form action="getBoardList.do" method="get">  -->
 	<form>
@@ -145,7 +148,6 @@ function goInsertQna(qna_id){
 	</table>	
 	</div>
 </div>
-</div>	
 	<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
