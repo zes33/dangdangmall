@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>adminRefund.jsp</h1>
+${refundList }
 </body>
 </html>
