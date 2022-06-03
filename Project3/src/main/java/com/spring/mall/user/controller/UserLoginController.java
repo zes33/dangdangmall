@@ -35,7 +35,7 @@ public class UserLoginController {
 	}
 	
 	@PostMapping("/loginAction.do")
-	public String loginAction(UserVO vo,HttpServletRequest request) {
+	public String loginAction(UserVO vo,HttpServletRequest request, Model model,String user_id, String user_pw) {
 		System.out.println(">>> 로그인 처리 - loginAction()");
 		System.out.println("vo : " + vo);
 		
@@ -43,11 +43,14 @@ public class UserLoginController {
 		HttpSession session = request.getSession();
 		System.out.println(session.getId());
 		String location = "";
+		String msg = "";
+		System.out.println("user_id : "+user_id);
+		System.out.println("user_pw : "+user_pw);
+		
 		if(user == null || user.getUser_state() == 0) {
-			System.out.println("존재하지 않는 아이디입니다. 다시 확인해주세요.");
+			model.addAttribute("msg", "존재하지 않는 아이디입니다. 다시 확인해주세요.");
 			location = "common/login";
 		}else if(user.getUser_state() == 2) {
-			System.out.println("관리자 로그인 성공~");
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
 			session.setAttribute("user_id", user.getUser_id());
 			location = "admin/adminMain"; 
@@ -83,11 +86,17 @@ public class UserLoginController {
 	public String findIdAction(UserVO vo, Model model, String user_email) {
 		System.out.println(">>아이디찾기  - findIdView()");
 		vo.setUser_email(user_email);
+		String msg = "";
 		UserVO getUser = userLoginService.gerId(vo);
 		System.out.println("getUser : " + getUser);
 		model.addAttribute("getUser", getUser);
 		
-		return "common/findIdOK";
+		if(getUser == null) {
+			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
+			return "common/findIdFail";
+		}else {
+			return "common/findIdOK";			
+		}
 	}
 	
 	@GetMapping("/findPwdView.do")
@@ -105,8 +114,12 @@ public class UserLoginController {
 		System.out.println("getUser : " + getUser);
 		model.addAttribute("getUser", getUser);
 		
-		
-		return "common/findPwdOK";
+		if(getUser == null) {
+			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
+			return "common/findPwdFail";
+		}else {
+			return "common/findPwdOK";			
+		}
 	}
 	
 	

@@ -41,9 +41,14 @@
 		border: 1px solid black;
 		margin: 0 auto;
 	}
-	.center { text-align: center; }
+	.right { 
+	text-align: center; 
+	float: right;
+	}
+	.search{
+	padding-left: 15px;
+	}
 	
-	.login
 </style>
 </head>
 <body>
@@ -53,19 +58,19 @@
 </header>
 <div id="body-wrapper">
 	<div id="body-content" class="container">
-	
 	<br/><br/>
 	<h2>로그인</h2>
 	<form action="loginAction.do" method="post">
-	  아이디 <input type="text" class="form-control" placeholder="영문 소문자/숫자 포함 4~16자"
+	  아이디 <input type="text" class="form-control" placeholder="아이디"
                      name="user_id" maxlength="20"><br/>
 	 비밀번호 <input type="text" class="form-control" placeholder="비밀번호"
                    name="user_pw" maxlength="20"><br/>
-				<input type="submit" value="로그인">
-	<table>
+				<input class="right" type="submit" value="로그인"><p style="color: red;">${msg }</p>
+				<br/><br/>
+	<table class="search">
 		<tr>
-			<a class="btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
-			<a class="btn btn-sm btn-outline-secondary" href="findPwdView.do">비밀번호 찾기</a>
+			<a class="right btn btn-sm btn-outline-secondary" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
+			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
 		</tr>
 	</table>
 	</form>
