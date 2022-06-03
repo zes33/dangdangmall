@@ -14,9 +14,9 @@
 	
 	<insert id="insertCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO">
 		INSERT INTO CENTER_QNA 
-		(CENTER_QNA_ID, CENTER_QNA_CONTENT, CENTER_QNA_TITLE, USER_ID, CENTER_QNA_DATE) 
+		(CENTER_QNA_ID, CENTER_QNA_TITLE, USER_ID, CENTER_QNA_CONTENT, CENTER_QNA_DATE) 
 		VALUES 
-		(CENTERQNA_SEQ.NEXTVAL, #{center_qna_content}, #{center_qna_title}, #{user_id}, SYSDATE)
+		(CENTERQNA_SEQ.NEXTVAL, #{center_qna_title}, #{user_id}, #{center_qna_content}, SYSDATE)
 	</insert>
 	
 	<select id="getCenterQnaList" parameterType="com.spring.mall.center.vo.CenterQnaVO" 

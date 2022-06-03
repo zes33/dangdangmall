@@ -29,19 +29,14 @@
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 <div id="container">
-	<form action="insertCenterQna.do" method="post">
+	<form action="insertCenterQnaWrite.do" method="post">
 		<input type="hidden" name="seq" value="">
+		<input type="hidden" id="user_id" name="user_id" value="${user.user_id }">
 	<table class="table table-hover">
 		<tr>
 			<th class="center">문의제목</th>
 			<td>
-				<input type="text" name="title">
-			</td>
-		</tr>
-		<tr>
-			<th class="center">ID</th>
-			<td>
-				<input type="text" name="writer" value="${user.user_id }" readonly>
+				<input type="text" name="center_qna_title">
 			</td>
 		</tr>
 		<!--  
@@ -53,7 +48,7 @@
 		<tr>
 			<th class="center">문의내용</th>
 			<td>
-				<textarea name="content" rows="10" cols="40"></textarea>
+				<textarea name="center_qna_content" rows="10" cols="40"></textarea>
 			</td>
 		</tr>
 	</table>
@@ -65,7 +60,12 @@
 	</p>
 	</form>
 </div>	
-<script
+	<!-- footer -->
+	<footer>
+		<jsp:include page="../common/footer.jsp"></jsp:include>
+	</footer>
+	
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>

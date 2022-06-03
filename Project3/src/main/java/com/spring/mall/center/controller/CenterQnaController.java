@@ -34,7 +34,7 @@ public class CenterQnaController {
 //		return "admin/getCenterList";
 //	}
 	
-	@GetMapping("/getCenterList.do")
+	@RequestMapping("/getCenterList.do")
 	public String getCenterList(Model model) {
 		CenterQnaVO vo = null;
 		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
@@ -46,16 +46,22 @@ public class CenterQnaController {
 	}
 	
 	@RequestMapping("/insertCenterQna.do")
-	public String insertCenterQna(CenterQnaVO vo) throws IllegalArgumentException, IOException{
+	public String insertCenterQna() {
+		System.out.println(">>> 고객 문의 작성 페이지로 이동(insertCenter.jsp) - insertCenterQna()");
+		return "user/insertCenter";
+	}
+	
+	@RequestMapping("/insertCenterQnaWrite.do")
+	public String insertCenterQnaWrite(CenterQnaVO vo) throws IllegalArgumentException, IOException {
 		System.out.println(">>> 고객문의 입력");
 		System.out.println("insert vo : " + vo);
 		
 		centerQnaService.insertCenterQna(vo);
 		
-		System.out.println(">>> 고객 문의 목록 페이지로 이동(getCenterList.jsp)이동 - insertCenterQna()");
-		return "getCenterList.do";
+		System.out.println(">>> 고객 문의 목록 페이지로 이동(getCenterList.do)이동 - insertCenterQnaWrite()");
+		
+		return "redirect:getCenterList.do";
 	}
-	
 //	
 //	@GetMapping("/adminGetProductList.do")
 //	public String adminGetProductList(Model model) {
