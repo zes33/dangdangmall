@@ -65,7 +65,7 @@
 		  </div>
 		  </font></font></div>
 		</div>
-		<p>비밀번호가 기억나지 않는다면? <a href="#">비밀번호 찾기 바로가기</a></p>
+		<p>비밀번호가 기억나지 않는다면? <a href="findPwdView.do">비밀번호 찾기 바로가기</a></p>
 		</div>
 	
 	

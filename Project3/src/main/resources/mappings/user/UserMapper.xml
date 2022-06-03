@@ -29,6 +29,14 @@
 		WHERE USER_EMAIL = #{user_email}
 	</select>
 	
+	<!-- 비밀번호 찾기 -->
+	<select id="getPwd" parameterType="com.spring.mall.user.vo.UserVO"
+		resultType="com.spring.mall.user.vo.UserVO">
+		SELECT USER_PW FROM USERS
+			WHERE USER_ID = #{user_id}
+			AND USER_EMAIL = #{user_email}
+	</select>
+	
 	<!-- ID 중복 체크 -->
 	<select id="idCheck" resultType="int">
 		<![CDATA[

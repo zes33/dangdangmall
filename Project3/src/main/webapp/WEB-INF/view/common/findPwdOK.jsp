@@ -37,6 +37,19 @@
 .jumbotron{
 	text-align: center;
 }
+
+.container{
+	text-align: center;
+	 margin:0 auto;
+}
+
+.jumbotron{
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -45,14 +58,13 @@
 		<jsp:include page="../common/header.jsp"></jsp:include>
 </header>	
 			<div class="container">
-			<a href="#"><img src="./img/아이디찾기.png" alt="아이디찾기로고" width="450"></a>
-			<div><strong>아이디 찾기</strong>가 완료되었습니다</div><br>
-		<div class="card border-success mb-3" style="max-width: 30rem; max-width: 600px;">
-		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><strong>${getUser.user_id}</strong></div>
+			<a href="#"><img src="./img/비밀번호찾기.png" alt="비밀번호찾기로고" width="450"></a>
+			<div><strong>비밀번호 찾기</strong>가 완료되었습니다</div><br>
+		<div class="card border-success mb-3" style="max-width: 30rem; max-width: 600px; margin-left: 350px; ">
+		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><strong>${getUser.user_pw}</strong></div>
 		  <hr>
 		  <div class="text-center">
-			<button type="button" class="btn btn-outline-secondary">아이디 목록 다시보기</button>
-		  	<button type="button" class="btn btn-outline-success">로그인 하러가기</button>
+		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>
 		  </div>
 		  </font></font></div>
 		</div>

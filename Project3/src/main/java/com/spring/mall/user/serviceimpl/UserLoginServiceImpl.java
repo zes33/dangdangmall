@@ -27,7 +27,8 @@ public class UserLoginServiceImpl implements UserLoginService{
 		return userDAO.getId(vo);
 	}
 
-	
-
-	
+	@Override
+	public UserVO getPwd(UserVO vo) {
+		return userDAO.getPwd(vo);
+	}
 }

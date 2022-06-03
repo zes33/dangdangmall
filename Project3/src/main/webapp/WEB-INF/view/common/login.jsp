@@ -65,7 +65,7 @@
 	<table>
 		<tr>
 			<a class="btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
-			<a class="btn btn-sm btn-outline-secondary" href="#">비밀번호 찾기</a>
+			<a class="btn btn-sm btn-outline-secondary" href="findPwdView.do">비밀번호 찾기</a>
 		</tr>
 	</table>
 	</form>

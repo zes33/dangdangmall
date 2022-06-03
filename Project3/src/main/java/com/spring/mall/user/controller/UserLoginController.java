@@ -90,4 +90,41 @@ public class UserLoginController {
 		return "common/findIdOK";
 	}
 	
+	@GetMapping("/findPwdView.do")
+	public String findPwdView() {
+		
+		return "common/findPwdForm";
+	}
+	
+	@RequestMapping("/findPwdAction.do")
+	public String findPwdAction(UserVO vo, Model model, String user_id, String user_email) {
+		System.out.println(">>비밀번호 찾기  - findPwdAction()");
+		vo.setUser_id(user_id);
+		vo.setUser_email(user_email);
+		UserVO getUser = userLoginService.getPwd(vo);
+		System.out.println("getUser : " + getUser);
+		model.addAttribute("getUser", getUser);
+		
+		
+		return "common/findPwdOK";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

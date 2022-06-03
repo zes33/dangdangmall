@@ -38,7 +38,13 @@ public class UserDAO {
 		
 		return mybatis.selectOne("userDAO.getId", vo);
 	}
-
+	
+	//비밀번호 찾기
+	public UserVO getPwd(UserVO vo) {
+		
+		return mybatis.selectOne("userDAO.getPwd", vo);
+	}
+	
 	//아이디 체크
 	public int idCheck(String user_id) {
 		System.out.println("===> Mybatis로 idCheck");
@@ -53,11 +59,11 @@ public class UserDAO {
 		return result;
 	}
 
-	//회원탈퇴
-	public void secession(UserVO vo,HttpSession session) {
-		
-		mybatis.update("userDAO.secession",vo);
-		//세션 삭제
+	// 회원탈퇴
+	public void secession(UserVO vo, HttpSession session) {
+
+		mybatis.update("userDAO.secession", vo);
+		// 세션 삭제
 		session.invalidate();
 	}
 	

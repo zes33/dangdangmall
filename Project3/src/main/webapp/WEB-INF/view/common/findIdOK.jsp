@@ -61,7 +61,7 @@
 		  <hr>
 		  <div class="text-center">
 		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>
-		  	<a class="btn btn-sm btn-outline-secondary" href="#">비밀번호 찾기</a>
+		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/findPwdView.do">비밀번호 찾기</a>
 		  </div>
 		  </font></font></div>
 		</div>
