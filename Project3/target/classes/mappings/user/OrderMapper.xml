@@ -39,10 +39,11 @@
 		PRODUCT_ID,
 		USER_ID)
 		SELECT
-		ORDERDETAIL_SEQ.NEXTVAL, cart.CART_PRODUCT_QTY, #{order_id},
-		cart.PRODUCT_ID,
-		#{user_id}
-		FROM CART
+		ORDERDETAIL_SEQ.NEXTVAL, c.CART_PRODUCT_QTY, #{order_id},
+		c.PRODUCT_ID,
+		c.USER_ID
+		FROM CART c
+		where USER_ID = #{user_id}
 	</insert>
 
 	<!-- 카트 비우기 -->
@@ -82,14 +83,15 @@
 		u
 		WHERE u.ORDER_ID= #{order_id}
 	</insert>
-	
+
 	<!-- 포인트 적립 -->
 	<update id="updatePoint">
 		update users
-		set USER_POINT = USER_POINT + ( select o.ORDER_TOTAL * 0.05
-										from USER_ORDER o
-										where o.ORDER_ID = #{order_id}
-										)
+		set USER_POINT = USER_POINT + ( select
+		o.ORDER_TOTAL * 0.05
+		from USER_ORDER o
+		where o.ORDER_ID = #{order_id}
+		)
 		where user_id = #{user_id}
 	</update>
 
