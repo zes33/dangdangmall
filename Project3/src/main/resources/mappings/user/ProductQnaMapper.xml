@@ -5,6 +5,16 @@
   
 <mapper namespace="productQnaDAO">
 	
+	<!-- 개인의 상품문의 목록 조회 -->
+	<select id="myPrdQnaList" parameterType="string" resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT q.*, USERS.USER_NICKNAME, PRODUCT.PRODUCT_NAME
+		FROM PRODUCT_QNA q, users, product
+		WHERE Q.USER_ID = #{user_id}
+		AND Q.USER_ID = USERS.USER_ID
+		AND Q.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		ORDER BY QNA_ID DESC
+	</select>
+	
 	<!-- 상품문의 클릭시 문의+답변 조회 -->
 	<select id="viewPrdQnaSet" parameterType="com.spring.mall.product.vo.ProductQnaNickVO"
 						resultType="com.spring.mall.product.vo.ProductQnaNickVO">

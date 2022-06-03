@@ -17,6 +17,12 @@ public class ProductQnaDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 개인의 상품문의 목록 조회
+	public List<ProductQnaNickVO> myPrdQnaList(String user_id){
+		System.out.println("ProductQnaDAO.viewPrdQnaOne() 실행");
+		return mybatis.selectList("productQnaDAO.myPrdQnaList", user_id);
+	}
+	
 	// 상품문의 + 답변 한 세트 조회
 	public List<ProductQnaNickVO> viewPrdQnaSet(ProductQnaNickVO vo) {
 		System.out.println("ProductQnaDAO.viewPrdQnaOne() 실행");

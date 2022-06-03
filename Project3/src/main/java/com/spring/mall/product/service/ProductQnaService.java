@@ -7,6 +7,7 @@ import com.spring.mall.product.vo.ProductQnaVO;
 
 public interface ProductQnaService {
 	
+	public List<ProductQnaNickVO> myPrdQnaList(String user_id);
 	public List<ProductQnaNickVO> viewPrdQnaSet(ProductQnaNickVO vo);
 	public List<ProductQnaVO> productQnaListAdmin();
 	public List<ProductQnaNickVO> qnaNickList(int product_id);

@@ -126,6 +126,7 @@ th {
 		</div>
         <div class="col-sm-6 rightBtn">
         	<div class="plzRight">
+        	
         	<c:choose>
         	<c:when test="${fn:length(productQnaSet) gt 1 }">
         	<button type="button" class="btn btn-outline-secondary">답변수정</button>
@@ -137,6 +138,7 @@ th {
         	<button type="button" class="btn btn-danger">문의삭제</button>
         	</c:otherwise>
         	</c:choose>
+        	
         	</div>
         </div>
 	</div>

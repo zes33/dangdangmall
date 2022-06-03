@@ -109,7 +109,9 @@ function goInsertQna(qna_id){
 		<c:otherwise>
 			<tr>
 				<td class="center">${productQna.qna_id }</td>
-				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.product_name }</span></td>
+				<td>
+					<span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.product_name }</span>
+				</td>
 				<td class="center">${productQna.product_id }</td>
 				<!-- 누르면 문의(+답변) 모두 보이는 페이지로 이동 -->
 				<td class="center ">

@@ -18,7 +18,6 @@ import com.spring.mall.product.vo.ProductQnaVO;
 import com.spring.mall.product.vo.ProductVO;
 
 @Controller
-//@RequestMapping("/productQna/**")
 public class ProductQnaController {
 	
 	@Autowired
@@ -28,6 +27,19 @@ public class ProductQnaController {
 	
 	public ProductQnaController() {
 		System.out.println("ProductQnaController() 객체 생성");
+	}
+	
+	
+	// 마이페이지 상품문의 내역 페이지 이동
+	@RequestMapping("/goMyPrdQna.do")
+	public String goMyPrdQna(Model model, HttpServletRequest request) {
+		System.out.println("goMyPrdQna() 실행");
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("user_id");
+		List<ProductQnaNickVO> list = productQnaService.myPrdQnaList(user_id);
+		System.out.println(list.toString());
+		model.addAttribute("myPrdQnaList", list);
+		return "user/myPrdQna";
 	}
 	
 	// 상품문의 제목 클릭 시 문의+답변 조회

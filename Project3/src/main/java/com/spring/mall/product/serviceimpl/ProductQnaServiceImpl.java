@@ -55,6 +55,11 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 		return productQnaDAO.viewPrdQnaSet(vo);
 	}
 
+	@Override
+	public List<ProductQnaNickVO> myPrdQnaList(String user_id) {
+		return productQnaDAO.myPrdQnaList(user_id);
+	}
+
 
 	
 	
