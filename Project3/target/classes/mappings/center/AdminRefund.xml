@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminRefundDAO">
+
+	<!-- 관리자 페이지 환불 요청 리스트 -->
+	<select id="refundList" resultType="com.spring.mall.pay.vo.RefundTotalVO">
+	SELECT R.*, D.*, U.*
+	FROM USERORDER_REFUND R, USERORDER_DETAIL D, USER_ORDER U
+	WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
+	AND D.ORDER_ID = U.ORDER_ID
+	</select>
+
+</mapper>
