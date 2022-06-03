@@ -67,7 +67,7 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
             <td></td>
             <td></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">환불 요청 목록</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='adminRefund/adminRefundView.do'">환불 요청 목록</button></td>
             <td></td>
          </tr>
          <tr>

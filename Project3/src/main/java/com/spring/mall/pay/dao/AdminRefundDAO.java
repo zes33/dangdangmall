@@ -20,7 +20,7 @@ public class AdminRefundDAO {
 	
 	//1. 관리자 페이지 환불 요청 리스트
 	public List<RefundTotalVO> refundList(RefundTotalVO vo) {
-		return mybatis.selectList("adminRefundDAO.refundList",vo);
+		return mybatis.selectList("adminRefundDAO.refundList");
 	}
 	
 	//2. 
