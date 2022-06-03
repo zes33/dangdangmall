@@ -91,7 +91,7 @@ input {
 
 
 		<h1>user</h1>
-		${user }
+		<%-- ${user } --%>
 		<%-- <h1>map</h1> ${map }
 		<h2>${map.allSum}</h2>
 		<hr> --%>
