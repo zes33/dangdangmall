@@ -110,6 +110,8 @@ textarea {
 						value="${product.product_id}"> <input type="hidden"
 						id="product_cnt" value="product_cnt"> <input type="hidden"
 						name="user_id" value="${user_id}">
+						<%-- <input type="hidden" name="product_id"
+						value="${product.product_discount}"> --%>
 					<!-- <input type="hidden" name="product_id" value="88"> -->
 
 					<div>
