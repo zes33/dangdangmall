@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +101,7 @@ function goInsertQna(qna_id){
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="productQna" items="${productQnaList }">
+		<c:forEach var="productQna" items="${productQnaList }" varStatus="i">
 		<c:choose>
 		<c:when test="${empty productQnaList  }">
 			<tr>
@@ -108,7 +110,7 @@ function goInsertQna(qna_id){
 		</c:when>
 		<c:otherwise>
 			<tr>
-				<td class="center">${productQna.qna_id }</td>
+				<td class="center">${fn:length(productQnaList)-i.index }</td>
 				<td>
 					<span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.product_name }</span>
 				</td>

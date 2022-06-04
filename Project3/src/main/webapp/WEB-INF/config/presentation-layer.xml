@@ -22,9 +22,8 @@
 <!-- 	<bean id="login" class="com.spring.mall.user.controller.UserLoginController"/>
 	<bean id="main" class="com.spring.mall.product.controller.MainController" /> -->
 	
-	<!-- 스프링에서 제공하는 ViewResolver 등록-->
-	<bean id="viewResolver"
-		 class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- 스프링에서 제공하는 ViewResolver 등록   -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		 <property name="prefix" value="/WEB-INF/view/" />
 		 <property name="suffix" value=".jsp" />
 	</bean>

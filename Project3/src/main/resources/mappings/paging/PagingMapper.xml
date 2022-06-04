@@ -5,7 +5,37 @@
  
 <mapper namespace="paging">
 	
-	<!-- total count -->
+	
+	<!-- prd_qna List per product -->
+	<select id="prdQnaListWithPaging" parameterType="map"
+			resultType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT *
+	    FROM (SELECT ROWNUM R_NUM, AA.*
+	       FROM (SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
+			FROM PRODUCT_QNA QNA, PRODUCT, USERS
+			WHERE QNA.PRODUCT_ID = #{product_id}
+			AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+			AND QNA.USER_ID = USERS.USER_ID
+			ORDER BY QNA.QNA_GROUP, QNA.QNA_GROUP_NUMBER) AA)
+	    WHERE R_NUM BETWEEN #{start} AND #{end}
+		
+		<!-- SELECT *
+		FROM (SELECT ROWNUM R_NUM, P.*
+		        FROM (SELECT *
+				FROM PRODUCT_QNA
+				WHERE PRODUCT_ID = #{product_id}
+		        ORDER BY QNA_ID) P)
+		WHERE R_NUM BETWEEN #{start} AND #{end} -->
+	</select>
+	
+	<!-- total prd_qna count per product_id -->
+	<select id="totalReplCnt_prd" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM PRODUCT_QNA
+		WHERE PRODUCT_ID = #{product_id}
+	</select>
+	
+	<!-- total categoryList count -->
 	<select id="totalProductCnt_c" parameterType="int" resultType="int">
 		SELECT COUNT(*)
 		FROM PRODUCT
@@ -13,7 +43,8 @@
 	</select>
 	
 	<!-- products by category  -->
-	<select id="getProductPerPage_food" parameterType="map" resultType="com.spring.mall.product.vo.ProductVO">
+	<select id="getProductPerPage_c" parameterType="map" 
+					resultType="com.spring.mall.product.vo.ProductVO">
 		SELECT *
 		FROM (SELECT ROWNUM R_NUM, P.*
 		         FROM (SELECT * FROM PRODUCT

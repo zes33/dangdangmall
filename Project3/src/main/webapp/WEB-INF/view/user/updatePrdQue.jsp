@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품문의 답변하기</title>
+<title>상품문의 수정</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link
@@ -67,45 +67,37 @@ th {
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
 <div class="col-sm-7 sin">
-	<form id="insertPrdAns" method="post" action="submitAdminProductQna.do">
-	<div class="col-sm-11 whereIsIt">상품문의 답변 작성</div>
+	<form id="updatePrdQue" method="post" action="editProductQue.do">
+	<div class="col-sm-11 whereIsIt">상품문의 수정</div>
 	<div class="col-sm-11 tableParent">
-	
 		<table class="table table-bordered">
 		<colgroup>
 			<col width="20%">
 			<col width="80%">
 		</colgroup>
 			<tr>
-				<th class="align-middle thZone" style="background-color: #F0F0F3" height="50px">상품번호/상품명</th>
-				<td class="align-middle tdZone">${productQna.product_id} / ${productQna.product_name}</td>
+				<th class="align-middle thZone" style="background-color: #F0F0F3" height="50px">상품명</th>
+				<td class="align-middle tdZone">${qnaOne.product_name}</td>
 			</tr>
 			<tr>
 				<th class="align-middle thZone" style="background-color: #F0F0F3" height="50px">작성자</th>
-				<td class="align-middle tdZone">${productQna.user_id}</td>
+				<td class="align-middle tdZone">${qnaOne.user_id}</td>
 			</tr>
 			<tr height="100px">
 				<td class="qnaCon" colspan="4">
 					<div class="qnaConBaby">
 						<span class="dateInfo">작성일</span>
-						<span class="regDate">${productQna.product_qna_date}</span>
+						<span class="regDate">${qnaOne.product_qna_date}</span>
 					</div>
 					<div class="qnaConBaby">[상품문의]</div>
 					<div class="qnaConBaby fat">
-					 ${productQna.qna_content}
+						<textarea rows="10" cols="134" name="qna_content">
+						${qnaOne.qna_content}</textarea>
 					</div>
 				</td>
 			 </tr>
-			 <tr>
-			 	<td class="qnaCon txtArea" colspan="4">
-			 		<div class="txtDiv">
-			 		<textarea rows="10" cols="132" name="qna_content" ></textarea>
-			 		</div>
-			 	</td>
-			 </tr>
 		</table>
-		<input type="hidden" name="qna_id" value="${productQna.qna_id}">
-		
+		<input type="hidden" name="qna_id" value="${qnaOne.qna_id}">
 	
 	</div>
 	<div class="col-sm-11 row btnZone">
@@ -116,7 +108,6 @@ th {
         <div class="col-sm-6 rightBtn">
         	<div class="plzRight">
         	
-        	<!-- <input type="submit" class="btn btn-outline-secondary" value="등록"> -->
         	<button type="button" class="btn btn-outline-secondary"
         		onclick="writeQna()">등록</button>
         	<!-- <button type="button" class="btn btn-danger">문의삭제</button> -->
@@ -127,7 +118,7 @@ th {
 <script>
 function writeQna() {
 	console.log("writeQna() 실행~~")
-	var contentBlank = $("#insertPrdAns").find("textarea").val()
+	var contentBlank = $("#updatePrdQue").find("textarea").val()
 			.trim();
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.")

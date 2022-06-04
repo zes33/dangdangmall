@@ -61,6 +61,101 @@ th {
 
 
 </style>
+<script>
+function goInsertQna(qna_id){
+    let f = document.createElement('form');
+    
+    let obj;
+    obj = document.createElement('input');
+    obj.setAttribute('type', 'hidden');
+    obj.setAttribute('name', 'qna_id');
+    obj.setAttribute('value', qna_id);
+    
+    f.appendChild(obj);
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', 'adminInsertProductQna.do');
+    document.body.appendChild(f);
+    f.submit();
+}
+
+function delPrdQna(qna_group) {
+	let del = confirm("문의를 삭제하면 답변까지 삭제됩니다. \n삭제하시겠습니까?");
+	if(del){
+		let f = document.createElement('form');
+	    
+	    let obj;
+	    obj = document.createElement('input');
+	    obj.setAttribute('type', 'hidden');
+	    obj.setAttribute('name', 'qna_group');
+	    obj.setAttribute('value', qna_group);
+	    
+	    f.appendChild(obj);
+	    f.setAttribute('method', 'post');
+	    f.setAttribute('action', 'delProductQue.do');
+	    document.body.appendChild(f);
+	    f.submit();
+	}
+}
+
+function delPrdAns(qna_group, qna_id) {
+	let del = confirm("답변을 삭제하시겠습니까?");
+	if(del){
+		let f = document.createElement('form');
+	    
+	    let obj;
+	    obj = document.createElement('input');
+	    obj.setAttribute('type', 'hidden');
+	    obj.setAttribute('name', 'qna_group');
+	    obj.setAttribute('value', qna_group);
+	    
+	    let obj2;
+	    obj2 = document.createElement('input');
+	    obj2.setAttribute('type', 'hidden');
+	    obj2.setAttribute('name', 'qna_id');
+	    obj2.setAttribute('value', qna_id);
+	    
+	    f.appendChild(obj);
+	    f.appendChild(obj2);
+	    f.setAttribute('method', 'post');
+	    f.setAttribute('action', 'delProductAns.do');
+	    document.body.appendChild(f);
+	    f.submit();
+	}
+}
+
+function updateAns(qna_group){
+    let f = document.createElement('form');
+    
+    let obj;
+    obj = document.createElement('input');
+    obj.setAttribute('type', 'hidden');
+    obj.setAttribute('name', 'qna_group');
+    obj.setAttribute('value', qna_group);
+    
+    f.appendChild(obj);
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', 'updatePrdAns.do');
+    document.body.appendChild(f);
+    f.submit();
+}	
+
+function updateQue(qna_id){
+    let f = document.createElement('form');
+    
+    let obj;
+    obj = document.createElement('input');
+    obj.setAttribute('type', 'hidden');
+    obj.setAttribute('name', 'qna_id');
+    obj.setAttribute('value', qna_id);
+    
+    f.appendChild(obj);
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', 'updatePrdQue.do');
+    document.body.appendChild(f);
+    f.submit();
+}
+
+</script>
 </head>
 <body>
 <header>
@@ -105,7 +200,7 @@ th {
 			<tr height="100px">
 				<td class="qnaCon" colspan="4">
 					<div class="qnaConBaby">
-						<span class="dateInfo">작성일</span>
+						<span class="dateInfo">관리자</span>
 						<span class="regDate">${prdQna.product_qna_date}</span>
 					</div>
 					<div class="qnaConBaby">[답변]</div>
@@ -121,21 +216,57 @@ th {
 	</div>
 	<div class="col-sm-11 row btnZone">
 		<div class="col-sm-6">
-			<button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'"
-			type="button" class="btn btn-outline-secondary">목록</button>
+		
+		<c:choose> 
+			<c:when test="${user.user_state eq 2 }"> 
+				<button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'"
+				type="button" class="btn btn-outline-secondary">목록</button>
+			</c:when>
+			<c:otherwise>  
+				<button onclick="location.href='${pageContext.request.contextPath }/goMyPrdQna.do'"
+				type="button" class="btn btn-outline-secondary">목록</button>
+			
+			</c:otherwise>
+		</c:choose>	
 		</div>
+		
+		
         <div class="col-sm-6 rightBtn">
-        	<div class="plzRight">
-        	
+        	<div class="plzRight">  
         	<c:choose>
-        	<c:when test="${fn:length(productQnaSet) gt 1 }">
-        	<button type="button" class="btn btn-outline-secondary">답변수정</button>
-        	<button type="button" class="btn btn-outline-secondary">답변삭제</button>
-        	<button type="button" class="btn btn-danger">문의삭제</button>
+        	<c:when test="${user.user_state eq 2 }">
+        		
+        		<c:choose>
+				   	<c:when test="${fn:length(productQnaSet) gt 1 }">
+				   	<button type="button" class="btn btn-outline-secondary"
+				   	onclick="updateAns(${productQnaSet[0].qna_group})">답변수정</button>
+				   	<button type="button" class="btn btn-outline-secondary"
+				   	onclick="delPrdAns(${productQnaSet[0].qna_group},${productQnaSet[0].qna_id})">답변삭제</button>
+				   	<button type="button" class="btn btn-danger"
+				   	onclick="delPrdQna(${productQnaSet[0].qna_group})">문의삭제</button>
+				   	</c:when>
+				   	<c:otherwise>
+				   	<button type="button" class="btn btn-outline-secondary"
+				   	onclick="goInsertQna(${productQnaSet[0].qna_id})">답변작성</button>
+				   	<button type="button" class="btn btn-danger"
+				   	onclick="delPrdQna(${productQnaSet[0].qna_group})">문의삭제</button>
+				   	</c:otherwise>
+			   	</c:choose>
+        		
         	</c:when>
         	<c:otherwise>
-        	<button type="button" class="btn btn-outline-secondary">답변작성</button>
-        	<button type="button" class="btn btn-danger">문의삭제</button>
+        		<c:choose>
+				   	<c:when test="${fn:length(productQnaSet) gt 1 }">
+				   	<button type="button" class="btn btn-danger"
+				   	onclick="delPrdQna(${productQnaSet[0].qna_group})">문의삭제</button>
+				   	</c:when>
+				   	<c:otherwise>
+				   	<button type="button" class="btn btn-outline-secondary"
+				   	onclick="updateQue(${productQnaSet[0].qna_id})">문의수정</button>
+				   	<button type="button" class="btn btn-danger"
+				   	onclick="delPrdQna(${productQnaSet[0].qna_group})">문의삭제</button>
+				   	</c:otherwise>
+			   	</c:choose>
         	</c:otherwise>
         	</c:choose>
         	

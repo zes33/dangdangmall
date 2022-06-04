@@ -13,8 +13,11 @@ public interface ProductQnaService {
 	public List<ProductQnaNickVO> qnaNickList(int product_id);
 	public void insertProductQna(ProductQnaVO vo);
 	public ProductQnaNickVO getProductQnaNick(ProductQnaNickVO vo);
-	public void updateProductQnaState(ProductQnaNickVO vo);
+	public void updateProductQnaState(String product_qna_state, String qna_id );
 	public void insertAdminProductQna(String qna_content, String product_id,
 										String user_id, String qna_group);
-
+	public void deleteProductQna(ProductQnaNickVO vo);
+	public void deleteProductAns(ProductQnaNickVO vo);
+	public void updateQna(ProductQnaNickVO vo);
+	public ProductQnaNickVO viewPrdQnaOne(ProductQnaNickVO vo);
 }

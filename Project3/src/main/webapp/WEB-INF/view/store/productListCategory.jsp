@@ -32,7 +32,7 @@ function productDetailView(product_id){
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'tempPrd.do');
+    f.setAttribute('action', 'testPrdRepl.do');
     document.body.appendChild(f);
     f.submit();
 }
@@ -71,25 +71,26 @@ function productDetailView(product_id){
 				</c:choose>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
-				<c:forEach var="food" items="${viewProduct }">
-					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${food.product_id})">
+				<c:forEach var="product" items="${viewProduct }">
+					<%-- <div class="col" style=" cursor: pointer;" onclick="productDetailView(${product.product_id})">
+					 --%><div class="col" style=" cursor: pointer;" onclick="productDetailView(37)">
 						<div class="card shadow-sm">
 							<img src="${pageContext.request.contextPath }/img/셀러드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >
 							<div class="card-body">
-								<p class="card-text">${food.product_name }</p>
+								<p class="card-text">${product.product_name }</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div>
 										<c:choose>
-										<c:when test="${0 eq food.product_discount }">
+										<c:when test="${0 eq product.product_discount }">
 											<br>
-											<span>${food.product_price }원</span>
+											<span>${product.product_price }원</span>
 										</c:when>
 										<c:otherwise>
 											<span>할인혜택가</span>
-											<span><strike>${food.product_price }원</strike></span><br>
-											<span>${food.product_discount * 100}%</span>
-											<span>${food.product_price * (1- food.product_discount) }원</span>
+											<span><strike>${product.product_price }원</strike></span><br>
+											<span>${product.product_discount * 100}%</span>
+											<span>${product.product_price * (1- food.product_discount) }원</span>
 										</c:otherwise>
 										</c:choose>
 									</div>

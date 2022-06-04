@@ -4,6 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="productQnaDAO">
+
+
+	<!-- 상품문의 /답변 수정 -->
+	<update id="updatePrdQna" parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
+		UPDATE PRODUCT_QNA SET
+		QNA_CONTENT = #{qna_content}
+		WHERE QNA_ID = #{qna_id}
+	</update>
+	
+	<!-- 상품문의 '답변' 삭제 -->
+	<delete id="delPrdAns" parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
+		DELETE FROM PRODUCT_QNA
+		WHERE QNA_GROUP = #{qna_group}
+		AND Q_OR_A = 1
+	</delete>
+
+	<!-- 상품문의 삭제 -->
+	<delete id="delPrdQna" parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
+		DELETE FROM PRODUCT_QNA
+		WHERE QNA_GROUP = #{qna_group}
+	</delete>
 	
 	<!-- 개인의 상품문의 목록 조회 -->
 	<select id="myPrdQnaList" parameterType="string" resultType="com.spring.mall.product.vo.ProductQnaNickVO">
@@ -13,6 +34,16 @@
 		AND Q.USER_ID = USERS.USER_ID
 		AND Q.PRODUCT_ID = PRODUCT.PRODUCT_ID
 		ORDER BY QNA_ID DESC
+	</select>
+	
+	<!-- QNA_ID로 문의 하나 찾기 -->
+	<select id="viewPrdQnaOne" resultType="com.spring.mall.product.vo.ProductQnaNickVO"
+		parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
+		SELECT QNA.*, PRODUCT.PRODUCT_NAME 
+		FROM PRODUCT_QNA QNA, PRODUCT, USERS
+		WHERE QNA.QNA_ID = #{qna_id}
+		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		AND QNA.USER_ID = USERS.USER_ID
 	</select>
 	
 	<!-- 상품문의 클릭시 문의+답변 조회 -->
@@ -37,11 +68,11 @@
 	)
 	</insert>
 	
-	<!-- 문의 답변 완료 : 답변상태 1로 변경 -->
-	<update id="updateQnaState" parameterType="com.spring.mall.product.vo.ProductQnaNickVO">
+	<!-- 문의 답변 완료,삭제 : 답변상태 1,0으로 변경 -->
+	<update id="updateQnaState" parameterType="map">
 		UPDATE PRODUCT_QNA SET
-		PRODUCT_QNA_STATE = 1
-		WHERE QNA_ID = #{qna_id}
+		PRODUCT_QNA_STATE = TO_NUMBER(#{product_qna_state})
+		WHERE QNA_ID = TO_NUMBER(#{qna_id})
 	</update>
 	
 	<!-- qna_id로 상품문의 조회(상품명, 닉네임 포함) -->
@@ -67,7 +98,7 @@
 	<!-- 해당 상품의 문의 목록(상품 상세페이지) -->
 	<select id="qnaNickByProduct" parameterType="int" 
 	resultType="com.spring.mall.product.vo.ProductQnaNickVO">
-		SELECT QNA.*, PRODUCT.PRODUCT_NAME 
+		SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
 		FROM PRODUCT_QNA QNA, PRODUCT, USERS
 		WHERE QNA.PRODUCT_ID = #{product_id}
 		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID

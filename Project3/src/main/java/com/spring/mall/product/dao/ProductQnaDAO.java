@@ -17,6 +17,30 @@ public class ProductQnaDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 상품문의 qna_id로 찾기
+	public ProductQnaNickVO viewPrdQnaOne(ProductQnaNickVO vo) {
+		System.out.println("viewPrdQnaOne() 실행");
+		return  mybatis.selectOne("productQnaDAO.viewPrdQnaOne", vo);
+	}
+	
+	// 상품답변 수정
+	public void updatePrdQna(ProductQnaNickVO vo) {
+		System.out.println("ProductQnaDAO.updateAnswer() 실행");
+		mybatis.update("productQnaDAO.updatePrdQna",vo);
+	}
+	
+	// 상품답변 삭제
+	public void delProductAns(ProductQnaNickVO vo) {
+		System.out.println("ProductQnaDAO.delProductAns() 실행");
+		mybatis.delete("productQnaDAO.delPrdAns",vo );
+	}
+	
+	// 상품문의 삭제
+	public void delProductQna(ProductQnaNickVO vo) {
+		System.out.println("ProductQnaDAO.delPrdQna() 실행");
+		mybatis.delete("productQnaDAO.delPrdQna", vo);
+	}
+	
 	// 개인의 상품문의 목록 조회
 	public List<ProductQnaNickVO> myPrdQnaList(String user_id){
 		System.out.println("ProductQnaDAO.viewPrdQnaOne() 실행");
@@ -42,9 +66,12 @@ public class ProductQnaDAO {
 	}
 	
 	// 상품문의 답변상태 업데이트
-	public void updateProductQnaState(ProductQnaNickVO vo) {
-		System.out.println("ProductQnaDAO.updateProductQnaState() 실행");
-		mybatis.update("productQnaDAO.updateQnaState",vo);
+	public void updateProductQnaState(String product_qna_state, String qna_id ) {
+		System.out.println("ProductQnaDAO.updateProductQnaState() 실행~~~~~~~~~~~~~~");
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("product_qna_state", product_qna_state);
+		map.put("qna_id", qna_id);
+		mybatis.update("productQnaDAO.updateQnaState",map);
 	}
 	
 	// 상품문의 1개 조회(상품명, 닉네임)

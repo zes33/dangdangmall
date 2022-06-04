@@ -26,7 +26,7 @@ public class ProductController {
 		System.out.println("ProductController() 객체 생성~~");
 	}
 	
-	// 식품 목록 페이지 이동
+	// 카테코리별 목록 페이지 이동
 	@RequestMapping("/foodList.do")
 	public String getFoodList(Model model) {
 		System.out.println("ProductController.getFoodList() 실행");
@@ -35,7 +35,7 @@ public class ProductController {
 		return "store/foodProduct";
 	}
 	
-	// 상품상세페이지 이동 
+	// 상품상세페이지 이동(원본)
 	@RequestMapping("/productDetail.do")
 	public String tempProductDetail(ProductVO vo, Model model, HttpSession session) {
 		System.out.println("상품상세페이지(임시) 이동 - tempProductDetail 실행");
@@ -51,7 +51,5 @@ public class ProductController {
 		
 		return "store/productDetail";
 	}
-	
-	
 	
 }

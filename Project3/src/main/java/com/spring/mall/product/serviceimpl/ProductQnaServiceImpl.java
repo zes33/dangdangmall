@@ -40,8 +40,8 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	}
 
 	@Override
-	public void updateProductQnaState(ProductQnaNickVO vo) {
-		productQnaDAO.updateProductQnaState(vo);
+	public void updateProductQnaState(String product_qna_state, String qna_id ) {
+		productQnaDAO.updateProductQnaState(product_qna_state,qna_id);
 		
 	}
 
@@ -58,6 +58,27 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	@Override
 	public List<ProductQnaNickVO> myPrdQnaList(String user_id) {
 		return productQnaDAO.myPrdQnaList(user_id);
+	}
+
+	@Override
+	public void deleteProductQna(ProductQnaNickVO vo) {
+		productQnaDAO.delProductQna(vo);
+		
+	}
+
+	@Override
+	public void deleteProductAns(ProductQnaNickVO vo) {
+		productQnaDAO.delProductAns(vo);
+	}
+
+	@Override
+	public void updateQna(ProductQnaNickVO vo) {
+		productQnaDAO.updatePrdQna(vo);
+	}
+
+	@Override
+	public ProductQnaNickVO viewPrdQnaOne(ProductQnaNickVO vo) {
+		return productQnaDAO.viewPrdQnaOne(vo);
 	}
 
 
