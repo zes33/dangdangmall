@@ -36,6 +36,11 @@ public class CenterQnaServiceImpl implements CenterQnaService{
 	}
 
 	@Override
+	public CenterQnaVO selectCenterQna(CenterQnaVO vo) {
+		return centerQnaDAO.selectCenterQna(vo);
+	}
+	
+	@Override
 	public Map<String, Object> getCenterQna(CenterQnaVO vo) {
 		return centerQnaDAO.getCenterQna(vo);
 	}

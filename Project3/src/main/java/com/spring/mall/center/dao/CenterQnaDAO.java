@@ -28,16 +28,22 @@ public class CenterQnaDAO {
 	//문의 수정
 	public void updateCenterQna(CenterQnaVO vo) {
 		System.out.println("===> MyBatis 사용 updateCenterQna() 실행");
-		mybatis.insert("centerQnaDAO.updateCenterQna", vo);
+		mybatis.update("centerQnaDAO.updateCenterQna", vo);
 	}
 	
 	//문의 삭제
 	public void deleteCenterQna(CenterQnaVO vo) {
 		System.out.println("===> MyBatis 사용 deleteCenterQna() 실행");
-		mybatis.insert("centerQnaDAO.deleteCenterQna", vo);
+		mybatis.delete("centerQnaDAO.deleteCenterQna", vo);
 	}
 	
 	//문의 하나 조회
+	public CenterQnaVO selectCenterQna(CenterQnaVO vo) {
+		System.out.println("===> MyBatis 사용 selectCenterQna() 실행");
+		return mybatis.selectOne("centerQnaDAO.selectCenterQna", vo);
+	}
+	
+	//문의 하나 조회 맵으로
 	public Map<String, Object> getCenterQna(CenterQnaVO vo) {
 		System.out.println("===> MyBatis 사용 getCenterQna() 실행");
 		return mybatis.selectOne("centerQnaDAO.getCenterQna", vo);

@@ -7,6 +7,56 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터 문의</title>
+<script>
+	//로그인한 회원이 문의삭제 버튼을 누르면 활성화되는 함수
+	function go_delete(centerQnaId, userId, centerUserId, centerUserPw) {
+		alert("go_delete 버튼 작동");
+		if(centerUserId != userId) {
+			alert("작성자가 아니므로 삭제할 수 없습니다.");
+		} else {
+			var pwdCheck = prompt("비밀번호 확인이 필요합니다. 비밀번호를 입력해 주세요.");
+			if (pwdCheck == centerUserPw) {
+				var con = confirm("해당 문의에 대한 답글이 존재합니다. 문의글을 삭제하면 답글도 함께 삭제됩니다. 그래도 삭제하시겠습니까?");
+				if (con) {
+					location.href = "${pageContext.request.contextPath }/user/deleteCenterQna.do?center_qna_id=" + centerQnaId;
+				}
+				
+			} else {
+				alert("비밀번호가 틀렸습니다.");
+			}
+		}
+	}
+	
+	//로그인한 회원이 문의수정 버튼을 누르면 활성화되는 함수
+	function go_update(centerQnaId, userId, centerUserId, centerUserPw) {
+		alert("go_update 버튼 작동");
+		if(centerUserId != userId) {
+			alert("작성자가 아니므로 수정할 수 없습니다.");
+		} else {
+			var pwdCheck = prompt("비밀번호 확인이 필요합니다. 비밀번호를 입력해 주세요.");
+			if (pwdCheck == centerUserPw) {
+					location.href = "${pageContext.request.contextPath }/user/updateCenterQna.do?center_qna_id=" + centerQnaId;
+			} else {
+				alert("비밀번호가 틀렸습니다.");
+			}
+		}
+	}
+	
+	//비회원 유저가 문의수정/문의삭제 버튼을 누르면 활성화되는 go_login() 함수
+	function go_login() {
+		var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
+		if(con) {
+			location.href = "${pageContext.request.contextPath }/login.do";
+		}
+	}	
+	
+	
+	//문의글의 제목을 누르면 글의 내용과 답변이 한눈에 보이는 상세페이지로 이동하는 함수
+	function go_getCenter(center_qna_id) {
+		alert(center_qna_id);
+		location.href = "getCenterQna.do?center_qna_id="+center_qna_id;
+	}	
+</script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -60,7 +110,7 @@
 		</tr>
 		<c:choose>
 			<c:when test="${empty getCenter.REPLY_CONTENT }">
-				<tr>등록된 답변이 없습니다.</tr>
+				<tr><td>등록된 답변이 없습니다.</td></tr>
 			</c:when>
 			<c:otherwise>
 				<tr>
@@ -77,10 +127,27 @@
 		</c:choose>
 		
 	</table>
+	
+	<button type="button" class="btn btn-outline-secondary btn-sm" href="getCenterList.do">목록으로</button>
+	\${centerUser } : ${centerUser }
+	
 	<!-- 답변이 달리면 수정 불가, 분기처리는 function에서 하겠음 -->
+	<!-- 로그인세션에 있는 유저가 null이면 go_login()함수 버튼 활성화, 아니라면 go_delete()함수 버튼 활성화 -->
 	<div style="float:right;">
+	<c:choose>
+	<c:when test="${centerUser.user_id eq null}">
+		<!-- 
+		<a class="btn btn-sm btn-outline-secondary" href="javascript:void(0);">a태그 문의수정</a>
+		<a class="btn btn-sm btn-outline-secondary" href="javascript:void(0);" onclick="go_login();">a태그 문의 삭제</a>
+		-->
+		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_login();">문의 수정</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_login();">문의 삭제</button>
+	</c:when>
+	<c:otherwise>
 		<button type="button" class="btn btn-outline-secondary btn-sm" href="#">문의 수정</button>
-		<button type="button" class="btn btn-outline-secondary btn-sm" href="#">문의 삭제</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_delete(${getCenter.CENTER_QNA_ID },${getCenter.USER_ID },${centerUser.user_id },${centerUser.user_pw });">문의 삭제</button>
+	</c:otherwise>
+	</c:choose>
 	</div>
 	
 	<br>

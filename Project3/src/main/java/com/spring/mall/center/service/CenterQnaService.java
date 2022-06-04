@@ -9,6 +9,7 @@ public interface CenterQnaService {
 	void insertCenterQna(CenterQnaVO vo);
 	void updateCenterQna(CenterQnaVO vo);
 	void deleteCenterQna(CenterQnaVO vo);
+	CenterQnaVO selectCenterQna(CenterQnaVO vo);
 	Map<String, Object> getCenterQna(CenterQnaVO vo);
 	List<Map<String, Object>> getCenterQnaList(CenterQnaVO vo);
 }

@@ -7,11 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터(고객문의목록)</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
 <style>
 	#container { width: 700px; margin: auto; }
 	h1, h3, p { text-align: center; }
@@ -23,29 +18,27 @@
 	.center { text-align: center; }
 	
 	.border-none, .border-none td { border: none; }
-	
 </style>
 <script>
+	//회원 유저가 문의하기 버튼을 누르면 활성화되난 go_qna() 함수
+	function go_qna() {
+		alert("go_qna()버튼 작동");
+		location.href = "insertCenterQna.do";
+	}
 
-//문의하기 버튼을 누르면 활성화되는 함수
-function go_qna(user_id) {
-	if(user_id == null) {
+	//비회원 유저가 문의하기 버튼을 누르면 활성화되는 go_login() 함수
+	function go_login() {
 		var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
-		if (con) {
+		if(con) {
 			location.href = "${pageContext.request.contextPath }/login.do";
 		}
 	}
-	else {
-		location.href = "insertCenterQna.do";
+
+	//문의글의 제목을 누르면 글의 내용과 답변이 한눈에 보이는 상세페이지로 이동하는 함수
+	function go_getCenter(center_qna_id) {
+		alert(center_qna_id);
+		location.href = "getCenterQna.do?center_qna_id="+center_qna_id;
 	}
-}
-
-//문의글의 제목을 누르면 글의 내용과 답변이 한눈에 보이는 상세페이지로 이동하는 함수
-function go_getCenter(center_qna_id) {
-	alert(center_qna_id);
-	location.href = "getCenterQna.do?center_qna_id="+center_qna_id;
-}
-
 
 </script>
 </head>
@@ -75,7 +68,7 @@ function go_getCenter(center_qna_id) {
 	<br>
 	</form>
 	
-	
+	<p>\${user.user_id } : ${user.user_id }</p>
 	<!-- 데이터 표시 영역 -->
 	<table class="table table-hover">
 		<thead>
@@ -146,7 +139,15 @@ function go_getCenter(center_qna_id) {
 	</table>
 	
 	<div style="float:right;">
-		<a class="btn btn-sm btn-outline-secondary" href="javascript:void(0);" onclick="go_qna(${user_id});">문의하기</a>
+		<c:choose>
+		<c:when test="${user.user_id eq null }">
+			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_login();">문의하기</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna();">문의하기</button>
+		</c:otherwise>
+		</c:choose>
+		
 	</div>
 	
 </div>	

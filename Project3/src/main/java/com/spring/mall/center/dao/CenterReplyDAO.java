@@ -26,13 +26,13 @@ public class CenterReplyDAO {
 	//답변 수정
 	public void updateCenterReply(CenterReplyVO vo) {
 		System.out.println("===> MyBatis 사용 updateCenterReply() 실행");
-		mybatis.insert("centerReplyDAO.updateCenterReply", vo);
+		mybatis.update("centerReplyDAO.updateCenterReply", vo);
 	}
 	
 	//답변 삭제
 	public void deleteCenterReply(CenterReplyVO vo) {
 		System.out.println("===> MyBatis 사용 deleteCenterReply() 실행");
-		mybatis.insert("centerReplyDAO.deleteCenterReply", vo);
+		mybatis.delete("centerReplyDAO.deleteCenterReply", vo);
 	}
 	
 	//답변 하나 조회
