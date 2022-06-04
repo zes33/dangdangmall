@@ -22,7 +22,6 @@
 <script>
 	//회원 유저가 문의하기 버튼을 누르면 활성화되난 go_qna() 함수
 	function go_qna() {
-		alert("go_qna()버튼 작동");
 		location.href = "insertCenterQna.do";
 	}
 
@@ -36,7 +35,6 @@
 
 	//문의글의 제목을 누르면 글의 내용과 답변이 한눈에 보이는 상세페이지로 이동하는 함수
 	function go_getCenter(center_qna_id) {
-		alert(center_qna_id);
 		location.href = "getCenterQna.do?center_qna_id="+center_qna_id;
 	}
 
@@ -121,7 +119,7 @@
 					<td class="center"><fmt:formatDate value="${center.CENTER_QNA_DATE}" pattern="yyyy-MM-dd"/></td>
 					<!-- 아래 c:choose 구문은 reply테이블에 해당하는 답변이 비어있으면 답변대기, 데이터가 있으면 답변완료 -->
 					<c:choose>
-						<c:when test="${empty center.USER_NICKNAME }">
+						<c:when test="${empty center.CENTER_REPLY_ID }">
 							<td class="center">답변대기</td>
 						</c:when>
 						<c:otherwise>

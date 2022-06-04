@@ -23,14 +23,47 @@
 	
 	.border-none, .border-none td { border: none; }
 </style>
+<!-- 제이쿼리를 사용하기 위한 스크립트 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+	//은송언니 널체크 함수
+	function writeQna() {
+	    console.log("writeQna() 실행~~")
+	    var contentBlank = $("#prdQnaForm").children("textarea").val()
+	          .trim();
+	    console.log("contentBlank : " + contentBlank);
+	    if (contentBlank.length == 0) {
+	       alert("내용이 없어요.")
+	    } else {
+	       document.forms[1].submit();
+	    }
+	 }
+	
+	//내용이 비어있으면 alert를 띄우는 함수
+	function go_nullCheck() {
+		alert("go_nullCheck() 함수 실행~");
+        var titleNull = $("#insertCenterQna").find("center_qna_title").val().trim();
+        var contentNull = $("#insertCenterQna").find("center_qna_content").val().trim();
+        if (titleNull.length == 0) {
+        	alert("제목을 입력하세요.");
+        } else {
+        	if (contentNull.length == 0) {
+        		alert("내용을 입력하세요.");
+        	} else {
+        		document.forms[0].submit();
+        	}
+        }
+    }
+		
+</script>
 </head>
 <body>
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 <div id="container">
-	<form action="insertCenterQnaWrite.do" method="post">
-		<input type="hidden" name="seq" value="">
+	<form id="insertCenterQna" action="insertCenterQnaWrite.do" method="post">
 		<input type="hidden" id="user_id" name="user_id" value="${user.user_id }">
 	<table class="table table-hover">
 		<tr>
@@ -39,12 +72,6 @@
 				<input type="text" name="center_qna_title">
 			</td>
 		</tr>
-		<!--  
-		<tr>
-			<th class="center">작성일</th>
-			<td>2022.05.31</td>
-		</tr>
-		-->
 		<tr>
 			<th class="center">문의내용</th>
 			<td>
