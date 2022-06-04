@@ -84,17 +84,30 @@ public class CenterQnaController {
 	}
 	
 	@RequestMapping("/updateCenterQna.do")
-	public String updateCenterQna() {
+	public String updateCenterQna(CenterQnaVO vo, Model model) {
+		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
+		model.addAttribute("getCenter", getCenter);
+		System.out.println("getCenter: " + getCenter);
 		System.out.println(">>> 고객 문의 수정 페이지로 이동(updateCenter.jsp) - updateCenterQna()");
 		return "user/updateCenter";
 	}
 	
 	@RequestMapping("/updateCenterQnaWrite.do")
-	public String updateCenterQnaWrite(CenterQnaVO vo) {
+	public String updateCenterQnaWrite(CenterQnaVO vo, Model model) {
+		System.out.println("updateCenterQnaWrite 쩜두 실행~ ");
+		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
+		model.addAttribute("getCenter", getCenter);
+		System.out.println("getCenter: " + getCenter);
+		
 		System.out.println(">> update 할 vo : " + vo);
+		String center_qna_id = Integer.toString(vo.getCenter_qna_id());
+//		System.out.println("update할 제목 center_qna_title : " + center_qna_title);
+//		System.out.println("update할 내용 center_qna_content : " + center_qna_content);
+//		vo.setCenter_qna_title(center_qna_title);
+//		vo.setCenter_qna_content(center_qna_content);
 		centerQnaService.updateCenterQna(vo);
-		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
-		return "redirect:getCenterList.do";
+		System.out.println("고객 문의 상세페이지(getCenter.jsp)이동 - updateCenterQnaWrite()");
+		return "redirect:getCenterQna.do?center_qna_id="+center_qna_id;
 	}
 	
 	

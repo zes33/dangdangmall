@@ -24,7 +24,7 @@
 				if (pwdCheck != centerUserPw) {
 					alert("비밀번호가 틀렸습니다.");
 				} else {
-					if (getCenterReplyId != null) {
+					if (getCenterReplyId != 0) {
 						var con = confirm("해당 문의에 대한 답글이 존재합니다. 문의글을 삭제하면 답글도 함께 삭제됩니다. 그래도 삭제하시겠습니까?");
 						if (con) {
 							location.href = "${pageContext.request.contextPath }/user/deleteCenterQna.do?center_qna_id=" + getCenterQnaId;
@@ -40,17 +40,28 @@
 		}
 	}
 	
-	//로그인한 회원이 문의수정 버튼을 누르면 활성화되는 함수
-	function go_update(centerQnaId, userId, centerUserId, centerUserPw) {
-		alert("go_update 버튼 작동");
-		if(centerUserId != userId) {
-			alert("작성자가 아니므로 수정할 수 없습니다.");
+	//문의수정 버튼을 누르면 활성화되는 함
+	function go_update(centerUserId,centerUserPw,getCenterUserId,getCenterQnaId,getCenterReplyId) {
+		alert("go_update 버튼 작동. getCenterReplyId: "+getCenterReplyId);
+		if(centerUserId == null) {
+			var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
+			if(con) {
+				location.href = "${pageContext.request.contextPath }/login.do";
+			}
 		} else {
-			var pwdCheck = prompt("비밀번호 확인이 필요합니다. 비밀번호를 입력해 주세요.");
-			if (pwdCheck == centerUserPw) {
-				location.href = "${pageContext.request.contextPath }/user/updateCenterQna.do?center_qna_id=" + centerQnaId;
+			if(centerUserId != getCenterUserId) {
+				alert("작성자가 아니므로 수정할 수 없습니다.");
 			} else {
-				alert("비밀번호가 틀렸습니다.");
+				if (getCenterReplyId != undefined) {
+					alert("답변완료 상태인 문의글은 수정이 불가능합니다.");
+				} else {
+					var pwdCheck = prompt("비밀번호 확인이 필요합니다. 비밀번호를 입력해 주세요.");
+					if (pwdCheck != centerUserPw) {
+						alert("비밀번호가 틀렸습니다.");
+					} else {
+						location.href = "${pageContext.request.contextPath }/user/updateCenterQna.do?center_qna_id=" + getCenterQnaId;
+					}
+				}
 			}
 		}
 	}
@@ -144,7 +155,7 @@
 	</c:when>
 	<c:otherwise>
 	-->
-		<button type="button" class="btn btn-outline-secondary btn-sm" href="#">문의 수정</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_update('${centerUser.user_id}','${centerUser.user_pw}','${getCenter.USER_ID}',${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 수정</button>
 		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_delete('${centerUser.user_id}','${centerUser.user_pw}','${getCenter.USER_ID}',${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 	<!--  
 	</c:otherwise>

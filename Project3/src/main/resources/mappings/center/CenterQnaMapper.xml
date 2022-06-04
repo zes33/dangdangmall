@@ -51,5 +51,12 @@
 		WHERE CENTER_QNA_ID = #{center_qna_id}
 	</delete>
 	
+	<update id="updateCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO">
+		UPDATE CENTER_QNA 
+		SET CENTER_QNA_TITLE = #{center_qna_title},
+    		CENTER_QNA_CONTENT = #{center_qna_content}
+		WHERE CENTER_QNA_ID = #{center_qna_id}
+	</update>
+	
 	
 </mapper>
