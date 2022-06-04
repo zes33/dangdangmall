@@ -290,7 +290,7 @@ function replyList(nowPage, product_id) {
 			alert("formObj,qna_content :" +formObj+","+ qna_content);
 			
 			var data = {
-				//'formObj' : formObj,
+				'nowPage' : null,
 				'qna_content' : qna_content,
 				'product_id' : product_id
 						};
