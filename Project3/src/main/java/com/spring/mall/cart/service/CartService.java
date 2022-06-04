@@ -30,5 +30,8 @@ public interface CartService {
 
 	// 7. 장바구니 상품 수량 변경
 	public void updateCart(CartVO vo);
+	
+	// 8. 헤더에서 장바구니 수량 표시
+	public int countProduct(String user_id);
 
 }

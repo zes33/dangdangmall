@@ -25,6 +25,8 @@
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
 
@@ -491,6 +493,8 @@ a:hover {
 	width: 40px;
 	font-size: 1em;
 }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-36 { font-size: 36px; }
 </style>
 </head>
 
@@ -502,6 +506,7 @@ a:hover {
 <%-- 	
  ${list} 
  ${user_id}  --%>
+
 	<!--Content-->
 	<div class="container-fluid text-center"
 		style="margin-top: 25pt; margin-bottom: 25px;">

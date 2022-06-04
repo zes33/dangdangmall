@@ -69,6 +69,9 @@ public class CartController {
 	        model.addAttribute("map", map);
 	        model.addAttribute("list", list);
 	        session.setAttribute("map", map);
+	        
+	        int count = cartService.countProduct(user_id);
+			session.setAttribute("count", count);
 		return "user/cart";
 
 	}
@@ -118,10 +121,21 @@ public class CartController {
 		return "redirect:list.do";
 	}
 
+	// 5. 장바구니 탭에서 메인으로 돌아가기 
 	@RequestMapping("/productList.do")
 	public String productList(HttpSession session, SessionStatus status) {
 		
 		return "redirect:/main.do";
 	}
+	
+//	// 6. 헤더에서 장바구니 갯수 보여주기 
+//		@RequestMapping("/countProduct.do")
+//		public String countProduct( @ModelAttribute CartVO vo, HttpSession session) {
+//			String user_id = (String) session.getAttribute("user_id");
+//			int count = cartService.countProduct(user_id);
+//			session.setAttribute("count", count);
+//			
+//			return "main.do";
+//		}
 	
 }

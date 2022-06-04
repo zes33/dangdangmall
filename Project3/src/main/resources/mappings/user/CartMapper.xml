@@ -35,7 +35,8 @@
 		AND p.product_id =
 		c.product_id
 		AND
-		c.user_id =#{user_id}
+		c.user_id
+		=#{user_id}
 		ORDER BY c.cart_id
 	</select>
 
@@ -50,7 +51,7 @@
 	</select>
 
 
-	<!-- 4. 장바구니 수정 -->
+	<!-- 4. 장바구니  수량 수정 -->
 	<update id="modifyCart">
 		UPDATE CART
 		SET CART_PRODUCT_QTY = #{cart_product_qty}
@@ -83,4 +84,10 @@
 		#{product_id}
 	</update>
 
+	<!-- 8. 헤더에서 장바구니 수량 표시 -->
+	<select id="countProduct" resultType="int">
+		SELECT COUNT(CART_ID)
+		FROM CART
+		WHERE USER_ID = #{user_id}
+	</select>
 </mapper>

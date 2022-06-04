@@ -68,4 +68,10 @@ public class CartServiceImpl implements CartService {
 		cartDAO.updateCart(vo);
 	}
 
+	//8. 헤더에서 장바구니 수량 표시
+	@Override
+	public int countProduct(String user_id) {
+		return cartDAO.countProduct(user_id);
+	}
+
 }

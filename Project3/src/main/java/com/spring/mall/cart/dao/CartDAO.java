@@ -33,9 +33,6 @@ public class CartDAO {
 	public List<CartVO> listCart(String user_id) {
 		return mybatis.selectList("cartDAO.listCart", user_id);
 	}
-//	public List<CartVO> listCart(CartVO vo) {
-//		return mybatis.selectList("cartDAO.listCart", vo);
-//	}
 
 	// 3. 장바구니 삭제
 	public void delete(int cart_id) {
@@ -64,5 +61,10 @@ public class CartDAO {
 	// 7. 장바구니 상품수량 변경
 	public void updateCart(CartVO vo) {
 		mybatis.update("cartDAO.updateCart", vo);
+	}
+	
+	// 8. 헤더에서 장바구니 수량 표시
+	public int countProduct(String user_id) {
+		return mybatis.selectOne("cartDAO.countProduct", user_id);
 	}
 }
