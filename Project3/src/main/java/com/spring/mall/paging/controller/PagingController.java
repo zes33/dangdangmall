@@ -51,7 +51,7 @@ public class PagingController {
 	}
 	
 	// test-----------
-	@RequestMapping("/testPrdRepl.do")
+	@RequestMapping("/viewPrdDetail.do")
 	public String viewPrdRepl(PagingVO paging, Model model, ProductQnaNickVO nv, ProductVO pv,
 					@RequestParam(value="nowPage", required = false) String nowPage,
 					@RequestParam(value="cntPerPage", required = false) String cntPerPage) {

@@ -184,7 +184,7 @@ public class ProductQnaController {
 		return "forward:/adminProductQnaList.do";
 	}
 	
-	// 상품문의 입력
+	// 상품문의 입력---대체예정
 	@RequestMapping("/insertPrdQna.do")
 	public String insertProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session,
 									RedirectAttributes rdatt) {
@@ -199,7 +199,7 @@ public class ProductQnaController {
 		return "forward:/testPrdRepl.do";
 	}
 	
-	//댓글입력..테스트----
+	//댓글입력..테스트----성공
 	@ResponseBody
 	@RequestMapping("/writePrdQna.do")
 	public void wirteProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session) {
@@ -210,7 +210,7 @@ public class ProductQnaController {
 	}
 	
 	
-	// 댓글..테스트------
+	// 댓글..테스트------성공
 	@ResponseBody
 	@RequestMapping("/qnaWithPaging.do")
 	public Map<String,Object> qnsListPaging(ProductQnaNickVO nv,ProductVO pv ,PagingVO paging,

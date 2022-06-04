@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@ function productDetailView(product_id){
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'testPrdRepl.do');
+    f.setAttribute('action', 'viewPrdDetail.do'); //페이징컨트롤러
     document.body.appendChild(f);
     f.submit();
 }
@@ -43,6 +44,24 @@ function productDetailView(product_id){
 	color: black;
 	font-weight: 550;
 	font-size: 50px;
+}
+
+.testcost {
+	font-weight: 700;
+	font-size: 20px;
+}
+.testdcPrice {
+	font-weight: 700;
+	font-size: 20px;
+}
+.testPct {
+	font-size: 18px;
+}
+
+.testdiscountPct {
+	font-size: 19px;
+	color: #F74E2C;
+	font-weight: 700;
 }
 
 .cat {
@@ -83,14 +102,26 @@ function productDetailView(product_id){
 									<div>
 										<c:choose>
 										<c:when test="${0 eq product.product_discount }">
-											<br>
-											<span>${product.product_price }원</span>
+											<%-- <br>
+											<span>${product.product_price }원</span> --%>
+											<span class="testcost"><!-- 원가 -->
+											<fmt:formatNumber value="${product.product_price }" pattern="#,###" />
+											</span>
+											<span class="won">원</span>
 										</c:when>
 										<c:otherwise>
-											<span>할인혜택가</span>
-											<span><strike>${product.product_price }원</strike></span><br>
-											<span>${product.product_discount * 100}%</span>
-											<span>${product.product_price * (1- food.product_discount) }원</span>
+											 <span class="testdcPrice"><!-- 할인가 -->
+												<fmt:formatNumber value="${product.product_price * (1- product.product_discount) }" pattern="#,###" />
+											</span>
+											<span class="won">원</span>
+											<span>
+												<strike class="testPct" >
+													<fmt:formatNumber value="${product.product_price }" pattern="#,###" />원
+												</strike>
+											</span>
+											<span class="testdiscountPct">
+												<fmt:formatNumber value="${product.product_discount * 100}" pattern="#,###" />%
+											</span>
 										</c:otherwise>
 										</c:choose>
 									</div>
