@@ -106,7 +106,8 @@ function replyList(nowPage, product_id) {
 				if (value.q_or_a == 0) {
 					a += '<div class="prdQnaContent">';
 					a += '<p>'+value.qna_content+'</p>';
-					a += '<p>'+value.user_nickname+'</p>';
+					//a += '<p>'+value.user_nickname+'</p>';
+					a += '<small>'+value.user_nickname+'</small>';
 					a += '<hr></div>';
 				} else {
 					a += '<div class="prdQnaContent">';
@@ -123,7 +124,6 @@ function replyList(nowPage, product_id) {
 			if (paging.startPage != 1){
 				a+='<li class="page-item">';
 				a+='<a class="page-link" onclick="replyList('+paging.startPage+'-'+1+',\''+product.product_id+'\')" aria-label="Previous">';
-				//a+='<a class="page-link" aria-label="Previous">';
 				a+='<span aria-hidden="true">&laquo;</span></a></li>';
 			} 
 			
