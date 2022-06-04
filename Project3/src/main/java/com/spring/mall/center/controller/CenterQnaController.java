@@ -75,7 +75,9 @@ public class CenterQnaController {
 		
 		System.out.println(">> delete 할 rvo : " + rvo);
 		System.out.println(">> delete 할 vo : " + vo);
-		centerReplyService.deleteCenterReply(rvo);
+		if (rvo.getCenter_reply_id() != 0) {
+			centerReplyService.deleteCenterReply(rvo);
+		}
 		centerQnaService.deleteCenterQna(vo);
 		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
 		return "redirect:getCenterList.do";
