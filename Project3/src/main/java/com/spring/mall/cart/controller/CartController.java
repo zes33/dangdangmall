@@ -50,19 +50,21 @@ public class CartController {
 		System.out.println(">> list.do() 생성 ");
 		
 		String user_id = (String) session.getAttribute("user_id");
+//		double discount = (double) session.getAttribute("product_discount");
+//		System.out.println(discount + ": product_discount");
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<CartVO> list = cartService.listCart(user_id); // 장바구니 정보
-		int sumMoney = cartService.sumMoney(user_id); // 장바구니 전체 금액 호출
+		int sumMoney = cartService.sumMoney(user_id); // 할인율이 적용된 장바구니 전체 금액 호출
 		int fee = sumMoney >= 100000 ? 0 : 2500;
-		double discount = 0.1;
-		double allSum1 = (sumMoney*(1-discount))+fee ;
+//		double discount = 0.1;
+		double allSum1 = (sumMoney)+fee ; //할인율 적용된 가격 + 배송비 
 		int allSum = (int)allSum1;
 		
 	        map.put("list", list);                // 장바구니 정보를 map에 저장
 	        map.put("count", list.size());        // 장바구니 상품의 유무
 	        map.put("sumMoney", sumMoney);        // 장바구니 전체 금액
 	        map.put("fee", fee);                 // 배송금액
-	        map.put("discount", discount);       // 할인금액
+//	        map.put("discount", discount);       // 할인금액
 	        map.put("allSum", allSum);    // 주문 상품 전체 금액
 //	        mav.setViewName("user/cart");    // view(jsp)의 이름 저장
 //	        mav.addObject("map", map);  
@@ -70,6 +72,7 @@ public class CartController {
 	        model.addAttribute("list", list);
 	        session.setAttribute("map", map);
 	        
+	        //장바구니 수 
 	        int count = cartService.countProduct(user_id);
 			session.setAttribute("count", count);
 		return "user/cart";

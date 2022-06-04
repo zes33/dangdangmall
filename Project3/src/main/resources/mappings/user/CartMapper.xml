@@ -40,10 +40,9 @@
 		ORDER BY c.cart_id
 	</select>
 
-	<!-- 3. 장바구니 전체 금액 -->
+	<!-- 3. 장바구니 전체 금액(할인율 적용된 금액) -->
 	<select id="sumMoney" resultType="int">
-		SELECT NVL(SUM(PRODUCT_PRICE *
-		CART_PRODUCT_QTY), 0) MONEY
+		SELECT NVL(SUM((PRODUCT_PRICE * CART_PRODUCT_QTY) - (PRODUCT_PRICE * CART_PRODUCT_QTY)*product_discount), 0) MONEY
 		FROM CART C, PRODUCT P
 		WHERE C.PRODUCT_ID =
 		P.PRODUCT_ID

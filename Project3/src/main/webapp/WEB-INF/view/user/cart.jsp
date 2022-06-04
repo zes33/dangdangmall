@@ -569,13 +569,13 @@ a:hover {
 										value="${list.product_price * list.cart_product_qty}"
 										pattern="###,###,###" /></span></td>
 							<td><span id="discount" style="color: red;"
-								data-amount=<c:out value="${map.discount }"/>> <fmt:formatNumber
-										value="${map.discount *100 }" type="number" /> %
+								data-amount=<c:out value="${list.product_discount }"/>> <fmt:formatNumber
+										value="${list.product_discount *100 }" type="number" /> %
 							</span></td>
 							<td><span id="total"
-								data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>>
+								data-amount=<c:out value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount}"/>>
 									<fmt:formatNumber
-										value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* map.discount }"
+										value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount }"
 										pattern="###,###,###" />
 							</span></td>
 							<td>
@@ -594,8 +594,10 @@ a:hover {
 				<tr>
 					<h3 style="font-weight: bold; font-size: 20px;">
 						<td>장바구니 금액 합계 : 
-						<fmt:formatNumber pattern="###,###,###" value="${map.sumMoney *(1- map.discount)}" />원 <br> 
-						배송비 <fmt:formatNumber value="${map.fee }" pattern="###,###,###" />원<br>
+						<fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}" />원 <br> 
+						배송비 
+						<span> 10만원 이상 구매시 무료배송! </span>
+						<fmt:formatNumber value="${map.fee }" pattern="###,###,###" />원<br>
 					</h3>
 					<h5 style="font-weight: bold; font-size: 30px;">
 						총금액
