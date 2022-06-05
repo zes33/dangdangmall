@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reviewDAO">
+	
+	<!-- order_detail_id로 리뷰 존재여부 확인 -->
+	<select id="existReview" parameterType="com.spring.mall.user.vo.MyInfoVO" resultType="int">
+		SELECT COUNT(*)
+		FROM REVIEW
+		WHERE ORDER_DETAIL_ID = #{order_detail_id}
+	</select>
+	
+	<!-- 리뷰 입력 -->
+	<insert id="insertReview" parameterType="com.spring.mall.review.vo.ReviewVO">
+		INSERT INTO REVIEW (REVIEW_ID,REVIEW_CONTENT,REVIEW_GRADE,ORDER_DETAIL_ID)
+		VALUES ((SELECT NVL(MAX(REVIEW_ID)+1,0) FROM REVIEW), #{review_content},
+		#{review_grade},#{order_detail_id})
+	</insert>
+
+	<!-- order_detail_id로 myInfoVO(주문내역) 조회하기 -->
+	<select id="getMyOrder_odi" resultType="com.spring.mall.user.vo.MyInfoVO"
+								parameterType="com.spring.mall.user.vo.MyInfoVO">
+		SELECT UO.ORDER_ID, UO.ORDER_DATE, UO.ORDER_ADDR, UO.ORDER_ADDR_D
+	        ,UO.ORDER_ZIPCODE, UO.ORDER_RECEIVER, UO.ORDER_PHONE
+	        ,UO.ORDER_TOTAL, UO.USER_STATUS, UO.USER_ID
+	        ,UOD.ORDER_DETAIL_ID, UOD.USER_ORDER_CNT, UOD.PRODUCT_ID
+	        ,P.CATEGORY_CODE, P.PRODUCT_NAME, P.PRODUCT_PRICE, P.PRODUCT_STOCK
+	        ,P.PRODUCT_INFO, P.PRODUCT_DISCOUNT, P.PRODUCT_STATE
+	    FROM USER_ORDER UO, USERORDER_DETAIL UOD, PRODUCT P
+	    WHERE UO.ORDER_ID = UOD.ORDER_ID
+	    AND UOD.PRODUCT_ID = P.PRODUCT_ID
+	    AND UOD.ORDER_DETAIL_ID = #{order_detail_id}
+	</select>
+
+
+</mapper>

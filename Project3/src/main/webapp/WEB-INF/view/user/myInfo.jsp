@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>주문내역</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -27,7 +29,9 @@
 		border-bottom: 4px solid #CACACA;
 		background-color: #E8E8E8;
 	}
-	table {text-align: center;}
+	table {
+		text-align: center;
+	}
 	td {
 		height: 40px;
 		font-size: 20px;
@@ -89,6 +93,7 @@
 		padding-top: 10px;
 	}
 </style>
+
 </head>
 <body>
 <!-- header -->
@@ -147,7 +152,7 @@
 		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
 	        <div class="col-md-10 wru">
-	        <c:forEach var="orderList" items="${orderList }">
+	        <c:forEach var="orderList" items="${orderList }" varStatus="status">
 	          <div class="container">
 			      <div class="card">
 			        <div class="card-body">
@@ -168,7 +173,14 @@
 			              <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
 			              <br><br>
 			            <div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.product_id})" value="환불 신청" /></div><br>
-			            <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn">리뷰 작성</button></div>
+			            <c:choose>
+			            <c:when test="${existList[status.index] eq 0 }">
+			            	<div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" onclick="goMyReview(${orderList.order_detail_id})">리뷰 작성</button></div>
+			            </c:when>
+			            <c:otherwise>
+			            	<div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">리뷰 완료</button></div>
+			            </c:otherwise>
+			            </c:choose>
 			         </span>
 			      </div>
 			   </div>
@@ -179,11 +191,13 @@
 	    <script>
 	    
 	    function refundView(product_id){
-	    	
 	    	//alert("버튼 클릭");
 	    	location.href = "refundForm.do?product_id="+product_id;
 	    }
-	    
+	    function goMyReview(order_detail_id){
+	    	window.open("writeReview.do?order_detail_id="+order_detail_id,"pop1",
+	    			"width=500, height=700 top=100, left=150");
+	    }
 	    </script>
 	</div>
 	

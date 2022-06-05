@@ -5,7 +5,7 @@
   
   <mapper namespace="productDAO">
   
-	 <!-- food OR EXERCISE -->
+	 <!-- 카테고리별 상품 목록 -->
 	 <select id="getProductLists_c" parameterType="int" resultType="com.spring.mall.product.vo.ProductVO">
 	 	SELECT *
 		FROM PRODUCT
@@ -13,6 +13,7 @@
 		ORDER BY PRODUCT_ID DESC
 	 </select>
 	 
+	 <!-- 상품아이디로 상품 조회 -->
 	 <select id="getProduct" parameterType="com.spring.mall.product.vo.ProductVO"
 		resultType="com.spring.mall.product.vo.ProductVO">
 		SELECT *

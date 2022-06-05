@@ -1,5 +1,6 @@
 package com.spring.mall.order.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.mall.order.service.MyOrderService;
+import com.spring.mall.review.service.ReviewService;
 import com.spring.mall.user.vo.MyInfoVO;
 import com.spring.mall.user.vo.UserVO;
 
@@ -20,6 +22,8 @@ public class MyOrderController {
 
 	@Autowired
 	private MyOrderService myOrderService;
+	@Autowired
+	private ReviewService reviewService;
 	
 	public MyOrderController() {
 		System.out.println(">>MyOrderController() 객체 생성");
@@ -37,6 +41,16 @@ public class MyOrderController {
 		List<MyInfoVO> orderList = myOrderService.getMyOrder(user_id);
 		model.addAttribute("orderList", orderList);
 		System.out.println("orderList : " + orderList.toString());
+		
+		// 리뷰 존재여부 목록
+		List<Integer> existList = new ArrayList<Integer>();
+		for(MyInfoVO info : orderList) {
+			int exist = reviewService.existReview(info);
+			existList.add(exist);
+		}
+		System.out.println("existList : " + existList.toString());
+		model.addAttribute("existList",existList);
+		
 		return "user/myInfo";
 	}
 	
