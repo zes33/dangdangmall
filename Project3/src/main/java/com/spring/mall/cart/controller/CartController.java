@@ -56,7 +56,7 @@ public class CartController {
 		List<CartVO> list = cartService.listCart(user_id); // 장바구니 정보
 		int sumMoney = cartService.sumMoney(user_id); // 할인율이 적용된 장바구니 전체 금액 호출
 		int fee = sumMoney >= 100000 ? 0 : 2500;
-//		double discount = 0.1;
+		double coupon = 0.1;
 		double allSum1 = (sumMoney)+fee ; //할인율 적용된 가격 + 배송비 
 		int allSum = (int)allSum1;
 		
@@ -64,7 +64,7 @@ public class CartController {
 	        map.put("count", list.size());        // 장바구니 상품의 유무
 	        map.put("sumMoney", sumMoney);        // 장바구니 전체 금액
 	        map.put("fee", fee);                 // 배송금액
-//	        map.put("discount", discount);       // 할인금액
+	        map.put("coupon", coupon);       // 쿠폰 적용
 	        map.put("allSum", allSum);    // 주문 상품 전체 금액
 //	        mav.setViewName("user/cart");    // view(jsp)의 이름 저장
 //	        mav.addObject("map", map);  
@@ -85,7 +85,7 @@ public class CartController {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		vo.setUser_id(user_id);
-//		
+		
 		// 장바구니에 기존 상품이 있는지 검사
 		int count = cartService.countCart(vo.getProduct_id(), user_id);
 

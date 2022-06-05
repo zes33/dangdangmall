@@ -92,14 +92,15 @@ input {
 
 		<!-- <h1>user</h1> -->
 		<%-- ${user } --%>
-		<%-- <h1>map</h1> ${map }
-		<h2>${map.allSum}</h2>
-		<hr> --%>
+		<h1>map</h1>
+		${map }
+		<h2>${map.coupon}</h2>
+		${user }
+		<hr>
 		<!--Content-->
 		<div id="body-wrapper">
 			<div id="body-content" class="container">
 				<br /></br>
-				<form action="order.do" method="post">
 					<br />
 					<div class="container-fluid text-center" style="margin-top: 10pt">
 						<h1>주문 정보 입력</h1>
@@ -107,13 +108,31 @@ input {
 							width="200" />
 					</div>
 					<br> <br>
+					<hr>
+					<h4>[ 배송지 정보 ]</h4><br>
+					
+					<button> 신규 배송지 입력하기 버튼  </button><br><br>
+					<form action="order.do" method="post">
+					<%-- <form action="getMine.do" method="post">
+						<input type="hidden" name="user_id" value="${user.user_id}"> 
+						<input type="submit" value="내 정보 가져오기">
+					</form>
+					<br> --%>
+					<%-- <c:choose>
+				<c:when test="">
+					<td class="center">답변대기</td>
+				</c:when>
+				<c:otherwise>
+					<td class=""></td>
+				</c:otherwise>
+				</c:choose> --%>
 					<div class="col-md-3">
 						<div class="col-md-3">
 							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
 								<input type="text" name="order_receiver" maxlength="20"
-									placeholder="수령인 이름" required><br /> <input
-									type="hidden" id="order_total" name="order_total"
+									placeholder="수령인 이름" value="${user.user_name}" required><br />
+								<input type="hidden" id="order_total" name="order_total"
 									value="${map.allSum}">
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
@@ -122,8 +141,9 @@ input {
 						<div class="col-md-3">
 							<label for="username" class="form-label"> 수령인 연락처 </label>
 							<div class="input-group has-validation">
-								<input type="text" name="order_phone" placeholder="핸드폰번호 입력"
-									oninput="orderPhone(this)" maxlength="13" required /><br />
+								<input type="text" name="order_phone" value="${user.user_phone}"
+									placeholder="핸드폰번호 입력" oninput="orderPhone(this)"
+									maxlength="13" required /><br />
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
@@ -131,7 +151,7 @@ input {
 						<div class="col-md-3">
 							<label for="username" class="form-label">우편번호 </label>
 							<div class="input-group has-validation">
-								<input id="member_post" maxlength="20" name="order_zipcode"
+								<input id="member_post" maxlength="20" name="order_zipcode" value="${user.user_zipcode}"
 									type="text" placeholder="우편번호 찾기" readonly onclick="findAddr()"
 									required> <br>
 							</div>
@@ -142,7 +162,7 @@ input {
 							<label for="username" class="form-label"> 도로명 주소 </label>
 							<div class="input-group has-validation">
 								<input id="member_addr" maxlength="20" name="order_addr"
-									type="text" placeholder="도로명주소" readonly>
+									type="text" value="${user.user_addr}" placeholder="도로명주소" readonly>
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
 						</div>
@@ -151,16 +171,29 @@ input {
 						<br> <label for="username" class="form-label"> 상세 주소</label>
 						<div class="input-group has-validation">
 							<input type="text" name="order_addr_d" maxlength="50"
-								placeholder="상품을 수령받을 상세 주소 입력" required><br />
+								placeholder="상품을 수령받을 상세 주소 입력" value="${user.user_addr_d}" required><br />
 						</div>
 						<div class="invalid-feedback">필수입력 항목입니다.</div>
+					</div>
+					<hr>
+					<h4>[ 쿠폰 ]</h4>
+					<br>
+					<div class="input-group mb-3">
+						<div class="input-group-text">
+							<input class="form-check-input mt-0" type="checkbox"
+								name="coupon" value="${map.coupon}">
+						</div>
+						<input type="text" class="form-control"
+							value="[웰컴 쿠폰] 첫 구매 10% 할인받기! " readonly="readonly">
 					</div>
 
 					<br> <br> <input type="submit"
 						class="w-100 btn btn-primary btn-lg" value="결제 하러가기 ">
 
 				</form>
+
 			</div>
+
 		</div>
 	</div>
 

@@ -25,7 +25,8 @@
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
@@ -131,10 +132,6 @@ div.contents {
 	background-color: #CFE3A1 !important;
 }
 
-.trim {
-	padding: 0;
-}
-
 .last_block {
 	height: 50pt;
 }
@@ -172,15 +169,6 @@ div.contents {
 	margin-top: 3pt;
 }
 
-.phone_one_two {
-	width: 30%;
-	float: left;
-}
-
-.phone_three {
-	width: 30%;
-}
-
 .margin_first {
 	margin-top: 30pt;
 }
@@ -203,39 +191,6 @@ div.contents {
 	cursor: pointer;
 }
 
-.nav_five {
-	width: 20%;
-}
-
-.nav_two {
-	width: 50%;
-}
-
-.nav_three {
-	width: 33%;
-}
-
-.cart {
-	width: 20pt;
-}
-
-.cart:hover {
-	cursor: pointer;
-}
-
-.home {
-	width: 25pt;
-}
-
-.home:hover {
-	cursor: pointer;
-}
-
-.img-title {
-	width: 18%;
-	margin-bottom: 3pt;
-}
-
 a:link {
 	color: black;
 	text-decoration: none;
@@ -251,180 +206,7 @@ a:hover {
 	text-decoration: none;
 }
 
-.basketdiv {
-	width: 100%;
-	border-top: 1px solid #e0e0e0;
-	float: left;
-	font-size: 0.9375em;
-	margin-bottom: 20px;
-}
 
-.basketdiv .row.head {
-	border-bottom: 2px solid #888;
-	box-sizing: border-box;
-	background-color: #f4f4f4;
-	font-weight: 500;
-}
-
-.basketdiv .data {
-	border-bottom: 1px dashed #888;
-	box-sizing: border-box;
-	cursor: pointer;
-	float: left;
-	width: 100%;
-}
-
-.basketdiv .data .empty {
-	text-align: center;
-	padding: 12px 0;
-}
-
-.basketdiv .row.head .subdiv {
-	background-color: #f4f4f4;
-}
-
-.basketdiv .row>.subdiv {
-	display: block;
-	float: left;
-}
-
-.basketdiv .row>.subdiv:nth-child(1) {
-	width: 50%;
-}
-
-.basketdiv .row>.subdiv:nth-child(2) {
-	width: 40%;
-}
-
-.basketdiv .row>.subdiv:nth-child(3) {
-	width: 10%;
-}
-
-.basketdiv2 .row>.subdiv:nth-child(1) {
-	width: 60%;
-}
-
-.basketdiv2 .row>.subdiv:nth-child(2) {
-	width: 40%;
-}
-
-.basketdiv .row>div>div {
-	display: block;
-	float: left;
-	text-align: center;
-	margin: 0;
-	padding: 12px 0;
-}
-
-.basketdiv .row.data>div>div {
-	height: 60px;
-	line-height: 60px;
-}
-
-.basketdiv .data .num .updown {
-	color: #0075ff;
-	font-size: 2em;
-	letter-spacing: -5px;
-}
-
-.basketdiv .check {
-	width: 10%;
-}
-
-.basketdiv .check input[type=checkbox] {
-	transform: scale(1.5);
-}
-
-.basketdiv .img {
-	width: 20%;
-}
-
-.basketdiv .pname {
-	width: 70%;
-}
-
-.basketdiv2 .pname {
-	width: 80%;
-}
-
-.basketdiv .basketprice {
-	width: 33%;
-}
-
-.basketdiv .num {
-	width: 33%;
-	min-width: 105px;
-}
-
-.basketdiv .sum {
-	width: 34%;
-	max-width: 80px;
-	color: #0000aa;
-}
-
-.basketdiv .point {
-	width: 50%;
-}
-
-.basketdiv2 .basketprice {
-	width: 25%;
-}
-
-.basketdiv2 .num {
-	width: 25%;
-}
-
-.basketdiv2 .sum {
-	width: 25%;
-	color: #0000aa;
-}
-
-.basketdiv2 .point {
-	width: 25%;
-}
-
-.basketdiv .basketcmd {
-	width: 100%;
-}
-
-.basketdiv .data .pname {
-	text-align: left !important;
-	line-height: 1.2 !important;
-}
-
-.basketdiv .data .price, .basketdiv .data .sum, .basketdiv .data .point
-	{
-	text-align: right;
-}
-
-.baseform>tbody>tr>td:first-child {
-	width: 100px;
-}
-
-.buttongroup {
-	padding: 11px 0;
-	margin: 50px 0;
-}
-
-.narrowbuttongroup {
-	margin: 15px 0;
-}
-
-.buttongroup.center {
-	text-align: center;
-}
-
-.buttongroup input[type=text], .buttongroup input[type=password] {
-	height: 30px;
-}
-
-.buttongroup button, .buttongroup a {
-	margin-right: 5px;
-}
-
-.buttongroup button:last-child, .buttongroup a:last-child {
-	margin-right: 0;
-}
 
 .abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button]
 	{
@@ -442,59 +224,18 @@ a:hover {
 	font-size: 0.9375em;
 }
 
-.abutton-alt {
-	background-color: #d3e2c6;
+
+.material-icons.md-18 {
+	font-size: 18px;
 }
 
-.red {
-	color: #b00;
+.material-icons.md-36 {
+	font-size: 36px;
 }
-
-.blue {
-	color: #0075ff;
+nav {
+  display: inline-block;
+  
 }
-
-.basketrowcmd, .sumcount, .summoney {
-	text-align: right;
-	margin-bottom: 10px;
-}
-
-.sumcount, .summoney {
-	font-size: 1.25em;
-	font-weight: bold;
-}
-
-.buttongroup {
-	text-align: center;
-}
-
-.buttongroup a {
-	text-decoration: none;
-}
-
-.cmd a, .cmd span {
-	padding: 12px 30px;
-	box-sizing: border-box;
-	margin-top: 10px;
-	font-size: 1.2em;
-	color: #000;
-	background-color: #f4f4f4;
-	border: 1px solid #e0e0e0;
-	text-align: center;
-}
-
-.cmd.small a, .cmd.small span {
-	padding: 6px 20px;
-	font-size: 0.8125em;
-}
-
-.orderform .p_num {
-	text-align: right;
-	width: 40px;
-	font-size: 1em;
-}
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-36 { font-size: 36px; }
 </style>
 </head>
 
@@ -503,7 +244,7 @@ a:hover {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-<%-- 	
+	<%-- 	
  ${list} 
  ${user_id}  --%>
 
@@ -514,20 +255,20 @@ a:hover {
 			width="100" />
 
 		<div>
-		<br><br>
+			<br> <br>
 			<h1>장바구니 목록</h1>
-			<br><br>
+			<br> <br>
 			<%-- ${map }
 			<h1>${map.list[1] }</h1>  --%>
 			<br>
 		</div>
-		 <%-- <p>${list}</p>
+		<%-- <p>${list}</p>
 		<h1>userVO : ${user }</h1>  --%>
 		<div class="text-center">
 			<c:if test="${empty map.list}">
 				<br />
-		<h2>장바구니가 비어있습니다.</h2>
-		<br />
+				<h2>장바구니가 비어있습니다.</h2>
+				<br />
 				<br />
 			</c:if>
 		</div>
@@ -546,74 +287,73 @@ a:hover {
 						<th>금액</th>
 						<th>삭제</th>
 					</tr>
-					
+
 					<c:forEach items="${map.list }" var="list" varStatus="i">
 						<div class="menuClass"
 							data-menuId=<c:out value="${list.cart_id}"/>>
-						<tr>
-							<td><span id="amount"> <c:out
-										value="${list.product_name }" />
-							</span></td>
-							<td><span id="amount"> <c:out
-										value="${list.product_price }" />
-							</span></td>
-							<td>
-								<form action="update.do" method="post">
-										<input type="number" style="width: 80px" name="cart_product_qty"
-										value="${list.cart_product_qty}" min="1"> 
-										<input type="hidden" name="product_id" value="${list.product_id}">
-										<input type="submit" value="수량수정">
+							<tr>
+								<td><span id="amount"> <c:out
+											value="${list.product_name }" />
+								</span></td>
+								<td><span id="amount"> <c:out
+											value="${list.product_price }" />
+								</span></td>
+								<td>
+									<form action="update.do" method="post">
+										<input type="number" style="width: 80px"
+											name="cart_product_qty" value="${list.cart_product_qty}"
+											min="1"> <input type="hidden" name="product_id"
+											value="${list.product_id}"> <input type="submit"
+											value="수량수정">
 									</form>
-							<td><span id="amount"
-								data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
-										value="${list.product_price * list.cart_product_qty}"
-										pattern="###,###,###" /></span></td>
-							<td><span id="discount" style="color: red;"
-								data-amount=<c:out value="${list.product_discount }"/>> <fmt:formatNumber
-										value="${list.product_discount *100 }" type="number" /> %
-							</span></td>
-							<td><span id="total"
-								data-amount=<c:out value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount}"/>>
-									<fmt:formatNumber
-										value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount }"
-										pattern="###,###,###" />
-							</span></td>
-							<td>
-									<a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a>
-								
-							</td>
-						</tr>
+								<td><span id="amount"
+									data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
+											value="${list.product_price * list.cart_product_qty}"
+											pattern="###,###,###" /></span></td>
+								<td><span id="discount" style="color: red;"
+									data-amount=<c:out value="${list.product_discount }"/>>
+										<fmt:formatNumber value="${list.product_discount *100 }"
+											type="number" /> %
+								</span></td>
+								<td><span id="total"
+									data-amount=<c:out value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount}"/>>
+										<fmt:formatNumber
+											value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount }"
+											pattern="###,###,###" />
+								</span></td>
+								<td><a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a></td>
+							</tr>
 						</div>
 					</c:forEach>
 
 				</table>
 				</form>
 			</div>
-			<div class="text-right" style="margin: 10pt">
-				<br>
-				<tr>
-					<h3 style="font-weight: bold; font-size: 20px;">
-						<td>장바구니 금액 합계 : 
-						<fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}" />원 <br> 
-						배송비 
-						<span> 10만원 이상 구매시 무료배송! </span>
-						<fmt:formatNumber value="${map.fee }" pattern="###,###,###" />원<br>
-					</h3>
-					<h5 style="font-weight: bold; font-size: 30px;">
-						총금액
-						<fmt:formatNumber value="${map.allSum }" pattern="###,###,###" />
-						원
-						</td>
-					</h5>
-				</tr>
-
+			<div class="text-right" style="margin: 10pt;padding-right: 55px;" align='right' >
+				<nav style="font-weight: bold; font-size: 20px;">
+					<ul>
+						<li>장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###"
+								value="${map.sumMoney}" /> 원
+						</li>
+						<li>배송비 <fmt:formatNumber value="${map.fee }"
+								pattern="###,###,###" /> 원
+						</li>
+						<li>총금액 <fmt:formatNumber value="${map.allSum }"
+								pattern="###,###,###" /> 원
+						</li>
+						<br>
+						<span> <font color="red"> ** 10만원 이상 구매시 무료배송 **</font> </span>
+					</ul>
+				</nav>
 			</div>
-			<div class="container-fluid margin_first">
-				<a style="font-size: 20px; font-weight: bold; " type="submit" 
-					id="product" class="btn btn-success two_button" href="productList.do"> <font color = "black">상품목록 </font></a>
-				
+			<div class="container-fluid">
 				<a style="font-size: 20px; font-weight: bold;" type="submit"
-					id="order" class="btn btn-success two_button" href="../order/orderView.do"><font color = "red"> 선택 메뉴 주문 </font></a>
+					id="product" class="btn btn-success two_button"
+					href="productList.do"> <font color="black">상품목록 </font></a> <a
+					style="font-size: 20px; font-weight: bold;" type="submit"
+					id="order" class="btn btn-success two_button"
+					href="../order/orderView.do"><font color="black"> 선택 메뉴
+						주문 </font></a>
 			</div>
 		</c:if>
 	</div>
@@ -627,6 +367,7 @@ a:hover {
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script>
+		
 	</script>
 	<div class="last_block"></div>
 </body>

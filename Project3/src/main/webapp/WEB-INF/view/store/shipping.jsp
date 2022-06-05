@@ -82,9 +82,9 @@ tr, td ,br{
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	<%-- <h3>map</h3> ${map }
-			<h3>user</h3> ${user }
-			<h3>배송정보</h3> ${orderInfo } --%>
+	 <h3>map</h3> ${map }
+			<h3>user</h3> ${user.user_point }
+			<h3>배송정보</h3> ${orderInfo } 
 
 	<div id="body-wrapper">
 		<div id="body-content" class="container">
@@ -153,12 +153,12 @@ tr, td ,br{
 											pattern="###,###,###" /></span></td>
 								<td><span id="discount" style="color: red;"
 									data-amount=<c:out value="${map.discount }"/>> <fmt:formatNumber
-											value="${map.discount *100 }" type="number" /> %
+											value="${list.product_discount *100 }" type="number" /> %
 								</span></td>
 								<td><span id="total"
 									data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>>
 										<fmt:formatNumber
-											value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* map.discount }"
+											value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount }"
 											pattern="###,###,###" />
 								</span></td>
 
@@ -183,12 +183,13 @@ tr, td ,br{
 							<button type="submit" class="btn btn-secondary">Redeem</button>
 						</div>
 					</form> -->
-					<td><fmt:formatNumber pattern="###,###,###" value="" />0
-						point</td>
+					<td> - <fmt:formatNumber pattern="###,###,###" value="${map.coupon * 100 }" />
+						% </td>
 				</tr>
 				<tr>
 					<td>마일리지 사용 :</td>
-					<td>0 point</td>
+					<td><fmt:formatNumber pattern="###,###,###" value="${user.user_point }" />
+						point</td>
 				</tr>
 				<tr>
 					<td>배송비 :</td>
