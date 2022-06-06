@@ -30,6 +30,7 @@ public class ReviewController {
 		return "user/writeReview";
 	}
 	
+	// 리뷰 등록
 	@RequestMapping("/insertReview.do")
 	public String insertReview(ReviewVO vo) {
 		System.out.println("insertReview() 실행");
@@ -38,4 +39,15 @@ public class ReviewController {
 		
 		return "redirect:/myinfo.do";
 	}
+	
+	
+	// 마이페이지-후기내역
+	@RequestMapping("/goMyReview.do")
+	public String goMyReview() {
+		System.out.println("goMyReview() 실행");
+		
+		
+		return "user/myReview";
+	}
+	
 }

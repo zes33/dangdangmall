@@ -25,7 +25,7 @@
 
 <style>
 .reviewTitle{
-	background-color: orange;
+	background-color: #8FF34D;
 	height: 80px;
 	font-size: 27px;
 	font-weight: 700;
@@ -199,8 +199,8 @@ function reviewSubmit() {
 		        				onclick="closeReview()">취소</button>
 		        </div>
 	        	<div class="col-sm-6">
-		        	<input class="btn btn-warning col-sm-12 btn-lg" type="button" 
-		        						onclick="reviewSubmit()" value="등록">
+		        	<input class="btn  col-sm-12 btn-lg" type="button" 
+		        					style="background-color:#8FF34D;" onclick="reviewSubmit()" value="등록">
 		        	
 	        	</div>
 	        	

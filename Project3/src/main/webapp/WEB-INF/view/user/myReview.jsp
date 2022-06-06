@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 템플릿</title>
+<title>내 후기</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -45,18 +44,14 @@
 	.myDang {
 		font-size: 40px;
 	}
-	/* th {
+	th {
 		font-size: 36px;
 		height: 70px;
 		padding-bottom: 0px;
-	} */
-	.titleTh {
-		font-size: 36px;
-		height: 70px;
-		padding-bottom: 0px;
-	} 
+	}
 	.colMan { 
 		padding: 0px;
+		/* background-color: orange; */
 	}
 	.colMan > div{
 		background-color: #E8E8E8; 
@@ -85,13 +80,48 @@
 		color: black;
 	}
 	
-	.qnaTitle {
-		text-decoration: none;
-		color: black;
+	
+	
+	.whoruBaby {
+		/* background-color: orange; */
+		margin-left: 20px;
+		padding-left:10px;
+		padding-top:10px;
+		padding-bottom: 10px;
+		
+		border-top: 3px solid #CCCCCC;
+		border-bottom: 3px solid #CCCCCC;
 	}
 	
-	.mine > th {
-		font-size: 20px;
+	img{
+		width:70px;
+		height:70px;
+	}
+	.imgZone {
+		padding-top: 7px;
+		padding-left:10px;
+	}
+	.prdname{
+		font-size:22px;
+	}
+	h3 {margin-left:20px;}
+	.review {
+		margin-left: 10px;
+	}
+	hr{
+		width: 98%;
+	}
+	.star {
+		font-size:24px;
+		color: red;
+	}
+	.content{
+		padding-top: 10px;
+		font-size:17px;
+		padding-bottom: 9px;
+	}
+	.btn1 {
+		width:60%;
 	}
 	
 </style>
@@ -117,9 +147,9 @@
 	        </colgroup>
 	        	<tr>
 	        		<th rowspan="2" class="myDang">My당당몰</th>
-	        		<th class="titleTh">회원등급</th>
-	        		<th class="titleTh">배송중</th>
-	        		<th class="titleTh">포인트</th>
+	        		<th>회원등급</th>
+	        		<th>배송중</th>
+	        		<th>포인트</th>
 	        	</tr>
 	        	<tr>
 	        		<c:if test="${user.user_grade== 1 }">
@@ -154,54 +184,51 @@
 		        <div><p><b><a href="cart/list.do">장바구니</a></b></p></div>
 		        <div><p><b><a href="${pageContext.request.contextPath }/goMyPrdQna.do">상품 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
-		        <div><p><b><a href="${pageContext.request.contextPath }/goMyReview.do">후기내역</a></b></p></div>
+		        <div><p><b><a href="#">후기내역</a></b></p></div>
 	        </div>
-	        <div class="col-md-10 whoru"><!-- 여기에 채우세요 -->
+	        <div class="col-md-10 whoru">
 	        <br>
-	        <h3><b>상품문의 내역</b></h3>
-	        	<table class="mine table table-hover table1">
-					<thead>
-						<tr>
-							<th class="center" width="7%">NO.</th>
-							<th class="center" width="15%">상품명</th>
-							<th class="center" width="39%">내용</th>
-							<th class="center" width="15%">문의날짜</th>
-							<th class="center" width="15%">답변상태</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:forEach var="myPrdQna" items="${myPrdQnaList }" varStatus="i">
-					<c:choose>
-					<c:when test="${empty myPrdQnaList  }">
-						<tr>
-							<td>등록된 상품문의가 없습니다.</td>
-						</tr>
-					</c:when>
-					<c:otherwise> 
-						<tr>
-							<td class="center">${fn:length(myPrdQnaList)-i.index}</td>
-							<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${myPrdQna.product_name }</span></td>
-							<!-- 누르면 문의(+답변) 모두 보이는 페이지로 이동 -->
-							<td class="center ">
-								<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${myPrdQna.qna_group }">
-								${myPrdQna.qna_content }</a>
-							</td>
-							
-							<td class="center">${myPrdQna.product_qna_date }</td>
-							<c:choose>
-							<c:when test="${0 eq myPrdQna.product_qna_state }">
-								<td class="center">답변대기</td>
-							</c:when>
-							<c:otherwise>
-								<td class="center" style="color: #C9C7C7;">답변완료</td>
-							</c:otherwise>
-							</c:choose>
-						</tr>
-					</c:otherwise>
-					</c:choose>
-					</c:forEach>
-					</tbody>
-				</table>				
+				<h3><b>나의 상품 후기</b></h3>
+				<br>
+				<div class="col-md-11 whoruBaby">
+					<div class="row imgZone">
+				        <div class="col-sm-1">
+				        	<img alt="제품사진" src="${pageContext.request.contextPath }/img/블루베리.jpg">
+				        </div>
+				        <div class="col-sm-9 info">
+				        	<div class="prdname">닭다리</div>
+				        	<div class="date">2022-09-09 구매</div>
+				        </div>
+				        <div class="col-sm-2 btns">
+				        	<div class="row btn1">
+				        		<button style="font-size: 14px;" type="button" class="btn btn-outline-secondary">리뷰수정</button>
+				        	</div>
+				        	<div class="row btn1" style="margin-top: 7px;">
+				        		<button style="font-size: 14px;" type="button" class="btn btn-secondary">리뷰삭제</button>
+				        	</div>
+				        </div>
+				    </div>
+				    <hr>
+				    <div class="row floor">
+				        <div class="col-sm-12 review">
+				        	<div class="row">
+						        <div class="col-sm-4 star">★★★★★</div>
+						    </div>
+						    <div class="row">
+						        <div class="col-sm-11 content">
+						        맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요
+						        </div>
+						    </div>
+				        </div>
+				    </div>
+				</div>
+				
+				
+				
+				
+				
+				
+				
 				
 				
 			</div>

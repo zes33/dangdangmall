@@ -149,7 +149,7 @@
 		        <div><p><b><a href="cart/list.do">장바구니</a></b></p></div>
 		        <div><p><b><a href="${pageContext.request.contextPath }/goMyPrdQna.do">상품 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
-		        <div><p><b><a href="#">후기내역</a></b></p></div>
+		        <div><p><b><a href="${pageContext.request.contextPath }/goMyReview.do">후기내역</a></b></p></div>
 	        </div>
 	        <div class="col-md-10 wru">
 	        <c:forEach var="orderList" items="${orderList }" varStatus="status">
