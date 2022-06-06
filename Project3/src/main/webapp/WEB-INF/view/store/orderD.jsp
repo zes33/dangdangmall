@@ -92,10 +92,10 @@ input {
 
 		<!-- <h1>user</h1> -->
 		<%-- ${user } --%>
-		<h1>map</h1>
+		<%-- <h1>map</h1>
 		${map }
 		<h2>${map.coupon}</h2>
-		${user }
+		${user } --%>
 		<hr>
 		<!--Content-->
 		<div id="body-wrapper">
@@ -110,27 +110,29 @@ input {
 					<br> <br>
 					<hr>
 					<h4>[ 배송지 정보 ]</h4><br>
+					<script type="text/javascript">
+					function clearInput(){
+
+						/* 텍스트박스 지우는 부분 */
+						var el = document.getElementsByClassName('input-text');
+						for(var i=0; i<el.length; i++){	el[i].value = '';}
+
+						/* 체크(라디오)박스 지우는 부분 */
+						var el = document.getElementsByClassName('input-radio');
+						for(var i=0; i<el.length; i++){	el[i].checked = false;}
+
+						}
+					</script>
 					
-					<button> 신규 배송지 입력하기 버튼  </button><br><br>
 					<form action="shippingD.do" method="post">
-					<%-- <form action="getMine.do" method="post">
-						<input type="hidden" name="user_id" value="${user.user_id}"> 
-						<input type="submit" value="내 정보 가져오기">
-					</form>
-					<br> --%>
-					<%-- <c:choose>
-				<c:when test="">
-					<td class="center">답변대기</td>
-				</c:when>
-				<c:otherwise>
-					<td class=""></td>
-				</c:otherwise>
-				</c:choose> --%>
+					<button class = "erase" onclick="clearInput()">내용 지우기</button>
+					<button type='reset' >내 정보 다시 가져오기</button>
+					
 					<div class="col-md-3">
 						<div class="col-md-3">
 							<label for="username" class="form-label">수령인</label>
 							<div class="input-group has-validation">
-								<input type="text" name="order_receiver" maxlength="20"
+								<input type="text" name="order_receiver" class= "input-text" maxlength="20"
 									placeholder="수령인 이름" value="${user.user_name}" required><br />
 								<input type="hidden" id="order_total" name="order_total"
 									value="${mapD.allSum}">
@@ -141,7 +143,7 @@ input {
 						<div class="col-md-3">
 							<label for="username" class="form-label"> 수령인 연락처 </label>
 							<div class="input-group has-validation">
-								<input type="text" name="order_phone" value="${user.user_phone}"
+								<input type="text" name="order_phone" class= "input-text" value="${user.user_phone}"
 									placeholder="핸드폰번호 입력" oninput="orderPhone(this)"
 									maxlength="13" required /><br />
 							</div>
@@ -151,7 +153,7 @@ input {
 						<div class="col-md-3">
 							<label for="username" class="form-label">우편번호 </label>
 							<div class="input-group has-validation">
-								<input id="member_post" maxlength="20" name="order_zipcode" value="${user.user_zipcode}"
+								<input id="member_post" maxlength="20" class= "input-text" name="order_zipcode" value="${user.user_zipcode}"
 									type="text" placeholder="우편번호 찾기" readonly onclick="findAddr()"
 									required> <br>
 							</div>
@@ -161,7 +163,7 @@ input {
 						<div class="col-md-3">
 							<label for="username" class="form-label"> 도로명 주소 </label>
 							<div class="input-group has-validation">
-								<input id="member_addr" maxlength="20" name="order_addr"
+								<input id="member_addr" maxlength="20" class= "input-text" name="order_addr"
 									type="text" value="${user.user_addr}" placeholder="도로명주소" readonly>
 							</div>
 							<div class="invalid-feedback">필수입력 항목입니다.</div>
@@ -170,7 +172,7 @@ input {
 					<div class="col-md-3">
 						<br> <label for="username" class="form-label"> 상세 주소</label>
 						<div class="input-group has-validation">
-							<input type="text" name="order_addr_d" maxlength="50"
+							<input type="text" name="order_addr_d" maxlength="50" class= "input-text"
 								placeholder="상품을 수령받을 상세 주소 입력" value="${user.user_addr_d}" required><br />
 						</div>
 						<div class="invalid-feedback">필수입력 항목입니다.</div>

@@ -206,8 +206,6 @@ a:hover {
 	text-decoration: none;
 }
 
-
-
 .abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button]
 	{
 	background-color: #383838;
@@ -224,7 +222,6 @@ a:hover {
 	font-size: 0.9375em;
 }
 
-
 .material-icons.md-18 {
 	font-size: 18px;
 }
@@ -232,9 +229,9 @@ a:hover {
 .material-icons.md-36 {
 	font-size: 36px;
 }
+
 nav {
-  display: inline-block;
-  
+	display: inline-block;
 }
 </style>
 </head>
@@ -256,41 +253,73 @@ nav {
 
 		<div>
 			<br> <br>
-			<h1> 주문 목록</h1>
-			<br> <br>
-			 ${mapD }
-			 ${mapD.list }
-			 
-			 ${user }
-			<br>
+			<h1>주문 목록</h1> <br> <br>
+			<%--  ${mapD } ${mapD.list } ${user } <br> --%>
 		</div>
-		
-			<div class="text-right" style="margin: 10pt;padding-right: 55px;" align='right' >
-				<nav style="font-weight: bold; font-size: 20px;">
-					<ul>
-						<li>장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###"
-								value="${mapD.sumMoney}" /> 원
-						</li>
-						<li>배송비 <fmt:formatNumber value="${mapD.fee }"
-								pattern="###,###,###" /> 원
-						</li>
-						<li>총금액 <fmt:formatNumber value="${mapD.allSum }"
-								pattern="###,###,###" /> 원
-						</li>
-						<br>
-						<span> <font color="red"> ** 10만원 이상 구매시 무료배송 **</font> </span>
-					</ul>
-				</nav>
-			</div>
-			<div class="container-fluid">
-				<a style="font-size: 20px; font-weight: bold;" type="submit"
-					id="product" class="btn btn-success two_button"
-					href="productList.do"> <font color="black">상품목록 </font></a> <a
-					style="font-size: 20px; font-weight: bold;" type="submit"
-					id="order" class="btn btn-success two_button"
-					href="../order/orderViewD.do"><font color="black"> 선택 메뉴
-						주문 </font></a>
-			</div>
+		<div class="menuClass">
+			<table style="width: 90%; padding-top: 3pt;">
+				<tr>
+					<th>상품 이름</th>
+					<th>가격</th>
+					<th>수량</th>
+					<th>할인율 반영 전 금액</th>
+					<th>할인율</th>
+					<th>금액</th>
+				</tr>
+				<tr>
+					<td><span id="amount"> <c:out
+								value="${mapD.list.product_name }" />
+					</span></td>
+					<td><span id="amount"> <c:out
+								value="${mapD.list.product_price }" />
+					</span></td>
+					<td>${mapD.cnt }</td>
+					<td><span id="amount"
+						data-amount=<c:out value="${mapD.list.product_price * mapD.cnt}"/>><fmt:formatNumber
+								value="${mapD.list.product_price * mapD.cnt}"
+								pattern="###,###,###" /></span></td>
+					<td><span id="discount" style="color: red;"
+						data-amount=<c:out value="${mapD.list.product_discount }"/>>
+							<fmt:formatNumber value="${mapD.list.product_discount *100 }"
+								type="number" /> %
+					</span></td>
+					<td><span id="total"
+						data-amount=<c:out value="${(mapD.list.product_price * mapD.cnt) - (mapD.list.product_price * mapD.cnt)* mapD.list.product_discount}"/>>
+							<fmt:formatNumber
+								value="${(mapD.list.product_price * mapD.cnt) - (mapD.list.product_price * mapD.cnt)* mapD.list.product_discount}"
+								pattern="###,###,###" />
+					</span></td>
+				</tr>
+				</table>
+		</div>
+		<br> <br>
+		<div class="text-right" style="margin: 10pt; padding-right: 55px;"
+			align='right'>
+			<nav style="font-weight: bold; font-size: 20px;">
+				<ul>
+					<li>장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###"
+							value="${mapD.sumMoney}" /> 원
+					</li>
+					<li>배송비 <fmt:formatNumber value="${mapD.fee }"
+							pattern="###,###,###" /> 원
+					</li>
+					<li>총금액 <fmt:formatNumber value="${mapD.allSum }"
+							pattern="###,###,###" /> 원
+					</li>
+					<br>
+					<span> <font color="red"> ** 10만원 이상 구매시 무료배송 **</font>
+					</span>
+				</ul>
+			</nav>
+		</div>
+		<div class="container-fluid">
+			<a style="font-size: 20px; font-weight: bold;" type="submit"
+				id="product" class="btn btn-success two_button"
+				href="productList.do"> <font color="black">상품목록 </font></a> <a
+				style="font-size: 20px; font-weight: bold;" type="submit" id="order"
+				class="btn btn-success two_button" href="../order/orderViewD.do"><font
+				color="black"> 선택 메뉴 주문 </font></a>
+		</div>
 
 	</div>
 	<br>
