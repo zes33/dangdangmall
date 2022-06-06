@@ -42,7 +42,9 @@
 
 	<!-- 3. 장바구니 전체 금액(할인율 적용된 금액) -->
 	<select id="sumMoney" resultType="int">
-		SELECT NVL(SUM((PRODUCT_PRICE * CART_PRODUCT_QTY) - (PRODUCT_PRICE * CART_PRODUCT_QTY)*product_discount), 0) MONEY
+		SELECT NVL(SUM((PRODUCT_PRICE *
+		CART_PRODUCT_QTY) - (PRODUCT_PRICE *
+		CART_PRODUCT_QTY)*product_discount), 0) MONEY
 		FROM CART C, PRODUCT P
 		WHERE C.PRODUCT_ID =
 		P.PRODUCT_ID
@@ -50,7 +52,7 @@
 	</select>
 
 
-	<!-- 4. 장바구니  수량 수정 -->
+	<!-- 4. 장바구니 수량 수정 -->
 	<update id="modifyCart">
 		UPDATE CART
 		SET CART_PRODUCT_QTY = #{cart_product_qty}
@@ -86,7 +88,15 @@
 	<!-- 8. 헤더에서 장바구니 수량 표시 -->
 	<select id="countProduct" resultType="int">
 		SELECT COUNT(CART_ID)
-		FROM CART
+		FROM
+		CART
 		WHERE USER_ID = #{user_id}
+	</select>
+
+	<!-- 9. 바로 구매 -->
+	<select id="orderDirect" resultType="com.spring.mall.product.vo.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_ID = #{product_id}
 	</select>
 </mapper>

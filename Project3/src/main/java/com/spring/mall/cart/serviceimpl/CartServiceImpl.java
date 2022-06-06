@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.spring.mall.cart.dao.CartDAO;
 import com.spring.mall.cart.service.CartService;
 import com.spring.mall.cart.vo.CartVO;
+import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.user.vo.UserVO;
 
 @Service("cartService")
@@ -72,6 +73,11 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public int countProduct(String user_id) {
 		return cartDAO.countProduct(user_id);
+	}
+
+	@Override
+	public ProductVO orderDirect(int product_id) {
+		return cartDAO.orderDirect(product_id);
 	}
 
 }

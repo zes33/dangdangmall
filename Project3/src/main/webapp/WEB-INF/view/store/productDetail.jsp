@@ -110,9 +110,6 @@ textarea {
 						value="${product.product_id}"> <input type="hidden"
 						id="product_cnt" value="product_cnt"> <input type="hidden"
 						name="user_id" value="${user_id}">
-						<%-- <input type="hidden" name="product_id"
-						value="${product.product_discount}"> --%>
-					<!-- <input type="hidden" name="product_id" value="88"> -->
 
 					<div>
 					<h3>수량선택</h3>
@@ -128,9 +125,14 @@ textarea {
 					</div>
 					<div class="d-grid gap-2">
 						<input class="btn btn-primary" type="submit" value="장바구니">
-						<input class="btn btn-primary" type="submit" value="구매하기">
-					</div>
 				</form>
+				<form action="cart/orderDirect.do" method="post" enctype="multipart/form-data">
+						<input class="btn btn-primary" type="submit" value="구매하기">
+						<input type="hidden" name="product_id"
+						value="${product.product_id}"> 
+						<input type="hidden" type="number" name ="cart_product_qty" value="cart_product_qty"> 
+				</form>
+					</div>
 			</div>
 		</div>
 		<div class="productInfo">

@@ -18,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.mall.cart.service.CartService;
 import com.spring.mall.cart.vo.CartVO;
+import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.user.service.UserLoginService;
 import com.spring.mall.user.vo.UserVO;
 
@@ -66,8 +67,6 @@ public class CartController {
 	        map.put("fee", fee);                 // 배송금액
 	        map.put("coupon", coupon);       // 쿠폰 적용
 	        map.put("allSum", allSum);    // 주문 상품 전체 금액
-//	        mav.setViewName("user/cart");    // view(jsp)의 이름 저장
-//	        mav.addObject("map", map);  
 	        model.addAttribute("map", map);
 	        model.addAttribute("list", list);
 	        session.setAttribute("map", map);
@@ -76,6 +75,36 @@ public class CartController {
 	        int count = cartService.countProduct(user_id);
 			session.setAttribute("count", count);
 		return "user/cart";
+
+	}
+	
+	// 2-1 바로 구매하기 버튼 
+	@RequestMapping("orderDirect.do")
+	public String orderDirect(@RequestParam int product_id, Model model, HttpSession session) {
+		System.out.println(">> orderDirect.do() 생성 ");
+		
+		ProductVO list =  cartService.orderDirect(product_id);
+		int price = list.getProduct_price();
+		//int qty = cart_product_qty;
+		double discount = list.getProduct_discount();
+
+		Map<String, Object> mapD = new HashMap<String, Object>();
+		int sumMoney = (int) ((price * (1-discount))); // 할인율이 적용된 전체 금액 호출
+		int fee = sumMoney >= 100000 ? 0 : 2500;
+		double coupon = 0.1;
+		double allSum1 = (sumMoney)+fee ; //할인율 적용된 가격 + 배송비 
+		int allSum = (int)allSum1;
+		
+	        mapD.put("list", list);                // 장바구니 정보를 map에 저장
+	        mapD.put("sumMoney", sumMoney);        // 장바구니 전체 금액
+	        mapD.put("fee", fee);                 // 배송금액
+	        mapD.put("coupon", coupon);       // 쿠폰 적용
+	        mapD.put("allSum", allSum);    // 주문 상품 전체 금액
+	        model.addAttribute("mapD", mapD);
+	        model.addAttribute("list", list);
+	        session.setAttribute("mapD", mapD);
+	        
+		return "user/orderDirect";
 
 	}
 

@@ -10,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.spring.mall.cart.vo.CartVO;
+import com.spring.mall.product.vo.ProductVO;
 
 @Repository
 public class CartDAO {
@@ -66,5 +67,10 @@ public class CartDAO {
 	// 8. 헤더에서 장바구니 수량 표시
 	public int countProduct(String user_id) {
 		return mybatis.selectOne("cartDAO.countProduct", user_id);
+	}
+	
+	//9. 바로 구매 
+	public ProductVO orderDirect(int product_id) {
+		return mybatis.selectOne("cartDAO.orderDirect", product_id);
 	}
 }
