@@ -259,6 +259,9 @@ nav {
 			<h1> 주문 목록</h1>
 			<br> <br>
 			 ${mapD }
+			 ${mapD.list }
+			 
+			 ${user }
 			<br>
 		</div>
 		
@@ -285,7 +288,7 @@ nav {
 					href="productList.do"> <font color="black">상품목록 </font></a> <a
 					style="font-size: 20px; font-weight: bold;" type="submit"
 					id="order" class="btn btn-success two_button"
-					href="../order/orderView.do"><font color="black"> 선택 메뉴
+					href="../order/orderViewD.do"><font color="black"> 선택 메뉴
 						주문 </font></a>
 			</div>
 
