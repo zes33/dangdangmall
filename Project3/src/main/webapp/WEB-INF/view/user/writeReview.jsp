@@ -129,7 +129,7 @@ function reviewSubmit() {
 	} else if(contentBlank.length == 0){
 		alert("내용을 입력해주세요.");
 	} else {
-		window.opener.location.href="${pageContext.request.contextPath }/myinfo.do";
+		
 		
 		var params = $("#reviewFrm").serialize();
 
@@ -140,6 +140,7 @@ function reviewSubmit() {
 	        success: function (data) {
 	
 	           window.close();
+	           window.opener.location.href="${pageContext.request.contextPath }/myinfo.do";
 	           
 	       }, error: function (jqXHR, textStatus, errorThrown) {
 	          alert(jqXHR + ' ' + textStatus.msg);
