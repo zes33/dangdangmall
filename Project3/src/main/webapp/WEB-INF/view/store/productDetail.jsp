@@ -129,8 +129,10 @@ textarea {
 				<form action="cart/orderDirect.do" method="post" enctype="multipart/form-data">
 						<input class="btn btn-primary" type="submit" value="구매하기">
 						<input type="hidden" name="product_id"
-						value="${product.product_id}"> 
-						<input type="hidden" type="number" name ="cart_product_qty" value="cart_product_qty"> 
+						value="${product.product_id}"> <input type="hidden" 
+						id="cart_product_qty" value="cart_product_qty"> 
+						
+						<!-- <input type="hidden" type="number" name ="cart_product_qty" value="cart_product_qty">  -->
 				</form>
 					</div>
 			</div>
