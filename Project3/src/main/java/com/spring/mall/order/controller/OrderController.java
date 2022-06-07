@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
 import com.spring.mall.product.vo.ProductVO;
+import com.spring.mall.user.service.UserLoginService;
 import com.spring.mall.user.vo.UserOrderPointVO;
 import com.spring.mall.user.vo.UserVO;
 
@@ -34,6 +36,9 @@ public class OrderController {
 	@Autowired
 	private CartService cartService;
 
+	@Autowired
+	   private UserLoginService userLoginService;
+	
 	public OrderController() {
 		System.out.println(">> OrderController() 객체 생성 ");
 	}
@@ -171,17 +176,18 @@ public class OrderController {
 	}
 
 	@RequestMapping("payD.do")
-	public String payD(@RequestParam int product_id, HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail,
-			PaymentVO pvo, UserOrderPointVO point) throws Exception {
+	public String payD(@RequestParam int product_id, HttpSession session, Model model, UserOrderVO order,
+			UserOrderDetailVO orderDetail, PaymentVO pvo, UserOrderPointVO point, HttpServletRequest request)
+			throws Exception {
 		System.out.println("payD.do 로 이동 ");
 		session.getAttribute("payment");
 		session.getAttribute("orderInfo");
 		UserVO user = (UserVO) session.getAttribute("user");
 		System.out.println(product_id);
-		
+
 //		System.out.println(product);
 		UserOrderVO orderInfo = (UserOrderVO) session.getAttribute("orderInfo");
-		 
+
 		String user_id = user.getUser_id();
 //		int product_id = product.getProduct_id();
 		String order_id = orderInfo.getOrder_id();
@@ -189,19 +195,28 @@ public class OrderController {
 		// 바로구매 주문상세 정보 입력
 		orderDetail.setOrder_id(order_id);
 		System.out.println(order_id);
-		
+
 		orderDetail.setProduct_id(product_id);
 		System.out.println(product_id);
-		
+
 		orderDetail.setUser_id(user_id);
-		
+
 		orderService.insertOrderDetailDirect(orderDetail);
 		System.out.println(orderDetail);
 //
 //		// 포인트 결제금액의 5% 적립
-//		point.setOrder_id(order_id);
-//		point.setUser_id(user_id);
-//		orderService.updatePoint(point);
+		point.setOrder_id(order_id);
+		point.setUser_id(user_id);
+		orderService.updatePoint(point);
+
+		UserVO userp = new UserVO();
+		userp.setUser_id(user_id);
+		String pwd = point.getUser_pw();
+		userp.setUser_pw(pwd);
+		
+		UserVO newuser = userLoginService.getUser(userp);
+		session = request.getSession();
+		session.setAttribute("user", newuser);
 
 		return "store/afterPay";
 	}
