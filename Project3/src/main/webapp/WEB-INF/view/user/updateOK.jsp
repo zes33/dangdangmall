@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>정보 수정 요청 완료</title>
+<title>환불 요청 완료</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -33,7 +33,7 @@
 	
 		<div class="container">
 		<div class="card border-success mb-3" style="max-width: 30rem; max-width: 600px; margin-left: 350px;">
-		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><div class="center"><strong>환불신청</strong>이 완료되었습니다</div>
+		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><div class="center"><strong>개인정보 변경</strong>이 완료되었습니다</div>
 		  </div><hr>
 		  <div class="text-center">
 		  <a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>&nbsp;&nbsp;

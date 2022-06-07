@@ -43,4 +43,9 @@ public class UserJoinServiceImpl implements UserJoinService{
 		userDAO.secession(vo,session);
 	}
 
+	@Override
+	public void updateInfo(UserVO vo) {
+		userDAO.updateInfo(vo);
+	}
+
 }

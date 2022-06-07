@@ -12,4 +12,6 @@ public interface UserJoinService {
 	void secession(UserVO vo, HttpSession session);
 
 	int passCheck(UserVO vo);
+	
+	void updateInfo(UserVO vo);
 }

@@ -58,4 +58,11 @@
 		SELECT USER_PW FROM USERS
 		WHERE USER_ID = #{user_id}
 	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateInfo" parameterType="com.spring.mall.user.vo.UserVO">
+		UPDATE USERS SET USER_PW = #{user_pw}, USER_NICKNAME = #{user_nickname},
+			USER_EMAIL = #{user_email}, USER_PHONE = #{user_phone}
+		WHERE USER_ID = #{user_id}
+	</update>
 </mapper>

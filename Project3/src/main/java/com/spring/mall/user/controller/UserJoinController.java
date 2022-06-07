@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.mall.user.service.UserJoinService;
+import com.spring.mall.user.service.UserLoginService;
 import com.spring.mall.user.vo.UserVO;
 
 @Controller
@@ -20,6 +21,9 @@ public class UserJoinController {
 
 	@Autowired
 	private UserJoinService userJoinService;
+	
+	@Autowired
+	private UserLoginService userLoginService;
 	
 	public UserJoinController() {
 		System.out.println(">>UserJoinController() 객체 생성~");
@@ -77,5 +81,21 @@ public class UserJoinController {
 		
 		int result = userJoinService.passCheck(vo);
 		return Integer.toString(result);
+	}
+	
+	//회원 정보 수정
+	@RequestMapping("/updateAction.do")
+	public String updateInfo(HttpServletRequest request, UserVO vo, String user_phone1, String user_phone2, String user_phone3) {
+		String user_phone = user_phone1 + user_phone2 + user_phone3;
+		vo.setUser_phone(user_phone);
+		
+		System.out.println("회원정보 수정 vo : " + vo);
+		userJoinService.updateInfo(vo);
+		
+		UserVO user = userLoginService.getUser(vo);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
+		
+		return "user/updateOK";
 	}
 }

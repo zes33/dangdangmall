@@ -67,5 +67,10 @@ public class UserDAO {
 		session.invalidate();
 	}
 	
+	//회원 정보 수정
+	public void updateInfo(UserVO vo) {
+		mybatis.update("userDAO.updateInfo", vo);
+	}
+	
 
 }

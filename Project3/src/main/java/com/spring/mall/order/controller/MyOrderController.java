@@ -26,9 +26,7 @@ public class MyOrderController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@Autowired
-	private UserRefundService userRefundService;
-	
+
 	public MyOrderController() {
 		System.out.println(">>MyOrderController() 객체 생성");
 	}
