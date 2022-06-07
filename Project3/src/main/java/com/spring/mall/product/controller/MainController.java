@@ -34,6 +34,7 @@ public class MainController{
 		List<ProductVO> exerciseList = productService.getProductListCategory(exercise);
 		model.addAttribute("foodList",foodList);
 		model.addAttribute("exerciseList",exerciseList);
+		session.getAttribute("count");
 		
 		return "store/main";
 	}
