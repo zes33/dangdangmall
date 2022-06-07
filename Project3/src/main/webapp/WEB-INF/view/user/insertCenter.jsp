@@ -27,33 +27,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-	//은송언니 널체크 함수
-	function writeQna() {
-	    console.log("writeQna() 실행~~")
-	    var contentBlank = $("#prdQnaForm").children("textarea").val()
-	          .trim();
-	    console.log("contentBlank : " + contentBlank);
-	    if (contentBlank.length == 0) {
-	       alert("내용이 없어요.")
-	    } else {
-	       document.forms[1].submit();
-	    }
-	 }
 	
 	//내용이 비어있으면 alert를 띄우는 함수
 	function go_nullCheck() {
-		alert("go_nullCheck() 함수 실행~");
-        var titleNull = $("#insertCenterQna").find("center_qna_title").val().trim();
-        var contentNull = $("#insertCenterQna").find("center_qna_content").val().trim();
-        if (titleNull.length == 0) {
-        	alert("제목을 입력하세요.");
-        } else {
-        	if (contentNull.length == 0) {
-        		alert("내용을 입력하세요.");
-        	} else {
-        		document.forms[0].submit();
-        	}
-        }
+		var titleN = $("#center_qna_title").val().trim();
+		var contentN = $("#center_qna_content").val().trim();
+		if (titleN == "") {
+			alert("제목을 입력하세요.");
+			document.insertCenterQna.center_qna_title.focus();
+		} else {
+			if (contentN == "") {
+				alert("내용을 입력하세요.");
+				document.insertCenterQna.center_qna_content.focus();
+			} else {
+				document.forms[0].submit();
+			}
+		}
     }
 		
 </script>
@@ -69,20 +58,20 @@
 		<tr>
 			<th class="center">문의제목</th>
 			<td>
-				<input type="text" name="center_qna_title">
+				<input type="text" name="center_qna_title" id="center_qna_title">
 			</td>
 		</tr>
 		<tr>
 			<th class="center">문의내용</th>
 			<td>
-				<textarea name="center_qna_content" rows="10" cols="40"></textarea>
+				<textarea name="center_qna_content" rows="10" cols="40" id="center_qna_content"></textarea>
 			</td>
 		</tr>
 	</table>
 	
 	<br>
 	<p>
-		<button type="submit" class="btn btn-outline-secondary btn-sm">문의 하기</button>
+		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_nullCheck()">문의하기</button>
 		<button type="reset" class="btn btn-outline-secondary btn-sm">초기화</button>
 	</p>
 	</form>
