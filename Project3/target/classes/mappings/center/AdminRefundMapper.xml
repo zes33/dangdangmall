@@ -42,4 +42,14 @@
 		WHERE REFUND_ID= ${refund_id}
 	</update> 
 
+	<!-- 환불 후 포인트 삭제 -->
+	<update id="deletePoint" >
+	update users
+		set USER_POINT = USER_POINT - ( select
+		#{order_total} * 0.05
+		from USER_ORDER o
+		where o.ORDER_ID = #{order_id}
+		)
+		where user_id = #{user_id}
+	</update>
 </mapper>

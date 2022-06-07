@@ -72,7 +72,7 @@ table, th, td {
 
 	<h3>환불 요청 관리 페이지</h3>
 	<div class="container">
-		<%-- ${refundList } --%>
+		${refundList } 
 	</div>
 
 
@@ -92,7 +92,7 @@ table, th, td {
 						<th class="center" width="5%">NO.</th>
 						<th class="center" width="10%">고객 아이디</th>
 						<th class="center" width="10%">주문 아이디</th>
-						<th class="center" width="13%"> 주문 상세 아이디</th>
+						<th class="center" width="13%">주문 상세 아이디</th>
 						<th class="center" width="10%">상품 아이디</th>
 						<th class="center" width="10%">상품명</th>
 						<th class="center" width="8%">구매 수량</th>
@@ -100,6 +100,7 @@ table, th, td {
 						<th class="center" width="10%">구매 날짜</th>
 						<th class="center" width="10%" colspan="2">답변상태</th>
 						<th class="center" width="10%" colspan="2">상태변경</th>
+						<th class="center" width="10%">포인트 회수하기</th>
 						<!-- <th class="center" width="30%">상태 변경하기 </th> -->
 					</tr>
 				</thead>
@@ -114,24 +115,37 @@ table, th, td {
 							<td class="center">${list.product_name }</td>
 							<td class="center">${list.user_order_cnt }</td>
 							<td class="center">${list.refund_reason}</td>
-							<td class="center"><fmt:formatDate value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
-							
-								<!-- 1: 신청접수 2: 환불 승인 3: 불가  --> <c:if
-									test="${1 eq list.refund_status }">
-									<td  colspan="2" class="center">[  신청 접수 ] </td>
-								</c:if> <c:if test="${2 eq list.refund_status }">
-									<td class="center" colspan="2">[  환불 승인  ]</td>
-								</c:if> <c:if test="${3 eq list.refund_status }">
-									<td class="center" style="color: #C9C7C7;" colspan="2">[  환불 불가  ]</td>
-								</c:if>
-							<td><form action="update.do" method="post"> 
-										<select name="refund_status">
-											<option value="2">[환불승인]</option>
-											<option value="3">[환불불가]</option>
-										</select>
-										<input type="hidden" name="refund_id" value="${list.refund_id }">
-										<input type="submit" value="상태변경하기" style="width:80px;height:30px;font-size:10px;">
-									 </form></td>
+							<td class="center"><fmt:formatDate
+									value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
+
+							<!-- 1: 신청접수 2: 환불 승인 3: 불가  -->
+							<c:if test="${1 eq list.refund_status }">
+								<td colspan="2" class="center">[ 신청 접수 ]</td>
+							</c:if>
+							<c:if test="${2 eq list.refund_status }">
+								<td class="center" colspan="2">[ 환불 승인 ]</td>
+							</c:if>
+							<c:if test="${3 eq list.refund_status }">
+								<td class="center" style="color: #C9C7C7;" colspan="2">[ 환불
+									불가 ]</td>
+							</c:if>
+							<td><form action="update.do" method="post">
+									<select name="refund_status">
+										<option value="2">[환불승인]</option>
+										<option value="3">[환불불가]</option>
+									</select> <input type="hidden" name="refund_id"
+										value="${list.refund_id }"> <input type="submit"
+										value="상태변경하기"
+										style="width: 80px; height: 30px; font-size: 10px;">
+								</form></td>
+							<td><form action="delete.do" method="post">
+								<input type="hidden" name="order_id" value="${list.order_id }"> 
+								<input type="hidden" name="user_id" value="${list.user_id }"> 
+								<input type="hidden" name="order_total" value="${list.order_total }">
+								<input type="submit"
+										value="포인트회수"
+										style="width: 80px; height: 30px; font-size: 10px;">
+							</form></td>
 						</tr>
 					</c:forEach>
 				</tbody>
