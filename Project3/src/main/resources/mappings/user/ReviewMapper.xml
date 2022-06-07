@@ -5,9 +5,33 @@
 
 <mapper namespace="reviewDAO">
 	
+	<!-- 리뷰삭제 -->
+	<delete id="deleteReview" parameterType="com.spring.mall.review.vo.ReviewVO">
+		DELETE FROM REVIEW
+		WHERE REVIEW_ID = #{review_id}
+	</delete>
+	
+	<!-- 리뷰수정 -->
+	<update id="updateReview" parameterType="com.spring.mall.review.vo.ReviewVO">
+		UPDATE REVIEW SET
+		REVIEW_GRADE = #{review_grade},
+		REVIEW_CONTENT = #{review_content}
+		WHERE REVIEW_ID = #{review_id}
+	</update>
+	
+	<!-- review_id로 리뷰 조회(수정에 사용) -->
+	<select id="getReviewOne" parameterType="int" resultType="map">
+		SELECT r.review_grade, r.review_content,p.product_name, d.user_order_cnt, p.product_info
+		FROM REVIEW R, USER_ORDER O, USERORDER_DETAIL D, PRODUCT P
+		WHERE r.order_detail_id = d.order_detail_id
+		AND d.order_id = o.order_id
+		AND d.product_id = p.product_id
+		AND r.review_id = #{review_id}
+	</select>
+	
 	<!-- 나의 상품리뷰 목록 -->
 	<select id="myReviewList" parameterType="string" resultType="map">
-		SELECT P.PRODUCT_INFO, P.PRODUCT_NAME, U.ORDER_DATE, R.REVIEW_GRADE, R.REVIEW_CONTENT
+		SELECT P.PRODUCT_INFO, P.PRODUCT_NAME, U.ORDER_DATE, R.REVIEW_GRADE, R.REVIEW_CONTENT, R.REVIEW_ID
 		FROM REVIEW R, PRODUCT P, USER_ORDER U, USERORDER_DETAIL D
 		WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
 		AND D.ORDER_ID = U.ORDER_ID

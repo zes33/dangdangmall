@@ -37,4 +37,19 @@ public class ReviewServiceimpl implements ReviewService{
 		return reviewDAO.getMyReviewList(user_id);
 	}
 
+	@Override
+	public Map<String, Object> getReviewOne(int review_id) {
+		return reviewDAO.getReviewOne(review_id);
+	}
+
+	@Override
+	public void updateReview(ReviewVO review) {
+		reviewDAO.updateReview(review);
+	}
+
+	@Override
+	public void deleteReview(ReviewVO review) {
+		reviewDAO.deleteReview(review);
+	}
+
 }

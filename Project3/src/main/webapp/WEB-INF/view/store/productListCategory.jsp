@@ -91,8 +91,7 @@ function productDetailView(product_id){
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="product" items="${viewProduct }">
-					<%-- <div class="col" style=" cursor: pointer;" onclick="productDetailView(${product.product_id})">
-					 --%><div class="col" style=" cursor: pointer;" onclick="productDetailView(37)">
+					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${product.product_id})">
 						<div class="card shadow-sm">
 							<img src="${pageContext.request.contextPath }/img/셀러드.jpg" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >

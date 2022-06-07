@@ -43,4 +43,39 @@ public class ReviewDAO {
 		System.out.println("ReviewDAO.getMyReviewList() 실행");
 		return mybatis.selectList("reviewDAO.myReviewList",user_id );
 	}
+	
+	// 리뷰아이디로 리뷰 정보 조회
+	public Map<String, Object> getReviewOne(int review_id){
+		System.out.println("ReviewDAO.getReviewOne() 실행");
+		return mybatis.selectOne("reviewDAO.getReviewOne", review_id);
+	}
+	
+	// 리뷰 수정
+	public void updateReview(ReviewVO review) {
+		System.out.println("ReviewDAO.updateReview() 실행");
+		mybatis.update("reviewDAO.updateReview",review);
+	}
+	
+	// 리뷰 삭제
+	public void deleteReview(ReviewVO review) {
+		System.out.println("ReviewDAO.deleteReview() 실행");
+		mybatis.delete("reviewDAO.deleteReview", review);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

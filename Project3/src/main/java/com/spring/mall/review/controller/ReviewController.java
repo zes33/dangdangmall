@@ -1,5 +1,11 @@
 package com.spring.mall.review.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,11 +49,41 @@ public class ReviewController {
 	
 	// 마이페이지-후기내역
 	@RequestMapping("/goMyReview.do")
-	public String goMyReview(String user_id) {
+	public String goMyReview(HttpServletRequest request, Model model) {
 		System.out.println("goMyReview() 실행");
-		
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("user_id");
+		List<Map<String, Object>> myReviewList = reviewService.getMyReviewList(user_id);
+		model.addAttribute("myReviewList",myReviewList);
 		
 		return "user/myReview";
 	}
 	
+	// 리뷰수정 페이지로 이동
+	@RequestMapping("/editReview.do")
+	public String editReview(int review_id, Model model) {
+		System.out.println("editReview() 실행");
+		Map<String, Object> myReview = reviewService.getReviewOne(review_id);
+		model.addAttribute("myReview",myReview);
+		
+		return "user/updateReview";
+	}
+	
+	// 리뷰 수정 처리
+	@RequestMapping("/updateReview.do")
+	public String updateReview(ReviewVO review) {
+		System.out.println("updateReview() 실행");
+		reviewService.updateReview(review);
+		
+		return "redirect:/goMyReview.do";
+	}
+	
+	// 리뷰 삭제
+	@RequestMapping("/deleteReview.do")
+	public String deleteReview(ReviewVO review) {
+		System.out.println("deleteReview() 실행");
+		reviewService.deleteReview(review);
+		
+		return "redirect:/goMyReview.do";
+	}
 }

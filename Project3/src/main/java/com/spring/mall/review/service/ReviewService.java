@@ -12,8 +12,8 @@ public interface ReviewService {
 	void insertReview(ReviewVO vo);
 	int existReview(MyInfoVO myinfo);
 	List<Map<String, Object>> getMyReviewList(String user_id);
-
-	
-	
+	Map<String, Object> getReviewOne(int review_id);
+	void updateReview(ReviewVO review);
+	void deleteReview(ReviewVO review);
 	
 }

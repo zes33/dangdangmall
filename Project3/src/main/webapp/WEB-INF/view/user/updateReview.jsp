@@ -101,8 +101,14 @@ textarea{
 </style>
 <script>
 
+var grade = ${myReview.REVIEW_GRADE};
+
+$(function() {
+	mark(grade);
+});
+
 function closeReview() {
-	let cfm = confirm("리뷰 작성을 취소하시겠습니까?");
+	let cfm = confirm("리뷰 수정을 취소하시겠습니까?");
 	if(cfm){
 		window.close();
 	}
@@ -131,18 +137,18 @@ function reviewSubmit() {
 		
 		
 		var params = $("#reviewFrm").serialize();
-
 		$.ajax({
 	       type: "POST",
-	       url: "insertReview.do?order_detail_id=${myOrder.order_detail_id }",
+	       url: "updateReview.do",
 	       data: params,      
 	        success: function (data) {
 	
 	           window.close();
-	           window.opener.location.href="${pageContext.request.contextPath }/myinfo.do";
+	           window.opener.location.href="${pageContext.request.contextPath }/goMyReview.do";
 	           
 	       }, error: function (jqXHR, textStatus, errorThrown) {
 	          alert(jqXHR + ' ' + textStatus.msg);
+	          alert("오류~~");
 	       }
 
 		});
@@ -153,10 +159,10 @@ function reviewSubmit() {
 </head>
 <body>
     <div class="container-fluid reviewTitle ">
-    	<div class="wrtRV">리뷰쓰기</div>
+    	<div class="wrtRV">리뷰수정</div>
     </div>
 	<div class="container-fluid back">
-	<form id="reviewFrm" action="${pageContext.request.contextPath }/insertReview.do?order_detail_id=${myOrder.order_detail_id }">
+	<form id="reviewFrm" >
 	    <div class="row">
 	        <div class="col-sm-12 row imgLine">
 	        	<div class="col-sm-4 prdImg">
@@ -165,8 +171,8 @@ function reviewSubmit() {
         		<div class="col-sm-8 row nameZone">
         			<div class="container">
 					    <div class="row orderInfo">
-					        <div class="col-sm-12 prdName">${myOrder.product_name }</div>
-					        <div class="col-sm-12">구매수량 : ${myOrder.user_order_cnt }</div>
+					        <div class="col-sm-12 prdName">${myReview.PRODUCT_NAME }</div>
+					        <div class="col-sm-12">구매수량 : ${myReview.USER_ORDER_CNT }</div>
 					    </div>
 					</div>
         		</div>
@@ -177,7 +183,7 @@ function reviewSubmit() {
 	        </div>
 	        <div class="col-sm-12 row starZone">
 	        	<span>
-	        		<p class="star_rating">
+	        		<p class="star_rating"  style="cursor: pointer">
 	        			<a onclick="mark(1)" class="on">★</a>
 	        			<a onclick="mark(2)" class="on">★</a>
 	        			<a onclick="mark(3)" class="on">★</a>
@@ -188,7 +194,7 @@ function reviewSubmit() {
 	        	<input type="hidden" id="rvGrade" name="review_grade">
 	        </div>
 	        <div class="col-sm-12 txtZone">
-	        	<textarea style="width:100%;" rows="18" name="review_content"></textarea>
+	        	<textarea style="width:100%;" rows="18" name="review_content">${myReview.REVIEW_CONTENT }</textarea>
 	        </div>
 	        <div class="col-sm-12 row btnZone">
 		        <div class="col-sm-6" >

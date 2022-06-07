@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>내 후기</title>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -89,8 +91,8 @@
 		padding-top:10px;
 		padding-bottom: 10px;
 		
-		border-top: 3px solid #CCCCCC;
-		border-bottom: 3px solid #CCCCCC;
+		border-top: 2px solid #CCCCCC;
+		margin-bottom: 10px;
 	}
 	
 	img{
@@ -125,6 +127,43 @@
 	}
 	
 </style>
+<script>
+$(document).ready(function () {
+	
+$(".1").html("&#9733;");
+$(".2").html("&#9733;&#9733;");
+$(".3").html("&#9733;&#9733;&#9733;");
+$(".4").html("&#9733;&#9733;&#9733;&#9733;");
+$(".5").html("&#9733;&#9733;&#9733;&#9733;&#9733;");
+
+})
+	
+function editReview(review_id) {
+	window.open("editReview.do?review_id="+review_id,"pop1",
+	"width=500, height=700 top=100, left=150");
+}
+
+function deleteReview(review_id) {
+	var cf = confirm("리뷰를 삭제하시겠습니까?");
+	if(cf){
+		let f = document.createElement('form');
+		    
+	    let obj;
+	    obj = document.createElement('input');
+	    obj.setAttribute('type', 'hidden');
+	    obj.setAttribute('name', 'review_id');
+	    obj.setAttribute('value', review_id);
+	    
+	    f.appendChild(obj);
+	    f.setAttribute('method', 'post');
+	    f.setAttribute('action', 'deleteReview.do');
+	    document.body.appendChild(f);
+	    f.submit();
+	}
+}
+
+
+</script>
 </head>
 <body>
 
@@ -184,27 +223,33 @@
 		        <div><p><b><a href="cart/list.do">장바구니</a></b></p></div>
 		        <div><p><b><a href="${pageContext.request.contextPath }/goMyPrdQna.do">상품 문의내역</a></b></p></div>
 		        <div><p><b><a href="#">기타 문의내역</a></b></p></div>
-		        <div><p><b><a href="#">후기내역</a></b></p></div>
+		        <div><p><b><a href="${pageContext.request.contextPath }/goMyReview.do">후기내역</a></b></p></div>
 	        </div>
 	        <div class="col-md-10 whoru">
 	        <br>
-				<h3><b>나의 상품 후기</b></h3>
+				<h3><b>나의 상품 후기 </b></h3>
 				<br>
+				
+				<c:forEach var="myReviewList" items="${myReviewList }">
 				<div class="col-md-11 whoruBaby">
 					<div class="row imgZone">
 				        <div class="col-sm-1">
 				        	<img alt="제품사진" src="${pageContext.request.contextPath }/img/블루베리.jpg">
 				        </div>
 				        <div class="col-sm-9 info">
-				        	<div class="prdname">닭다리</div>
-				        	<div class="date">2022-09-09 구매</div>
+				        	<div class="prdname">${myReviewList.PRODUCT_NAME }</div>
+				        	<div class="date">구매일 : 
+				        	<fmt:formatDate pattern="yyyy-MM-dd" value="${myReviewList.ORDER_DATE }"/>
+				        	</div>
 				        </div>
 				        <div class="col-sm-2 btns">
 				        	<div class="row btn1">
-				        		<button style="font-size: 14px;" type="button" class="btn btn-outline-secondary">리뷰수정</button>
+				        		<button style="font-size: 14px;" onclick="editReview(${myReviewList.REVIEW_ID})"
+				        		type="button" class="btn btn-outline-secondary">리뷰수정</button>
 				        	</div>
 				        	<div class="row btn1" style="margin-top: 7px;">
-				        		<button style="font-size: 14px;" type="button" class="btn btn-secondary">리뷰삭제</button>
+				        		<button style="font-size: 14px;" onclick="deleteReview(${myReviewList.REVIEW_ID})"
+				        		type="button" class="btn btn-secondary">리뷰삭제</button>
 				        	</div>
 				        </div>
 				    </div>
@@ -212,17 +257,18 @@
 				    <div class="row floor">
 				        <div class="col-sm-12 review">
 				        	<div class="row">
-						        <div class="col-sm-4 star">★★★★★</div>
+				        	<!-- 별점 -->
+						        <div class="col-sm-4 star ${myReviewList.REVIEW_GRADE }">
+						        	
+						        </div>
 						    </div>
 						    <div class="row">
-						        <div class="col-sm-11 content">
-						        맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요
-						        </div>
+						        <div class="col-sm-11 content">${myReviewList.REVIEW_CONTENT }</div>
 						    </div>
 				        </div>
 				    </div>
 				</div>
-				
+				</c:forEach>
 				
 				
 				
