@@ -33,4 +33,9 @@ public class AdminRefundDAO {
 	public void deletePoint(UserOrderPointVO vo) {
 		mybatis.update("adminRefundDAO.deletePoint",vo);
 	}
+	
+	//4. 환불 상태 체크 
+	public int checkRefund(int refund_id) {
+		return mybatis.selectOne("adminRefundDAO.checkRefund", refund_id);
+	}
 }

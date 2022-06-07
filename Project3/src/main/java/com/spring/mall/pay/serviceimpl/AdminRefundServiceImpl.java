@@ -39,5 +39,11 @@ public class AdminRefundServiceImpl implements AdminRefundService {
 		adminRefundDAO.deletePoint(vo);
 		
 	}
+
+	//4. 환불 상태 
+	@Override
+	public int checkRefund(int refund_id) {
+		return adminRefundDAO.checkRefund(refund_id);
+	}
 	
 }

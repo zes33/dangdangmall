@@ -82,7 +82,7 @@ tr, td ,br{
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	 <h3>map</h3> ${mapD.list.product_id }
+	 <h3>map</h3> ${mapD }
 			<h3>user</h3> ${user}
 			<h3>배송정보</h3> ${orderInfo } 
 
@@ -133,39 +133,37 @@ tr, td ,br{
 						<th>할인율</th>
 						<th>금액</th>
 					</tr>
-					
-						
-					
-
-						<%-- <div class="menuClass">
+						 <div class="menuClass">
 							<tr>
 								<td><span id="amount"> <c:out
 											value="${mapD.list.product_name }" />
 								</span></td>
-								<td><span id="amount"> <c:out
+								<td>
+								
+								 <span id="amount"> <c:out
 											value="${mapD.list.product_price }" />
 								</span></td>
 								<td><span type="number" style="width: 80px"
 									name="cart_product_qty" min="1">
-										${mapD.list.cart_product_qty}</span>
+										${mapD.cnt}</span>
 								<td><span id="amount"
-									data-amount=<c:out value="${mapD.list.product_price * mapD.list.cart_product_qty}"/>><fmt:formatNumber
-											value="${mapD.list.product_price * mapD.list.cart_product_qty}"
+									data-amount=<c:out value="${mapD.list.product_price * mapD.cnt}"/>><fmt:formatNumber
+											value="${mapD.list.product_price * mapD.cnt}"
 											pattern="###,###,###" /></span></td>
 								<td><span id="discount" style="color: red;"
 									data-amount=<c:out value="${mapD.list.product_discount }"/>> <fmt:formatNumber
 											value="${mapD.list.product_discount *100 }" type="number" /> %
 								</span></td>
 								<td><span id="total"
-									data-amount=<c:out value="${mapD.list.product_price * mapD.list.cart_product_qty}"/>>
+									data-amount=<c:out value="${mapD.list.product_price * mapD.cnt}"/>>
 										<fmt:formatNumber
-											value="${(mapD.list.product_price * mapD.list.cart_product_qty) - (mapD.list.product_price * list.list.cart_product_qty)* mapD.list.product_discount.list.product_discount }"
+											value="${(mapD.list.product_price * mapD.cnt) - (mapD.list.product_price * mapD.cnt)* mapD.list.product_discount }"
 											pattern="###,###,###" />
-								</span></td>
+								</span></td> 
 
 							</tr>
 						</div>
-  --%>
+  
 				</table>
 			<br> <br>
 			<hr>

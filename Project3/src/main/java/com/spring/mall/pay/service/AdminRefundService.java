@@ -15,4 +15,7 @@ public interface AdminRefundService {
 
 	// 3. 포인트 적립 취소
 	public void deletePoint(UserOrderPointVO vo);
+	
+	//4. 환불 상태 체크 
+	public int checkRefund(int refund_id);
 }
