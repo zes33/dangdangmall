@@ -43,7 +43,7 @@ public class ReviewController {
 	
 	// 마이페이지-후기내역
 	@RequestMapping("/goMyReview.do")
-	public String goMyReview() {
+	public String goMyReview(String user_id) {
 		System.out.println("goMyReview() 실행");
 		
 		

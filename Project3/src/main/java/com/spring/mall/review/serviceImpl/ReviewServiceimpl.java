@@ -1,5 +1,8 @@
 package com.spring.mall.review.serviceImpl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,11 @@ public class ReviewServiceimpl implements ReviewService{
 	@Override
 	public int existReview(MyInfoVO myinfo) {
 		return reviewDAO.existReview(myinfo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getMyReviewList(String user_id) {
+		return reviewDAO.getMyReviewList(user_id);
 	}
 
 }

@@ -30,11 +30,10 @@
    padding: 30px;
    
 }
-
-.mainPic {
-   width: 480px;
-   height: 448px;
+.goods{
+   position: relative;
 }
+
 .prdNamePrice {
    padding: 30px;
 }
@@ -60,8 +59,8 @@ textarea {
 #tit {
    width: 450px;
    position: absolute;
-   top: 487px;
-   left: 690px;
+   top: 5px;
+   left: 550px;
 }
  .box {margin:20px auto;}
     .content {
@@ -80,17 +79,91 @@ textarea {
  }
 </style>
 <body>
-   <script>
-      $(function() {
-         $(document).ready(function() {
-            $('select[name=product_cnt]').change(function() {
-               $('#product_cnt').val($(this).val());
-                  $("#product_cnt").attr("readonly", true);
-               });
-            });
+<script>
+var product_id = "<c:out value='${product.product_id}'/>";
+var nowPage = "<c:out value='${paging.nowPage}'/>";	
+
+/* $(function() {
+   $(document).ready(function() {
+      $('select[name=product_cnt]').change(function() {
+         $('#product_cnt').val($(this).val());
+            $("#product_cnt").attr("readonly", true);
          });
-      );
-   </script>
+      });
+   });
+); */
+
+
+function replyList(nowPage, product_id) {
+	/* alert("replyList() 실행");
+	alert("nowPage : " + nowPage +"\nproduct_id : " + product_id); */
+	
+	$.ajax({
+		url : "qnaWithPaging.do",
+		type : "post",
+		data : {
+			'product_id' : product_id,
+			'nowPage' : nowPage
+		},
+		dataType : "json",
+		success : function(data){
+			var a = '';
+			var paging = data.paging;
+			var qnaList = data.qnaList;
+			var product = data.product;
+			
+			if(qnaList == null){
+				a += '<p>등록된 게시물이 없습니다.</p>';
+			}
+			$.each(qnaList, function(key, value){
+				
+				if (value.q_or_a == 0) {
+					a += '<div class="prdQnaContent">';
+					a += '<p>'+value.qna_content+'</p>';
+					a += '<small>'+value.user_nickname+'</small>';
+					a += '<hr></div>';
+				} else {
+					a += '<div class="prdQnaContent">';
+					a += '<p>&nbsp;&nbsp;&nbsp;&nbsp;ㄴ [답변완료] '+value.qna_content+'</p>';
+					a += '<hr></div>';
+				}
+				
+			});
+			
+			a+='<nav aria-label="Page navigation example">';
+			a+='<ul class="pagination">';
+			
+			/* alert("paging.startPage : " + paging.startPage+"\npaging.endPage : " + paging.endPage); */
+			if (paging.startPage != 1){
+				a+='<li class="page-item">';
+				a+='<a class="page-link" onclick="replyList('+paging.startPage+'-'+1+',\''+product.product_id+'\')" aria-label="Previous">';
+				a+='<span aria-hidden="true">&laquo;</span></a></li>';
+			} 
+			
+			for(var num = paging.startPage; num <= paging.endPage; num++){
+				 if(num == paging.nowPage){
+					a+='<li class="page-item"><b class="page-link" >'+num+'</b></li>';
+				} else {
+					a+='<li class="page-item"><a class="page-link" onclick="replyList('+num+',\''+product.product_id+'\')">'+num+'</a></li>';
+				} 
+			}
+			
+			if(paging.endPage != paging.lastPage){
+				a+='<li class="page-item">';
+				a+='<a class="page-link" onclick="replyList('+paging.startPage+'+'+3+',\''+product.product_id+'\')" aria-label="Previous">';
+				a+='<span aria-hidden="true">&raquo;</span></a></li>';
+			}
+					
+			a+='</ul></nav>';
+			$('.prdList').html(a);
+		},
+		error : function(){
+			alert("오류발생");
+		}
+	});
+} 
+
+</script>
    <!-- header -->
    <header>
       <jsp:include page="../common/header.jsp"></jsp:include>
@@ -125,9 +198,7 @@ textarea {
   </ul><hr>
 </nav>
    <div class="goods">
-         <span class="card-photo border">
-              <img src="./img/과일주스여러개.jpg" alt="..." class="mainPic">
-           </span>
+              <img src="./img/과일주스여러개.jpg" alt="..." width= "480px" height="448px">
            <div id="tit">
               <div class="h3"><strong>${product.product_name }</strong></div>
               <div class="text-black-50 h5"><small>건강하게 마시는</small></div>   
@@ -161,6 +232,14 @@ textarea {
                      <div>
                          <span> 식품  </span>
                      </div>
+                     
+                 <form action="cart/insert.do" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="product_id"
+					value="${product.product_id}"> <input type="hidden"
+					id="product_cnt" value="product_cnt">
+					<input type="hidden"
+					name="user_id" value="${user_id}">
+						
                   </li>
                    <li id="litag">
                      <strong>수량</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -182,7 +261,16 @@ textarea {
                   <li>
                      <div class="d-grid gap-2 mx-auto">
                      <input class="btn btn-block btn-outline-success" type="submit" value="장바구니 담기">
-                     <input class="btn btn-block btn-success" type="submit" value="바로 구매하기">
+                   </form>  
+                   <form action="cart/orderDirect.do" method="post" enctype="multipart/form-data">
+						<!-- <input class="btn btn-primary" type="submit" value="구매하기">
+						 --><input type="hidden" name="product_id"
+						value="${product.product_id}"> <input type="hidden" 
+						id="cart_product_qty" value="cart_product_qty">
+	                     <input class="btn btn-block btn-success" type="submit" value="바로 구매하기">
+	                     <!-- <input type="hidden" type="number" name ="cart_product_qty" value="cart_product_qty">  -->
+				   </form>
+                     
                   </div>
                </li>
               </ul>
@@ -232,7 +320,33 @@ textarea {
    
   <h4 id="scrollspyHedding4"><strong>상품 문의</strong></h4>
   <hr>
-  <div class="prdQnaZone">
+  	
+  	<div class="prdList">
+	
+		<script>
+		replyList(nowPage, product_id);
+		</script>
+
+	</div>
+	
+	<c:choose>
+		<c:when test="${empty user }">
+			<br>
+			<p>상품문의는 로그인 후 가능합니다.</p>
+			<a href="login.do">로그인</a>
+		</c:when>
+		<c:otherwise>
+			<div id="prdQnaWrite">
+				<%-- <form id="prdQnaForm" action="insertPrdQna.do?product_id=${product.product_id }"method="post">
+				 --%><form id="prdQnaForm" role="form" method="post">
+					<textarea id="txtara" name="qna_content"></textarea>
+				</form>
+					<button type="button" id="testBtn" onclick="writeQna()">등록</button>
+			</div>
+		</c:otherwise>
+	</c:choose>
+  
+  <%-- <div class="prdQnaZone">
   <!-- forEach 스세요 -->
          <c:set var="qna" value="${productQnaList }" />
          <c:choose>
@@ -263,7 +377,7 @@ textarea {
          <c:choose>
             <c:when test="${empty user }">
                <p>상품문의는 로그인 후 가능합니다.</p>
-               <%-- <a href="login.do?product_id=${product.product_id }">로그인 하기</a> --%>
+               <a href="login.do?product_id=${product.product_id }">로그인 하기</a>
                <form action="login.do">
                <input type="submit" value="로그인">
                </form>
@@ -280,10 +394,53 @@ textarea {
                </div>
             </c:otherwise>
          </c:choose>
-      </div>
+      </div> --%>
+      
+      
    </div>
   </div>
+  
+<script>
 
+function writeQna() {
+	console.log("writeQna() 실행~~")
+	var contentBlank = $("#prdQnaForm").children("textarea").val()
+			.trim();
+	console.log("contentBlank : " + contentBlank);
+	if (contentBlank.length == 0) {
+		alert("내용이 없어요.");
+	} else {
+		alert("product_id, nowPage : " + product_id +','+nowPage);
+		
+		var formObj = $("#prdQnaWrite form[role='form']");
+		var qna_content = $("#txtara").val();
+		
+		/* alert("formObj,qna_content :" +formObj+","+ qna_content); */
+		
+		var data = {
+			'nowPage' : null,
+			'qna_content' : qna_content,
+			'product_id' : product_id
+					};
+		alert("data : " + data);
+		
+		$.ajax({
+			url : 'writePrdQna.do',
+			type : 'post',
+			data : data,
+			success : function(){
+				alert("formObj,qna_content :" +formObj+","+ qna_content);
+				$("#txtara").val("");
+				replyList(nowPage, product_id);
+			},
+			error : function(){
+				alert("오류발생");
+			}
+		});
+	}
+}
+	
+</script>
 
 
    <!-- footer -->

@@ -35,7 +35,7 @@ function productDetailView(product_id){
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'productDetail.do');
+    f.setAttribute('action', 'viewPrdDetail.do');
     document.body.appendChild(f);
     f.submit();
 }

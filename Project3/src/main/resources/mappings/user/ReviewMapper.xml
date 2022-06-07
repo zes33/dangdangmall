@@ -5,6 +5,16 @@
 
 <mapper namespace="reviewDAO">
 	
+	<!-- 나의 상품리뷰 목록 -->
+	<select id="myReviewList" parameterType="string" resultType="map">
+		SELECT P.PRODUCT_INFO, P.PRODUCT_NAME, U.ORDER_DATE, R.REVIEW_GRADE, R.REVIEW_CONTENT
+		FROM REVIEW R, PRODUCT P, USER_ORDER U, USERORDER_DETAIL D
+		WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
+		AND D.ORDER_ID = U.ORDER_ID
+		AND D.PRODUCT_ID  = P.PRODUCT_ID
+		AND U.USER_ID = #{user_id}
+	</select>
+	
 	<!-- order_detail_id로 리뷰 존재여부 확인 -->
 	<select id="existReview" parameterType="com.spring.mall.user.vo.MyInfoVO" resultType="int">
 		SELECT COUNT(*)

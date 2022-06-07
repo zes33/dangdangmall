@@ -62,6 +62,10 @@ textarea {
 .d-grid {
 	padding-top: 15px;
 }
+
+.prdQnaContent {
+	margin-top: 5px;
+}
 </style>
 <body>
 <script>
@@ -70,15 +74,15 @@ var product_id = "<c:out value='${product.product_id}'/>";
 var nowPage = "<c:out value='${paging.nowPage}'/>";		
 		
 		
-$(document).ready(function() {
+/* $(document).ready(function() {
 	alert("입장 ");
 	
 	/* $('select[name=product_cnt]').change(function() {
 		$('#product_cnt').val($(this).val());
 			$("#product_cnt").attr("readonly", true);
 		}
-	}); */
-});
+	}); 
+}); */
 
 function replyList(nowPage, product_id) {
 	alert("replyList() 실행");
@@ -106,12 +110,11 @@ function replyList(nowPage, product_id) {
 				if (value.q_or_a == 0) {
 					a += '<div class="prdQnaContent">';
 					a += '<p>'+value.qna_content+'</p>';
-					//a += '<p>'+value.user_nickname+'</p>';
 					a += '<small>'+value.user_nickname+'</small>';
 					a += '<hr></div>';
 				} else {
 					a += '<div class="prdQnaContent">';
-					a += '<p>[답변완료] '+value.qna_content+'</p>';
+					a += '<p>&nbsp;&nbsp;&nbsp;&nbsp;ㄴ [답변완료] '+value.qna_content+'</p>';
 					a += '<hr></div>';
 				}
 				
@@ -146,9 +149,6 @@ function replyList(nowPage, product_id) {
 		},
 		error : function(){
 			alert("오류발생");
-		},
-		complete : function(){
-			alert("끝");
 		}
 	});
 } 
@@ -243,9 +243,9 @@ function replyList(nowPage, product_id) {
 		
 		<div class="prdList">
 	
-		<script>
-		replyList(nowPage, product_id);
-		</script>
+			<script>
+			replyList(nowPage, product_id);
+			</script>
 
 		</div> 
 		
@@ -254,9 +254,6 @@ function replyList(nowPage, product_id) {
 				<br>
 				<p>상품문의는 로그인 후 가능합니다.</p>
 				<a href="login.do">로그인</a>
-				<!-- <form action="login.do">
-					<button type="button" onclick="login.do">로그인</button>
-				</form> -->
 			</c:when>
 			<c:otherwise>
 				<div id="prdQnaWrite">

@@ -1,5 +1,8 @@
 package com.spring.mall.review.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,5 +38,9 @@ public class ReviewDAO {
 		mybatis.insert("reviewDAO.insertReview", vo);
 	}
 	
-	
+	// 회원별 리뷰 목록
+	public List<Map<String, Object>> getMyReviewList(String user_id){
+		System.out.println("ReviewDAO.getMyReviewList() 실행");
+		return mybatis.selectList("reviewDAO.myReviewList",user_id );
+	}
 }

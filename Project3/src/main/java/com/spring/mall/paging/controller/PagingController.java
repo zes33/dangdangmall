@@ -16,7 +16,6 @@ import com.spring.mall.product.vo.ProductQnaNickVO;
 import com.spring.mall.product.vo.ProductVO;
 
 @Controller
-//@RequestMapping("/paging/**")
 public class PagingController {
 	
 	@Autowired
@@ -50,40 +49,40 @@ public class PagingController {
 		return "store/productListCategory";
 	}
 	
-	// test-----------
-	@RequestMapping("/viewPrdDetail.do")
-	public String viewPrdRepl(PagingVO paging, Model model, ProductQnaNickVO nv, ProductVO pv,
-					@RequestParam(value="nowPage", required = false) String nowPage,
-					@RequestParam(value="cntPerPage", required = false) String cntPerPage) {
-		System.out.println("viewPrdRepl() 실행");
-		int product_id = nv.getProduct_id();
-		int total = pagingService.totalPrdQna_prd(product_id);
-		
-		int setLastPage = 0;
-		if (nowPage == null && cntPerPage == null) {
-			cntPerPage = "4";
-			int cntPerPageNum = Integer.parseInt(cntPerPage);
-			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
-			nowPage = Integer.toString(setLastPage);
-		} else if (nowPage == null) {
-			cntPerPage = "4";
-			int cntPerPageNum = Integer.parseInt(cntPerPage);
-			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
-			nowPage = Integer.toString(setLastPage);
-		} else if (cntPerPage == null) { 
-			cntPerPage = "4";
-		}
-		
-		//페이징객체, 상품정보, 상품별 문의목록
-		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		ProductVO product = productService.getProduct(pv);
-		List<ProductQnaNickVO> qnaList = pagingService.prdQnaList_prd(product_id, paging.getStart(), paging.getEnd());	
-		
-		model.addAttribute("product",product);
-		model.addAttribute("paging",paging);
-		model.addAttribute("qnaList",qnaList);
-		
-		return "store/testProduct";
-	}
+	// 상품 상세페이지
+//	@RequestMapping("/viewPrdDetail.do")
+//	public String viewPrdRepl(PagingVO paging, Model model, ProductQnaNickVO nv, ProductVO pv,
+//					@RequestParam(value="nowPage", required = false) String nowPage,
+//					@RequestParam(value="cntPerPage", required = false) String cntPerPage) {
+//		System.out.println("viewPrdRepl() 실행");
+//		int product_id = nv.getProduct_id();
+//		int total = pagingService.totalPrdQna_prd(product_id);
+//		
+//		int setLastPage = 0;
+//		if (nowPage == null && cntPerPage == null) {
+//			cntPerPage = "4";
+//			int cntPerPageNum = Integer.parseInt(cntPerPage);
+//			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
+//			nowPage = Integer.toString(setLastPage);
+//		} else if (nowPage == null) {
+//			cntPerPage = "4";
+//			int cntPerPageNum = Integer.parseInt(cntPerPage);
+//			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
+//			nowPage = Integer.toString(setLastPage);
+//		} else if (cntPerPage == null) { 
+//			cntPerPage = "4";
+//		}
+//		
+//		//페이징객체, 상품정보, 상품별 문의목록
+//		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+//		ProductVO product = productService.getProduct(pv);
+//		List<ProductQnaNickVO> qnaList = pagingService.prdQnaList_prd(product_id, paging.getStart(), paging.getEnd());	
+//		
+//		model.addAttribute("product",product);
+//		model.addAttribute("paging",paging);
+//		model.addAttribute("qnaList",qnaList);
+//		
+//		return "store/productDetail";
+//	}
 
 }
