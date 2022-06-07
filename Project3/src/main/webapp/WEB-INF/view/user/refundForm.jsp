@@ -73,6 +73,12 @@
 								readonly></td>
 						</tr>
 						<tr>
+							<td>주문요일</td>
+							<td colspan="2"><input id="order_date" name="order_date"
+								type="text" placeholder="" maxlength="20" class="form-control"
+								value="${oneOrder.order_date }" readonly></td>
+						</tr>
+						<tr>
 							<td>이름</td>
 							<td colspan="2"><input id="user_name" name="user_name"
 								type="text" placeholder="이름" maxlength="20" class="form-control"

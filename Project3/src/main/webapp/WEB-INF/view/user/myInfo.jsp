@@ -172,7 +172,7 @@
 			           <span class="position-absolute top-0 end-0">
 			              <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
 			              <br><br>
-			            <div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.product_id})" value="환불 신청" /></div><br>
+			            <div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.order_detail_id})" value="환불 신청" /></div><br>
 			            <c:choose>
 			            <c:when test="${existList[status.index] eq 0 }">
 			            	<div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" onclick="goMyReview(${orderList.order_detail_id})">리뷰 작성</button></div>
@@ -190,9 +190,9 @@
 	    <div class="row"></div>
 	    <script>
 	    
-	    function refundView(product_id){
+	    function refundView(order_detail_id){
 	    	//alert("버튼 클릭");
-	    	location.href = "refundForm.do?product_id="+product_id;
+	    	location.href = "refundForm.do?order_detail_id="+order_detail_id;
 	    }
 	    function goMyReview(order_detail_id){
 	    	window.open("writeReview.do?order_detail_id="+order_detail_id,"pop1",

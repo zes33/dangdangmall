@@ -21,8 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    FROM USER_ORDER UO, USERORDER_DETAIL UOD, PRODUCT P
 	    WHERE UO.ORDER_ID = UOD.ORDER_ID
 	    AND UOD.PRODUCT_ID = P.PRODUCT_ID
-	    AND UO.USER_ID = #{user_id}
-        AND UOD.PRODUCT_ID = #{product_id}
+	    AND UOD.ORDER_DETAIL_ID = #{order_detail_id}
  	</select>
  
  
