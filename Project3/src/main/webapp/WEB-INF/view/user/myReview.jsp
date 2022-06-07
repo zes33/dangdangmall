@@ -139,6 +139,7 @@ $(".5").html("&#9733;&#9733;&#9733;&#9733;&#9733;");
 })
 	
 function editReview(review_id) {
+	alert("review_id : " + review_id);
 	window.open("editReview.do?review_id="+review_id,"pop1",
 	"width=500, height=700 top=100, left=150");
 }

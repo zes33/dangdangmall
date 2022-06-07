@@ -74,6 +74,7 @@ public class ReviewController {
 	public String updateReview(ReviewVO review) {
 		System.out.println("updateReview() 실행");
 		reviewService.updateReview(review);
+		System.out.println("review : " + review);
 		
 		return "redirect:/goMyReview.do";
 	}

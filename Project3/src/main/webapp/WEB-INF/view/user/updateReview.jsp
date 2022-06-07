@@ -129,6 +129,7 @@ function reviewSubmit() {
 	 
 	let contentBlank = $("#reviewFrm").find("textarea").val().trim();
 	let starGrade = $('#rvGrade').val();
+	
 	if(starGrade == 0){
 		alert('별점을 입력해주세요.');
 	} else if(contentBlank.length == 0){
@@ -140,7 +141,7 @@ function reviewSubmit() {
 		$.ajax({
 	       type: "POST",
 	       url: "updateReview.do",
-	       data: params,      
+	       data: params,     
 	        success: function (data) {
 	
 	           window.close();
@@ -163,6 +164,7 @@ function reviewSubmit() {
     </div>
 	<div class="container-fluid back">
 	<form id="reviewFrm" >
+	<input type="hidden" name="review_id" value="${myReview.REVIEW_ID }">
 	    <div class="row">
 	        <div class="col-sm-12 row imgLine">
 	        	<div class="col-sm-4 prdImg">
