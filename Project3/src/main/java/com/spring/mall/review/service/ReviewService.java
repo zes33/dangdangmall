@@ -15,5 +15,6 @@ public interface ReviewService {
 	Map<String, Object> getReviewOne(int review_id);
 	void updateReview(ReviewVO review);
 	void deleteReview(ReviewVO review);
+	List<Map<String, Object>> reviewPerPrd(int product_id);
 	
 }

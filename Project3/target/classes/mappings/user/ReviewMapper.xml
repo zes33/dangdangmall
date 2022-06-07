@@ -5,6 +5,33 @@
 
 <mapper namespace="reviewDAO">
 	
+	<!-- 페이징 들어간 상품당 리뷰(상품페이지) -->
+	<select id="reviewPerPrdPaging" resultType="map">
+		SELECT *
+		FROM (SELECT ROWNUM R_NUM, A.*
+		     FROM (SELECT R.REVIEW_GRADE, R.REVIEW_CONTENT, U.USER_NICKNAME ,UO.ORDER_DATE,R.REVIEW_ID
+		        FROM REVIEW R, USERS U, USER_ORDER UO, USERORDER_DETAIL D, PRODUCT P
+		        WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
+		        AND D.ORDER_ID = UO.ORDER_ID
+		        AND D.PRODUCT_ID = P.PRODUCT_ID
+		        AND UO.USER_ID = U.USER_ID
+		        AND P.PRODUCT_ID = #{product_id}
+		        ORDER BY R.REVIEW_ID DESC) A)
+		WHERE R_NUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 한 상품의 모든 리뷰 -->
+	<select id="reviewPerPrd" parameterType="int" resultType="map">
+		SELECT R.REVIEW_GRADE, R.REVIEW_CONTENT, U.USER_NICKNAME ,UO.ORDER_DATE
+		FROM REVIEW R, USERS U, USER_ORDER UO, USERORDER_DETAIL D, PRODUCT P
+		WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
+		AND D.ORDER_ID = UO.ORDER_ID
+		AND D.PRODUCT_ID = P.PRODUCT_ID
+		AND UO.USER_ID = U.USER_ID
+		AND P.PRODUCT_ID = #{product_id}
+		ORDER BY R.REVIEW_ID DESC
+	</select>
+	
 	<!-- 리뷰삭제 -->
 	<delete id="deleteReview" parameterType="com.spring.mall.review.vo.ReviewVO">
 		DELETE FROM REVIEW

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,21 +90,24 @@ textarea {
 .reviewdt {
 	width: 120px;
 }
+
 </style>
 <body>
-	<script>
+<script>
+
+	
+$(document).ready(function () {
+	
+	$(".1").html("&#9733;");
+	$(".2").html("&#9733;&#9733;");
+	$(".3").html("&#9733;&#9733;&#9733;");
+	$(".4").html("&#9733;&#9733;&#9733;&#9733;");
+	$(".5").html("&#9733;&#9733;&#9733;&#9733;&#9733;");
+
+})
+
 var product_id = "<c:out value='${product.product_id}'/>";
 var nowPage = "<c:out value='${paging.nowPage}'/>";	
-
-/* $(function() {
-   $(document).ready(function() {
-      $('select[name=product_cnt]').change(function() {
-         $('#product_cnt').val($(this).val());
-            $("#product_cnt").attr("readonly", true);
-         });
-      });
-   });
-); */
 
 
 function replyList(nowPage, product_id) {
@@ -135,7 +140,7 @@ function replyList(nowPage, product_id) {
 					a += '<hr></div>';
 				} else {
 					a += '<div class="prdQnaContent">';
-					a += '<p>&nbsp;&nbsp;&nbsp;&nbsp;ㄴ [답변완료] '+value.qna_content+'</p>';
+					a += '<p>&nbsp;&nbsp;&nbsp;&nbsp;ㄴ <b>[답변완료]</b> '+value.qna_content+'</p>';
 					a += '<hr></div>';
 				}
 				
@@ -196,8 +201,8 @@ function replyList(nowPage, product_id) {
 				<li class="nav-item"><a class="nav-link text-black-50"><small>|</small></a>
 				</li>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="#scrollspyHedding3"><strong>후기<span
-							class="text-danger">(1,800[지영아 후기갯수넣으렴])</span></strong></a></li>
+					href="#scrollspyHedding3"><strong>후기&nbsp;&nbsp;<span
+							class="text-danger">${fn:length(reviewList) }</span></strong></a></li>
 				<li class="nav-item"><a class="nav-link text-black-50"><small>|</small></a>
 				</li>
 				<li class="nav-item"><a class="nav-link text-dark"
@@ -272,7 +277,7 @@ function replyList(nowPage, product_id) {
 									alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
 									location.href="cart/insert.do?product_id="+product_id+"&cart_product_qty="+$("#cart_product_qty").val();
 								}
-                     </script>
+                    			</script>
 								<button type="button" class="btn btn-block btn-success" onclick="goBuy('${user_id}',${product.product_id})">바로
 									구매하기</button>
 									<script type="text/javascript">
@@ -311,53 +316,59 @@ function replyList(nowPage, product_id) {
 			</h4>
 			<p>상세 정보는 여기에~~~~</p>
 			<h4 id="scrollspyHedding3">
-				<strong>상품후기<span class="text-danger">(1,800[지영아
-						후기갯수넣으렴])</span></strong>
+				<strong>상품후기&nbsp;&nbsp;<span class="text-danger">${fn:length(reviewList) }</span></strong>
 			</h4>
 			<div class="reviewZone">
 				<hr>
-				<p>
-					<a class="text-dark text-decoration-none"><strong>베스트순</strong></a><small
+				<!-- <p>
+					<a class="text-dark text-decoration-none"><strong>별점순</strong></a><small
 						class="text-muted"> | </small> <a
 						class="text-dark text-decoration-none"><strong>최신순</strong></a>
-				</p>
+				</p> -->
 
 				<!-- forEach 쓰걸아 -->
 				<div class="reviewComment">
-					<table class="table table-hover">
+					<table class="table table-hover" style="text-align: center;">
 						<thead>
 							<tr>
-								<th scope="col" class="star text-start"><font
+								<th scope="col" class="star text-start" style="width: 10%;"><font
 									style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">별점</font></font></th>
-								<th scope="col"><font style="vertical-align: inherit;"><font
+								<th scope="col" style="width: 60%;">
+								<font style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">후기내용</font></font></th>
-								<th scope="col" class="reviewid "><font
+								<th scope="col" class="reviewid " style="width: 12%;">
+								<font
 									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">아이디</font></font></th>
-								<th scope="col" class="reviewdt text-end"><font
+										style="vertical-align: inherit;">닉네임</font></font></th>
+								<th scope="col" class="reviewdt text-end" style="width: 12%;"><font
 									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">후기등록일</font></font></th>
+										style="vertical-align: inherit;">구매일</font></font></th>
 							</tr>
 						</thead>
 						<tbody>
+						<!-- foreach 사용 -->
+						<c:forEach var="review" items="${reviewList }" begin="0" end="4">
 							<tr>
-								<th scope="row" class="star text-start">*****</th>
+								<th scope="row" class="star text-start">${review.REVIEW_GRADE }</th>
 								<td><font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">맛이 좋아요~(내용)</font></font></td>
+										style="vertical-align: inherit;">${review.REVIEW_CONTENT }</font></font></td>
 								<td class="reviewid text-end"><font
 									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;"><strong>ID222332</strong></font></font></td>
+										style="vertical-align: inherit;"><strong>${review.USER_NICKNAME }</strong></font></font></td>
 								<td class="reviewdt text-end"><font
 									style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;"><small
-											class="text-muted">2022-06-05</small></font></font></td>
+											class="text-muted"><fmt:formatDate pattern="yyyy-MM-dd" value="${review.ORDER_DATE}"/></small></font></font></td>
+											
 							</tr>
+						</c:forEach>
 						</tbody>
 					</table>
+					<a href="#">더 보기</a>
 				</div>
 			</div>
-
+			<br><br><br>
 			<h4 id="scrollspyHedding4">
 				<strong>상품 문의</strong>
 			</h4>
@@ -365,7 +376,7 @@ function replyList(nowPage, product_id) {
 
 			<div class="prdList">
 
-				<script>
+		<script>
 		replyList(nowPage, product_id);
 		</script>
 
@@ -379,8 +390,6 @@ function replyList(nowPage, product_id) {
 				</c:when>
 				<c:otherwise>
 					<div id="prdQnaWrite">
-						<%-- <form id="prdQnaForm" action="insertPrdQna.do?product_id=${product.product_id }"method="post">
-				 --%>
 						<form id="prdQnaForm" role="form" method="post">
 							<textarea id="txtara" name="qna_content"></textarea>
 						</form>
@@ -389,55 +398,7 @@ function replyList(nowPage, product_id) {
 				</c:otherwise>
 			</c:choose>
 
-			<%-- <div class="prdQnaZone">
-  <!-- forEach 스세요 -->
-         <c:set var="qna" value="${productQnaList }" />
-         <c:choose>
-            <c:when test="${empty productQnaList }">
-               <p>등록된 게시물이 없습니다.</p>
-            </c:when>
-            <c:otherwise>
-               <c:forEach var="productQnaNick" items="${productQnaList }">
-                  <c:choose>
-                     <c:when test="${0 eq productQnaNick.q_or_a }">
-                        <div class="prdQnaContent">
-                           <p>${productQnaNick.qna_content }</p>
-                           <p>${productQnaNick.user_nickname }</p>
-                           <hr>
-                        </div>
-                     </c:when>
-                     <c:otherwise>
-                        <div class="prdQnaContent">
-                           <p>&nbsp;&nbsp;&nbsp;[답변완료] ${productQnaNick.qna_content }</p>
-                           <hr>
-                        </div>
-                     </c:otherwise>
-                  </c:choose>
-               </c:forEach>
-            </c:otherwise>
-         </c:choose>
-
-         <c:choose>
-            <c:when test="${empty user }">
-               <p>상품문의는 로그인 후 가능합니다.</p>
-               <a href="login.do?product_id=${product.product_id }">로그인 하기</a>
-               <form action="login.do">
-               <input type="submit" value="로그인">
-               </form>
-            </c:when>
-            <c:otherwise>
-               <div id="prdQnaWrite" class="prdInput">
-                  <form id="prdQnaForm"
-                     action="insertPrdQna.do?product_id=${product.product_id }"
-                     method="post">
-                     <textarea name="qna_content"></textarea>
-                     <button type="button" id="testBtn" onclick="writeQna()">상품문의
-                        등록</button>
-                  </form>
-               </div>
-            </c:otherwise>
-         </c:choose>
-      </div> --%>
+			
 
 
 		</div>

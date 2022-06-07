@@ -52,4 +52,9 @@ public class ReviewServiceimpl implements ReviewService{
 		reviewDAO.deleteReview(review);
 	}
 
+	@Override
+	public List<Map<String, Object>> reviewPerPrd(int product_id) {
+		return reviewDAO.reviewPerPrd(product_id);
+	}
+
 }

@@ -62,7 +62,11 @@ public class ReviewDAO {
 		mybatis.delete("reviewDAO.deleteReview", review);
 	}
 	
-	
+	// 한 상품의 모든 리뷰 목록
+	public List<Map<String, Object>> reviewPerPrd(int product_id){
+		System.out.println("ReviewDAO.reviewPerPrd() 실행");
+		return mybatis.selectList("reviewDAO.reviewPerPrd", product_id);
+	}
 	
 	
 	
