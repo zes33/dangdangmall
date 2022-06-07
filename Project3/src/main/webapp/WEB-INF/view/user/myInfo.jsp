@@ -22,7 +22,7 @@
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
    crossorigin="anonymous">
-<link href="common/styles.css" rel="stylesheet">
+<link href="common/styles.css" rel="stylesheet"> 
 <style>
    .col-xs-12 {
       border-top: 4px solid #CACACA;
@@ -170,7 +170,7 @@
                   <div><small class="text-muted text-black-50">결제가 완료되었습니다. 이용해주셔서 감사합니다.</small></div><br>
                  </div>
                     <span class="position-absolute top-0 end-0">
-                       <a href="#"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
+                       <a href="${pageContext.request.contextPath }/viewPrdDetail.do?product_id=${orderList.product_id }"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
                        <br><br>
                        	<c:if test="${orderList.refund_id != 0 }">
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" disabled value="환불 신청" /></div><br>

@@ -130,6 +130,7 @@ html, body {
 .right{
 	float: right;
 }
+
 </style>
 </head>
 <body>
@@ -225,7 +226,7 @@ html, body {
 								<td class="element">아이디</td>
 								<td class="element"><input type="text" id="user_id"
 									name="user_id" placeholder="아이디" value="${user.user_id}"
-									readonly></td>
+									class="form-control" readonly></td>
 							</tr>
 							<tr>
 								<td class="element">비밀번호 변경</td>

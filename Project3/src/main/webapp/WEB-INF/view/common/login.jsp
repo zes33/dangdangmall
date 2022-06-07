@@ -63,7 +63,7 @@
 	<form action="loginAction.do" method="post">
 	  아이디 <input type="text" class="form-control" placeholder="아이디"
                      name="user_id" maxlength="20"><br/>
-	 비밀번호 <input type="text" class="form-control" placeholder="비밀번호"
+	 비밀번호 <input type="password" class="form-control" placeholder="비밀번호"
                    name="user_pw" maxlength="20"><br/>
 				<input class="right" type="submit" value="로그인"><p style="color: red;">${msg }</p>
 				<br/><br/>
