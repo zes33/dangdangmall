@@ -61,7 +61,7 @@
 	<select id="checkRefund" resultType="int">
 		SELECT REFUND_STATUS
 		FROM USERORDER_REFUND
-		WHERE REFUND_ID = ${refund_id}
+		WHERE REFUND_ID = #{refund_id}
 	</select>
 
 </mapper>

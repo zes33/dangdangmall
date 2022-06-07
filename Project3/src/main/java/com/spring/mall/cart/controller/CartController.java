@@ -126,12 +126,10 @@ public class CartController {
 		// 장바구니에 기존 상품이 있는지 검사
 		int count = cartService.countCart(vo.getProduct_id(), user_id);
 
-       // count == 0 ? cartService.updateCart(vo) : cartService.insert(vo);
 		if (count == 0) {
-			// 없으면 insert
+			// 없으면 
 			cartService.insert(vo);
 		} else {
-			// 있으면 update
 			cartService.updateCart(vo);
 		}
 		return "redirect:list.do";

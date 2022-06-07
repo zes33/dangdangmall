@@ -38,36 +38,35 @@ public class AdminRefundController {
 	
 	//2. 환불 상태 변경
 	@RequestMapping("update.do")
-	public String updateStatus(@RequestParam int[] refund_id, @RequestParam int[] refund_status, UserOrderPointVO point, Model model, HttpSession session) {
+	public String updateStatus(@RequestParam int[] refund_id, @RequestParam int[] refund_status, @RequestParam String user_id, @RequestParam String order_id, 
+								@RequestParam int order_total, UserOrderPointVO point, RefundTotalVO refundTotalVO, Model model, HttpSession session) {
 		//session.getAttribute("refundList");
+		System.out.println(refund_id);
 		for (int i = 0; i < refund_id.length; i++) {
 			RefundTotalVO vo = new RefundTotalVO();
 			vo.setRefund_id(refund_id[i]);
 			vo.setRefund_status(refund_status[i]);
 			adminRefundService.updateStatus(vo);
-		}
-		
-		
-		
-		return "redirect:adminRefundView.do";
-	}
-	
-	//3. 포인트 취소 
-	@RequestMapping("delete.do")
-	public String deletePoint(@RequestParam String user_id, @RequestParam String order_id,@RequestParam int order_total,UserOrderPointVO point, Model model, HttpSession session) {
-		
-		//1. 포인트 적립 취소 
-//				user_id = (String) session.getAttribute("user_id");
-//				order_id = (String) session.getAttribute("orderInfo.order_id");
-				System.out.println(user_id +" : "+ order_id);
-				
-				
+			
+			// 환불 승인 상태이면 = 2
+			int check = adminRefundService.checkRefund(refund_id[i]);
+			System.out.println("check : "+check);
+			System.out.println(user_id +" : "+ order_id+" : "+ order_total + " : "+ refund_id);
+			
+			// 포인트 적립 취소 
+			if (check ==2) {
 				point.setUser_id(user_id);
 				point.setOrder_id(order_id);
 				point.setOrder_total(order_total);
 				adminRefundService.deletePoint(point);
+			}
+			
+		}
+		
 		return "redirect:adminRefundView.do";
 	}
+	
+	
 	
 	
 }

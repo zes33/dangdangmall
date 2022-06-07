@@ -72,7 +72,7 @@ table, th, td {
 
 	<h3>환불 요청 관리 페이지</h3>
 	<div class="container">
-		${refundList } 
+		<%-- ${refundList } --%>
 	</div>
 
 
@@ -134,18 +134,16 @@ table, th, td {
 										<option value="2">[환불승인]</option>
 										<option value="3">[환불불가]</option>
 									</select> <input type="hidden" name="refund_id"
-										value="${list.refund_id }"> <input type="submit"
-										value="상태변경하기"
+										value="${list.refund_id }"><input type="hidden"
+										name="order_id" value="${list.order_id }"> <input
+										type="hidden" name="user_id" value="${list.user_id }">
+									<input type="hidden" name="order_total"
+										value="${list.order_total }"> <input type="submit"
+										value="상태변경하기"  id="mySubmit" 
 										style="width: 80px; height: 30px; font-size: 10px;">
-								</form></td>
-							<td><form action="delete.do" method="post">
-								<input type="hidden" name="order_id" value="${list.order_id }"> 
-								<input type="hidden" name="user_id" value="${list.user_id }"> 
-								<input type="hidden" name="order_total" value="${list.order_total }">
-								<input type="submit"
-										value="포인트회수"
-										style="width: 80px; height: 30px; font-size: 10px;">
-							</form></td>
+								</form>
+							</td>
+
 						</tr>
 					</c:forEach>
 				</tbody>
