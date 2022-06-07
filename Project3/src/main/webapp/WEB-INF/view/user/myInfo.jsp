@@ -100,6 +100,7 @@
    <header>
       <jsp:include page="../common/header.jsp"></jsp:include>
    </header>
+   ${user }
    <div class="container">
        <div class="row rowMan">
            <div class="col-xs-12 rowManBaby">
