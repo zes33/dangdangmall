@@ -19,6 +19,7 @@ import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
+import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.user.vo.UserOrderPointVO;
 import com.spring.mall.user.vo.UserVO;
 
@@ -125,16 +126,13 @@ public class OrderController {
 			orderService.insertOrder(order);
 
 			// 결제창에서 쓰일 최근 주문 정보 가져오기
-			Map<String, String> orderMap = new HashMap<String, String>();
-			orderMap.put("user_id", user_id);
-			orderMap.put("order_id", order_id);
+//			Map<String, String> orderMap = new HashMap<String, String>();
+//			orderMap.put("user_id", user_id);
+//			orderMap.put("order_id", order_id);
 
 			UserOrderVO orderInfo = new UserOrderVO();
 			orderInfo = orderService.getOrder(user_id, order_id);
 			session.setAttribute("orderInfo", orderInfo);
-
-			// getUserAddr 회원가입시 작성한 주소 가져오기
-			
 
 			// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 			pvo.setOrder_id(order_id);
@@ -167,6 +165,33 @@ public class OrderController {
 		// 결제 칸으로 넘어가면 장바구니 정보 삭제
 		orderService.cartAllDelete(user_id);
 		System.out.println("vo : " + order);
+		
+		return "store/afterPay";
+	}
+	
+	@RequestMapping("payD.do")
+	public String payD(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail,
+			PaymentVO pvo, UserOrderPointVO point) throws Exception {
+		session.getAttribute("payment");
+		session.getAttribute("orderInfo");
+		UserVO user = (UserVO) session.getAttribute("user");
+		ProductVO product = (ProductVO) session.getAttribute("product");
+		UserOrderVO orderInfo =  (UserOrderVO) session.getAttribute("orderInfo");
+		
+		String user_id = user.getUser_id();
+		int product_id = product.getProduct_id();
+		String order_id = orderInfo.getOrder_id();
+		
+		//바로구매 주문상세 정보 입력
+		orderDetail.setOrder_id(order_id);
+		orderDetail.setProduct_id(product_id);
+		orderDetail.setUser_id(user_id);
+		orderService.insertOrderDetailDirect(orderDetail);
+		
+		//포인트 결제금액의 5% 적립 
+		point.setOrder_id(order_id);
+		point.setUser_id(user_id);
+		orderService.updatePoint(point);
 		
 		return "store/afterPay";
 	}

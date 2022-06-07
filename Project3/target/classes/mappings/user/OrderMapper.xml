@@ -95,4 +95,18 @@
 		where user_id = #{user_id}
 	</update>
 
+	<!-- 바로구매 주문상세 정보 입력 -->
+	<insert id="insertOrderDetailDirect">
+		INSERT INTO USERORDER_DETAIL(ORDER_DETAIL_ID,
+		USER_ORDER_CNT,
+		ORDER_ID,
+		PRODUCT_ID,
+		USER_ID)
+		values (ORDERDETAIL_SEQ.NEXTVAL,
+		#{user_order_cnt},
+		#{order_id},
+		#{product_id},
+		#{user_id})
+	</insert>
+
 </mapper>

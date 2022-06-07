@@ -57,4 +57,10 @@ public class OrderDAO {
 	public void updatePoint(UserOrderPointVO vo) {
 		mybatis.update("orderDAO.updatePoint", vo);
 	}
+	
+	//7. 바로구매 주문 상세 정보 입력 
+	public void insertOrderDetailDirect(UserOrderDetailVO vo) {
+		 mybatis.insert("orderDAO.insertOrderDetailDirect", vo);
+		 
+	}
 }
