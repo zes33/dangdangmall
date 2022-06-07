@@ -114,15 +114,34 @@ public class ProductQnaController {
 		return result;
 	}
 	
-	// 마이페이지 상품문의 내역 페이지 이동
+	// 마이페이지 상품문의 내역 페이지 이동------------------페이징 넣자
 	@RequestMapping("/goMyPrdQna.do")
-	public String goMyPrdQna(Model model, HttpServletRequest request) {
+	public String goMyPrdQna(PagingVO paging ,Model model, HttpServletRequest request
+			, @RequestParam(value="nowPage", required = false)String nowPage
+			, @RequestParam(value = "cntPerPage", required = false)String cntPerPage) {
 		System.out.println("goMyPrdQna() 실행");
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
-		List<ProductQnaNickVO> list = productQnaService.myPrdQnaList(user_id);
-		System.out.println(list.toString());
+		int total = productQnaService.totMyPrdQna(user_id);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "6";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "6";
+		}
+		
+		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		System.out.println("start, end :"+ paging.getStart()+ ", " + paging.getEnd() );
+		System.out.println("total : " + total);
+		String start = Integer.toString(paging.getStart());
+		String end = Integer.toString(paging.getEnd());
+		
+		List<Map<String, Object>> list = productQnaService.myPrdQnaList(user_id,start, end);
 		model.addAttribute("myPrdQnaList", list);
+		model.addAttribute("paging",paging);
 		return "user/myPrdQna";
 	}
 	
@@ -184,20 +203,20 @@ public class ProductQnaController {
 		return "forward:/adminProductQnaList.do";
 	}
 	
-	// 상품문의 입력---대체예정
-	@RequestMapping("/insertPrdQna.do")
-	public String insertProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session,
-									RedirectAttributes rdatt) {
-		String user_id = (String) session.getAttribute("user_id");
-		vo.setUser_id(user_id);
-		System.out.println("vo : " + vo);
-		
-		productQnaService.insertProductQna(vo);
-		rdatt.addAttribute("product_id",pv.getProduct_id());
-		
-//		return "forward:/productDetail.do";
-		return "forward:/testPrdRepl.do";
-	}
+//	// 상품문의 입력---대체예정
+//	@RequestMapping("/insertPrdQna.do")
+//	public String insertProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session,
+//									RedirectAttributes rdatt) {
+//		String user_id = (String) session.getAttribute("user_id");
+//		vo.setUser_id(user_id);
+//		System.out.println("vo : " + vo);
+//		
+//		productQnaService.insertProductQna(vo);
+//		rdatt.addAttribute("product_id",pv.getProduct_id());
+//		
+////		return "forward:/productDetail.do";
+//		return "forward:/testPrdRepl.do";
+//	}
 	
 	//댓글입력..테스트----성공
 	@ResponseBody

@@ -1,13 +1,14 @@
 package com.spring.mall.product.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.mall.product.vo.ProductQnaNickVO;
 import com.spring.mall.product.vo.ProductQnaVO;
 
 public interface ProductQnaService {
 	
-	public List<ProductQnaNickVO> myPrdQnaList(String user_id);
+	public List<Map<String, Object>> myPrdQnaList(String user_id, String start, String end);
 	public List<ProductQnaNickVO> viewPrdQnaSet(ProductQnaNickVO vo);
 	public List<ProductQnaVO> productQnaListAdmin();
 	public List<ProductQnaNickVO> qnaNickList(int product_id);
@@ -20,4 +21,5 @@ public interface ProductQnaService {
 	public void deleteProductAns(ProductQnaNickVO vo);
 	public void updateQna(ProductQnaNickVO vo);
 	public ProductQnaNickVO viewPrdQnaOne(ProductQnaNickVO vo);
+	public int totMyPrdQna(String user_id);
 }

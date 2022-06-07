@@ -26,14 +26,33 @@
 		WHERE QNA_GROUP = #{qna_group}
 	</delete>
 	
+	<!-- 내 상품문의 개수 -->
+	<select id="totMyPrdQna" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		FROM PRODUCT_QNA
+		WHERE USER_ID = #{user_id}
+	</select>
+	
 	<!-- 개인의 상품문의 목록 조회 -->
-	<select id="myPrdQnaList" parameterType="string" resultType="com.spring.mall.product.vo.ProductQnaNickVO">
-		SELECT q.*, USERS.USER_NICKNAME, PRODUCT.PRODUCT_NAME
+	<select id="myPrdQnaList" parameterType="map" resultType="map">
+		SELECT *
+		FROM (SELECT ROWNUM R_NUM, A.*
+		        FROM (SELECT q.*, USERS.USER_NICKNAME, PRODUCT.PRODUCT_NAME
+		            FROM PRODUCT_QNA q, users, product
+		            WHERE Q.USER_ID = #{user_id}
+		            AND Q.USER_ID = USERS.USER_ID
+		            AND Q.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		            ORDER BY QNA_ID DESC) A)
+		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
+		
+		
+		
+		<!-- SELECT q.*, USERS.USER_NICKNAME, PRODUCT.PRODUCT_NAME
 		FROM PRODUCT_QNA q, users, product
 		WHERE Q.USER_ID = #{user_id}
 		AND Q.USER_ID = USERS.USER_ID
 		AND Q.PRODUCT_ID = PRODUCT.PRODUCT_ID
-		ORDER BY QNA_ID DESC
+		ORDER BY QNA_ID DESC -->
 	</select>
 	
 	<!-- QNA_ID로 문의 하나 찾기 -->

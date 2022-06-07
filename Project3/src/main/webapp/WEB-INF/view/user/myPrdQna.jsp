@@ -179,17 +179,17 @@
 					</c:when>
 					<c:otherwise> 
 						<tr>
-							<td class="center">${fn:length(myPrdQnaList)-i.index}</td>
-							<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${myPrdQna.product_name }</span></td>
+							<td class="center">${myPrdQna.R_NUM }</td>
+							<td><span class="d-inline-block text-truncate" style="max-width: 180px;">${myPrdQna.PRODUCT_NAME }</span></td>
 							<!-- 누르면 문의(+답변) 모두 보이는 페이지로 이동 -->
 							<td class="center ">
-								<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${myPrdQna.qna_group }">
-								${myPrdQna.qna_content }</a>
+								<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${myPrdQna.QNA_GROUP }">
+								${myPrdQna.QNA_CONTENT }</a>
 							</td>
 							
-							<td class="center">${myPrdQna.product_qna_date }</td>
+							<td class="center">${myPrdQna.PRODUCT_QNA_DATE }</td>
 							<c:choose>
-							<c:when test="${0 eq myPrdQna.product_qna_state }">
+							<c:when test="${0 eq myPrdQna.PRODUCT_QNA_STATE }">
 								<td class="center">답변대기</td>
 							</c:when>
 							<c:otherwise>
@@ -203,7 +203,40 @@
 					</tbody>
 				</table>				
 				
-				
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				  
+				  
+				  <c:if test="${paging.startPage != 1 }">
+				    <li class="page-item">
+				      <a class="page-link" href="goMyPrdQna.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}"
+				       aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				   </c:if> 
+				   
+				   <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<li class="page-item"><b class="page-link" >${p }</b></li>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+				    			<li class="page-item"><a class="page-link" href="goMyPrdQna.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+				   
+				    <c:if test="${paging.endPage != paging.lastPage }">
+				    <li class="page-item">
+				      <a class="page-link" href="goMyPrdQna.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				   </c:if> 
+				    
+				  </ul>
+				</nav>
 			</div>
 	    </div>
 	    <!-- <div class="row wru">

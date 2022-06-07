@@ -42,9 +42,13 @@ public class ProductQnaDAO {
 	}
 	
 	// 개인의 상품문의 목록 조회
-	public List<ProductQnaNickVO> myPrdQnaList(String user_id){
+	public List<Map<String, Object>> myPrdQnaList(String user_id, String start, String end){
 		System.out.println("ProductQnaDAO.viewPrdQnaOne() 실행");
-		return mybatis.selectList("productQnaDAO.myPrdQnaList", user_id);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id", user_id);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("productQnaDAO.myPrdQnaList", map);
 	}
 	
 	// 상품문의 + 답변 한 세트 조회
@@ -96,6 +100,12 @@ public class ProductQnaDAO {
 	public void insertProductQna(ProductQnaVO vo) {
 		System.out.println("ProductQnaDAO.insertProductQna() 실행");
 		mybatis.insert("productQnaDAO.insertProductQna", vo);
+	}
+	
+	// 내 상품 문의 개수 
+	public int totMyPrdQna(String user_id) {
+		System.out.println("ProductQnaDAO.totMyPrdQna()실행");
+		return mybatis.selectOne("productQnaDAO.totMyPrdQna",user_id);
 	}
 	
 }

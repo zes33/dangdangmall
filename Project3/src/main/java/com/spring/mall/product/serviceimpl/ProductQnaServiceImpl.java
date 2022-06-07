@@ -1,6 +1,7 @@
 package com.spring.mall.product.serviceimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,8 +57,8 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	}
 
 	@Override
-	public List<ProductQnaNickVO> myPrdQnaList(String user_id) {
-		return productQnaDAO.myPrdQnaList(user_id);
+	public List<Map<String, Object>> myPrdQnaList(String user_id, String start, String end) {
+		return productQnaDAO.myPrdQnaList(user_id, start, end);
 	}
 
 	@Override
@@ -79,6 +80,11 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	@Override
 	public ProductQnaNickVO viewPrdQnaOne(ProductQnaNickVO vo) {
 		return productQnaDAO.viewPrdQnaOne(vo);
+	}
+
+	@Override
+	public int totMyPrdQna(String user_id) {
+		return productQnaDAO.totMyPrdQna(user_id);
 	}
 
 

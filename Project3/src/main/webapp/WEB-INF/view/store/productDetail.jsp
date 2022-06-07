@@ -161,7 +161,7 @@ function replyList(nowPage, product_id) {
 			
 			if(paging.endPage != paging.lastPage){
 				a+='<li class="page-item">';
-				a+='<a class="page-link" onclick="replyList('+paging.startPage+'+'+3+',\''+product.product_id+'\')" aria-label="Previous">';
+				a+='<a class="page-link" onclick="replyList('+paging.endPage+'+'+1+',\''+product.product_id+'\')" aria-label="Previous">';
 				a+='<span aria-hidden="true">&raquo;</span></a></li>';
 			}
 					
