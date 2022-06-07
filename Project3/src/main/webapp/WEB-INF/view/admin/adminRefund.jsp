@@ -99,8 +99,7 @@ table, th, td {
 						<th class="center" width="15%">환불 사유</th>
 						<th class="center" width="10%">구매 날짜</th>
 						<th class="center" width="10%" colspan="2">답변상태</th>
-						<th class="center" width="10%" colspan="2">상태변경</th>
-						<th class="center" width="10%">포인트 회수하기</th>
+						<th class="center" width="10%" colspan="2">상태</th>
 						<!-- <th class="center" width="30%">상태 변경하기 </th> -->
 					</tr>
 				</thead>
@@ -129,7 +128,11 @@ table, th, td {
 								<td class="center" style="color: #C9C7C7;" colspan="2">[ 환불
 									불가 ]</td>
 							</c:if>
-							<td><form action="update.do" method="post">
+							
+							<td>
+							<c:if test="${1 eq list.refund_status }">
+								<td colspan="2" class="center">
+							<form action="update.do" method="post">
 									<select name="refund_status">
 										<option value="2">[환불승인]</option>
 										<option value="3">[환불불가]</option>
@@ -143,6 +146,7 @@ table, th, td {
 										style="width: 80px; height: 30px; font-size: 10px;">
 								</form>
 							</td>
+							</c:if>
 
 						</tr>
 					</c:forEach>
