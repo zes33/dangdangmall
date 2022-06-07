@@ -23,7 +23,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    AND UOD.PRODUCT_ID = P.PRODUCT_ID
 	    AND UOD.ORDER_DETAIL_ID = #{order_detail_id}
  	</select>
- 
- 
- 
  </mapper>

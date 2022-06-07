@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.mall.order.service.MyOrderService;
+import com.spring.mall.pay.service.UserRefundService;
 import com.spring.mall.review.service.ReviewService;
 import com.spring.mall.user.vo.MyInfoVO;
 import com.spring.mall.user.vo.UserVO;
@@ -24,6 +25,9 @@ public class MyOrderController {
 	private MyOrderService myOrderService;
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private UserRefundService userRefundService;
 	
 	public MyOrderController() {
 		System.out.println(">>MyOrderController() 객체 생성");
@@ -51,6 +55,7 @@ public class MyOrderController {
 		System.out.println("existList : " + existList.toString());
 		model.addAttribute("existList",existList);
 		
+		System.out.println("orderList : " + orderList);
 		return "user/myInfo";
 	}
 	
