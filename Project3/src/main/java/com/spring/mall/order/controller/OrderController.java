@@ -179,12 +179,12 @@ public class OrderController {
 		UserOrderVO orderInfo =  (UserOrderVO) session.getAttribute("orderInfo");
 		
 		String user_id = user.getUser_id();
-		int product_id = product.getProduct_id();
+		//int product_id = product.getProduct_id();
 		String order_id = orderInfo.getOrder_id();
 		
 		//바로구매 주문상세 정보 입력
 		orderDetail.setOrder_id(order_id);
-		orderDetail.setProduct_id(product_id);
+		//orderDetail.setProduct_id(product_id);
 		orderDetail.setUser_id(user_id);
 		orderService.insertOrderDetailDirect(orderDetail);
 		

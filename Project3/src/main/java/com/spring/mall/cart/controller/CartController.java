@@ -83,7 +83,7 @@ public class CartController {
 	
 	// 2-1 바로 구매하기 버튼 
 	@RequestMapping("orderDirect.do")
-	public String orderDirect(@RequestParam int product_id, HttpServletRequest request, Model model, HttpSession session) {
+	public String orderDirect(@RequestParam int product_id, @RequestParam int cart_product_qty, HttpServletRequest request, Model model, HttpSession session) {
 		System.out.println(">> orderDirect.do() 생성 ");
 		
 		ProductVO list =  cartService.orderDirect(product_id);
@@ -91,11 +91,9 @@ public class CartController {
 		
 		//int qty = user_order_cnt;
 		double discount = list.getProduct_discount();
-		String cnt = request.getParameter("user_order_cnt");
-//		int user_order_cnt = Integer.parseInt(cnt);
-		int user_order_cnt = 1;
+		
 		Map<String, Object> mapD = new HashMap<String, Object>();
-		int sumMoney = (int) ((price * (1-discount))* user_order_cnt); // 할인율이 적용된 전체 금액 호출
+		int sumMoney = (int) ((price * (1-discount))* cart_product_qty); // 할인율이 적용된 전체 금액 호출
 		int fee = sumMoney >= 100000 ? 0 : 2500;
 		double coupon = 0.1;
 		double allSum1 = (sumMoney)+fee ; //할인율 적용된 가격 + 배송비 
@@ -104,7 +102,7 @@ public class CartController {
 	        mapD.put("list", list);                // 장바구니 정보를 map에 저장
 	        mapD.put("sumMoney", sumMoney);        // 장바구니 전체 금액
 	        mapD.put("fee", fee);                 // 배송금액
-	        mapD.put("cnt", user_order_cnt);                 // 배송금액
+	        mapD.put("cnt", cart_product_qty);                 // 배송금액
 	        mapD.put("coupon", coupon);       // 쿠폰 적용
 	        mapD.put("allSum", allSum);    // 주문 상품 전체 금액
 	        model.addAttribute("mapD", mapD);
