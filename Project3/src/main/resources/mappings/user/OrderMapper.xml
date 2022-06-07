@@ -103,7 +103,7 @@
 		PRODUCT_ID,
 		USER_ID)
 		values (ORDERDETAIL_SEQ.NEXTVAL,
-		#{cart_product_qty},
+		#{user_order_cnt},
 		#{order_id},
 		#{product_id},
 		#{user_id})
