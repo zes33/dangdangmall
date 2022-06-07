@@ -271,7 +271,7 @@ html, body {
 							</tr>
 							
 							<tr>
-								<td colspan="3"><input class="button" type="submit"
+								<td colspan="3"><input class="button" type="button"
 									id="update" value="회원 정보 수정"></td>
 							</tr>
 						</tbody>
@@ -302,6 +302,8 @@ html, body {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 </body>
 <script type="text/javascript">
    $(document).ready(function(e){
@@ -312,7 +314,7 @@ html, body {
             return;
          }
          //패스워드 확인
-         else if($('#user_pw').val() != $('#passwdCheck').val()){
+         if($('#user_pw').val() != $('#passwdCheck').val()){
             alert('패스워드가 다릅니다.');
             $('#user_pw').focus();
             return;

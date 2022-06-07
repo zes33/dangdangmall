@@ -100,7 +100,6 @@
    <header>
       <jsp:include page="../common/header.jsp"></jsp:include>
    </header>
-   ${user }
    <div class="container">
        <div class="row rowMan">
            <div class="col-xs-12 rowManBaby">
@@ -206,12 +205,10 @@
        }
        </script>
    </div>
-   
 <!-- footer -->
    <footer>
    <jsp:include page="../common/footer.jsp"></jsp:include>
    </footer>
-   
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
