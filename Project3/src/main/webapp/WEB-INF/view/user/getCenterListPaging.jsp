@@ -21,15 +21,14 @@
 </style>
 <script>
 	//회원 유저가 문의하기 버튼을 누르면 활성화되난 go_qna() 함수
-	function go_qna() {
-		location.href = "insertCenterQna.do";
-	}
-
-	//비회원 유저가 문의하기 버튼을 누르면 활성화되는 go_login() 함수
-	function go_login() {
-		var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
-		if(con) {
-			location.href = "${pageContext.request.contextPath }/login.do";
+	function go_qna(userId) {
+		if (userId == undefined) {
+			var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
+			if(con) {
+				location.href = "${pageContext.request.contextPath }/login.do";
+			}
+		} else {
+			location.href = "insertCenterQna.do";
 		}
 	}
 
@@ -68,7 +67,6 @@
 	
 	<p>\${user.user_id } : ${user.user_id }</p>
 	<!-- 데이터 표시 영역 -->
-	<h1><button type ="button" onclick="location.href='getCenterListPaging.jsp'">getCenterListPaging 페이징처리목록</button></h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -110,7 +108,7 @@
 			 <c:forEach items="${getCenterList }" var="center" varStatus="status">
 			 	<tr>
 					<td class="center">${center.CENTER_QNA_ID }</td>
-					<td><span class="d-inline-block text-truncate" style="max-width: 180px; cursor:pointer;" onclick="go_getCenter(${center.CENTER_QNA_ID });">
+					<td><span class="d-inline-block text-truncate" style="max-width: 180px; cursor:pointer;" onclick="go_getCenter(${user.user_id},${center.CENTER_QNA_ID });">
 						${center.CENTER_QNA_TITLE }</span>
 					</td>
 					<!-- 
@@ -138,14 +136,18 @@
 	</table>
 	
 	<div style="float:right;">
+	<!-- 
 		<c:choose>
 		<c:when test="${user.user_id eq null }">
 			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_login();">문의하기</button>
 		</c:when>
 		<c:otherwise>
+		 -->
 			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna();">문의하기</button>
+		<!-- 
 		</c:otherwise>
 		</c:choose>
+		 -->
 		
 	</div>
 	

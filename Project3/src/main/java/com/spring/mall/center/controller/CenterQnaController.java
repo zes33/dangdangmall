@@ -22,7 +22,9 @@ import com.spring.mall.user.vo.UserVO;
 public class CenterQnaController {
 	@Autowired
 	private CenterQnaService centerQnaService;
+	@Autowired
 	private CenterReplyService centerReplyService;
+	
 	
 	public CenterQnaController() {
 		System.out.println("======= CenterQnaController() 객체 생성~~");
@@ -101,10 +103,6 @@ public class CenterQnaController {
 		
 		System.out.println(">> update 할 vo : " + vo);
 		String center_qna_id = Integer.toString(vo.getCenter_qna_id());
-//		System.out.println("update할 제목 center_qna_title : " + center_qna_title);
-//		System.out.println("update할 내용 center_qna_content : " + center_qna_content);
-//		vo.setCenter_qna_title(center_qna_title);
-//		vo.setCenter_qna_content(center_qna_content);
 		centerQnaService.updateCenterQna(vo);
 		System.out.println("고객 문의 상세페이지(getCenter.jsp)이동 - updateCenterQnaWrite()");
 		return "redirect:getCenterQna.do?center_qna_id="+center_qna_id;
@@ -112,26 +110,15 @@ public class CenterQnaController {
 	
 	
 	
-//	@GetMapping("/adminGetCenterList.do")
-//	public String adminGetCenterList(Model model) {
-//		CenterQnaVO vo = null;
-//		List<CenterQnaVO> adminGetCenterList = centerQnaService.getCenterQnaList(vo);
-//		model.addAttribute("adminGetCenterList", adminGetCenterList);
-//		
-//		System.out.println("관리자 고객 문의 목록 페이지(getCenterList.jsp)이동 - adminGetCenterList()");
-//		
-//		return "admin/getCenterList";
-//	}
-//	
-//	@GetMapping("/adminGetProductList.do")
-//	public String adminGetProductList(Model model) {
-//		ProductVO vo = null;
-//		List<ProductVO> adminProductList = productService.getProductList(vo);
-//		model.addAttribute("adminProductList",adminProductList);
-//		
-//		System.out.println("상품목록페이지(productList.jsp)이동 - getProductList()");
-//		return "admin/productList";
-//	}
+	@RequestMapping("/getCenterListPaging.do")
+	public String getCenterListPaging(Model model) {
+		CenterQnaVO vo = null;
+		List<Map<String, Object>> getCenterListPaging = centerQnaService.getCenterQnaList(vo);
+		model.addAttribute("getCenterListPaging", getCenterListPaging);
+		System.out.println(getCenterListPaging);
+		System.out.println("고객 문의 목록 페이지(getCenterListPaging.jsp)이동 - getCenterListPaging()");
+		return "user/getCenterListPaging";
+	}
 	
 	
 }
