@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +73,7 @@
 			<form id="refundFrm" name="refundFrm" action="refundAction.do"
 				method="post">
 				<table class="table">
+				<fmt:parseNumber var= "refuntTotal" integerOnly= "true" value= "${oneOrder.product_price * oneOrder.user_order_cnt *(1 - oneOrder.product_discount)}" />
 					<tbody>
 						<tr>
 							<td>아이디</td>
@@ -74,12 +81,12 @@
 								placeholder="아이디" class="form-control" value="${user.user_id}"
 								readonly></td>
 						</tr>
-						<%-- <tr>
-							<td>주문요일</td>
-							<td colspan="2"><input id="order_date" name="order_date"
-								type="text" placeholder="" maxlength="20" class="form-control"
-								value="${oneOrder.order_date}" readonly></td>
-						</tr> --%>
+						<tr>
+							<td>환불신청일</td>
+							<td colspan="2"><input id="refund_date" name="refund_date"
+								type="text" maxlength="20" class="form-control"
+								value="<%= sf.format(nowTime) %>" readonly></td>
+						</tr>
 						<tr>
 							<td>이름</td>
 							<td colspan="2"><input id="user_name" name="user_name"
@@ -94,9 +101,9 @@
 						</tr>
 						<tr>
 							<td>환불 가격</td>
-							<td colspan="2"><input id="refund_total" name="refund_total"
-								type="number" class="form-control" maxlength="20"
-								value="${oneOrder.product_price * oneOrder.user_order_cnt *(1 - oneOrder.product_discount)}" readonly></td>
+							<td colspan="2"><input id="refundTotal" name="refundTotal"
+								type="text" class="form-control" maxlength="20"
+								value="${refuntTotal}" readonly></td>
 						</tr>
 						<tr>
 							<td>환불 사유</td>

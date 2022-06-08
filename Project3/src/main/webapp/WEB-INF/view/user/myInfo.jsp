@@ -157,6 +157,7 @@
                <div class="card">
                  <div class="card-body">
                    <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><strong>${orderList.product_name }</strong></font></font></h3>
+                   <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>주문 번호 ${orderList.order_id} </span></font></font></h5>
                    <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>${orderList.product_price }원 | 수량 : ${orderList.user_order_cnt }개 | ${orderList.order_date } 주문</span></font></font></h5>
                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></p>
                    <br><br>

@@ -20,6 +20,7 @@
 	    AND UOD.PRODUCT_ID = P.PRODUCT_ID
         AND UOD.ORDER_DETAIL_ID = UR.ORDER_DETAIL_ID(+)
 	    AND UO.USER_ID = #{user_id}
+	    ORDER BY ORDER_DATE DESC
 	</select>
  
 </mapper>

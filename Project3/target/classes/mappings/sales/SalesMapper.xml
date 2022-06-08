@@ -13,7 +13,11 @@
 	</select>
 	
 	<!-- 요일별 환불 총액 -->
-
+	<select id="byDayRefund" resultType="map">
+		SELECT SUBSTR(REFUND_DATE, 9,2) AS DAY , SUM(REFUND_TOTAL)
+			FROM USERORDER_REFUND 
+			GROUP BY SUBSTR(REFUND_DATE, 9,2) 
+	</select>
 
 
 </mapper>
