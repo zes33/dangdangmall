@@ -6,7 +6,7 @@
 <mapper namespace="reviewDAO">
 	
 	<!-- 페이징 들어간 상품당 리뷰(상품페이지) -->
-	<select id="reviewPerPrdPaging" resultType="map">
+	<select id="reviewPerPrdPaging" resultType="map" parameterType="map">
 		SELECT *
 		FROM (SELECT ROWNUM R_NUM, A.*
 		     FROM (SELECT R.REVIEW_GRADE, R.REVIEW_CONTENT, U.USER_NICKNAME ,UO.ORDER_DATE,R.REVIEW_ID

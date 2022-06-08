@@ -74,16 +74,6 @@ var product_id = "<c:out value='${product.product_id}'/>";
 var nowPage = "<c:out value='${paging.nowPage}'/>";		
 		
 		
-/* $(document).ready(function() {
-	alert("입장 ");
-	
-	/* $('select[name=product_cnt]').change(function() {
-		$('#product_cnt').val($(this).val());
-			$("#product_cnt").attr("readonly", true);
-		}
-	}); 
-}); */
-
 function replyList(nowPage, product_id) {
 	alert("replyList() 실행");
 	alert("nowPage : " + nowPage +"\nproduct_id : " + product_id);

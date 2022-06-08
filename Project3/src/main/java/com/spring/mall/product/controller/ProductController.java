@@ -34,13 +34,13 @@ public class ProductController {
 	}
 	
 	// 카테코리별 목록 페이지 이동
-	@RequestMapping("/foodList.do")
-	public String getFoodList(Model model) {
-		System.out.println("ProductController.getFoodList() 실행");
-		List<ProductVO> foodList = productService.getProductListCategory(1);
-		model.addAttribute("foodList",foodList );
-		return "store/foodProduct";
-	}
+//	@RequestMapping("/foodList.do")
+//	public String getFoodList(Model model) {
+//		System.out.println("ProductController.getFoodList() 실행");
+//		List<ProductVO> foodList = productService.getProductListCategory(1);
+//		model.addAttribute("foodList",foodList );
+//		return "store/foodProduct";
+//	}
 	
 	
 	// 상품 상세페이지

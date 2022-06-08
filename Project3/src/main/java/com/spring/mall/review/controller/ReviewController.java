@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.mall.paging.service.PagingService;
+import com.spring.mall.paging.vo.PagingVO;
+import com.spring.mall.product.service.ProductService;
+import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.review.service.ReviewService;
 import com.spring.mall.review.vo.ReviewVO;
 import com.spring.mall.user.vo.MyInfoVO;
@@ -20,11 +25,39 @@ public class ReviewController {
 	
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	PagingService pagingService;
 	
 	public ReviewController() {
 		System.out.println("ReviewController() 객체 생성");
 	}
 
+	// 상품리뷰 더보기
+	@RequestMapping("/moreReview.do")
+	public String moreReview(ProductVO pvo, Model model,PagingVO paging ,
+			@RequestParam(value="nowPage", required=false)String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		System.out.println("moreReview() 실행");
+		int product_id = pvo.getProduct_id();
+		List<Map<String, Object>> reviewList = reviewService.reviewPerPrd(product_id);
+		int total = reviewList.size();
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		
+		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("paging",paging);
+		
+		return "store/productReview";
+	}
+	
 	// 리뷰작성 페이지로 이동
 	@RequestMapping("/writeReview.do")
 	public String myReview (MyInfoVO myinfo, Model model) {

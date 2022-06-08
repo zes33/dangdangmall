@@ -90,6 +90,9 @@ textarea {
 .reviewdt {
 	width: 120px;
 }
+.grade{
+	color: red;
+}
 
 </style>
 <body>
@@ -103,7 +106,10 @@ $(document).ready(function () {
 	$(".3").html("&#9733;&#9733;&#9733;");
 	$(".4").html("&#9733;&#9733;&#9733;&#9733;");
 	$(".5").html("&#9733;&#9733;&#9733;&#9733;&#9733;");
-
+	
+	
+	$(".a1").html("식품");
+	$(".a2").html("운동");
 })
 
 var product_id = "<c:out value='${product.product_id}'/>";
@@ -217,7 +223,7 @@ function replyList(nowPage, product_id) {
 					<strong>${product.product_name }</strong>
 				</div>
 				<div class="text-black-50 h5">
-					<small>건강하게 마시는</small>
+					<small>건강하게 먹는</small>
 				</div>
 				<hr>
 				<div class="item">
@@ -226,15 +232,19 @@ function replyList(nowPage, product_id) {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
 								<del>
-									<span>12,000</span> 원
+									<span>
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price}" />
+									</span> 원
 								</del>
 							</div></li>
 						<li class="price " id="litag"><strong>판매가</strong>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
-								<strong style="color: #d1221d;">7,200</strong><strong
+								<strong style="color: #d1221d;">
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price * (1- product.product_discount)}" />
+								</strong><strong
 									style="color: #d1221d; font-size: 14px;">원</strong> <strong
-									style="color: #d1221d; font-size: 14px;">(40%)</strong>
+									style="color: #d1221d; font-size: 14px;">(${product.product_discount * 100}%)</strong>
 							</div></li>
 						<li id="litag"><strong>구매제한</strong> &nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
@@ -242,7 +252,7 @@ function replyList(nowPage, product_id) {
 							</div></li>
 						<li id="litag"><strong>상품구분</strong> &nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
-								<span> 식품 </span>
+								<span class="a${product.category_code }"></span>
 							</div>
 
 							<form enctype="multipart/form-data">
@@ -328,8 +338,8 @@ function replyList(nowPage, product_id) {
 
 				<!-- forEach 쓰걸아 -->
 				<div class="reviewComment">
-					<table class="table table-hover" style="text-align: center;">
-						<thead>
+					<table class="table table-hover">
+						<thead style="text-align: center;">
 							<tr>
 								<th scope="col" class="star text-start" style="width: 10%;"><font
 									style="vertical-align: inherit;"><font
@@ -350,7 +360,7 @@ function replyList(nowPage, product_id) {
 						<!-- foreach 사용 -->
 						<c:forEach var="review" items="${reviewList }" begin="0" end="4">
 							<tr>
-								<th scope="row" class="star text-start">${review.REVIEW_GRADE }</th>
+								<th scope="row" class="grade star text-start ${review.REVIEW_GRADE }"></th>
 								<td><font style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">${review.REVIEW_CONTENT }</font></font></td>
 								<td class="reviewid text-end"><font
@@ -365,7 +375,7 @@ function replyList(nowPage, product_id) {
 						</c:forEach>
 						</tbody>
 					</table>
-					<a href="#">더 보기</a>
+					<button type="button" class="btn btn-outline-primary" onclick="moreReview(${product.product_id })">더 보기</button>
 				</div>
 			</div>
 			<br><br><br>
@@ -404,7 +414,12 @@ function replyList(nowPage, product_id) {
 		</div>
 	</div>
 
-	<script>
+<script>
+
+function moreReview(product_id) {
+	 window.open("moreReview.do?product_id="+product_id,"pop1",
+     "width=500, height=700 top=100, left=250");
+}
 
 function writeQna() {
 	console.log("writeQna() 실행~~")

@@ -32,7 +32,6 @@ public class PagingController {
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		int category_code = Integer.parseInt(prd_c);
 		int total = pagingService.totalProductCnt_c(category_code);
-
 		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
