@@ -30,12 +30,13 @@ public class AdminRefundDAO {
 	}
 
 	//3. 포인트 적립 취소 
-	public void deletePoint(UserOrderPointVO vo) {
-		mybatis.update("adminRefundDAO.deletePoint",vo);
+	public void deletePoint(RefundTotalVO refundTotalVO) {
+		mybatis.update("adminRefundDAO.deletePoint",refundTotalVO);
 	}
 	
 	//4. 환불 상태 체크 
 	public int checkRefund(int refund_id) {
 		return mybatis.selectOne("adminRefundDAO.checkRefund", refund_id);
 	}
+
 }

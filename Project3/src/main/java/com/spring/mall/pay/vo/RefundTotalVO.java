@@ -25,6 +25,8 @@ public class RefundTotalVO {
 	private int refund_id;
 	private String refund_reason;
 	private int refund_status;
+	private Date refund_date;
+	private double refund_total;
 	
 	//PRODUCT 테이블
 	private String product_name;
@@ -35,8 +37,8 @@ public class RefundTotalVO {
 
 	public RefundTotalVO(String order_id, Date order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id,
-			int order_detail_id, int user_order_cnt, int product_id, int refund_id, String refund_reason,
-			int refund_status, String product_name) {
+			int order_detail_id, int user_order_cnt, int product_id, Date refund_date, double refund_total, int refund_id,
+			String refund_reason, int refund_status, String product_name) {
 		super();
 		this.order_id = order_id;
 		this.order_date = order_date;
@@ -51,10 +53,30 @@ public class RefundTotalVO {
 		this.order_detail_id = order_detail_id;
 		this.user_order_cnt = user_order_cnt;
 		this.product_id = product_id;
+		this.refund_date = refund_date;
+		this.refund_total = refund_total;
 		this.refund_id = refund_id;
 		this.refund_reason = refund_reason;
 		this.refund_status = refund_status;
 		this.product_name = product_name;
+	}
+
+
+
+	public Date getRefund_date() {
+		return refund_date;
+	}
+
+	public void setRefund_date(Date refund_date) {
+		this.refund_date = refund_date;
+	}
+
+	public double getRefund_total() {
+		return refund_total;
+	}
+
+	public void setRefund_total(double refund_total) {
+		this.refund_total = refund_total;
 	}
 
 	public String getProduct_name() {
@@ -199,9 +221,12 @@ public class RefundTotalVO {
 				+ ", order_addr_d=" + order_addr_d + ", order_zipcode=" + order_zipcode + ", order_receiver="
 				+ order_receiver + ", order_phone=" + order_phone + ", order_total=" + order_total + ", user_status="
 				+ user_status + ", user_id=" + user_id + ", order_detail_id=" + order_detail_id + ", user_order_cnt="
-				+ user_order_cnt + ", product_id=" + product_id + ", refund_id=" + refund_id + ", refund_reason="
-				+ refund_reason + ", refund_status=" + refund_status + ", product_name=" + product_name + "]";
+				+ user_order_cnt + ", product_id=" + product_id + ", refund_date=" + refund_date + ", refund_total="
+				+ refund_total + ", refund_id=" + refund_id + ", refund_reason=" + refund_reason + ", refund_status="
+				+ refund_status + ", product_name=" + product_name + "]";
 	}
+
+	
 
 	
 }

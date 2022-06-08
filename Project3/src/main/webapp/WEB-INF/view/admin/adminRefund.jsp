@@ -72,7 +72,7 @@ table, th, td {
 
 	<h3>환불 요청 관리 페이지</h3>
 	<div class="container">
-		<%-- ${refundList } --%>
+		 ${refundList } 
 	</div>
 
 
@@ -140,8 +140,9 @@ table, th, td {
 										value="${list.refund_id }"><input type="hidden"
 										name="order_id" value="${list.order_id }"> <input
 										type="hidden" name="user_id" value="${list.user_id }">
-									<input type="hidden" name="order_total"
-										value="${list.order_total }"> <input type="submit"
+										
+									<input type="hidden" name="order_detail_id"
+										value="${list.order_detail_id }"> <input type="submit"
 										value="상태변경하기"  id="mySubmit" 
 										style="width: 80px; height: 30px; font-size: 10px;">
 								</form>

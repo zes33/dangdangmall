@@ -49,10 +49,10 @@
 	<update id="deletePoint">
 		update users
 		set USER_POINT = USER_POINT - ( select
-		#{order_total} * 0.05
+		REFUND_TOTAL * 0.05
 		from
-		USER_ORDER o
-		where o.ORDER_ID = #{order_id}
+		USERORDER_REFUND r
+		where r.ORDER_DETAIL_ID = #{order_detail_id}
 		)
 		where user_id = #{user_id}
 	</update>

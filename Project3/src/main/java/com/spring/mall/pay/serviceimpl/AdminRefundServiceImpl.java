@@ -35,8 +35,8 @@ public class AdminRefundServiceImpl implements AdminRefundService {
 
 	// 3. 포인트 적립 취소
 	@Override
-	public void deletePoint(UserOrderPointVO vo) {
-		adminRefundDAO.deletePoint(vo);
+	public void deletePoint(RefundTotalVO refundTotalVO) {
+		adminRefundDAO.deletePoint(refundTotalVO);
 		
 	}
 

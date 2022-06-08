@@ -1,5 +1,6 @@
 package com.spring.mall.pay.controller;
 
+import java.awt.Point;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -39,7 +40,7 @@ public class AdminRefundController {
 	//2. 환불 상태 변경
 	@RequestMapping("update.do")
 	public String updateStatus(@RequestParam int[] refund_id, @RequestParam int[] refund_status, @RequestParam String user_id, @RequestParam String order_id, 
-								@RequestParam int order_total, UserOrderPointVO point, RefundTotalVO refundTotalVO, Model model, HttpSession session) {
+								@RequestParam int order_detail_id, UserOrderPointVO point, RefundTotalVO refundTotalVO, Model model, HttpSession session) {
 		//session.getAttribute("refundList");
 		System.out.println(refund_id);
 		for (int i = 0; i < refund_id.length; i++) {
@@ -51,14 +52,13 @@ public class AdminRefundController {
 			// 환불 승인 상태이면 = 2
 			int check = adminRefundService.checkRefund(refund_id[i]);
 			System.out.println("check : "+check);
-			System.out.println(user_id +" : "+ order_id+" : "+ order_total + " : "+ refund_id);
+			System.out.println(user_id +" : "+ order_id+" : " + " : "+ refund_id);
 			
 			// 포인트 적립 취소 
 			if (check ==2) {
-				point.setUser_id(user_id);
-				point.setOrder_id(order_id);
-				point.setOrder_total(order_total);
-				adminRefundService.deletePoint(point);
+				refundTotalVO.setUser_id(user_id);
+				refundTotalVO.setOrder_detail_id(order_detail_id);
+				adminRefundService.deletePoint(refundTotalVO);
 			}
 			
 		}
