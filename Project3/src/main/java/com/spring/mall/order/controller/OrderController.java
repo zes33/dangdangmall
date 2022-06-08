@@ -135,9 +135,9 @@ public class OrderController {
 //			orderMap.put("user_id", user_id);
 //			orderMap.put("order_id", order_id);
 
-//		UserOrderVO orderInfo = new UserOrderVO();
-//		orderInfo = orderService.getOrder(user_id, order_id);
-//		session.setAttribute("orderInfo", orderInfo);
+		UserOrderVO orderInfo = new UserOrderVO();
+		orderInfo = orderService.getOrder(user_id, order_id);
+		session.setAttribute("orderInfo", orderInfo);
 
 		// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 		pvo.setOrder_id(order_id);
@@ -186,11 +186,11 @@ public class OrderController {
 		System.out.println(product_id);
 
 //		System.out.println(product);
-		UserOrderVO orderInfo = (UserOrderVO) session.getAttribute("orderInfo");
+		order = (UserOrderVO) session.getAttribute("orderInfo");
 
 		String user_id = user.getUser_id();
 //		int product_id = product.getProduct_id();
-		String order_id = orderInfo.getOrder_id();
+		String order_id = order.getOrder_id();
 
 		// 바로구매 주문상세 정보 입력
 		orderDetail.setOrder_id(order_id);
@@ -209,14 +209,14 @@ public class OrderController {
 		point.setUser_id(user_id);
 		orderService.updatePoint(point);
 
-		UserVO userp = new UserVO();
-		userp.setUser_id(user_id);
-		String pwd = point.getUser_pw();
-		userp.setUser_pw(pwd);
+//		UserVO userp = new UserVO();
+//		userp.setUser_id(user_id);
+//		String pwd = point.getUser_pw();
+//		userp.setUser_pw(pwd);
 		
-		UserVO newuser = userLoginService.getUser(userp);
-		session = request.getSession();
-		session.setAttribute("user", newuser);
+//		UserVO newuser = userLoginService.getUser(userp);
+//		session = request.getSession();
+//		session.setAttribute("user", newuser);
 
 		return "store/afterPay";
 	}
