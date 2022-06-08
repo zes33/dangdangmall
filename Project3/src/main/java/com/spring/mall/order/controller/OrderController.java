@@ -135,9 +135,9 @@ public class OrderController {
 //			orderMap.put("user_id", user_id);
 //			orderMap.put("order_id", order_id);
 
-		UserOrderVO orderInfo = new UserOrderVO();
-		orderInfo = orderService.getOrder(user_id, order_id);
-		session.setAttribute("orderInfo", orderInfo);
+//		UserOrderVO orderInfo = new UserOrderVO();
+//		orderInfo = orderService.getOrder(user_id, order_id);
+//		session.setAttribute("orderInfo", orderInfo);
 
 		// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 		pvo.setOrder_id(order_id);
