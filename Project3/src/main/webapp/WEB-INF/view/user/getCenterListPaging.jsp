@@ -45,19 +45,17 @@
 	</header>
 	<div id="container">
 	<!-- 검색을 위한 폼 -->
-	<!-- <form action="getBoardList.do" method="get">  -->
-	<form>
+	<form action="getCenterListPaging.do" method="get">
 	<table class="border-none">
 		<tr>
 			<td>
-				 
 				<select name="searchCondition">
 					<option value="TITLE">제목</option>
 					<option value="CONTENT">내용</option>
 				</select>
 				<input type="text" name="searchKeyword">
-				<button type="button" class="btn btn-outline-secondary btn-sm" id="ss">검색</button>
-				<!-- <input type="submit" value="검색"> -->	
+				<button type="submit" class="btn btn-outline-secondary btn-sm" id="ss">검색</button>
+				<!-- <input type="submit" value="검색"> -->
 			</td>
 		</tr>
 		

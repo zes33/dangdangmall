@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.mall.center.vo.CenterQnaVO;
 import com.spring.mall.paging.dao.CenterPagingDAO;
 import com.spring.mall.paging.service.CenterPagingService;
 
@@ -24,4 +25,11 @@ public class CenterPagingServiceImpl implements CenterPagingService {
 	public List<Map<String, Object>> pagingCenterQnaList(int start, int end) {
 		return centerPagingDAO.pagingCenterQnaList(start, end);
 	}
+
+	@Override
+	public List<Map<String, Object>> pagingCenterQnaListSearch(CenterQnaVO vo, int start, int end) {
+		return centerPagingDAO.pagingCenterQnaListSearch(vo, start, end);
+	}
+	
+	
 }

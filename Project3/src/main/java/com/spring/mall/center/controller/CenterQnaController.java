@@ -1,6 +1,7 @@
 package com.spring.mall.center.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,10 +33,20 @@ public class CenterQnaController {
 	@Autowired
 	private CenterPagingService centerPagingService;
 	
-	
-	
 	public CenterQnaController() {
 		System.out.println("======= CenterQnaController() 객체 생성~~");
+	}
+	
+	// 메소드에 선언된 @ModelAttribute 는 리턴된 데이터를 View 에 전달
+	// @ModelAttribute 선언된 메소드는 @RequestMapping 메소드보다 먼저 실행
+	// 뷰에 전달될 때 설정된 명칭(예: conditionMap)
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		System.out.println("=====> Map searchConditionMap() 실행");
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("내용", "CONTENT");
+		return conditionMap;
 	}
 	
 	//고객문의 상세 페이지로 이동
