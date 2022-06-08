@@ -70,7 +70,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>매출관리</strong></a></div>
 			<div id="collapse6" class="panel-collapse collapse" role="tabpanel">
-				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>매출 조회</strong></a></div>
+				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>월별 매출 조회</strong></a></div>
+				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>일별 매출 조회</strong></a></div>
 			</div>
 		</div>
 	</div>

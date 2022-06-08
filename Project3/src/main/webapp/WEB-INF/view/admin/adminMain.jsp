@@ -52,7 +52,7 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='adminUserList.do'">회원정보 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='adminGetCenterList.do'">고객 문의 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">판매내역 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">매출 조회</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='salesView.do'">매출 조회</button></td>
          </tr>
          <tr>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 등록</button></td>
