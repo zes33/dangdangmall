@@ -20,7 +20,7 @@
 	.border-none, .border-none td { border: none; }
 </style>
 <script>
-	//회원 유저가 문의하기 버튼을 누르면 활성화되난 go_qna() 함수
+	//문의하기 버튼을 누르면 활성화되는 go_qna() 함수
 	function go_qna(userId) {
 		if (userId == undefined) {
 			var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
@@ -75,7 +75,7 @@
 				<!-- 
 				<th width="150" class="center">ID</th>
 				 -->
-				<th width="150" class="center">닉네임</th>
+				<th width="200" class="center">닉네임</th>
 				<th width="150" class="center">문의날짜</th>
 				<th width="150" class="center">답변상태</th>
 				<!--  
@@ -100,15 +100,15 @@
 				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
 			</tr>
 			 -->
-			 <c:if test="${empty getCenterList }">
+			 <c:if test="${empty getCenterListPaging }">
 				<tr>
-					<td>등록된 고객문의가 없습니다.</td>
+					<th colspan="2" class="center">등록된 고객문의가 없습니다.</th>
 				</tr>
 			 </c:if>
-			 <c:forEach items="${getCenterList }" var="center" varStatus="status">
+			 <c:forEach items="${getCenterListPaging }" var="center" varStatus="status">
 			 	<tr>
-					<td class="center">${center.CENTER_QNA_ID }</td>
-					<td><span class="d-inline-block text-truncate" style="max-width: 180px; cursor:pointer;" onclick="go_getCenter(${user.user_id},${center.CENTER_QNA_ID });">
+					<td class="center">${center.R_NUM}</td>
+					<td><span class="d-inline-block text-truncate" style="max-width: 180px; cursor:pointer;" onclick="go_getCenter(${center.CENTER_QNA_ID });">
 						${center.CENTER_QNA_TITLE }</span>
 					</td>
 					<!-- 
@@ -136,20 +136,42 @@
 	</table>
 	
 	<div style="float:right;">
-	<!-- 
-		<c:choose>
-		<c:when test="${user.user_id eq null }">
-			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_login();">문의하기</button>
-		</c:when>
-		<c:otherwise>
-		 -->
-			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna();">문의하기</button>
-		<!-- 
-		</c:otherwise>
-		</c:choose>
-		 -->
-		
+		<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna();">문의하기</button>
 	</div>
+	<br>
+	
+	<nav aria-label="Page navigation example">
+		  <ul class="pagination justify-content-center">
+		  <c:if test="${paging.startPage != 1 }">
+		    <li class="page-item">
+		      <a class="page-link" href="getCenterListPaging.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}"
+		       aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		   </c:if> 
+		   
+		   <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+				<c:choose>
+					<c:when test="${p == paging.nowPage }">
+						<li class="page-item"><b class="page-link" >${p }</b></li>
+					</c:when>
+					<c:when test="${p != paging.nowPage }">
+		    			<li class="page-item"><a class="page-link" href="getCenterListPaging.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+		   
+		    <c:if test="${paging.endPage != paging.lastPage }">
+		    <li class="page-item">
+		      <a class="page-link" href="getCenterListPaging.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		   </c:if> 
+		    
+		  </ul>
+		</nav>
 	
 </div>	
 	<!-- footer -->
@@ -161,5 +183,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+	
 </body>
 </html>

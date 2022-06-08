@@ -5,52 +5,23 @@
  
 <mapper namespace="centerPaging">
 	
-	
-	<!-- prd_qna List per product -->
-	<select id="prdQnaListWithPaging" parameterType="map"
-			resultType="com.spring.mall.product.vo.ProductQnaNickVO">
-		SELECT *
-	    FROM (SELECT ROWNUM R_NUM, AA.*
-	       FROM (SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
-			FROM PRODUCT_QNA QNA, PRODUCT, USERS
-			WHERE QNA.PRODUCT_ID = #{product_id}
-			AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
-			AND QNA.USER_ID = USERS.USER_ID
-			ORDER BY QNA.QNA_GROUP, QNA.QNA_GROUP_NUMBER) AA)
-	    WHERE R_NUM BETWEEN #{start} AND #{end}
-		
-		<!-- SELECT *
-		FROM (SELECT ROWNUM R_NUM, P.*
-		        FROM (SELECT *
-				FROM PRODUCT_QNA
-				WHERE PRODUCT_ID = #{product_id}
-		        ORDER BY QNA_ID) P)
-		WHERE R_NUM BETWEEN #{start} AND #{end} -->
-	</select>
-	
-	<!-- total prd_qna count per product_id -->
-	<select id="totalReplCnt_prd" parameterType="int" resultType="int">
+	<select id="totalCenterQnaCnt" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
+	resultType="int">
 		SELECT COUNT(*)
-		FROM PRODUCT_QNA
-		WHERE PRODUCT_ID = #{product_id}
+		FROM CENTER_QNA
 	</select>
 	
-	<!-- total categoryList count -->
-	<select id="totalProductCnt_c" parameterType="int" resultType="int">
-		SELECT COUNT(*)
-		FROM PRODUCT
-		WHERE CATEGORY_CODE = #{category_code}
-	</select>
-	
-	<!-- products by category  -->
-	<select id="getProductPerPage_c" parameterType="map" 
-					resultType="com.spring.mall.product.vo.ProductVO">
-		SELECT *
+	<select id="CenterQnaPerPage" parameterType="map"
+	resultType="map">
+		SELECT * 
 		FROM (SELECT ROWNUM R_NUM, P.*
-		         FROM (SELECT * FROM PRODUCT
-		            WHERE CATEGORY_CODE = #{category_code}
-		            ORDER BY PRODUCT_ID DESC) P)
-		WHERE R_NUM BETWEEN #{start} AND #{end}
+      		  FROM (SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+                  		   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT 
+           			FROM CENTER_QNA C, USERS U, CENTER_REPLY R
+           			WHERE C.USER_ID = U.USER_ID
+           			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
+           			ORDER BY C.CENTER_QNA_ID DESC) P)
+			WHERE R_NUM BETWEEN #{start} AND #{end}
 	</select>
 
 </mapper>

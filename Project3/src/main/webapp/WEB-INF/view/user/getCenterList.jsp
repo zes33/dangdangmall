@@ -68,7 +68,6 @@
 	
 	<p>\${user.user_id } : ${user.user_id }</p>
 	<!-- 데이터 표시 영역 -->
-	<h1><button type ="button" onclick="location.href='getCenterListPaging.jsp'">getCenterListPaging 페이징처리목록</button></h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>

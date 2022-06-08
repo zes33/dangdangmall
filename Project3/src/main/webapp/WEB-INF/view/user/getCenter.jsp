@@ -138,7 +138,7 @@
 		
 	</table>
 	
-	<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='getCenterList.do'">목록으로</button>
+	<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='getCenterListPaging.do'">목록으로</button>
 	<div style="float:right;">
 		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_update('${centerUser.user_id}','${centerUser.user_pw}','${getCenter.USER_ID}',${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 수정</button>
 		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_delete('${centerUser.user_id}','${centerUser.user_pw}','${getCenter.USER_ID}',${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>

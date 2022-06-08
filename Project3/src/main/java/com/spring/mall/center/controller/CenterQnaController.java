@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.mall.center.service.CenterQnaService;
 import com.spring.mall.center.service.CenterReplyService;
 import com.spring.mall.center.vo.CenterQnaVO;
 import com.spring.mall.center.vo.CenterReplyVO;
+import com.spring.mall.paging.service.CenterPagingService;
+import com.spring.mall.paging.vo.PagingVO;
 import com.spring.mall.user.vo.UserVO;
 
 @Controller
@@ -25,21 +28,16 @@ public class CenterQnaController {
 	@Autowired
 	private CenterReplyService centerReplyService;
 	
+	@Autowired
+	private CenterPagingService centerPagingService;
+	
+	
 	
 	public CenterQnaController() {
 		System.out.println("======= CenterQnaController() 객체 생성~~");
 	}
 	
-	@RequestMapping("/getCenterList.do")
-	public String getCenterList(Model model) {
-		CenterQnaVO vo = null;
-		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
-		model.addAttribute("getCenterList", getCenterList);
-		System.out.println(getCenterList);
-		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
-		return "user/getCenterList";
-	}
-	
+	//고객문의 상세 페이지로 이동
 	@RequestMapping("/getCenterQna.do")
 	public String getCenterQna(CenterQnaVO vo, Model model, HttpSession session) {
 		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
@@ -54,12 +52,14 @@ public class CenterQnaController {
 		return "user/getCenter";
 	}
 	
+	//고객문의 작성 페이지로 이동
 	@RequestMapping("/insertCenterQna.do")
 	public String insertCenterQna() {
 		System.out.println(">>> 고객 문의 작성 페이지로 이동(insertCenter.jsp) - insertCenterQna()");
 		return "user/insertCenter";
 	}
 	
+	//고객문의 등록 글쓰기 페이지
 	@RequestMapping("/insertCenterQnaWrite.do")
 	public String insertCenterQnaWrite(CenterQnaVO vo, HttpSession session) throws IllegalArgumentException, IOException {
 		System.out.println(">>> 고객문의 입력");
@@ -72,6 +72,7 @@ public class CenterQnaController {
 		return "redirect:getCenterList.do";
 	}
 	
+	//고객문의 삭제
 	@RequestMapping("/deleteCenterQna.do")
 	public String deleteCenterQna(CenterQnaVO vo, CenterReplyVO rvo) {
 		
@@ -85,6 +86,7 @@ public class CenterQnaController {
 		return "redirect:getCenterList.do";
 	}
 	
+	//고객문의 수정 페이지로 이동
 	@RequestMapping("/updateCenterQna.do")
 	public String updateCenterQna(CenterQnaVO vo, Model model) {
 		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
@@ -94,6 +96,7 @@ public class CenterQnaController {
 		return "user/updateCenter";
 	}
 	
+	//고객문의 수정 페이지
 	@RequestMapping("/updateCenterQnaWrite.do")
 	public String updateCenterQnaWrite(CenterQnaVO vo, Model model) {
 		System.out.println("updateCenterQnaWrite 쩜두 실행~ ");
@@ -108,15 +111,48 @@ public class CenterQnaController {
 		return "redirect:getCenterQna.do?center_qna_id="+center_qna_id;
 	}
 	
-	
-	
-	@RequestMapping("/getCenterListPaging.do")
-	public String getCenterListPaging(Model model) {
+	//페이징 처리가 되지 않은 고객문의 목록
+	@RequestMapping("/getCenterList.do")
+	public String getCenterList(Model model) {
 		CenterQnaVO vo = null;
-		List<Map<String, Object>> getCenterListPaging = centerQnaService.getCenterQnaList(vo);
+		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
+		model.addAttribute("getCenterList", getCenterList);
+		System.out.println(getCenterList);
+		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
+		return "user/getCenterList";
+	}
+	
+	//페이징 처리가 된 고객문의 목록
+	@RequestMapping("/getCenterListPaging.do")
+	public String getCenterListPaging(PagingVO vo, CenterQnaVO centervo, Model model
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		System.out.println("!!!!getCenterListPaging() 실행!!");
+		
+		int total = centerPagingService.totalCenterQnaCnt();
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "10";
+		}
+		
+		//페이징 처리 안 한 고객문의 리스트 전체는 getCenterList이고, 페이징 처리 된 고객문의 리스트는 getCenterListPaging이다.
+		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(centervo);
+		model.addAttribute("getCenterList", getCenterList);
+		System.out.println(getCenterList);
+		
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		List<Map<String, Object>> getCenterListPaging = centerPagingService.pagingCenterQnaList(vo.getStart(),vo.getEnd());
+		System.out.println();
+		
+		model.addAttribute("paging", vo);
 		model.addAttribute("getCenterListPaging", getCenterListPaging);
 		System.out.println(getCenterListPaging);
-		System.out.println("고객 문의 목록 페이지(getCenterListPaging.jsp)이동 - getCenterListPaging()");
+		System.out.println("!!!!!고객 문의 목록 페이징처리(getCenterListPaging.jsp)이동 - getCenterListPaging()");
 		return "user/getCenterListPaging";
 	}
 	
