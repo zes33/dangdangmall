@@ -204,7 +204,7 @@
 				</table>				
 				
 				<nav aria-label="Page navigation example">
-				  <ul class="pagination">
+				  <ul class="pagination justify-content-center">
 				  
 				  
 				  <c:if test="${paging.startPage != 1 }">

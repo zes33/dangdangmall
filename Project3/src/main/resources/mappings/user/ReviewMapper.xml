@@ -37,13 +37,13 @@
 		        AND D.ORDER_ID = O.ORDER_ID
 		        AND D.PRODUCT_ID = P.PRODUCT_ID
 		      	<if test="searchCondition == 'CATEGORY_CODE' ">
-		      		AND P.CATEGORY_CODE LIKE '%'||TO_NUMBER(#{searchKeyword})||'%'
+		      		AND P.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
 		      	</if>
 		      	<if test="searchCondition == 'REVIEW_CONTENT' ">
 		      		AND R.REVIEW_CONTENT LIKE '%'||#{searchKeyword}||'%'
 		      	</if>
 		      	<if test="searchCondition == 'PRODUCT_ID' ">
-		      		AND P.PRODUCT_ID LIKE TO_NUMBER(#{searchKeyword})
+		      		AND P.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
 		      	</if>
 		      	<if test="searchCondition == 'PRODUCT_NAME' ">
 		      		AND P.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
@@ -105,13 +105,27 @@
 	</select>
 	
 	<!-- 나의 상품리뷰 목록 -->
-	<select id="myReviewList" parameterType="string" resultType="map">
-		SELECT P.PRODUCT_INFO, P.PRODUCT_NAME, U.ORDER_DATE, R.REVIEW_GRADE, R.REVIEW_CONTENT, R.REVIEW_ID
+	<select id="myReviewList" parameterType="map" resultType="map">
+		SELECT *
+		FROM (SELECT ROWNUM R_NUM, A.*
+		        FROM (SELECT P.PRODUCT_INFO, P.PRODUCT_NAME, U.ORDER_DATE, R.REVIEW_GRADE, R.REVIEW_CONTENT, R.REVIEW_ID
+				FROM REVIEW R, PRODUCT P, USER_ORDER U, USERORDER_DETAIL D
+				WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
+				AND D.ORDER_ID = U.ORDER_ID
+				AND D.PRODUCT_ID  = P.PRODUCT_ID
+				AND U.USER_ID = #{user_id}
+				ORDER BY R.REVIEW_ID DESC) A)
+		WHERE R_NUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 고객의 리뷰 개수 -->
+	<select id="totCntMyReview" parameterType="string" resultType="int">
+		SELECT COUNT(*)
 		FROM REVIEW R, PRODUCT P, USER_ORDER U, USERORDER_DETAIL D
 		WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
 		AND D.ORDER_ID = U.ORDER_ID
 		AND D.PRODUCT_ID  = P.PRODUCT_ID
-		AND U.USER_ID = #{user_id}
+		AND U.USER_ID = 'me'
 		ORDER BY R.REVIEW_ID DESC
 	</select>
 	

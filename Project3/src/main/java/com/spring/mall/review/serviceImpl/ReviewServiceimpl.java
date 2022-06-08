@@ -33,8 +33,8 @@ public class ReviewServiceimpl implements ReviewService{
 	}
 
 	@Override
-	public List<Map<String, Object>> getMyReviewList(String user_id) {
-		return reviewDAO.getMyReviewList(user_id);
+	public List<Map<String, Object>> getMyReviewList(String user_id, String start, String end) {
+		return reviewDAO.getMyReviewList(user_id, start, end);
 	}
 
 	@Override
@@ -65,6 +65,11 @@ public class ReviewServiceimpl implements ReviewService{
 	@Override
 	public int adminTotReviewCnt(String searchCondition, String searchKeyword) {
 		return reviewDAO.adminTotReviewCnt(searchCondition, searchKeyword);
+	}
+
+	@Override
+	public int totCntMyReview(String user_id) {
+		return reviewDAO.totCntMyReview(user_id);
 	}
 
 }

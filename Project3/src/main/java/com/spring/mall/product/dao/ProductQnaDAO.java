@@ -84,9 +84,26 @@ public class ProductQnaDAO {
 		return mybatis.selectOne("productQnaDAO.getProductQnaNick", vo);
 	}
 	
+	// 상품문의 게시글 개수(관리자)
+	public int adminTotPrdQnaCnt(String searchCondition, String searchKeyword, String qna_state) {
+		System.out.println("ProductQnaDAO.adminTotPrdQnaCnt() 실행");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		map.put("qna_state", qna_state);
+		return mybatis.selectOne("productQnaDAO.adminTotPrdQnaCnt",map);
+	}
+	
 	// 상품문의 목록(운영자)
-	public List<ProductQnaVO> getProductQnaListAdmin(){
+	public List<Map<String, Object>> getProductQnaListAdmin(String searchCondition, 
+			String searchKeyword, String qna_state, String start, String end){
 		System.out.println("ProductQnaDAO.getProductQnaListAdmin() 실행");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		map.put("qna_state", qna_state);
+		map.put("start", start);
+		map.put("end", end);
 		return mybatis.selectList("productQnaDAO.getProductQnaListAdmin");
 	}
 	

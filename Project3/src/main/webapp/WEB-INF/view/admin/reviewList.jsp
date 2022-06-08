@@ -51,7 +51,7 @@
   align-items: center;
 }
 .contents {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	position:relative;
 	left: 0px;
 	top: 48px;
@@ -111,13 +111,12 @@ $(document).ready(function () {
 			<tr>
 				<td>
 					<select name="searchCondition" style="width: 80px;">
-					<c:forEach var="option" items="${conditionMap }">
+					<c:forEach var="option" items="${reviewConditionMap }">
 						<option value="${option.value }">${option.key }</option>
 					</c:forEach>
 					</select>
 					<input type="text" name="searchKeyword">
 					<button type="submit"  id="ss">검색</button>
-					<!-- <input type="submit" value="검색"> -->	
 				</td>
 			</tr>
 		</table>

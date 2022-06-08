@@ -139,7 +139,6 @@ $(".5").html("&#9733;&#9733;&#9733;&#9733;&#9733;");
 })
 	
 function editReview(review_id) {
-	alert("review_id : " + review_id);
 	window.open("editReview.do?review_id="+review_id,"pop1",
 	"width=500, height=700 top=100, left=150");
 }
@@ -270,7 +269,42 @@ function deleteReview(review_id) {
 				    </div>
 				</div>
 				</c:forEach>
+				<br><br>
 				
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-center">
+				  
+				  
+				  <c:if test="${paging.startPage != 1 }">
+				    <li class="page-item">
+				      <a class="page-link" href="goMyReview.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}"
+				       aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				   </c:if> 
+				   
+				   <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<li class="page-item"><b class="page-link" >${p }</b></li>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+				    			<li class="page-item"><a class="page-link" href="goMyReview.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+				   
+				    <c:if test="${paging.endPage != paging.lastPage }">
+				    <li class="page-item">
+				      <a class="page-link" href="goMyReview.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				   </c:if> 
+				    
+				  </ul>
+				</nav>
 				
 				
 				

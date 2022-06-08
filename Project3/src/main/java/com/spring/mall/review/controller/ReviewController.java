@@ -69,15 +69,15 @@ public class ReviewController {
 	}
 	
 	// 관리자 리뷰 페이지 검색 조건
-	@ModelAttribute("conditionMap")
+	@ModelAttribute("reviewConditionMap")
 	public Map<String, String> searchConditionMap(){
 		System.out.println("====> Map searchConditionMap() 실행");
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("내용", "REVIEW_CONTENT");
-		conditionMap.put("분류", "CATEGORY_CODE");
-		conditionMap.put("상품명", "PRODUCT_NAME");
-		conditionMap.put("상픔ID", "PRODUCT_ID");
-		return conditionMap;
+		Map<String, String> reviewConditionMap = new HashMap<String, String>();
+		reviewConditionMap.put("내용", "REVIEW_CONTENT");
+		reviewConditionMap.put("분류", "CATEGORY_CODE");
+		reviewConditionMap.put("상품명", "PRODUCT_NAME");
+		reviewConditionMap.put("상픔ID", "PRODUCT_ID");
+		return reviewConditionMap;
 	}
 
 	// 상품리뷰 더보기
@@ -130,12 +130,29 @@ public class ReviewController {
 	
 	// 마이페이지-후기내역
 	@RequestMapping("/goMyReview.do")
-	public String goMyReview(HttpServletRequest request, Model model) {
+	public String goMyReview(HttpServletRequest request, Model model, PagingVO paging,
+			@RequestParam(value="nowPage", required=false)String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("goMyReview() 실행");
+		
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if(cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
-		List<Map<String, Object>> myReviewList = reviewService.getMyReviewList(user_id);
+		int total = reviewService.totCntMyReview(user_id);
+		paging = new PagingVO(total,Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		String start = Integer.toString(paging.getStart());
+		String end = Integer.toString(paging.getEnd());
+		List<Map<String, Object>> myReviewList = reviewService.getMyReviewList(user_id, start, end);
 		model.addAttribute("myReviewList",myReviewList);
+		model.addAttribute("paging",paging);
 		
 		return "user/myReview";
 	}

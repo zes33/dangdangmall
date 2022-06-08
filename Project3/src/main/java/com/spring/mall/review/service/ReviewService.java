@@ -11,12 +11,12 @@ public interface ReviewService {
 	MyInfoVO getMyOrder_odi(MyInfoVO myinfo);
 	void insertReview(ReviewVO vo);
 	int existReview(MyInfoVO myinfo);
-	List<Map<String, Object>> getMyReviewList(String user_id);
+	List<Map<String, Object>> getMyReviewList(String user_id, String start, String end);
 	Map<String, Object> getReviewOne(int review_id);
 	void updateReview(ReviewVO review);
 	void deleteReview(ReviewVO review);
 	List<Map<String, Object>> reviewPerPrd(int product_id);
 	List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String start, String end);
 	int adminTotReviewCnt(String searchCondition,String searchKeyword);
-	
+	int totCntMyReview(String user_id);
 }

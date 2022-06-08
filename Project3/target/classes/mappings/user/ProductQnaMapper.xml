@@ -44,15 +44,6 @@
 		            AND Q.PRODUCT_ID = PRODUCT.PRODUCT_ID
 		            ORDER BY QNA_ID DESC) A)
 		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
-		
-		
-		
-		<!-- SELECT q.*, USERS.USER_NICKNAME, PRODUCT.PRODUCT_NAME
-		FROM PRODUCT_QNA q, users, product
-		WHERE Q.USER_ID = #{user_id}
-		AND Q.USER_ID = USERS.USER_ID
-		AND Q.PRODUCT_ID = PRODUCT.PRODUCT_ID
-		ORDER BY QNA_ID DESC -->
 	</select>
 	
 	<!-- QNA_ID로 문의 하나 찾기 -->
@@ -103,15 +94,77 @@
 		AND PRODUCT_QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
 		AND PRODUCT_QNA.USER_ID = USERS.USER_ID
 	</select>
-
-	<!-- 전체 상품문의 조회(운영자) -->
-	<select id="getProductQnaListAdmin" resultType="com.spring.mall.product.vo.ProductQnaNickVO">
-		SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
+	
+	<!-- 상품문의 검색 결과 total count -->
+	<select id="adminTotPrdQnaCnt" parameterType="map" resultType="int">
+		SELECT COUNT(*)
 		FROM PRODUCT_QNA QNA, PRODUCT, USERS
 		WHERE QNA.Q_OR_A = 0
 		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
 		AND QNA.USER_ID = USERS.USER_ID
+		<if test="searchCondition == 'QNA_CONTENT' ">
+			AND QNA.QNA_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CATEGORY_CODE' ">
+			AND PRODUCT.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
+		</if>
+		<if test="searchCondition == 'PRODUCT_ID' ">
+      		AND PRODUCT.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+      	</if>
+      	<if test="searchCondition == 'PRODUCT_NAME' ">
+      		AND PRODUCT.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+      	</if>
+      	<if test="qna_state == '0' ">
+      		AND PRODUCT.PRODUCT_QNA_STATE = 0
+      	</if>
+      	<if test="qna_state == '1' ">
+      		AND PRODUCT.PRODUCT_QNA_STATE = 1
+      	</if>
+      	<if test="qna_state == '2' ">
+      		AND 1 =1
+      	</if>
 		ORDER BY QNA_ID DESC
+	</select>
+
+	<!-- 전체 상품문의 조회(운영자) 페이징+검색 -->
+	<select id="getProductQnaListAdmin" resultType="map" parameterType="map">
+		SELECT *
+		FROM (SELECT ROWNUM R_NUM, A.*
+		     FROM (SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME, PRODUCT.CATEGORY_CODE
+				FROM PRODUCT_QNA QNA, PRODUCT, USERS
+				WHERE QNA.Q_OR_A = 0
+				AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+				AND QNA.USER_ID = USERS.USER_ID
+				<if test="searchCondition == 'QNA_CONTENT' ">
+					AND QNA.QNA_CONTENT LIKE '%'||#{searchKeyword}||'%'
+				</if>
+				<if test="searchCondition == 'CATEGORY_CODE' ">
+					AND PRODUCT.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
+				</if>
+				<if test="searchCondition == 'PRODUCT_ID' ">
+		      		AND PRODUCT.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+		      	</if>
+		      	<if test="searchCondition == 'PRODUCT_NAME' ">
+		      		AND PRODUCT.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+		      	</if>
+		      	<if test="qna_state == '0' ">
+		      		AND PRODUCT.PRODUCT_QNA_STATE = 0
+		      	</if>
+		      	<if test="qna_state == '1' ">
+		      		AND PRODUCT.PRODUCT_QNA_STATE = 1
+		      	</if>
+		      	<if test="qna_state == '2' ">
+		      		AND 1 =1
+		      	</if>
+				ORDER BY QNA_ID DESC) A)
+		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
+		
+		<!-- SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
+		FROM PRODUCT_QNA QNA, PRODUCT, USERS
+		WHERE QNA.Q_OR_A = 0
+		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
+		AND QNA.USER_ID = USERS.USER_ID
+		ORDER BY QNA_ID DESC -->
 	</select>
 
 	<!-- 해당 상품의 문의 목록(상품 상세페이지) -->

@@ -31,8 +31,9 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	}
 
 	@Override
-	public List<ProductQnaVO> productQnaListAdmin() {
-		return productQnaDAO.getProductQnaListAdmin();
+	public List<Map<String, Object>> getProductQnaListAdmin(String searchCondition, 
+			String searchKeyword, String qna_state,String start, String end) {
+		return productQnaDAO.getProductQnaListAdmin(searchCondition,searchKeyword,qna_state,start, end);
 	}
 
 	@Override
@@ -85,6 +86,11 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	@Override
 	public int totMyPrdQna(String user_id) {
 		return productQnaDAO.totMyPrdQna(user_id);
+	}
+
+	@Override
+	public int adminTotPrdQnaCnt(String searchCondition, String searchKeyword, String qna_state) {
+		return productQnaDAO.adminTotPrdQnaCnt(searchCondition, searchKeyword, qna_state);
 	}
 
 

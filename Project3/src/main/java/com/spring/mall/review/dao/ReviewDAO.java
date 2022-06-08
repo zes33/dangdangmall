@@ -60,9 +60,19 @@ public class ReviewDAO {
 	}
 	
 	// 회원별 리뷰 목록
-	public List<Map<String, Object>> getMyReviewList(String user_id){
+	public List<Map<String, Object>> getMyReviewList(String user_id,String start, String end){
 		System.out.println("ReviewDAO.getMyReviewList() 실행");
-		return mybatis.selectList("reviewDAO.myReviewList",user_id );
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id", user_id);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("reviewDAO.myReviewList",map );
+	}
+	
+	// 회원의 리뷰 개수
+	public int totCntMyReview(String user_id) {
+		System.out.println("ReviewDAO.totCntMyReview() 실행");
+		return mybatis.selectOne("reviewDAO.totCntMyReview", user_id);
 	}
 	
 	// 리뷰아이디로 리뷰 정보 조회

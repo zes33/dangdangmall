@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -114,7 +115,7 @@ public class ProductQnaController {
 		return result;
 	}
 	
-	// 마이페이지 상품문의 내역 페이지 이동------------------페이징 넣자
+	// 마이페이지 상품문의 내역 페이지 이동
 	@RequestMapping("/goMyPrdQna.do")
 	public String goMyPrdQna(PagingVO paging ,Model model, HttpServletRequest request
 			, @RequestParam(value="nowPage", required = false)String nowPage
@@ -166,16 +167,59 @@ public class ProductQnaController {
 	}
 
 		
-	//----상품문의목록 불러오기
+	//----상품문의목록 불러오기(관리자)
 	@RequestMapping("/adminProductQnaList.do")
-	public String adminGetProductQnaList(Model model) {
+	public String adminGetProductQnaList(String searchCondition, String qna_state,
+			String searchKeyword, PagingVO paging, Model model,
+			@RequestParam(value="nowPage", required=false)String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("adminProductQnaList() 실행");
+		int total = productQnaService.adminTotPrdQnaCnt(searchCondition, searchKeyword, qna_state);
 		
-		List<ProductQnaVO> list = productQnaService.productQnaListAdmin();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "8";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "8";
+		}
+		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		System.out.println("nowPage : " + nowPage);
+		System.out.println("startPage : " + paging.getStartPage());
+		System.out.println("endPage : " + paging.getEndPage());
+		
+		String start = Integer.toString(paging.getStart());
+		String end = Integer.toString(paging.getEnd());
+		
+		List<Map<String, Object>> list = productQnaService.getProductQnaListAdmin(searchCondition,
+													searchKeyword,qna_state, start, end);
 		model.addAttribute("productQnaList",list);
+		model.addAttribute("paging", paging);
+		model.addAttribute("searchCondition",searchCondition);
+		model.addAttribute("searchKeyword",searchKeyword);
+		model.addAttribute("qna_state",qna_state);
+		
+		System.out.println("total : " + total);
+		System.out.println("list : " + list);
+		System.out.println("searchCondition : " + searchCondition);
+		System.out.println("searchKeyword : " + searchKeyword);
+		System.out.println("qna_state : " + qna_state);
+		
 		return "admin/getProductQnaList";
 	}
 	
+	// (관리자) 상품문의 목록 페이지 검색 조건
+	@ModelAttribute("prdQnaSearchMap")
+	public Map<String, String> prdQnaSearchMap(){
+		System.out.println("===>Map prdQnaSearchMap() 실행");
+		Map<String, String> prdQnaSearchMap = new HashMap<String, String>();
+		prdQnaSearchMap.put("내용", "QNA_CONTENT");
+		prdQnaSearchMap.put("상품분류", "CATEGORY_CODE");
+		prdQnaSearchMap.put("상품명", "PRODUCT_NAME");
+		prdQnaSearchMap.put("상품ID", "PRODUCT_ID");
+		return prdQnaSearchMap;
+	}
 	
 	// 상품문의 답변 제출
 	@RequestMapping("/submitAdminProductQna.do")
@@ -203,22 +247,7 @@ public class ProductQnaController {
 		return "forward:/adminProductQnaList.do";
 	}
 	
-//	// 상품문의 입력---대체예정
-//	@RequestMapping("/insertPrdQna.do")
-//	public String insertProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session,
-//									RedirectAttributes rdatt) {
-//		String user_id = (String) session.getAttribute("user_id");
-//		vo.setUser_id(user_id);
-//		System.out.println("vo : " + vo);
-//		
-//		productQnaService.insertProductQna(vo);
-//		rdatt.addAttribute("product_id",pv.getProduct_id());
-//		
-////		return "forward:/productDetail.do";
-//		return "forward:/testPrdRepl.do";
-//	}
-	
-	//댓글입력..테스트----성공
+	//댓글입력 
 	@ResponseBody
 	@RequestMapping("/writePrdQna.do")
 	public void wirteProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session) {
@@ -229,7 +258,7 @@ public class ProductQnaController {
 	}
 	
 	
-	// 댓글..테스트------성공
+	// 댓글 페이징
 	@ResponseBody
 	@RequestMapping("/qnaWithPaging.do")
 	public Map<String,Object> qnsListPaging(ProductQnaNickVO nv,ProductVO pv ,PagingVO paging,
