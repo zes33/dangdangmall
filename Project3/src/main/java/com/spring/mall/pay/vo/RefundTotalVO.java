@@ -25,8 +25,8 @@ public class RefundTotalVO {
 	private int refund_id;
 	private String refund_reason;
 	private int refund_status;
-	private Date refund_date;
-	private double refund_total;
+	private String refund_date;
+	private int refund_total;
 	
 	//PRODUCT 테이블
 	private String product_name;
@@ -37,7 +37,7 @@ public class RefundTotalVO {
 
 	public RefundTotalVO(String order_id, Date order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id,
-			int order_detail_id, int user_order_cnt, int product_id, Date refund_date, double refund_total, int refund_id,
+			int order_detail_id, int user_order_cnt, int product_id, String refund_date, int refund_total, int refund_id,
 			String refund_reason, int refund_status, String product_name) {
 		super();
 		this.order_id = order_id;
@@ -63,19 +63,19 @@ public class RefundTotalVO {
 
 
 
-	public Date getRefund_date() {
+	public String getRefund_date() {
 		return refund_date;
 	}
 
-	public void setRefund_date(Date refund_date) {
+	public void setRefund_date(String refund_date) {
 		this.refund_date = refund_date;
 	}
 
-	public double getRefund_total() {
+	public int getRefund_total() {
 		return refund_total;
 	}
 
-	public void setRefund_total(double refund_total) {
+	public void setRefund_total(int refund_total) {
 		this.refund_total = refund_total;
 	}
 

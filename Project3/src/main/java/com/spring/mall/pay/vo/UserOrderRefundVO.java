@@ -7,8 +7,8 @@ public class UserOrderRefundVO {
 	private String refund_reason;
 	private int refund_status;
 	private int order_detail_id;
-	private Date refund_date;
-	private double refund_total;
+	private String refund_date;
+	private int refund_total;
 	
 	
 	public UserOrderRefundVO() {
@@ -17,7 +17,7 @@ public class UserOrderRefundVO {
 
 
 	public UserOrderRefundVO(int refund_id, String refund_reason, int refund_status, int order_detail_id,
-			Date refund_date, double refund_total) {
+			String refund_date, int refund_total) {
 		super();
 		this.refund_id = refund_id;
 		this.refund_reason = refund_reason;
@@ -68,22 +68,22 @@ public class UserOrderRefundVO {
 	}
 
 
-	public Date getRefund_date() {
+	public String getRefund_date() {
 		return refund_date;
 	}
 
 
-	public void setRefund_date(Date refund_date) {
+	public void setRefund_date(String refund_date) {
 		this.refund_date = refund_date;
 	}
 
 
-	public double getRefund_total() {
+	public int getRefund_total() {
 		return refund_total;
 	}
 
 
-	public void setRefund_total(double refund_total) {
+	public void setRefund_total(int refund_total) {
 		this.refund_total = refund_total;
 	}
 

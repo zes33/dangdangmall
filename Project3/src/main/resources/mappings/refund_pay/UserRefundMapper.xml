@@ -6,9 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertRefund" parameterType="com.spring.mall.pay.vo.UserOrderRefundVO">
 	INSERT INTO USERORDER_REFUND
-		(REFUND_ID, REFUND_REASON, REFUND_STATUS, ORDER_DETAIL_ID, REFUND_DATE, REFUND_TOTAL)
-		VALUES((SELECT NVL(MAX(REFUND_ID),0) + 1 FROM USERORDER_REFUND), #{refund_reason},1, #{order_detail_id}
-		, SYSDATE, #{refund_total})
+		(REFUND_ID, REFUND_REASON, REFUND_STATUS, ORDER_DETAIL_ID)
+		VALUES((SELECT NVL(MAX(REFUND_ID),0) + 1 FROM USERORDER_REFUND), #{refund_reason}, 1, #{order_detail_id})
 	</insert>
  
  	<select id="getOrderOne" parameterType="com.spring.mall.user.vo.MyInfoVO"
