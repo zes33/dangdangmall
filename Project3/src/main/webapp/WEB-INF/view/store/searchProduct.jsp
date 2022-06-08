@@ -23,6 +23,23 @@
 
 <!-- css 스크립트 삽입 -->
 <link href="common/styles.css" rel="stylesheet">
+<script>
+function productDetailView(product_id){
+    let f = document.createElement('form');
+    
+    let obj;
+    obj = document.createElement('input');
+    obj.setAttribute('type', 'hidden');
+    obj.setAttribute('name', 'product_id');
+    obj.setAttribute('value', product_id);
+    
+    f.appendChild(obj);
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', '${pageContext.request.contextPath }/viewPrdDetail.do'); 
+    document.body.appendChild(f);
+    f.submit();
+}
+</script>
 </head>
 <body>
 
@@ -46,7 +63,7 @@
 				</select> 
 				<input type="text" name="searchKeyword">
 				<input type="submit" value="검색"> 
-			<%-- 	 ${productList }   --%>
+				 <%-- ${productListS}  --%>  
 					</td>
 		</tr>
 	</table>
