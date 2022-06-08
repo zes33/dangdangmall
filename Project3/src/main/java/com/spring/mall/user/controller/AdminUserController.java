@@ -29,4 +29,9 @@ public class AdminUserController {
 		return "admin/userList";
 	}
 	
+	@GetMapping("adminMain.do")
+	public String adminMain() {
+		return "admin/adminMain";
+	}
+	
 }

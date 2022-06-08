@@ -53,7 +53,7 @@ public class UserLoginController {
 		}else if(user.getUser_state() == 2) {
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록
 			session.setAttribute("user_id", user.getUser_id());
-			location = "admin/adminMain"; 
+			location = "redirect:/admin/adminMain.do"; 
 		}else{
 			System.out.println("회원 로그인 성공~");
 			session.setAttribute("user", user); //user라는 이름으로 세션에 등록

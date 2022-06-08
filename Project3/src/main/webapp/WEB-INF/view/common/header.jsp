@@ -65,11 +65,11 @@
 							<a class="btn btn-sm btn-outline-secondary"
 								href="${pageContext.request.contextPath }/join.do">회원가입</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary"
-								href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
+								href="${pageContext.request.contextPath }/user/getCenterListPaging.do">고객센터</a>
 						</c:when>
 						<c:when test="${user.user_state eq 2}">
 							<a class="btn btn-sm btn-outline-secondary"
-								href="${pageContext.request.contextPath }/admin/admin.do">관리자</a>&nbsp;&nbsp;
+								href="${pageContext.request.contextPath }/admin/adminMain.do">관리자뷰</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary"
 								href="${pageContext.request.contextPath }/main.do">고객뷰</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary"
@@ -96,11 +96,20 @@
 		<div class="container">
 			<div
 				class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-
-				<a class="blog-header-logo text-dark"
-					href="${pageContext.request.contextPath }/main.do"> <img
-					alt="로고" src="${pageContext.request.contextPath }/img/logo1.png"
-					width="500" height="200" /></a>
+				<c:choose>
+					<c:when test="${user.user_state eq 2}">
+						<a class="blog-header-logo text-dark"
+							href="${pageContext.request.contextPath }/admin/adminMain.do"> <img
+							alt="로고" src="${pageContext.request.contextPath }/img/logo1.png"
+							width="500" height="200" /></a>
+					</c:when>
+					<c:otherwise>
+						<a class="blog-header-logo text-dark"
+							href="${pageContext.request.contextPath }/main.do"> <img
+							alt="로고" src="${pageContext.request.contextPath }/img/logo1.png"
+							width="500" height="200" /></a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<!-- <ul class="nav nav-pills justify-content-center">
