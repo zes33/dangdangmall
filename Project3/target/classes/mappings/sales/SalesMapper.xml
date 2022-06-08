@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="salesDAO">
+	
+	<!-- 요일별 결제 총액 -->
+	<select id="byDaySales" resultType="map">
+		SELECT SUBSTR(IAMPORT_IMP_UID, 7,2) AS DAY , SUM(ALLSUM)
+			FROM PAYMENT 
+			GROUP BY SUBSTR(IAMPORT_IMP_UID, 7,2)
+	</select>
+	
+	<!-- 요일별 환불 총액 -->
+
+
+
+</mapper>

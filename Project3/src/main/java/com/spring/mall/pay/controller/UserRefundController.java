@@ -48,12 +48,14 @@ public class UserRefundController {
 	
 	
 	@RequestMapping("/refundAction.do")
-	public String refundAction(UserOrderRefundVO vo, String refund_reason, int order_detail_id) {
+	public String refundAction(UserOrderRefundVO vo, String refund_reason, int order_detail_id, double refund_total) {
 		System.out.println("refund_reason : " + refund_reason);
 		System.out.println("order_detail_id : " + order_detail_id);
+		System.out.println("refund_total : " + refund_total);
 		
 		vo.setRefund_reason(refund_reason);
 		vo.setOrder_detail_id(order_detail_id);
+		vo.setRefund_total(refund_total);
 		
 		userRefundService.insertRefund(vo);
 		

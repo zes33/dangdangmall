@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +59,7 @@
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+	<div>\${ oneOrder} : ${ oneOrder}</div>
 	<div id="body-wrapper">
 		<div id="body-content" class="container">
 			<br /></br/>
@@ -91,10 +93,10 @@
 								value="${oneOrder.product_name}" readonly></td>
 						</tr>
 						<tr>
-							<td>가격</td>
-							<td colspan="2"><input id="product_price" name="product_price"
+							<td>환불 가격</td>
+							<td colspan="2"><input id="refund_total" name="refund_total"
 								type="text" class="form-control" maxlength="20"
-								value="${oneOrder.product_price}원" readonly></td>
+								value="${oneOrder.product_price * oneOrder.user_order_cnt *(1 - oneOrder.product_discount)}원" readonly></td>
 						</tr>
 						<tr>
 							<td>환불 사유</td>

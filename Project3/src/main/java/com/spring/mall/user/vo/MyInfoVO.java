@@ -25,7 +25,7 @@ public class MyInfoVO {
 	private int product_price;
 	private int product_stock;
 	private String product_info;
-	private int product_discount;
+	private double product_discount;
 	private int product_state;
 	
 	//USERORDER_REFUND 테이블
@@ -40,7 +40,7 @@ public class MyInfoVO {
 	public MyInfoVO(String order_id, String order_date, String order_addr, String order_addr_d, String order_zipcode,
 			String order_receiver, String order_phone, int order_total, int user_status, String user_id,
 			int order_detail_id, int user_order_cnt, int product_id, int category_code, String product_name,
-			int product_price, int product_stock, String product_info, int product_discount, int product_state,
+			int product_price, int product_stock, String product_info, double product_discount, int product_state,
 			int refund_id, String refund_reason, int refund_status) {
 		super();
 		this.order_id = order_id;
@@ -212,11 +212,11 @@ public class MyInfoVO {
 		this.product_info = product_info;
 	}
 
-	public int getProduct_discount() {
+	public double getProduct_discount() {
 		return product_discount;
 	}
 
-	public void setProduct_discount(int product_discount) {
+	public void setProduct_discount(double product_discount) {
 		this.product_discount = product_discount;
 	}
 

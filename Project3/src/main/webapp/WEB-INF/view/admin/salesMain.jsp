@@ -60,7 +60,6 @@
 	<header>
       <jsp:include page="../common/header.jsp"></jsp:include>
    </header>
-
 	<div class="container">
    <jsp:include page="sidebarTemplate.jsp"></jsp:include>
    	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);">
@@ -68,7 +67,7 @@
    	</div>
    
    <div class="contents">
-   
+   <h1>월별 매출 관리</h1>
    
    
    </div>
