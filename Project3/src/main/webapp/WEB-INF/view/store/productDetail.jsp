@@ -394,16 +394,18 @@ function replyList(nowPage, product_id) {
 
 			<c:choose>
 				<c:when test="${empty user }">
-					<br>
+					<br><br>
 					<p>상품문의는 로그인 후 가능합니다.</p>
 					<a href="login.do">로그인</a>
 				</c:when>
 				<c:otherwise>
 					<div id="prdQnaWrite">
+					<br><br>
 						<form id="prdQnaForm" role="form" method="post">
 							<textarea id="txtara" name="qna_content"></textarea>
 						</form>
-						<button type="button" id="testBtn" onclick="writeQna()">등록</button>
+						<button type="button" class="btn btn-outline-primary" id="testBtn" 
+						onclick="writeQna()">등록</button>
 					</div>
 				</c:otherwise>
 			</c:choose>

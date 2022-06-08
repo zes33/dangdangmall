@@ -134,7 +134,7 @@ function productDetailView(product_id){
 				<br><br><br>
 				
 				<nav aria-label="Page navigation example">
-				  <ul class="pagination">
+				  <ul class="pagination justify-content-center">
 				  
 				  
 				  <c:if test="${paging.startPage != 1 }">
