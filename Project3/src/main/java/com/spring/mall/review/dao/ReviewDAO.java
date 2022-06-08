@@ -1,5 +1,6 @@
 package com.spring.mall.review.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,26 @@ public class ReviewDAO {
 	
 	public ReviewDAO() {
 		System.out.println("ReviewDAO() 객체 생성");
+	}
+	
+	// 관리자 리뷰 검색결과 총수량 구하기
+	public int adminTotReviewCnt(String searchCondition, String searchKeyword) {
+		System.out.println("ReviewDAO.adminTotReviewCnt() 실행");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		return mybatis.selectOne("reviewDAO.adminTotReviewCnt", map);
+	}
+	
+	// 관리자 리뷰 목록 불러오기(페이징+검색결과)
+	public List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String start, String end){
+		System.out.println("ReviewDAO.adminReviewList() 실행");
+		Map<String, String> map =  new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("reviewDAO.adminReviewList", map);
 	}
 	
 	// oder_detail_id로 리뷰 존재여부 확인

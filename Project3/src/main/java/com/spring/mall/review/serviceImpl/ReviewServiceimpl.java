@@ -57,4 +57,14 @@ public class ReviewServiceimpl implements ReviewService{
 		return reviewDAO.reviewPerPrd(product_id);
 	}
 
+	@Override
+	public List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String start, String end) {
+		return reviewDAO.adminReviewList(searchCondition,searchKeyword,start, end);
+	}
+
+	@Override
+	public int adminTotReviewCnt(String searchCondition, String searchKeyword) {
+		return reviewDAO.adminTotReviewCnt(searchCondition, searchKeyword);
+	}
+
 }

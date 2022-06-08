@@ -30,6 +30,14 @@
 		text-decoration: none;
 		color: black;
 	}
+	
+	
+	
+	
+	
+	
+	
+
 </style>
 <script>
 function goInsertQna(qna_id){
@@ -62,7 +70,14 @@ function goInsertQna(qna_id){
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
 
-<div class="row">
+
+
+
+
+
+
+
+<div class="row"><!-- mine -->
 	<div class="col-sm-8 bowl">
 	<!-- 검색을 위한 폼 -->
 	<!-- <form action="getBoardList.do" method="get">  -->
@@ -70,7 +85,6 @@ function goInsertQna(qna_id){
 	<table class="border-none">
 		<tr>
 			<td>
-				 
 				<select name="searchCondition">
 					<option value="TITLE">제목</option>
 					<option value="CONTENT">내용</option>

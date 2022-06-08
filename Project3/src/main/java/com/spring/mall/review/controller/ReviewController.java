@@ -1,5 +1,6 @@
 package com.spring.mall.review.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,12 +10,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.mall.paging.service.PagingService;
 import com.spring.mall.paging.vo.PagingVO;
-import com.spring.mall.product.service.ProductService;
 import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.review.service.ReviewService;
 import com.spring.mall.review.vo.ReviewVO;
@@ -30,6 +31,53 @@ public class ReviewController {
 	
 	public ReviewController() {
 		System.out.println("ReviewController() 객체 생성");
+	}
+	
+	// 관리자 리뷰목록 페이지 이동
+	@RequestMapping("/adminReviewList.do")
+	public String adminReviewList(String searchCondition, 
+			String searchKeyword, PagingVO paging, Model model,
+			@RequestParam(value="nowPage", required=false)String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		System.out.println("관리자 리뷰목록 이동");
+		System.out.println("searchCondition : " + searchCondition);
+		System.out.println("searchKeyword : " + searchKeyword);
+		int total = reviewService.adminTotReviewCnt(searchCondition, searchKeyword);
+		System.out.println("total : " + total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		System.out.println("nowPage : " + nowPage);
+		System.out.println("startPage : " + paging.getStartPage());
+		System.out.println("endPage : " + paging.getEndPage());
+		
+		String start = Integer.toString(paging.getStart());
+		String end = Integer.toString(paging.getEnd());
+		List<Map<String, Object>> reviewList = reviewService.adminReviewList(searchCondition, searchKeyword, start, end);
+		
+		model.addAttribute("paging",paging);
+		model.addAttribute("reviewList",reviewList);
+		model.addAttribute("searchCondition",searchCondition);
+		model.addAttribute("searchKeyword",searchKeyword);
+		return "admin/reviewList";
+	}
+	
+	// 관리자 리뷰 페이지 검색 조건
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap(){
+		System.out.println("====> Map searchConditionMap() 실행");
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("내용", "REVIEW_CONTENT");
+		conditionMap.put("분류", "CATEGORY_CODE");
+		conditionMap.put("상품명", "PRODUCT_NAME");
+		conditionMap.put("상픔ID", "PRODUCT_ID");
+		return conditionMap;
 	}
 
 	// 상품리뷰 더보기

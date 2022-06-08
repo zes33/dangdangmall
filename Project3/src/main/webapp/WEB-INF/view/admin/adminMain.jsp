@@ -48,7 +48,7 @@
       </thead>
          <tr>
             <td><button type="button" class="btn btn-light" onclick="location.href='adminGetProductList.do'">상품 목록</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품후기 조회</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminReviewList.do'">상품후기 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='adminUserList.do'">회원정보 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='adminGetCenterList.do'">고객 문의 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">판매내역 조회</button></td>
@@ -56,7 +56,8 @@
          </tr>
          <tr>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 등록</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품후기 삭제</button></td>
+           <!--  <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품후기 삭제</button></td> -->
+             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">회원 삭제</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">문의 삭제</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">배송상태 변경</button></td>
@@ -64,7 +65,7 @@
          </tr>
          <tr>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 삭제</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
+            <td></td>
             <td></td>
             <td></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminRefund/adminRefundView.do'">환불 요청 목록</button></td>

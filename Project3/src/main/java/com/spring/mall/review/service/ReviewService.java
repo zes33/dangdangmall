@@ -16,5 +16,7 @@ public interface ReviewService {
 	void updateReview(ReviewVO review);
 	void deleteReview(ReviewVO review);
 	List<Map<String, Object>> reviewPerPrd(int product_id);
+	List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String start, String end);
+	int adminTotReviewCnt(String searchCondition,String searchKeyword);
 	
 }
