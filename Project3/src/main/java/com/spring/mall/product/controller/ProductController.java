@@ -34,6 +34,14 @@ public class ProductController {
 		System.out.println("ProductController() 객체 생성~~");
 	}
 	
+	// 상품 수정 페이지 이동
+	@RequestMapping("/updateProduct.do")
+	public String updateProduct() {
+		System.out.println("product컨트롤러.updateProduct() 실행");
+		
+		return "admin/updateProduct";
+	}
+	
 	// 관리자 상품목록 페이지
 	@RequestMapping("/adminProductList.do")
 	public String productInfo(String searchCondition, String searchKeyword, 
@@ -76,11 +84,12 @@ public class ProductController {
 	
 	// 관리자 상품 상세페이지 이동
 	@RequestMapping("/productInfo.do")
-	public String productInfo() {
+	public String productInfo(ProductVO vo, Model model) {
 		System.out.println("product컨트롤러.productInfo() 실행");
+		ProductVO product = productService.getProduct(vo);
+		model.addAttribute("product",product);
 		
-		
-		return "admin/productInfomation";
+		return "admin/productInformation";
 	}
 	
 	// 상품등록 페이지 이동

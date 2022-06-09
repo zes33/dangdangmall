@@ -123,7 +123,6 @@ function goInsertQna(qna_id){
    
 		<div class="col-sm-12 bowl">
 		<div class="search col-sm-5">
-		<a href="${pageContext.request.contextPath }/productInfo.do">상품상세페이지</a>
 	  		<form action="adminProductList.do" method="post">
 			<table class="border-none">
 				<tr>
@@ -166,8 +165,8 @@ function goInsertQna(qna_id){
 					<th style="text-align: center" width="7%" >상품분류</th>
 					<th style="text-align: center" width="7%">상품번호</th>
 					<th style="text-align: center" width="10%" >상품명</th>
-					<th style="text-align: center" width="10%">가격</th>
-					<th style="text-align: center" width="8%">할인율</th>
+					<th style="text-align: center" width="10%">가격(원)</th>
+					<th style="text-align: center" width="8%">할인율(%)</th>
 					<th style="text-align: center" width="11%">상품상태</th>
 				</tr>
 			</thead>
@@ -184,9 +183,17 @@ function goInsertQna(qna_id){
 					<td style="text-align: center">${prdList.R_NUM }</td>
 					<td style="text-align: center" class="aa ${prdList.CATEGORY_CODE }"></td>
 					<td style="text-align: center" >${prdList.PRODUCT_ID }</td>
-					<td style="text-align: center">${prdList.PRODUCT_NAME }</td>
-					<td style="text-align: center">${prdList.PRODUCT_PRICE }</td>
-					<td style="text-align: center">${prdList.PRODUCT_DISCOUNT }</td>
+					<td style="text-align: center">
+						<a href="${pageContext.request.contextPath }/productInfo.do?product_id=${prdList.PRODUCT_ID}">
+						${prdList.PRODUCT_NAME }
+						</a>
+					</td>
+					<td style="text-align: center">
+					<fmt:formatNumber value="${prdList.PRODUCT_PRICE }" pattern="#,###" />
+					</td>
+					<td style="text-align: center">
+						<fmt:formatNumber value="${prdList.PRODUCT_DISCOUNT * 100}" pattern="#,###" />
+					</td>
 					<td style="text-align: center" class="a${prdList.PRODUCT_STATE }"></td>
 				</tr>
 			</c:forEach>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,6 +78,25 @@
 	width: 150px;
 }
 </style>
+<script>
+$(document).ready(function () {
+
+	$(".1").html("식품");
+	$(".2").html("운동");
+
+	$(".a1").html("판매중");
+	$(".a2").html("판매중지");
+
+})
+
+function goPrdList() {
+	location.href = "${pageContext.request.contextPath }/adminProductList.do";
+}
+
+function editPrrd() {
+	location.href="${pageContext.request.contextPath }/updateProduct.do";
+}
+</script>
 </head>
 <body>
 	<header>
@@ -90,66 +112,57 @@
    	<div class="goods">
               <img src="./img/과일주스여러개.jpg" alt="..." width= "480px" height="448px">
            <div id="tit">
-              <div class="h3"><strong>과일주스~~(제목)</strong></div>
-              <div class="text-black-50 h5"><small>건강하게 마시는(더 맛깔나게 꾸미는 글..)</small></div>   
+              <div class="h3"><strong>${product.product_name }</strong></div>
            <hr>
            <div class="item">
               <ul class="list-inline">
               	 <li id="litag">
                      <strong>상품번호</strong> &nbsp;&nbsp;&nbsp;
                      <div>
-                         <span> 1번(번호넣어주세요) </span>
+                         <span> ${product.product_id } </span>
                      </div>
                   </li>
                   
                  <li id="litag">
                     <strong>정가</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div>
-                    <span>12,000원</span>
+                    <span>
+                    	<fmt:formatNumber value="${product.product_price }" pattern="#,###" />원
+                    </span>
                     </div>
                  </li>
                  
-                  <li id="litag">
-                     <strong>구매제한</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                   <li id="litag">
+                     <strong>상품 분류</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                      <div>
-                         <span> 최소  1개  </span>
+                         <span class="${product.category_code }"> </span>
                      </div>
                   </li>
                    <li id="litag">
-                     <strong>상품구분</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                     <strong>재고</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <div>
-                         <span> 식품 </span>
-                     </div>
-                  </li>
-                   <li id="litag">
-                     <strong>수량</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <div>
-                         <span> 1개 </span>
-                     </div>
-                  </li>
-                  <li id="litag">
-                     <strong>상품설명</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                     <div>
-                         <span> 필요없으면 삭제만 하세요~ </span>
+                         <span> ${product.product_stock } </span>
                      </div>
                   </li>
                   <li id="litag">
                      <strong>할인율</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                      <div>
-                         <span> 10% </span>
+                         <span>
+                         	<fmt:formatNumber value="${product.product_discount * 100}" pattern="#,###" />%
+                         </span>
                      </div>
                   </li>
                   <li id="litag">
                      <strong>상품판매상태</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                      <div>
-                         <span> 판매중 </span>
+                         <span class="a${product.product_state }">  </span>
                      </div>
                   </li>
                   <li><br><br></li>
                   <li>
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-top:36px; margin-left: -15px;">
-                     <input class="btn btn-success" type="submit" value="상품 목록">
-                     <input class="btn btn-success" type="submit" value="상품 수정">
+                     <button onclick="goPrdList()" class="btn btn-success" type="button">상품 목록</button>
+                     <button onclick="editPrrd()" class="btn btn-success" type="button" >상품 수정</button>
                     </div>
                </li>
               </ul>
