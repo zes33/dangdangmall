@@ -119,6 +119,14 @@ $(document).ready(function () {
 					<button type="submit"  id="ss">검색</button>
 				</td>
 			</tr>
+			<tr>
+				<td style="text-align: left;">
+					<br>
+					<span><b>[상품분류]</b></span>
+					<input style="margin-left: 10px;" type="radio" name="prd_category" value="1">식품
+					<input style="margin-left: 10px;" type="radio" name="prd_category" value="2">운동
+				</td>
+			</tr>
 		</table>
 		<br>
 		</form>
@@ -129,7 +137,7 @@ $(document).ready(function () {
 		<thead style="text-align: center">
 			<tr>
 				<th style="text-align: center" width="4%" >NO.</th>
-				<th style="text-align: center" width="4%">분류</th>
+				<th style="text-align: center" width="6%">상품분류</th>
 				<th style="text-align: center" width="9%">상품번호</th>
 				<th style="text-align: center" width="8%" >상품명</th>
 				<th style="text-align: center" width="30%">내용</th>
@@ -183,7 +191,7 @@ $(document).ready(function () {
 	  <ul class="navul">
 	  <c:if test="${paging.startPage != 1 }">
 	    <li>
-	      <a style=" margin-left: 10px;" href="adminReviewList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}"
+	      <a style=" margin-left: 10px;" href="adminReviewList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_category=${prd_category}"
 	       aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&laquo;</span>
 	      </a>
@@ -196,14 +204,14 @@ $(document).ready(function () {
 					<li><b style="font-size: 20px;  margin-left: 10px;" >${p }</b></li>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-	    			<li><a style="font-size: 20px;  margin-left: 10px;" href="adminReviewList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}">${p }</a></li>
+	    			<li><a style="font-size: 20px;  margin-left: 10px;" href="adminReviewList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_category=${prd_category}">${p }</a></li>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 	   
 	    <c:if test="${paging.endPage != paging.lastPage }">
 	    <li>
-	      <a style=" margin-left: 10px;" href="adminReviewList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}" aria-label="Previous">
+	      <a style=" margin-left: 10px;" href="adminReviewList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_category=${prd_category}" aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>

@@ -22,20 +22,22 @@ public class ReviewDAO {
 	}
 	
 	// 관리자 리뷰 검색결과 총수량 구하기
-	public int adminTotReviewCnt(String searchCondition, String searchKeyword) {
+	public int adminTotReviewCnt(String searchCondition, String searchKeyword, String prd_category) {
 		System.out.println("ReviewDAO.adminTotReviewCnt() 실행");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("searchCondition", searchCondition);
 		map.put("searchKeyword", searchKeyword);
+		map.put("prd_category", prd_category);
 		return mybatis.selectOne("reviewDAO.adminTotReviewCnt", map);
 	}
 	
 	// 관리자 리뷰 목록 불러오기(페이징+검색결과)
-	public List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String start, String end){
+	public List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String prd_category, String start, String end){
 		System.out.println("ReviewDAO.adminReviewList() 실행");
 		Map<String, String> map =  new HashMap<String, String>();
 		map.put("searchCondition", searchCondition);
 		map.put("searchKeyword", searchKeyword);
+		map.put("prd_category", prd_category);
 		map.put("start", start);
 		map.put("end", end);
 		return mybatis.selectList("reviewDAO.adminReviewList", map);

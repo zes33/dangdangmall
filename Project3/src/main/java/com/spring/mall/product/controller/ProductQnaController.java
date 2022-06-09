@@ -170,19 +170,19 @@ public class ProductQnaController {
 	//----상품문의목록 불러오기(관리자)
 	@RequestMapping("/adminProductQnaList.do")
 	public String adminGetProductQnaList(String searchCondition, String qna_state,
-			String searchKeyword, PagingVO paging, Model model,
+			String searchKeyword, PagingVO paging, Model model, String prd_category,
 			@RequestParam(value="nowPage", required=false)String nowPage,
 			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("adminProductQnaList() 실행");
-		int total = productQnaService.adminTotPrdQnaCnt(searchCondition, searchKeyword, qna_state);
+		int total = productQnaService.adminTotPrdQnaCnt(searchCondition, searchKeyword, qna_state,prd_category);
 		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "8";
+			cntPerPage = "5";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "8";
+			cntPerPage = "5";
 		}
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		System.out.println("nowPage : " + nowPage);
@@ -193,18 +193,22 @@ public class ProductQnaController {
 		String end = Integer.toString(paging.getEnd());
 		
 		List<Map<String, Object>> list = productQnaService.getProductQnaListAdmin(searchCondition,
-													searchKeyword,qna_state, start, end);
+													searchKeyword,qna_state,prd_category, start, end);
 		model.addAttribute("productQnaList",list);
 		model.addAttribute("paging", paging);
 		model.addAttribute("searchCondition",searchCondition);
 		model.addAttribute("searchKeyword",searchKeyword);
 		model.addAttribute("qna_state",qna_state);
+		model.addAttribute("prd_category",prd_category);
 		
 		System.out.println("total : " + total);
 		System.out.println("list : " + list);
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
 		System.out.println("qna_state : " + qna_state);
+		System.out.println("prd_category : " + prd_category);
+		System.out.println("start : " + start);
+		System.out.println("end : "+end);
 		
 		return "admin/getProductQnaList";
 	}
@@ -215,7 +219,7 @@ public class ProductQnaController {
 		System.out.println("===>Map prdQnaSearchMap() 실행");
 		Map<String, String> prdQnaSearchMap = new HashMap<String, String>();
 		prdQnaSearchMap.put("내용", "QNA_CONTENT");
-		prdQnaSearchMap.put("상품분류", "CATEGORY_CODE");
+		//prdQnaSearchMap.put("상품분류", "CATEGORY_CODE");
 		prdQnaSearchMap.put("상품명", "PRODUCT_NAME");
 		prdQnaSearchMap.put("상품ID", "PRODUCT_ID");
 		return prdQnaSearchMap;

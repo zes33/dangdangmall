@@ -119,6 +119,9 @@ var nowPage = "<c:out value='${paging.nowPage}'/>";
 function replyList(nowPage, product_id) {
 	/* alert("replyList() 실행");
 	alert("nowPage : " + nowPage +"\nproduct_id : " + product_id); */
+	if(nowPage == 0){
+		nowPage = 1;
+	}
 	
 	$.ajax({
 		url : "qnaWithPaging.do",

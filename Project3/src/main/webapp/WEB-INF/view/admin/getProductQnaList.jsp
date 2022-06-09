@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>상품문의 목록</title>
 <style>
 	#container { width: 1200px; margin: auto; }
@@ -32,7 +34,7 @@
 	}
 	.search {
 	margin-top: 30px;
-	margin-left: 360px;
+	margin-left: 250px;
 	}
 	.bowl {
 		text-align: center;
@@ -74,6 +76,14 @@
 
 </style>
 <script>
+$(document).ready(function () {
+
+	$(".1").html("식품");
+	$(".2").html("운동");
+
+})
+
+
 function goInsertQna(qna_id){
     let f = document.createElement('form');
     
@@ -111,21 +121,35 @@ function goInsertQna(qna_id){
 		<div class="col-sm-12 bowl">
 		<!-- 검색을 위한 폼 -->
 		<!-- <form action="getBoardList.do" method="get">  -->
-		<div class="search col-sm-5">
+		<div class="search col-sm-7">
 	  		<form action="adminProductQnaList.do" method="post">
 			<table class="border-none">
 				<tr>
 					<td>
 						<select name="searchCondition" style="width: 80px;">
-						<c:forEach var="option" items="${prdQnaSearchMap }">
-							<option value="${option.value }">${option.key }</option>
-						</c:forEach>
+							<c:forEach var="option" items="${prdQnaSearchMap }">
+								<option value="${option.value }">${option.key }</option>
+							</c:forEach>
 						</select>
 						<input type="text" name="searchKeyword">
-						<input type="radio" name="qna_state" value="0">답변대기
-						<input type="radio" name="qna_state" value="1">답변완료
-						<input type="radio" name="qna_state" value="2">전체선택
+						
 						<button type="submit" >검색</button>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						<br>
+						<span><b>[상품분류]</b></span>
+						<input style="margin-left: 10px;" type="radio" name="prd_category" value="1">식품
+						<input style="margin-left: 10px;" type="radio" name="prd_category" value="2">운동
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						<span><b>[답변상태]</b></span>
+						<input style="margin-left: 10px;" type="radio" name="qna_state" value="0">답변대기
+						<input style="margin-left: 10px;" type="radio" name="qna_state" value="1">답변완료
+						<input style="margin-left: 10px;" type="radio" name="qna_state" value="2">전체선택
 					</td>
 				</tr>
 			</table>
@@ -139,14 +163,15 @@ function goInsertQna(qna_id){
 		<table class="table table-hover table1">
 			<thead>
 				<tr>
-					<th style="text-align: center" width="7%" >NO.</th>
+					<th style="text-align: center" width="5%" >NO.</th>
+					<th style="text-align: center" width="7%" >상품분류</th>
 					<th style="text-align: center" width="7%">상품번호</th>
-					<th style="text-align: center" width="15%" >상품명</th>
-					<th style="text-align: center" width="37%">내용</th>
-					<th style="text-align: center" width="10%">ID</th>
-					<th style="text-align: center">문의날짜</th>
-					<th style="text-align: center">답변상태</th>
-					<th></th>
+					<th style="text-align: center" width="10%" >상품명</th>
+					<th style="text-align: center" width="30%">내용</th>
+					<th style="text-align: center" width="8%">작성자</th>
+					<th style="text-align: center" width="11%">작성일</th>
+					<th style="text-align: center" width="7%">답변상태</th>
+					<th style="text-align: center" width="8%"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -160,17 +185,20 @@ function goInsertQna(qna_id){
 			<c:forEach var="productQna" items="${productQnaList }">
 				<tr>
 					<td style="text-align: center">${productQna.R_NUM }</td>
+					<td style="text-align: center" class="${productQna.CATEGORY_CODE }"></td>
 					<td style="text-align: center" >${productQna.PRODUCT_ID }</td>
 					<td style="text-align: center">
 						<span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.PRODUCT_NAME }</span>
 					</td>
 					<td style="text-align: center">
 						<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${productQna.QNA_GROUP }">
-						${productQna.qna_content }</a>
+						${productQna.QNA_CONTENT }</a>
 					</td>
 					
 					<td style="text-align: center">${productQna.USER_ID }</td>
-					<td style="text-align: center">${productQna.PRODUCT_QNA_DATE }</td>
+					<td style="text-align: center">
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${productQna.PRODUCT_QNA_DATE }"/>
+					</td>
 					<c:choose>
 					<c:when test="${0 eq productQna.PRODUCT_QNA_STATE }">
 						<td style="text-align: center">답변대기</td>
@@ -204,7 +232,7 @@ function goInsertQna(qna_id){
 	  <ul class="navul">
 	  <c:if test="${paging.startPage != 1 }">
 	    <li>
-	      <a style=" margin-left: 10px;" href="adminProductQnaList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}"
+	      <a style=" margin-left: 10px;" href="adminProductQnaList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}&prd_category=${prd_category}"
 	       aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&laquo;</span>
 	      </a>
@@ -217,14 +245,14 @@ function goInsertQna(qna_id){
 					<li><b style="font-size: 20px;  margin-left: 10px;" >${p }</b></li>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-	    			<li><a style="font-size: 20px;  margin-left: 10px;" href="adminProductQnaList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}">${p }</a></li>
+	    			<li><a style="font-size: 20px;  margin-left: 10px;" href="adminProductQnaList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}&prd_category=${prd_category}">${p }</a></li>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 	   
 	    <c:if test="${paging.endPage != paging.lastPage }">
 	    <li>
-	      <a style=" margin-left: 10px;" href="adminProductQnaList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}" aria-label="Previous">
+	      <a style=" margin-left: 10px;" href="adminProductQnaList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}&prd_category=${prd_category}" aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>
@@ -239,7 +267,21 @@ function goInsertQna(qna_id){
 </div>
 
 
+<style>
+.navul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
 
+.navul>li {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+}
+
+</style>
 
 
 

@@ -11,7 +11,7 @@ public interface ProductQnaService {
 	public List<Map<String, Object>> myPrdQnaList(String user_id, String start, String end);
 	public List<ProductQnaNickVO> viewPrdQnaSet(ProductQnaNickVO vo);
 	public List<Map<String, Object>> getProductQnaListAdmin(String searchCondition, 
-			String searchKeyword, String qna_state, String start, String end);
+			String searchKeyword, String qna_state, String prd_category, String start, String end);
 	public List<ProductQnaNickVO> qnaNickList(int product_id);
 	public void insertProductQna(ProductQnaVO vo);
 	public ProductQnaNickVO getProductQnaNick(ProductQnaNickVO vo);
@@ -23,5 +23,5 @@ public interface ProductQnaService {
 	public void updateQna(ProductQnaNickVO vo);
 	public ProductQnaNickVO viewPrdQnaOne(ProductQnaNickVO vo);
 	public int totMyPrdQna(String user_id);
-	public int adminTotPrdQnaCnt(String searchCondition, String searchKeyword, String qna_state);
+	public int adminTotPrdQnaCnt(String searchCondition, String searchKeyword, String qna_state, String prd_category);
 }

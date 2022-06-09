@@ -12,18 +12,25 @@
         WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
         AND D.ORDER_ID = O.ORDER_ID
         AND D.PRODUCT_ID = P.PRODUCT_ID
-      	<if test="searchCondition == 'CATEGORY_CODE' ">
-      		AND P.CATEGORY_CODE LIKE '%'||TO_NUMBER(#{searchKeyword})||'%'
-      	</if>
-      	<if test="searchCondition == 'REVIEW_CONTENT' ">
-      		AND R.REVIEW_CONTENT LIKE '%'||#{searchKeyword}||'%'
-      	</if>
-      	<if test="searchCondition == 'PRODUCT_ID' ">
-      		AND P.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
-      	</if>
-      	<if test="searchCondition == 'PRODUCT_NAME' ">
-      		AND P.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
-      	</if>
+        <if test="searchKeyword != '' ">
+	      	<if test="searchCondition == 'REVIEW_CONTENT' ">
+	      		AND R.REVIEW_CONTENT LIKE '%'||#{searchKeyword}||'%'
+	      	</if>
+	      	<if test="searchCondition == 'PRODUCT_ID' ">
+		      	AND P.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+	      	</if>
+	      	<if test="searchCondition == 'PRODUCT_NAME' ">
+	      		AND P.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+	      	</if>
+	     </if>
+	      	<if test="prd_category != '' ">
+	      		<if test="prd_category == 1 ">
+	      			AND P.CATEGORY_CODE = 1
+	      		</if>
+	      		<if test="prd_category == 2 ">
+	      			AND P.CATEGORY_CODE = 2
+	      		</if>
+	      	</if>
         ORDER BY O.ORDER_DATE DESC
 	</select>
 	
@@ -36,18 +43,25 @@
 		        WHERE R.ORDER_DETAIL_ID = D.ORDER_DETAIL_ID
 		        AND D.ORDER_ID = O.ORDER_ID
 		        AND D.PRODUCT_ID = P.PRODUCT_ID
-		      	<if test="searchCondition == 'CATEGORY_CODE' ">
-		      		AND P.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
+	      		<if test="searchKeyword != '' ">
+			      	<if test="searchCondition == 'REVIEW_CONTENT' ">
+			      		AND R.REVIEW_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			      	</if>
+			      	<if test="searchCondition == 'PRODUCT_ID' ">
+				      	AND P.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+			      	</if>
+			      	<if test="searchCondition == 'PRODUCT_NAME' ">
+			      		AND P.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+			      	</if>
 		      	</if>
-		      	<if test="searchCondition == 'REVIEW_CONTENT' ">
-		      		AND R.REVIEW_CONTENT LIKE '%'||#{searchKeyword}||'%'
-		      	</if>
-		      	<if test="searchCondition == 'PRODUCT_ID' ">
-		      		AND P.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
-		      	</if>
-		      	<if test="searchCondition == 'PRODUCT_NAME' ">
-		      		AND P.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
-		      	</if>
+		      	<if test="prd_category != '' ">
+		      		<if test="prd_category == 1 ">
+		      			AND P.CATEGORY_CODE = 1
+		      		</if>
+		      		<if test="prd_category == 2 ">
+		      			AND P.CATEGORY_CODE = 2
+		      		</if>
+      			</if>
 		        ORDER BY O.ORDER_DATE DESC) A)
 		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
 	</select>

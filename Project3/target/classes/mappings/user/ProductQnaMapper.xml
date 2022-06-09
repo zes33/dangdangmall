@@ -102,28 +102,40 @@
 		WHERE QNA.Q_OR_A = 0
 		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
 		AND QNA.USER_ID = USERS.USER_ID
-		<if test="searchCondition == 'QNA_CONTENT' ">
-			AND QNA.QNA_CONTENT LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition == 'CATEGORY_CODE' ">
-			AND PRODUCT.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
-		</if>
-		<if test="searchCondition == 'PRODUCT_ID' ">
-      		AND PRODUCT.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+		<if test="searchKeyword != '' ">
+			<if test="searchCondition == 'QNA_CONTENT' ">
+				AND QNA.QNA_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'CATEGORY_CODE' ">
+				AND PRODUCT.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
+			</if>
+			<if test="searchCondition == 'PRODUCT_ID' ">
+		      	AND PRODUCT.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+	      	</if>
+	      	<if test="searchCondition == 'PRODUCT_NAME' ">
+	      		AND PRODUCT.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+	      	</if>
       	</if>
-      	<if test="searchCondition == 'PRODUCT_NAME' ">
-      		AND PRODUCT.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+      	<if test="prd_category != '' ">
+	      	<if  test="prd_category == 1 ">
+	      		AND PRODUCT.CATEGORY_CODE = 1
+	      	</if>
+	      	<if  test="prd_category == 2 ">
+	      		AND PRODUCT.CATEGORY_CODE = 2
+	      	</if>
       	</if>
-      	<if test="qna_state == '0' ">
-      		AND PRODUCT.PRODUCT_QNA_STATE = 0
+      	<if test="qna_state != '' ">
+	      	<if test="qna_state == 0 ">
+	      		AND QNA.PRODUCT_QNA_STATE = 0
+	      	</if>
+	      	<if test="qna_state == 1 ">
+	      		AND QNA.PRODUCT_QNA_STATE = 1
+	      	</if>
+	      	<if test="qna_state == 2 ">
+	      		AND 1 =1
+	      	</if>
       	</if>
-      	<if test="qna_state == '1' ">
-      		AND PRODUCT.PRODUCT_QNA_STATE = 1
-      	</if>
-      	<if test="qna_state == '2' ">
-      		AND 1 =1
-      	</if>
-		ORDER BY QNA_ID DESC
+		ORDER BY QNA.QNA_ID DESC
 	</select>
 
 	<!-- 전체 상품문의 조회(운영자) 페이징+검색 -->
@@ -135,36 +147,41 @@
 				WHERE QNA.Q_OR_A = 0
 				AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
 				AND QNA.USER_ID = USERS.USER_ID
-				<if test="searchCondition == 'QNA_CONTENT' ">
-					AND QNA.QNA_CONTENT LIKE '%'||#{searchKeyword}||'%'
-				</if>
-				<if test="searchCondition == 'CATEGORY_CODE' ">
-					AND PRODUCT.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
-				</if>
-				<if test="searchCondition == 'PRODUCT_ID' ">
-		      		AND PRODUCT.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+				<if test="searchKeyword != '' ">
+					<if test="searchCondition == 'QNA_CONTENT' ">
+						AND QNA.QNA_CONTENT LIKE '%'||#{searchKeyword}||'%'
+					</if>
+					<if test="searchCondition == 'CATEGORY_CODE' ">
+						AND PRODUCT.CATEGORY_CODE = TO_NUMBER(#{searchKeyword})
+					</if>
+					<if test="searchCondition == 'PRODUCT_ID' ">
+				      	AND PRODUCT.PRODUCT_ID = TO_NUMBER(#{searchKeyword})
+			      	</if>
+			      	<if test="searchCondition == 'PRODUCT_NAME' ">
+			      		AND PRODUCT.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+			      	</if>
 		      	</if>
-		      	<if test="searchCondition == 'PRODUCT_NAME' ">
-		      		AND PRODUCT.PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+		      	<if test="prd_category != '' ">
+			      	<if  test="prd_category == 1 ">
+			      		AND PRODUCT.CATEGORY_CODE = 1
+			      	</if>
+			      	<if  test="prd_category == 2 ">
+			      		AND PRODUCT.CATEGORY_CODE = 2
+			      	</if>
 		      	</if>
-		      	<if test="qna_state == '0' ">
-		      		AND PRODUCT.PRODUCT_QNA_STATE = 0
+		      	<if test="qna_state != '' ">
+			      	<if test="qna_state == 0 ">
+			      		AND QNA.PRODUCT_QNA_STATE = 0
+			      	</if>
+			      	<if test="qna_state == 1 ">
+			      		AND QNA.PRODUCT_QNA_STATE = 1
+			      	</if>
+			      	<if test="qna_state == 2 ">
+			      		AND 1 =1
+			      	</if>
 		      	</if>
-		      	<if test="qna_state == '1' ">
-		      		AND PRODUCT.PRODUCT_QNA_STATE = 1
-		      	</if>
-		      	<if test="qna_state == '2' ">
-		      		AND 1 =1
-		      	</if>
-				ORDER BY QNA_ID DESC) A)
+				ORDER BY QNA.QNA_ID DESC) A)
 		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
-		
-		<!-- SELECT QNA.*, PRODUCT.PRODUCT_NAME, USERS.USER_NICKNAME
-		FROM PRODUCT_QNA QNA, PRODUCT, USERS
-		WHERE QNA.Q_OR_A = 0
-		AND QNA.PRODUCT_ID = PRODUCT.PRODUCT_ID
-		AND QNA.USER_ID = USERS.USER_ID
-		ORDER BY QNA_ID DESC -->
 	</select>
 
 	<!-- 해당 상품의 문의 목록(상품 상세페이지) -->

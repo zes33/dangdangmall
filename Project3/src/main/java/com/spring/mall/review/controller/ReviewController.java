@@ -35,14 +35,14 @@ public class ReviewController {
 	
 	// 관리자 리뷰목록 페이지 이동
 	@RequestMapping("/adminReviewList.do")
-	public String adminReviewList(String searchCondition, 
+	public String adminReviewList(String searchCondition, String prd_category,
 			String searchKeyword, PagingVO paging, Model model,
 			@RequestParam(value="nowPage", required=false)String nowPage,
 			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("관리자 리뷰목록 이동");
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
-		int total = reviewService.adminTotReviewCnt(searchCondition, searchKeyword);
+		int total = reviewService.adminTotReviewCnt(searchCondition, searchKeyword,prd_category);
 		System.out.println("total : " + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -59,12 +59,18 @@ public class ReviewController {
 		
 		String start = Integer.toString(paging.getStart());
 		String end = Integer.toString(paging.getEnd());
-		List<Map<String, Object>> reviewList = reviewService.adminReviewList(searchCondition, searchKeyword, start, end);
+		List<Map<String, Object>> reviewList = reviewService.adminReviewList(searchCondition, searchKeyword,prd_category, start, end);
 		
 		model.addAttribute("paging",paging);
 		model.addAttribute("reviewList",reviewList);
 		model.addAttribute("searchCondition",searchCondition);
 		model.addAttribute("searchKeyword",searchKeyword);
+		model.addAttribute("prd_category",prd_category);
+		
+		System.out.println("searchCondition : " + searchCondition);
+		System.out.println("searchKeyword : " + searchKeyword);
+		System.out.println("prd_category : " + prd_category);
+		System.out.println("total : " + total);
 		return "admin/reviewList";
 	}
 	
@@ -74,7 +80,7 @@ public class ReviewController {
 		System.out.println("====> Map searchConditionMap() 실행");
 		Map<String, String> reviewConditionMap = new HashMap<String, String>();
 		reviewConditionMap.put("내용", "REVIEW_CONTENT");
-		reviewConditionMap.put("분류", "CATEGORY_CODE");
+		//reviewConditionMap.put("분류", "CATEGORY_CODE");
 		reviewConditionMap.put("상품명", "PRODUCT_NAME");
 		reviewConditionMap.put("상픔ID", "PRODUCT_ID");
 		return reviewConditionMap;

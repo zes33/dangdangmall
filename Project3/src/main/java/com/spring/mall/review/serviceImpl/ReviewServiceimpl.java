@@ -58,13 +58,13 @@ public class ReviewServiceimpl implements ReviewService{
 	}
 
 	@Override
-	public List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword, String start, String end) {
-		return reviewDAO.adminReviewList(searchCondition,searchKeyword,start, end);
+	public List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword,String prd_category, String start, String end) {
+		return reviewDAO.adminReviewList(searchCondition,searchKeyword,prd_category,start, end);
 	}
 
 	@Override
-	public int adminTotReviewCnt(String searchCondition, String searchKeyword) {
-		return reviewDAO.adminTotReviewCnt(searchCondition, searchKeyword);
+	public int adminTotReviewCnt(String searchCondition, String searchKeyword,String prd_category) {
+		return reviewDAO.adminTotReviewCnt(searchCondition, searchKeyword,prd_category);
 	}
 
 	@Override

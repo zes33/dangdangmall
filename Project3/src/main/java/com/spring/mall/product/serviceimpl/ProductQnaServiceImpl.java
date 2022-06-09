@@ -32,8 +32,8 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 
 	@Override
 	public List<Map<String, Object>> getProductQnaListAdmin(String searchCondition, 
-			String searchKeyword, String qna_state,String start, String end) {
-		return productQnaDAO.getProductQnaListAdmin(searchCondition,searchKeyword,qna_state,start, end);
+			String searchKeyword, String qna_state, String prd_category,String start, String end) {
+		return productQnaDAO.getProductQnaListAdmin(searchCondition,searchKeyword,qna_state,prd_category,start, end);
 	}
 
 	@Override
@@ -89,8 +89,8 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	}
 
 	@Override
-	public int adminTotPrdQnaCnt(String searchCondition, String searchKeyword, String qna_state) {
-		return productQnaDAO.adminTotPrdQnaCnt(searchCondition, searchKeyword, qna_state);
+	public int adminTotPrdQnaCnt(String searchCondition, String searchKeyword, String qna_state,String prd_category) {
+		return productQnaDAO.adminTotPrdQnaCnt(searchCondition, searchKeyword, qna_state,prd_category);
 	}
 
 
