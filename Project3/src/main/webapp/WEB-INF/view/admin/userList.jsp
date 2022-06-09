@@ -5,31 +5,79 @@
 <head>
 <meta charset="UTF-8">
 <title>고객목록 조회</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+
+<link rel="canonical"
+	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link href="common/styles.css" rel="stylesheet">
 <style>
-	#container { width: 700px; margin: auto; }
-	h1, h3, p { text-align: center; }
-	table { border-collapse: collapse; }
-	table, th, td {
-		border: 1px solid black;
-		margin: 0 auto;
-	}
-	.center { text-align: center; }
-	
-	.border-none, .border-none td { border: none; }
+
+#container { width: 1200px; margin: auto; }
+h1, h3, p { text-align: center; }
+table { border-collapse: collapse; }
+table, th, td {
+	border: 1px solid black;
+	margin: 0 auto;
+}
+.center { text-align: center; }
+
+.border-none, .border-none td { border: none; }
+
+.container {
+ 	position: relative;
+}
+#ss {
+	width: 100px;
+}
+
+.menuname {
+	position:relative;
+	top: 35px;
+	left: -25px;
+	border: 1px solid LightGray;
+	border-radius: 7px;
+	width: 1170px;
+	height: 140px;
+	font-family: "Audiowide", sans-serif;	
+}
+.centers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+	position:relative;
+	left: 0px;
+	top: 48px;
+	width: 1145px;
+	height: 600px;
+}
+
 </style>
 </head>
 <body>
 	<header>
-		<jsp:include page="../common/header.jsp"></jsp:include>
-	</header>
-	<div id="container">
+      <jsp:include page="../common/header.jsp"></jsp:include>
+   </header>
+   
+	<div class="container">
+   <jsp:include page="sidebarTemplate.jsp"></jsp:include>
+   	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
+   		<strong style="font-size:3vw">&lt; 회원정보 조회 &gt;</strong>
+   	</div>
 	<!-- 검색을 위한 폼 -->
 	<!-- <form action="getBoardList.do" method="get">  -->
+	<div class="contents">
 	<form>
 		<input type="hidden" name="seq" value="#">
 	<table class="border-none">
@@ -58,10 +106,10 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td class="center">ID1234</td>
-				<td class="center">홍길동</td>
-				<td class="center">홍길동입니다</td>
-				<td class="center">일반회원</td>
+				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">ID1234</a></td>
+				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">홍길동</a></td>
+				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">홍길동입니다</a></td>
+				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">일반회원</a></td>
 			</tr>
 			<tr>
 				<td class="center">ID5555</td>
@@ -70,8 +118,9 @@
 				<td class="center">VIP</td>
 			</tr>
 		</tbody>
-	</table>	
+	</table>
 </div>	
+</div>
 	<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

@@ -12,22 +12,48 @@
 	crossorigin="anonymous">
 <style>
 	#container { width: 900px; margin: auto; }
-	h1, h3, p { text-align: center; }
-	table { border-collapse: collapse; }
-	table, th, td {
-		border: 1px solid black;
-		margin: 0 auto;
-	}
+	p { text-align: right; }
+	
 	.center { text-align: center; }
 	
 	.border-none, .border-none td { border: none; }
+.container {
+ 	position: relative;
+}
+.menuname {
+	position:relative;
+	top: 35px;
+	left: -25px;
+	border: 1px solid LightGray;
+	border-radius: 7px;
+	width: 1170px;
+	height: 140px;
+	font-family: "Audiowide", sans-serif;	
+}
+.centers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+	position:relative;
+	left: 0px;
+	top: 48px;
+	width: 1145px;
+	height: 600px;
+}
 </style>
 </head>
 <body>
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-<div id="container">
+<div class="container">
+	<jsp:include page="sidebarTemplate.jsp"></jsp:include>
+	   	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
+	   		<strong style="font-size:3vw">&lt; 회원정보 조회 &gt;</strong>
+	   	</div>
+	   	<div class="contents">
 		<div class="card border-success mb-3" style="max-width: 35rem;">
 		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span class="h3"><strong>홍길동</strong></span><span><strong>님</strong></span>
 		  	<span class="text-success position-absolute top-0 end-0"><strong>일반회원</strong></span><br>abc123@naver.com</font></font></div>
@@ -48,7 +74,7 @@
 		    </font></font></p>
 		  </div>
 		</div>
-	</form>
+		</div>
 	<br>
 	
 </div>	

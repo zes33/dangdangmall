@@ -33,5 +33,10 @@ public class AdminUserController {
 	public String adminMain() {
 		return "admin/adminMain";
 	}
+	@GetMapping("adminUser.do")
+	public String adminUser() {
+		System.out.println("관리자 회원상세페이지(user.jsp 이동 - adminUser()");
+		return "admin/user";
+	}
 	
 }
