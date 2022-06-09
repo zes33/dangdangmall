@@ -63,6 +63,9 @@ table, th, td {
 	height: 600px;
 }
 
+.padding{
+	padding-left: 30px;
+}
 </style>
 </head>
 <body>
@@ -106,17 +109,26 @@ table, th, td {
 		</thead>
 		<tbody>
 			<tr>
-				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">ID1234</a></td>
+				<!-- <td><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button></td>  -->
+				<td class="center"><a class="btn btn-white text-decoration-none text-dark" data-toggle="collapse" data-target=".demo">ID1234</a></td>
 				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">홍길동</a></td>
 				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">홍길동입니다</a></td>
 				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">일반회원</a></td>
 			</tr>
+			
 			<tr>
-				<td class="center">ID5555</td>
-				<td class="center">을지문덕</td>
-				<td class="center">을지입니다</td>
-				<td class="center">VIP</td>
-			</tr>
+				<tr class="demo collapse">
+					<th class="center">이메일</th>
+					<th class="center">전화번호</th>
+					<th class="center">주소</th>
+					<th class="center">상세주소</th>
+				</tr>
+				<tr class="demo collapse">
+					<td class="center">test123@naver.com</td>
+					<td class="center">010-1234-1234</td>
+					<td class="center">서울시 서초구</td>
+					<td class="center">어디빌라어디동어디호</td>
+				</tr>
 		</tbody>
 	</table>
 </div>	
