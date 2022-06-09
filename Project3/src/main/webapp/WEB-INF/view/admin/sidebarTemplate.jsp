@@ -34,28 +34,27 @@
 			<div id="collapse1" class="panel-collapse collapse" role="tabpanel">
 				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 목록</strong></a></div>
 				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 등록</strong></a></div>
-				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 삭제</strong></a></div>
 			</div>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>회원관리</strong></a></div>
+			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>상품 후기/문의</strong></a></div>
 			<div id="collapse2" class="panel-collapse collapse" role="tabpanel">
+				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 후기 조회</strong></a></div>
+				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 문의 조회</strong></a></div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>회원관리</strong></a></div>
+			<div id="collapse3" class="panel-collapse collapse" role="tabpanel">
 				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>회원정보 조회</strong></a></div>
 				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>회원 삭제</strong></a></div>
 			</div>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>고객센터</strong></a></div>
-			<div id="collapse3" class="panel-collapse collapse" role="tabpanel">
+			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>고객센터</strong></a></div>
+			<div id="collapse4" class="panel-collapse collapse" role="tabpanel">
 				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>고객 문의 목록</strong></a></div>
 				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>고객 문의 삭제</strong></a></div>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>상품 후기관리</strong></a></div>
-			<div id="collapse4" class="panel-collapse collapse" role="tabpanel">
-				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>후기 조회</strong></a></div>
-				<div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>후기 삭제</strong></a></div>
 			</div>
 		</div>
 		<div class="panel panel-default">

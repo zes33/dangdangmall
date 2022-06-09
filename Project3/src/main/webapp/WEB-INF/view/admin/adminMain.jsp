@@ -28,6 +28,9 @@
    th {
       border-bottom: 1px solid black;
    }
+   .btn {
+   	width: 170px;
+   }
 </style>
 </head>
 <body>
@@ -58,13 +61,13 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 등록</button></td>
            <!--  <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품후기 삭제</button></td> -->
              <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">회원 삭제</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">문의 삭제</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='adminUser.do'">회원 삭제</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='#'">고객 문의 삭제</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">배송상태 변경</button></td>
             <td></td>
          </tr>
          <tr>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 삭제</button></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
