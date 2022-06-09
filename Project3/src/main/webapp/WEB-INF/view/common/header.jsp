@@ -49,35 +49,8 @@
 				<div class="col-1 text-center"></div>
 				<div class="col-10 d-flex justify-content-end align-items-center">
 
-					<!-- 검색을 위한 폼 -->
-					<form action="${pageContext.request.contextPath }/searchProduct/searchProductList.do" method="get">
-						<table class="border-none">
-							<tr>
-								<td>
-									<input type="text" name="searchKeyword"  id="searchKeyword" > 
-									<!-- <input type="submit" value="검색">  --><%-- ${productListS}  --%>
-									<button type="button" class="btn btn-block btn-success"
-									onclick="goSearch();"> 검색</button>
-								<script type="text/javascript">
-                     			function goSearch() {
-                     				var gett = document.getElementById("searchKeyword").value;
-                     					alert(gett);
-                     					location.href="${pageContext.request.contextPath }/searchProduct/searchProductList.do?searchKeyword="+gett; */
-                     				}
-                    			</script>
-								</td>
-							</tr>
-						</table>
-					</form>
-					<a class="link-secondary" href="#" aria-label="Search"> <svg
-							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="none" stroke="currentColor" stroke-linecap="round"
-							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-							viewBox="0 0 24 24">
-							<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
-							
-							<path d="M21 21l-5.2-5.2" /></svg>
-					</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<c:choose>
 						<c:when test="${empty user }">
 							<a class="btn btn-sm btn-outline-secondary"
@@ -108,7 +81,7 @@
 							<a class="btn btn-sm btn-outline-secondary"
 								href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary"
-								href="${pageContext.request.contextPath }/user/getCenterList.do">고객센터</a>
+								href="${pageContext.request.contextPath }/user/getCenterListPaging.do">고객센터</a>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -165,10 +138,11 @@
 	display: flex;
 }
 </style>
-			<div class="col-sm-8 navCenter">
+			<div class="col-sm-7 navCenter">
 				<style>
 .navCenter {
-	margin: auto;
+	/* margin: auto; */
+	margin-left: 120px;
 }
 </style>
 				<ul class="css-zjik7 eth8ztg3">
@@ -246,8 +220,47 @@ a:hover {
 							<a class="hi" href="#">새벽배송</a>
 						</div>
 					</li>
+					<div style="float:right; margin-left:50px;">
+			<!-- 검색을 위한 폼 -->
+					
+				</div>
 				</ul>
 
+			</div>
+			<!-- g -->
+			<div class="col-sm-4 " style="margin-left: 120px; margin-top: 10px;">
+				<form action="${pageContext.request.contextPath }/searchProduct/searchProductList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td>
+									<input type="text" name="searchKeyword"  id="searchKeyword" > 
+									<!-- <input type="submit" value="검색">  --><%-- ${productListS}  
+									
+									<button type="button" class="btn btn-block btn-success"
+									onclick="goSearch();"> 검색</button>--%>
+									<a class="link-secondary" onclick="goSearch();" aria-label="Search"> <svg
+							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+							fill="none" stroke="currentColor" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+							viewBox="0 0 24 24">
+							<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
+							<path d="M21 21l-5.2-5.2" /></svg>
+							</a>
+								<script type="text/javascript">
+                     			function goSearch() {
+                     				
+                     				var gett = document.getElementById("searchKeyword").value;
+	                     				if (gett == undefined) {
+	                     					alert("검색어를 입력해 주세요.");
+	                     				} else{
+	                     					location.href="${pageContext.request.contextPath }/searchProduct/searchProductList.do?searchKeyword="+gett; 
+                     					}
+                     				}
+                    			</script>
+								</td>
+							</tr>
+						</table>
+					</form>
 			</div>
 
 		</div>
