@@ -250,7 +250,7 @@ a:hover {
                      			function goSearch() {
                      				
                      				var gett = document.getElementById("searchKeyword").value;
-	                     				if (gett == undefined) {
+	                     				if (gett == "") {
 	                     					alert("검색어를 입력해 주세요.");
 	                     				} else{
 	                     					location.href="${pageContext.request.contextPath }/searchProduct/searchProductList.do?searchKeyword="+gett; 
