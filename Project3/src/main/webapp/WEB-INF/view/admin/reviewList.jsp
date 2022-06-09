@@ -146,14 +146,14 @@ $(document).ready(function () {
 				<th style="text-align: center" width="9%">별점</th>
 			</tr>
 		</thead>
-			<c:forEach var="reviewList" items="${reviewList }">
 			<%-- <c:choose>
-			<c:when test="${0 eq reviewList} ">
+			<c:when test="${0 == reviewList} ">
 			<tr>
-				<td>등록된 상품문의가 없습니다.</td>
+				<td colspan="8">등록된 상품문의가 없습니다.</td>
 			</tr>
 			</c:when>
 			<c:otherwise> --%>
+			<c:forEach var="reviewList" items="${reviewList }">
 			<tr>
 				<td style="text-align: center">${reviewList.R_NUM }</td>
 				<td style="text-align: center" class="category${reviewList.CATEGORY_CODE }"></td>
@@ -178,9 +178,9 @@ $(document).ready(function () {
 				</td>
 				<td style="text-align: center" class="star ${reviewList.REVIEW_GRADE }"></td>
 			</tr>
-			<%-- </c:otherwise>
-			</c:choose>--%>
 			</c:forEach> 
+			<%-- </c:otherwise>
+			</c:choose> --%>
 		</tbody>
 	</table>
 	<br><br>

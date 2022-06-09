@@ -31,11 +31,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
-//	@Override
-//	public void insertProduct(ProductVO vo) {
-//		productDAO.insertProduct(vo);
-//	}
-//	
+	@Override
+	public void insertProduct(ProductVO vo) {
+		productDAO.insertProduct(vo);
+	}
+	
 //	@Override
 //	public void updateProduct(ProductVO vo) {
 //		productDAO.updateProduct(vo);

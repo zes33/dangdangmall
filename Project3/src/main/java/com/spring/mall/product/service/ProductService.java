@@ -8,7 +8,7 @@ public interface ProductService {
 	
 	List<ProductVO> getProductListCategory(int category);
 
-//	void insertProduct(ProductVO vo);
+	void insertProduct(ProductVO vo);
 //	void updateProduct(ProductVO vo);
 //	void deleteProduct(ProductVO vo);
 	ProductVO getProduct(ProductVO vo);

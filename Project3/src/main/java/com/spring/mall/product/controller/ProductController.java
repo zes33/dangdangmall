@@ -1,19 +1,20 @@
 package com.spring.mall.product.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.mall.paging.service.PagingService;
 import com.spring.mall.paging.vo.PagingVO;
-import com.spring.mall.product.service.ProductQnaService;
 import com.spring.mall.product.service.ProductService;
 import com.spring.mall.product.vo.ProductQnaNickVO;
 import com.spring.mall.product.vo.ProductVO;
@@ -33,15 +34,52 @@ public class ProductController {
 		System.out.println("ProductController() 객체 생성~~");
 	}
 	
-	// 카테코리별 목록 페이지 이동
-//	@RequestMapping("/foodList.do")
-//	public String getFoodList(Model model) {
-//		System.out.println("ProductController.getFoodList() 실행");
-//		List<ProductVO> foodList = productService.getProductListCategory(1);
-//		model.addAttribute("foodList",foodList );
-//		return "store/foodProduct";
-//	}
+	// 관리자 상품 상세페이지 이동
+	@RequestMapping("/productInfo.do")
+	public String productInfo() {
+		System.out.println("product컨트롤러.productInfo() 실행");
+		return "admin/productInfomation";
+	}
 	
+	// 상품등록 페이지 이동
+	@RequestMapping("/goInsertProduct.do")
+	public String goInsertProduct() {
+		System.out.println("product컨트롤러.goInsertProduct() 실행");
+		
+		return "admin/productInsert";
+	}
+	
+	// 상품등록 처리-----
+	@RequestMapping("/insertProduct.do")
+	public String insertProduct(ProductVO product) throws IllegalStateException, IOException {
+		System.out.println("product컨트롤러.insertProduct()");
+		
+		MultipartFile pic_file = product.getPic_file();
+		MultipartFile info_file = product.getInfo_file();
+		System.out.println(">pic_file : " + pic_file);
+		System.out.println(">info_file : " + info_file);
+		
+		// 파일명 중복처리 제외
+		if(pic_file == null) {
+			System.out.println(":::pic_file 파라미터값이 존재하지 않습니다.");
+		} else if(!pic_file.isEmpty()) {
+			String pic_name = pic_file.getOriginalFilename();
+			System.out.println(">>info_name 원본명 : " + pic_name);
+			product.setProduct_pic(pic_name);
+			pic_file.transferTo(new File("C:/MyStudy/project3/"+pic_name));
+		} if(info_file ==  null) {
+			System.out.println(":::info_file 파라미터값이 존재하지 않습니다.");
+		} else if(!info_file.isEmpty()) {
+			String info_name = info_file.getOriginalFilename();
+			System.out.println(">>info_name 원본명 : " + info_name);
+			product.setProduct_info(info_name);
+			info_file.transferTo(new File("C:/MyStudy/project3/"+info_name));
+		}
+		
+		System.out.println("product : " + product);
+		productService.insertProduct(product);
+		return "admin/productList";
+	}
 	
 	// 상품 상세페이지
 	@RequestMapping("/viewPrdDetail.do")

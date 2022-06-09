@@ -11,11 +11,13 @@ public class ProductVO {
 	private String product_info;
 	private double product_discount;
 	private int product_state;
+	private String product_pic;
 	
 	private String searchCondition;
 	private String searchKeyword;
 	
-	private MultipartFile uploadFile;
+	private MultipartFile pic_file;
+	private MultipartFile info_file;
 	
 	public ProductVO() {
 		System.out.println(">> ProductVO() 객체 생성~~");
@@ -104,18 +106,31 @@ public class ProductVO {
 
 	public void setProduct_state(int product_state) {
 		this.product_state = product_state;
+	}	
+
+
+		public String getProduct_pic() {
+		return product_pic;
 	}
 
-	
 
-	@Override
+
+	public void setProduct_pic(String product_pic) {
+		this.product_pic = product_pic;
+	}
+
+
+
+		@Override
 	public String toString() {
 		return "ProductVO [product_id=" + product_id + ", category_code=" + category_code + ", product_name="
 				+ product_name + ", product_price=" + product_price + ", product_stock=" + product_stock
 				+ ", product_info=" + product_info + ", product_discount=" + product_discount + ", product_state="
-				+ product_state + ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword
-				+ ", uploadFile=" + uploadFile + "]";
+				+ product_state + ", product_pic=" + product_pic + ", searchCondition=" + searchCondition
+				+ ", searchKeyword=" + searchKeyword + ", pic_file=" + pic_file + ", info_file=" + info_file + "]";
 	}
+
+
 
 		//-------------------------------
 		public String getSearchCondition() {
@@ -133,10 +148,28 @@ public class ProductVO {
 		}
 
 		// 파일업로드 관련 ----------------------
-		public MultipartFile getUploadFile() {
-			return uploadFile;
+		
+
+		public MultipartFile getPic_file() {
+		return pic_file;
 		}
-		public void setUploadFile(MultipartFile uploadFile) {
-			this.uploadFile = uploadFile;
-		}	
+	
+	
+	
+		public void setPic_file(MultipartFile pic_file) {
+			this.pic_file = pic_file;
+		}
+	
+	
+	
+		public MultipartFile getInfo_file() {
+			return info_file;
+		}
+	
+	
+	
+		public void setInfo_file(MultipartFile info_file) {
+			this.info_file = info_file;
+		}
+
 }

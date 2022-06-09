@@ -28,6 +28,16 @@
 		ORDER BY PRODUCT_ID DESC
 	</select>
 	
+	
+	<insert id="insertProduct" parameterType="com.spring.mall.product.vo.ProductVO">
+		INSERT INTO PRODUCT (PRODUCT_ID, CATEGORY_CODE, PRODUCT_NAME, 
+							 PRODUCT_PRICE,PRODUCT_STOCK, PRODUCT_INFO, PRODUCT_DISCOUNT,
+							 PRODUCT_STATE,PRODUCT_PIC)
+		VALUES ((SELECT NVL(MAX(PRODUCT_ID)+1, 0) FROM PRODUCT), #{category_code}, #{product_name},
+			 #{product_price}, #{product_stock},#{product_info}, #{product_discount},
+			 				1,#{product_pic})
+	</insert>
+	
 	<!-- 
 	<select id="getProductList_N" parameterType="string" 
 		resultType="com.spring.mall.product.vo.ProductVO">
@@ -44,12 +54,6 @@
 		WHERE PRODUCT_ID = #{searchProductID}	
 	</select>
 	
-	
-	<insert id="insertProduct" parameterType="com.spring.mall.product.dao.insertProduct">
-		INSERT INTO PRODUCT (PRODUCT_ID, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_STOCK, PRODUCT_INFO, PRODUCT_DISCOUNT)
-		VALUES (SELECT NVL(MAX(PRODUCT_ID), 0) + 1 FROM PRODUCT), #{category_code}, #{product_name}, #{product_price}, #{product_stock}, 
-			#{product_info}, #{product_discount}
-	</insert>
 	
 	<update id="updateProduct" parameterType="com.spring.mall.product.dao.updateProduct">
 		UPDATE PRODUCT

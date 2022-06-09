@@ -132,7 +132,8 @@ function writeQna() {
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.")
 	} else {
-		document.forms[0].submit();
+		/* document.forms[1].submit(); */
+		$("#insertPrdAns").submit();
 	}
 }
 

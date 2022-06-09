@@ -178,7 +178,7 @@ function goInsertQna(qna_id){
 			<c:choose>
 			<c:when test="${empty productQnaList  }">
 				<tr>
-					<td>등록된 상품문의가 없습니다.</td>
+					<td colspan="9">등록된 상품문의가 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>

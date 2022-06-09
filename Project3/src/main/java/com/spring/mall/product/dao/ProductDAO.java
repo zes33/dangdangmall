@@ -37,11 +37,11 @@ public class ProductDAO {
 	
 	
 	
-//	public void insertProduct(ProductVO vo) {
-//		System.out.println("===> MyBatis 사용 insertProduct() 실행");
-//		mybatis.insert("productDAO.insertProduct", vo);
-//	}
-//	
+	public void insertProduct(ProductVO vo) {
+		System.out.println("===> MyBatis 사용 insertProduct() 실행");
+		mybatis.insert("productDAO.insertProduct", vo);
+	}
+	
 //	public void updateProduct(ProductVO vo) {
 //		System.out.println("===> MyBatis 사용 updateProduct() 실행");
 //		mybatis.update("productDAO.updateProduct", vo);
