@@ -61,7 +61,7 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 등록</button></td>
            <!--  <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품후기 삭제</button></td> -->
              <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='adminUser.do'">회원 삭제</button></td>
+           <!--  <td><button type="button" class="btn btn-light" onclick="location.href='adminUser.do'">회원 삭제</button></td> -->
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">고객 문의 삭제</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">배송상태 변경</button></td>
             <td></td>
