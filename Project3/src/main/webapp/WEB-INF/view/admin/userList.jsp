@@ -79,12 +79,12 @@ table, th, td {
    <jsp:include page="sidebarTemplate.jsp"></jsp:include>
    
    <!-- 이거 왜 겹쳐...? -->
-   <!-- 	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
+    	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);" >
    		<strong style="font-size:3vw">&lt; 회원정보 조회 &gt;</strong>
-   	</div> -->
-<div></div>
+   	</div> 
 	<!-- 데이터 표시 영역 -->
-	<table class="table table-hover">
+	<div style="margin-top: 100px;">
+	<table class="table table-hover" >
 		<thead>
 			<tr>
 				<th width="100" class="center">아이디</th>
@@ -110,7 +110,6 @@ table, th, td {
 		</tbody>
 	</table>
 </div>	
-</div>
 	<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
