@@ -83,7 +83,7 @@ table, th, td {
    		<strong style="font-size:3vw">&lt; 회원정보 조회 &gt;</strong>
    	</div> 
 	<!-- 데이터 표시 영역 -->
-	<div style="margin-top: 100px;">
+	<div style="margin-top: 60px;">
 	<table class="table table-hover" >
 		<thead>
 			<tr>
