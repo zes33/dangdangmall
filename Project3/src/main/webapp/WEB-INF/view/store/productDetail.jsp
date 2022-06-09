@@ -94,6 +94,8 @@ textarea {
 .grade {
 	color: red;
 }
+
+
 </style>
 <body>
 	<script>
@@ -214,7 +216,7 @@ function replyList(nowPage, product_id) {
 							class="text-danger">${fn:length(reviewList) }</span></strong></a></li>
 				<li class="nav-item"><a class="nav-link text-black-50"><small>|</small></a>
 				</li>
-				<li class="nav-item"><a class="nav-link text-dark"
+				<li class="nav-item"><a class="nav-link text-dark" style="background-color: white;"
 					href="#scrollspyHedding4"><strong>상품 문의</strong></a></li>
 			</ul>
 			<hr>
@@ -336,9 +338,101 @@ function replyList(nowPage, product_id) {
 				<h1>설명은 여기에~~</h1>
 			</div>
 			<h4 id="scrollspyHeading2">
-				<strong>상세 정보</strong>
+				<strong>상품 정보 고시</strong>
 			</h4>
-			<p>상세 정보는 여기에~~~~</p>
+			<br>
+			<table class="table">
+				<tr>
+					<th class="text-center table-active"><strong>용량, 수량</strong></th>
+					<td class="text-center">80g / 개</td>
+				</tr>
+				<tr>
+					<th class="text-center table-active"><strong>배송비 정책</strong></th>
+					<td class="text-center">2,500원 (10만원 이상 구매 시 무료)</td>
+				</tr>
+				<tr>
+					<th class="text-center table-active"><strong>보관방법</strong></th>
+					<td class="text-center">냉장보관</td>
+				</tr>
+				<tr>
+					<th class="text-center table-active"><strong>유통기한</strong></th>
+					<td class="text-center">제조일로부터 6일</td>
+				</tr>
+				<tr>
+					<th class="text-center table-active"><strong>식품유형</strong></th>
+					<td class="text-center">신선편의식품</td>
+				</tr>
+				<tr>
+					<th class="text-center table-active"><strong>생산지</strong></th>
+					<td class="text-center">아이티윌법인 주식회사/강남 서초구 테헤란로 5555</td>
+				</tr>
+				<tr>
+					<th class="text-center table-active"><strong>제품원재료명</strong></th>
+					<td class="text-center">그린믹스샐러드:양상추(국내산),적채(국내산, 치커리(국내산)<br>
+									파프리카믹스샐러드:양상추(국내산),파프리카(국내산),치커리(국내산),라디치오</td>
+				</tr>
+			</table>
+			<hr>
+			<h4><strong>배송 안내</strong></h4>
+			<br>
+			<table class="table">
+				<tr>
+					<th class="text-center table-active"><strong>지역</strong></th>
+					<th class="text-center table-active"><strong>배송여부</strong></th>
+					<th class="text-center table-active"><strong>배송비</strong></th>
+				</tr>
+				<tr>
+					<td class="text-center">일반</td>
+					<td class="text-center">가능</td>
+					<td class="text-center">2,500</td>
+				</tr>
+				<tr>
+					<td class="text-center">도서/산간</td>
+					<td class="text-center">가능</td>
+					<td class="text-center">2,500</td>
+				</tr>
+				<tr>
+					<td class="text-center">제주</td>
+					<td class="text-center">가능</td>
+					<td class="text-center">2,500</td>
+				</tr>
+			</table>
+			<ul style="list-style-type:square;">
+				<li>새벽배송/택배배송 구분 없이 당당배송 상품으로 10만원 이상 구매 시 무료배송입니다.</li>
+				<li>'배송 준비 중'상태인 경우 주문을 취소할 수 없습니다</li>
+				<li>배송 현황은 [마이페이지]>[주문내역]에서 조회하실 수 있습니다</li>
+				<li>일부 추가 구성 상품의 경우 본 상품과 별도 배송되어 수령일이 다를 수 있습니다.</li>
+				<li>택배 및 개별배송의 경우 출고 후 배송까지는 약 1~3일 소요됩니다.(공휴일 제외 / 제주 및 도서산간 지역은 1~2일 추가소요)</li>
+			</ul>
+			<br>
+			<hr>
+			<h4><strong>교환 및 반품 안내</strong></h4>
+			<br>
+			<ul style="list-style-type:square;">
+				<li>교환 및 반품을 원하시면 수령 후 7일 이내 게시판, 전화로 연락바랍니다.</li>
+				<li>상품 불량의 경우 사진을 촬영하여 당당몰 고객센터로 연락 주시면 신속히 처리해 드립니다.<p class="text-danger">(단, 신선식품의 경우 수령일을 포함하여 3일 이내 연락 주셔야 처리가 가능합니다.)</p></li>
+				<li>단순 변심으로 인한 교환 및 반품은 왕복 배송비 5,000원이 발생됩니다.</li>
+				<li>환불의 경우 2~3일 소요될 수 있습니다.</li>
+			</ul>
+			<br>
+			<hr>
+			<h4><strong>단순 교환 및 반품이 불가능한 경우</strong></h4>
+			<br>
+			<ul style="list-style-type:square;">
+				<li>배송을 받으신 날로부터 7일이 경과한 경우<p class="text-danger">(단, 신선(냉동)식품은 단순 변심으로 인한 교환 및 반품이 불가능합니다.)</p></li>
+				<li>상품 포장을 개봉하였거나 일부 소비에 의하여 상품의 가치가 현저히 감소한 경우</li>
+				<li>전자기기의 경우 개봉 후 사용시 변심 교환/환불이 불가합니다.</li>
+				<li>단독 패키지 상품의 외포장을 개봉한 경우 (ex. 브라운라이스소울스 빅사이즈 / 당당바 선물세트 / 당당 꺼내땅콩 박스 등)</li>
+				<li>고객님의 책임이 있는 사유로 상품의 멸실 또는 훼손으로 인해 제품 확인이 어려운 경우 <p>(재화 등의 내용을 확인하기 위하여 포장 등을 훼손한 경우는 제외)</p></li>
+				<li>고객의 주문에 따라 개별적으로 생산되는 상품일 경우</li>
+				<li>주소, 연락처 오기입, 택배기사와의 연락 불가 등 고객 과실로 인해 반송되었거나 그 과정에서 제품 손상이 발생한 경우</li>
+				<li>PC 및 휴대폰 화면과 실제 상품의 색상/이미지 차이 또는 개인적 취향/기호에 따른 단순 변심의 경우
+				<li>불량 상품 수령 후 사진 촬영 없이 임의 폐기한 경우</li>
+				<li>판매자와 교환/반품에 대한 협의 없이 임의로 폐기처분 또는 반송한 경우
+			</ul>
+			<br>
+			<hr>
+			<br>
 			<h4 id="scrollspyHedding3">
 				<strong>상품후기&nbsp;&nbsp;<span class="text-danger">${fn:length(reviewList) }</span></strong>
 			</h4>
