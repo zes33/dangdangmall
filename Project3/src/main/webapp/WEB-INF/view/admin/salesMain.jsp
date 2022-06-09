@@ -67,9 +67,18 @@
    	</div>
    
    <div class="contents">
-   <h1>월별 매출 관리</h1>
-   
-   
+   <div>
+   <h2>월별 매출 관리</h2>
+   <form id="choice" name="choice" action="choice.do" method="post">
+   <table>
+   	<tr>
+   		<td>년도</th>
+   		<td><input type="text" id="year" name="year" value="2022"></td>
+   	</tr>
+   </table>
+   </form>
+   </div>
+   <p>\${monthList } : ${monthList }</p>
    
    </div>
    </div>

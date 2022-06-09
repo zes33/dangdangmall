@@ -1,9 +1,10 @@
 package com.spring.mall.sales.service;
 
 import java.util.HashMap;
+import java.util.List;
+
+import com.spring.mall.sales.vo.SalesVO;
 
 public interface SalesService {
-	HashMap<Integer, Integer> byDaySales();
-	HashMap<Integer, Integer> byDayRefund();
-	
+	List<SalesVO> getMonthList(String year);
 }

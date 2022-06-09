@@ -5,18 +5,17 @@
   
 <mapper namespace="salesDAO">
 	
-	<!-- 요일별 결제 총액 -->
-	<select id="byDaySales" resultType="map">
-		SELECT SUBSTR(IAMPORT_IMP_UID, 7,2) AS DAY , SUM(ALLSUM)
+	<select id="salesMonth" resultType="com.spring.mall.sales.vo.SalesVO">
+		SELECT SUBSTR(IAMPORT_IMP_UID, 1, 4) AS YEAR,
+		 	   SUBSTR(IAMPORT_IMP_UID, 5,2) AS MONTH, 
+		 	   SUBSTR(IAMPORT_IMP_UID, 7,2) AS DAY , 
+		 	   SUM(ALLSUM) AS TOTAL
 			FROM PAYMENT 
-			GROUP BY SUBSTR(IAMPORT_IMP_UID, 7,2)
-	</select>
-	
-	<!-- 요일별 환불 총액 -->
-	<select id="byDayRefund" resultType="map">
-		SELECT SUBSTR(REFUND_DATE, 9,2) AS DAY , SUM(REFUND_TOTAL)
-			FROM USERORDER_REFUND 
-			GROUP BY SUBSTR(REFUND_DATE, 9,2) 
+			GROUP BY ROLLUP(SUBSTR(IAMPORT_IMP_UID, 1, 4), 
+							SUBSTR(IAMPORT_IMP_UID, 5,2),
+							SUBSTR(IAMPORT_IMP_UID, 7,2))
+           HAVING SUBSTR(IAMPORT_IMP_UID, 1, 4) = '2022'
+           --AND SUBSTR(IAMPORT_IMP_UID, 5,2) = '06'
 	</select>
 
 
