@@ -71,9 +71,9 @@ table, th, td {
 	</header>
 
 	<h3>환불 요청 관리 페이지</h3>
-	<div class="container">
+	<%-- <div class="container">
 		 ${refundList } 
-	</div>
+	</div> --%>
 
 
 	<div class="container">

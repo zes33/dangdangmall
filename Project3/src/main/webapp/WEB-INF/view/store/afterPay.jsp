@@ -39,11 +39,6 @@
 				width="200" /></div>
 
 			<div>
-				<%-- <h1>user</h1>
-				${user }
-				<h1>orderInfo</h1>
-				${orderInfo }
-				<br> --%>
 				<br><br>
 				<Strong> ${user.user_nickname }님의 주문과 결제가  <span style="color : #B90000;">정상적으로 완료되었습니다.</span> <br><br></Strong>
 				<Strong> 당당몰을 이용해 주셔서 감사합니다.<br> <br></Strong>
