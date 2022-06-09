@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,13 +90,13 @@ textarea {
 .reviewdt {
 	width: 120px;
 }
-.grade{
+
+.grade {
 	color: red;
 }
-
 </style>
 <body>
-<script>
+	<script>
 
 	
 $(document).ready(function () {
@@ -232,18 +232,18 @@ function replyList(nowPage, product_id) {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
 								<del>
-									<span>
-									<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price}" />
+									<span> <fmt:formatNumber type="number"
+											maxFractionDigits="3" value="${product.product_price}" />
 									</span> 원
 								</del>
 							</div></li>
 						<li class="price " id="litag"><strong>판매가</strong>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
-								<strong style="color: #d1221d;">
-									<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price * (1- product.product_discount)}" />
-								</strong><strong
-									style="color: #d1221d; font-size: 14px;">원</strong> <strong
+								<strong style="color: #d1221d;"> <fmt:formatNumber
+										type="number" maxFractionDigits="3"
+										value="${product.product_price * (1- product.product_discount)}" />
+								</strong><strong style="color: #d1221d; font-size: 14px;">원</strong> <strong
 									style="color: #d1221d; font-size: 14px;">(${product.product_discount * 100}%)</strong>
 							</div></li>
 						<li id="litag"><strong>구매제한</strong> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -256,15 +256,16 @@ function replyList(nowPage, product_id) {
 							</div>
 
 							<form enctype="multipart/form-data">
-								
-								<input type="hidden" name="product_id" value="${product.product_id}"> 
-								<input type="hidden" name="user_id" value="${user_id}"></li>
-						
+
+								<input type="hidden" name="product_id"
+									value="${product.product_id}"> <input type="hidden"
+									name="user_id" value="${user_id}"></li>
+
 						<li id="litag"><strong>수량</strong>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div>
-								<span> <select name="cart_product_qty" id="cart_product_qty"
-									style="font-size: 15px;">
+								<span> <select name="cart_product_qty"
+									id="cart_product_qty" style="font-size: 15px;">
 										<option value="1" selected>1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -275,8 +276,7 @@ function replyList(nowPage, product_id) {
 								</select>
 								</span>
 							</div></li>
-						<li><br>
-						<br></li>
+						<li><br> <br></li>
 						<li>
 							<div class="d-grid gap-2 mx-auto">
 								<button type="button" class="btn btn-block btn-success"
@@ -284,17 +284,28 @@ function replyList(nowPage, product_id) {
 									담기</button>
 								<script type="text/javascript">
                      			function goCart(user_id, product_id) {
-									alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
+                     				if(!user_id){
+                     					alert("로그인 이후에 장바구니 담기가 가능합니다. \n로그인 페이지로 이동합니다. ");
+                     					location.href="login.do";
+                     				} else{
+									//alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
 									location.href="cart/insert.do?product_id="+product_id+"&cart_product_qty="+$("#cart_product_qty").val();
-								}
+                     				}
+                     				}
                     			</script>
-								<button type="button" class="btn btn-block btn-success" onclick="goBuy('${user_id}',${product.product_id})">바로
+								<button type="button" class="btn btn-block btn-success"
+									onclick="goBuy('${user_id}',${product.product_id})">바로
 									구매하기</button>
-									<script type="text/javascript">
+								<script type="text/javascript">
 										function goBuy(user_id, product_id) {
-											alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
+											if(!user_id){
+		                     					alert("로그인 이후에 장바구니 담기가 가능합니다. \n로그인 페이지로 이동합니다. ");
+		                     					location.href="login.do";
+		                     				} else{
+											//alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
 											location.href="cart/orderDirect.do?product_id="+product_id+"&cart_product_qty="+$("#cart_product_qty").val();
-										}
+		                     				}
+		                     				}
 									</script>
 								</form>
 								<%-- <form action="cart/orderDirect.do" method="post"
@@ -344,11 +355,10 @@ function replyList(nowPage, product_id) {
 								<th scope="col" class="star text-start" style="width: 10%;"><font
 									style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">별점</font></font></th>
-								<th scope="col" style="width: 60%;">
-								<font style="vertical-align: inherit;"><font
+								<th scope="col" style="width: 60%;"><font
+									style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">후기내용</font></font></th>
-								<th scope="col" class="reviewid " style="width: 12%;">
-								<font
+								<th scope="col" class="reviewid " style="width: 12%;"><font
 									style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">닉네임</font></font></th>
 								<th scope="col" class="reviewdt text-end" style="width: 12%;"><font
@@ -357,28 +367,31 @@ function replyList(nowPage, product_id) {
 							</tr>
 						</thead>
 						<tbody>
-						<!-- foreach 사용 -->
-						<c:forEach var="review" items="${reviewList }" begin="0" end="4">
-							<tr>
-								<th scope="row" class="grade star text-start ${review.REVIEW_GRADE }"></th>
-								<td><font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">${review.REVIEW_CONTENT }</font></font></td>
-								<td class="reviewid text-end"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;"><strong>${review.USER_NICKNAME }</strong></font></font></td>
-								<td class="reviewdt text-end"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;"><small
-											class="text-muted"><fmt:formatDate pattern="yyyy-MM-dd" value="${review.ORDER_DATE}"/></small></font></font></td>
-											
-							</tr>
-						</c:forEach>
+							<!-- foreach 사용 -->
+							<c:forEach var="review" items="${reviewList }" begin="0" end="4">
+								<tr>
+									<th scope="row"
+										class="grade star text-start ${review.REVIEW_GRADE }"></th>
+									<td><font style="vertical-align: inherit;"><font
+											style="vertical-align: inherit;">${review.REVIEW_CONTENT }</font></font></td>
+									<td class="reviewid text-end"><font
+										style="vertical-align: inherit;"><font
+											style="vertical-align: inherit;"><strong>${review.USER_NICKNAME }</strong></font></font></td>
+									<td class="reviewdt text-end"><font
+										style="vertical-align: inherit;"><font
+											style="vertical-align: inherit;"><small
+												class="text-muted"><fmt:formatDate
+														pattern="yyyy-MM-dd" value="${review.ORDER_DATE}" /></small></font></font></td>
+
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
-					<button type="button" class="btn btn-outline-primary" onclick="moreReview(${product.product_id })">더 보기</button>
+					<button type="button" class="btn btn-outline-primary"
+						onclick="moreReview(${product.product_id })">더 보기</button>
 				</div>
 			</div>
-			<br><br><br>
+			<br> <br> <br>
 			<h4 id="scrollspyHedding4">
 				<strong>상품 문의</strong>
 			</h4>
@@ -386,7 +399,7 @@ function replyList(nowPage, product_id) {
 
 			<div class="prdList">
 
-		<script>
+				<script>
 		replyList(nowPage, product_id);
 		</script>
 
@@ -394,29 +407,30 @@ function replyList(nowPage, product_id) {
 
 			<c:choose>
 				<c:when test="${empty user }">
-					<br><br>
+					<br>
+					<br>
 					<p>상품문의는 로그인 후 가능합니다.</p>
 					<a href="login.do">로그인</a>
 				</c:when>
 				<c:otherwise>
 					<div id="prdQnaWrite">
-					<br><br>
+						<br> <br>
 						<form id="prdQnaForm" role="form" method="post">
 							<textarea id="txtara" name="qna_content"></textarea>
 						</form>
-						<button type="button" class="btn btn-outline-primary" id="testBtn" 
-						onclick="writeQna()">등록</button>
+						<button type="button" class="btn btn-outline-primary" id="testBtn"
+							onclick="writeQna()">등록</button>
 					</div>
 				</c:otherwise>
 			</c:choose>
 
-			
+
 
 
 		</div>
 	</div>
 
-<script>
+	<script>
 
 function moreReview(product_id) {
 	 window.open("moreReview.do?product_id="+product_id,"pop1",
