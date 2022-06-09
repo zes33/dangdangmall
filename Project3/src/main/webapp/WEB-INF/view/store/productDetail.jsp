@@ -334,7 +334,8 @@ function replyList(nowPage, product_id) {
 				<strong>상품 설명</strong>
 			</h4>
 			<div class="productInfo">
-				<img src="./img/고무밴드.jpg" alt="..." class="prdInfoPic">
+				<img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
+				<img src="./img/포만감디테일.gif" alt="..." class="prdInfoPic">
 				<h1>설명은 여기에~~</h1>
 			</div>
 			<h4 id="scrollspyHeading2">
