@@ -96,15 +96,14 @@ table, th, td {
 		<tbody>
 		<c:forEach items="${AdminusersList }" var="list" varStatus="i">
 			<tr>
-				<!-- <td><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button></td>  -->
 				<td class="center"><a class="btn btn-white text-decoration-none text-dark" data-toggle="collapse">${list.user_id }</a></td>
 				<td class="center"><a href="admin/adminUser.do?user_id=${list.user_id }" class="text-decoration-none text-dark">${list.user_name }</a></td>
 				
-				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">${list.user_nickname }</a></td>
-				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">
+				<td class="center"><a href="admin/adminUser.do?user_id=${list.user_id }" class="text-decoration-none text-dark">${list.user_nickname }</a></td>
+				<td class="center"><a href="admin/adminUser.do?user_id=${list.user_id }" class="text-decoration-none text-dark">
 				<c:if test="${1 eq list.user_state }"> [일반회원] </c:if>
-				<c:if test="${2 eq list.user_state }"> [관리자] </c:if>
-				<c:if test="${0 eq list.user_state }"> [휴먼회원] </c:if>
+				<c:if test="${2 eq list.user_state }"> <p style="color: #1ABC9C;"> [관리자]</p> </c:if>
+				<c:if test="${0 eq list.user_state }" > <p style="color: #C9C7C7;">[휴먼회원] </p></c:if>
 				</a></td>
 			</tr>
 				</c:forEach>

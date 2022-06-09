@@ -60,7 +60,7 @@ public class AdminUserController {
 		vo.setUser_id(user_id);
 		adminUserService.deleteUser(vo);
 		System.out.println(vo);
-		return "redirect:adminUser.do";
+		return "redirect:adminUserList.do";
 	}
 
 }

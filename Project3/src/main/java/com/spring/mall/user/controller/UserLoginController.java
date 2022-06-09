@@ -35,7 +35,7 @@ public class UserLoginController {
 	}
 	
 	@PostMapping("/loginAction.do")
-	public String loginAction(UserVO vo,HttpServletRequest request1, HttpServletRequest request, Model model,String user_id, String user_pw) {
+	public String loginAction(UserVO vo, HttpServletRequest request, Model model,String user_id, String user_pw) {
 		System.out.println(">>> 로그인 처리 - loginAction()");
 		System.out.println("vo : " + vo);
 		
