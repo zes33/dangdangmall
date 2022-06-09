@@ -65,10 +65,11 @@
                      name="user_id" maxlength="20"><br/>
 	 비밀번호 <input type="password" class="form-control" placeholder="비밀번호"
                    name="user_pw" maxlength="20"><br/>
-				<input class="right" type="submit" value="로그인"><p style="color: red;">${msg }</p>
+			<input class="right" type="submit" value="로그인"><p style="color: red;">${msg }</p>
 				<br/><br/>
 	<table class="search">
 		<tr>
+		<!-- <a onClick="history.back();">돌아가기 </a> -->
 			<a class="right btn btn-sm btn-outline-secondary" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
 			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
 		</tr>
@@ -81,5 +82,23 @@
 	<footer>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	</footer>
+	<script type="text/javascript">
+	/* function goBack(){
+		//뒤로갈 히스토리가 있으면,
+		if ( document.referrer ) { 
+			// 뒤로가기
+			alert("히스토리 있음");
+			history.go(-1);
+		}
+
+		// 히스토리가 없으면,
+		else { 
+			// 메인 페이지로
+			alert("히스토리 없음");
+			location.href = "/main.do";
+		}
+	}  */
+	
+	</script>
 </body>
 </html>
