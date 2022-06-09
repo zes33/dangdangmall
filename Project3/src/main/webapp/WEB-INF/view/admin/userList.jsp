@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,63 +74,40 @@ table, th, td {
 	<header>
       <jsp:include page="../common/header.jsp"></jsp:include>
    </header>
-   
+  <%--  ${AdminusersList } --%>
 	<div class="container">
    <jsp:include page="sidebarTemplate.jsp"></jsp:include>
-   	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
+   
+   <!-- 이거 왜 겹쳐...? -->
+   <!-- 	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
    		<strong style="font-size:3vw">&lt; 회원정보 조회 &gt;</strong>
-   	</div>
-	<!-- 검색을 위한 폼 -->
-	<!-- <form action="getBoardList.do" method="get">  -->
-	<div class="contents">
-	<form>
-		<input type="hidden" name="seq" value="#">
-	<table class="border-none">
-		<tr>
-			<td>	 
-				<select name="searchCondition">
-					<option value="TITLE">ID</option>
-					<option value="CONTENT">이름</option>
-				</select>
-				<input type="text" name="searchKeyword">
-				<button type="button" class="btn btn-outline-secondary btn-sm" id="ss">검색</button>
-				<!-- <input type="submit" value="검색"> -->	
-			</td>
-		</tr>	
-	</table>
-	</form>
+   	</div> -->
+<div></div>
 	<!-- 데이터 표시 영역 -->
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th width="100" class="center">ID</th>
+				<th width="100" class="center">아이디</th>
 				<th width="200" class="center">이름</th>
 				<th width="150" class="center">닉네임</th>
 				<th width="150" class="center">회원등급</th>
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach items="${AdminusersList }" var="list" varStatus="i">
 			<tr>
 				<!-- <td><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button></td>  -->
-				<td class="center"><a class="btn btn-white text-decoration-none text-dark" data-toggle="collapse" data-target=".demo">ID1234</a></td>
-				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">홍길동</a></td>
-				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">홍길동입니다</a></td>
-				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">일반회원</a></td>
+				<td class="center"><a class="btn btn-white text-decoration-none text-dark" data-toggle="collapse">${list.user_id }</a></td>
+				<td class="center"><a href="admin/adminUser.do?user_id=${list.user_id }" class="text-decoration-none text-dark">${list.user_name }</a></td>
+				
+				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">${list.user_nickname }</a></td>
+				<td class="center"><a href="adminUser.do" class="text-decoration-none text-dark">
+				<c:if test="${1 eq list.user_state }"> [일반회원] </c:if>
+				<c:if test="${2 eq list.user_state }"> [관리자] </c:if>
+				<c:if test="${0 eq list.user_state }"> [휴먼회원] </c:if>
+				</a></td>
 			</tr>
-			
-			<tr>
-				<tr class="demo collapse">
-					<th class="center">이메일</th>
-					<th class="center">전화번호</th>
-					<th class="center">주소</th>
-					<th class="center">상세주소</th>
-				</tr>
-				<tr class="demo collapse">
-					<td class="center">test123@naver.com</td>
-					<td class="center">010-1234-1234</td>
-					<td class="center">서울시 서초구</td>
-					<td class="center">어디빌라어디동어디호</td>
-				</tr>
+				</c:forEach>
 		</tbody>
 	</table>
 </div>	

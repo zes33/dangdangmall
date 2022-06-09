@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminUsersDAO">
+
+	<!-- 회원정보 목록 -->
+	<select id="AdminUserList" resultType="com.spring.mall.user.vo.UserVO">
+		SELECT * FROM USERS
+	</select>
+
+	<!-- 회원 상세 정보 -->
+	<select id="selectUser" resultType="com.spring.mall.user.vo.UserVO">
+		SELECT *
+		FROM USERS
+		WHERE USER_ID = #{user_id}
+	</select>
+
+	<!-- 휴먼회원 처리 -->
+	<update id="deleteUser">
+		UPDATE USERS
+		SET USER_STATE = 0
+		WHERE USER_ID = #{user_id}
+	</update>
+</mapper>

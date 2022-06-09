@@ -53,7 +53,9 @@
 	   	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
 	   		<strong style="font-size:3vw">&lt; 회원정보 상세 조회 및 삭제 &gt;</strong>
 	   	</div>
+	   	
 	   	<div class="contents">
+	   ${userA }
 		<div class="card border-success mb-3" style="max-width: 35rem;">
 		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span class="h3"><strong>홍길동</strong></span><span><strong>님</strong></span>
 		  	<span class="text-success position-absolute top-0 end-0"><strong>일반회원</strong></span><br>abc123@naver.com</font></font></div>
@@ -76,7 +78,7 @@
 		</div>
 		</div>
 	<br>
-	
+		
 </div>	
 <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

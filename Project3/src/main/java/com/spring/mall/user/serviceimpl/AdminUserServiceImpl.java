@@ -18,22 +18,25 @@ public class AdminUserServiceImpl implements AdminUserService{
 		System.out.println(">> AdminUserServiceImpl() 객체 생성~~");
 	}
 
-
+	//1.관리자 회원목록 출력 
 	@Override
-	public void deleteAdminUser(UserVO vo) {
-		adminUserDAO.deleteAdminUser(vo);		
+	public List<UserVO> AdminUserList(UserVO vo) {
+		return adminUserDAO.AdminUserList(vo);
 	}
 
+	//2. 관리자 회원 상세목록 출력 
 	@Override
-	public UserVO getAdminUser(UserVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserVO selectUser(UserVO vo) {
+		return adminUserDAO.selectUser(vo);
 	}
 
+	//3. 관리자 회원상태 휴먼회원으로 변경(0)
 	@Override
-	public List<UserVO> getAdminUserList(UserVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteUser(UserVO vo) {
+		adminUserDAO.deleteUser(vo);
 	}
+
+
+	
 	
 }

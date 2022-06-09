@@ -11,6 +11,7 @@ import com.spring.mall.user.vo.UserVO;
 
 @Repository
 public class AdminUserDAO {
+	
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
@@ -18,19 +19,20 @@ public class AdminUserDAO {
 		System.out.println(">> AdminUserDAO() 객체 생성~");
 	}
 	
-	public void deleteAdminUser(UserVO vo) {
-		System.out.println("===> MyBatis 사용 deleteAdminUser() 실행");
-		mybatis.delete("adminUserDAO.deleteAdminUser", vo);
+	//1.관리자 회원목록 출력 
+	public List<UserVO> AdminUserList(UserVO vo) {
+		return mybatis.selectList("AdminUsersDAO.AdminUserList",vo);
 	}
 	
-	public List<UserVO> getAdminUserList(UserVO vo) {
-		System.out.println("===> MyBatis 사용 getAdminUserList() 실행");
-		List<UserVO> list = null;
-		return mybatis.selectList("adminUserDAO.getAdminUserList", vo);
+	//2. 관리자 회원 상세정보 출력 
+	public UserVO selectUser(UserVO vo) {
+		return mybatis.selectOne("AdminUsersDAO.selectUser", vo);
 	}
 	
-	public UserVO getAdminUser(UserVO vo) {
-		System.out.println("===>> Mybatis 사용 getAdminUser() 실행");
-		return mybatis.selectOne("adminUserDAO.getAdminUser", vo);
+	//3. 관리자 회원상태 휴먼회원으로 변경(0)
+	public void deleteUser(UserVO vo) {
+		mybatis.update("AdminUsersDAO.deleteUser", vo);
 	}
+	
+	
 }

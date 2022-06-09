@@ -119,14 +119,14 @@ table, th, td {
 
 							<!-- 1: 신청접수 2: 환불 승인 3: 불가  -->
 							<c:if test="${1 eq list.refund_status }">
-								<td colspan="2" class="center">[ 신청 접수 ]</td>
+								<td colspan="2" class="center">[신청 접수]</td>
 							</c:if>
 							<c:if test="${2 eq list.refund_status }">
-								<td class="center" colspan="2">[ 환불 승인 ]</td>
+								<td class="center" colspan="2">[환불 승인]</td>
 							</c:if>
 							<c:if test="${3 eq list.refund_status }">
-								<td class="center" style="color: #C9C7C7;" colspan="2">[ 환불
-									불가 ]</td>
+								<td class="center" style="color: #C9C7C7;" colspan="2">[환불
+									불가]</td>
 							</c:if>
 							
 							<td>
