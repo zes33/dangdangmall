@@ -1,6 +1,8 @@
 package com.spring.mall.product.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +38,33 @@ public class ProductDAO {
 	}
 	
 	
-	
 	public void insertProduct(ProductVO vo) {
 		System.out.println("===> MyBatis 사용 insertProduct() 실행");
 		mybatis.insert("productDAO.insertProduct", vo);
+	}
+	
+	// 관리자 상품목록 게시글 수
+	public int adminProductTotCnt(String searchCondition, String searchKeyword, 
+								String prd_category, String prd_state) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		map.put("prd_category", prd_category);
+		System.out.println("===> MyBatis 사용 adminProductTotCnt() 실행");
+		return mybatis.selectOne("productDAO.adminProductTotCnt",map);
+	}
+	
+	// 관리자 상품목록
+	public List<Map<String, Object>> adminProductList(String searchCondition, String searchKeyword, 
+								String prd_category, String prd_state, String start, String end){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		map.put("prd_category", prd_category);
+		map.put("prd_state", prd_state);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("productDAO.adminProductList",map);
 	}
 	
 //	public void updateProduct(ProductVO vo) {

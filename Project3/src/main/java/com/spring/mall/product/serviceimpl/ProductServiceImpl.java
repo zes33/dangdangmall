@@ -1,6 +1,7 @@
 package com.spring.mall.product.serviceimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,5 +55,18 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVO> getProductList(ProductVO vo) {
 		return productDAO.getProductList_admin(vo);
+	}
+
+
+	@Override
+	public int adminProductTotCnt(String searchCondition, String searchKeyword, String prd_category, String prd_state) {
+		return productDAO.adminProductTotCnt(searchCondition, searchKeyword, prd_category, prd_state);
+	}
+
+
+	@Override
+	public List<Map<String, Object>> adminProductList(String searchCondition, String searchKeyword, String prd_category,
+			String prd_state, String start, String end) {
+		return productDAO.adminProductList(searchCondition, searchKeyword, prd_category, prd_state, start, end);
 	}
 }

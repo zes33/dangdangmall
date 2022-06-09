@@ -34,10 +34,52 @@ public class ProductController {
 		System.out.println("ProductController() 객체 생성~~");
 	}
 	
+	// 관리자 상품목록 페이지
+	@RequestMapping("/adminProductList.do")
+	public String productInfo(String searchCondition, String searchKeyword, 
+			String prd_category, String prd_state, PagingVO paging, Model model,
+			@RequestParam(value="nowPage", required=false)String nowPage,
+			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		System.out.println("product컨트롤러.productInfo() 실행");
+		int total = productService.adminProductTotCnt(searchCondition, searchKeyword, prd_category, prd_state);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "10";
+		}
+		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		String start = Integer.toString(paging.getStart());
+		String end = Integer.toString(paging.getEnd());
+		List<Map<String, Object>> prdList = productService.adminProductList(searchCondition, searchKeyword, prd_category, prd_state, start, end);
+		
+		model.addAttribute("prdList",prdList);
+		model.addAttribute("paging",paging);
+		model.addAttribute("searchCondition",searchCondition);
+		model.addAttribute("searchKeyword",searchKeyword);
+		model.addAttribute("prd_category",prd_category);
+		model.addAttribute("prd_state",prd_state);
+		
+		System.out.println("prdList : " + prdList);
+		System.out.println("paging : " + paging);
+		System.out.println("searchCondition : " + searchCondition);
+		System.out.println("searchKeyword : " + searchKeyword);
+		System.out.println("prd_category : " + prd_category);
+		System.out.println("prd_state : " + prd_state);
+		System.out.println("total : " + total);
+		
+		return "admin/productList";
+	}
+	
 	// 관리자 상품 상세페이지 이동
 	@RequestMapping("/productInfo.do")
 	public String productInfo() {
 		System.out.println("product컨트롤러.productInfo() 실행");
+		
+		
 		return "admin/productInfomation";
 	}
 	
@@ -45,6 +87,9 @@ public class ProductController {
 	@RequestMapping("/goInsertProduct.do")
 	public String goInsertProduct() {
 		System.out.println("product컨트롤러.goInsertProduct() 실행");
+		
+		
+		
 		
 		return "admin/productInsert";
 	}

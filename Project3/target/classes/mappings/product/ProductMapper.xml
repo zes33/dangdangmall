@@ -38,6 +38,73 @@
 			 				1,#{product_pic})
 	</insert>
 	
+	<!-- 관리자 상품 목록 게시글수 -->
+	<select id="adminProductTotCnt" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+        FROM PRODUCT 
+        WHERE 1 = 1
+        <if test="searchKeyword != '' ">
+        	<if test="searchCondition == 'PRODUCT_NAME' ">
+        		AND PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+        	</if>
+        	<if test="searchCondition == 'PRODUCT_ID' ">
+        		AND PRODUCT_ID = #{searchKeyword}
+        	</if>
+        </if>
+        <if test="prd_category != '' ">
+        	<if test="prd_category == 1 ">
+      			AND CATEGORY_CODE = 1
+      		</if>
+      		<if test="prd_category == 2 ">
+      			AND CATEGORY_CODE = 2
+      		</if>
+        </if>
+        <if test="prd_state != '' ">
+        	<if test="prd_state == 1 ">
+      			AND PRODUCT_STATE = 1
+      		</if>
+      		<if test="prd_state == 2 ">
+      			AND PRODUCT_STATE = 2
+      		</if>
+        </if>
+        ORDER BY PRODUCT_ID DESC
+	</select>
+	
+	<!-- 관리자 상품 목록 -->
+	<select id="adminProductList" parameterType="map" resultType="map">
+		SELECT *
+		FROM (SELECT ROWNUM R_NUM, P.*
+		        FROM (SELECT *
+		        FROM PRODUCT 
+		        WHERE 1 = 1
+		        <if test="searchKeyword != '' ">
+		        	<if test="searchCondition == 'PRODUCT_NAME' ">
+		        		AND PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+		        	</if>
+		        	<if test="searchCondition == 'PRODUCT_ID' ">
+		        		AND PRODUCT_ID = #{searchKeyword}
+		        	</if>
+		        </if>
+		        <if test="prd_category != '' ">
+		        	<if test="prd_category == 1 ">
+		      			AND CATEGORY_CODE = 1
+		      		</if>
+		      		<if test="prd_category == 2 ">
+		      			AND CATEGORY_CODE = 2
+		      		</if>
+		        </if>
+		        <if test="prd_state != '' ">
+		        	<if test="prd_state == 1 ">
+		      			AND PRODUCT_STATE = 1
+		      		</if>
+		      		<if test="prd_state == 2 ">
+		      			AND PRODUCT_STATE = 2
+		      		</if>
+		        </if>
+		        ORDER BY PRODUCT_ID DESC) P)
+		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
+	</select>
+	
 	<!-- 
 	<select id="getProductList_N" parameterType="string" 
 		resultType="com.spring.mall.product.vo.ProductVO">
