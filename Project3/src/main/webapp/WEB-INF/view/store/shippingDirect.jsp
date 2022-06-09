@@ -82,9 +82,9 @@ tr, td ,br{
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	 <h3>map</h3> ${mapD }
+	 <%-- <h3>map</h3> ${mapD }
 			<h3>user</h3> ${user}
-			<h3>배송정보</h3> ${orderInfo } 
+			<h3>배송정보</h3> ${orderInfo }  --%>
 
 	<div id="body-wrapper">
 		<div id="body-content" class="container">
@@ -175,12 +175,6 @@ tr, td ,br{
 				</tr>
 				<tr>
 					<td>쿠폰 사용 :</td>
-					<!-- <form class="card p-2">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Promo code">
-							<button type="submit" class="btn btn-secondary">Redeem</button>
-						</div>
-					</form> -->
 					<td> - <fmt:formatNumber pattern="###,###,###" value="${mapD.coupon * 100 }" />
 						% </td>
 				</tr>

@@ -82,9 +82,9 @@ tr, td ,br{
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	 <h3>map</h3> ${map }
+	 <%-- <h3>map</h3> ${map }
 			<h3>user</h3> ${user.user_point }
-			<h3>배송정보</h3> ${orderInfo } 
+			<h3>배송정보</h3> ${orderInfo }  --%>
 
 	<div id="body-wrapper">
 		<div id="body-content" class="container">

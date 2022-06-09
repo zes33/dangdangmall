@@ -85,17 +85,6 @@ input {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	<div class="container">
-		<!--제목-->
-
-		<!-- <h1>주문 페이지</h1> -->
-
-
-		<!-- <h1>user</h1> -->
-		<%-- ${user } --%>
-		<%-- <h1>map</h1>
-		${map }
-		<h2>${map.coupon}</h2>
-		${user } --%>
 		<hr>
 		<!--Content-->
 		<div id="body-wrapper">
@@ -178,7 +167,7 @@ input {
 						<div class="invalid-feedback">필수입력 항목입니다.</div>
 					</div>
 					<hr>
-					<h4>[ 쿠폰 ]</h4>
+					<%-- <h4>[ 쿠폰 ]</h4>
 					<br>
 					<div class="input-group mb-3">
 						<div class="input-group-text">
@@ -187,7 +176,7 @@ input {
 						</div>
 						<input type="text" class="form-control"
 							value="[웰컴 쿠폰] 첫 구매 10% 할인받기! " readonly="readonly">
-					</div>
+					</div> --%>
 
 					<br> <br> <input type="submit"
 						class="w-100 btn btn-primary btn-lg" value="결제 하러가기 ">
