@@ -51,7 +51,7 @@
 <div class="container">
 	<jsp:include page="sidebarTemplate.jsp"></jsp:include>
 	   	<div class="menuname h1 text-center centers" style="background-color:rgb(240, 240, 240);">
-	   		<strong style="font-size:3vw">&lt; 회원정보 조회 &gt;</strong>
+	   		<strong style="font-size:3vw">&lt; 회원정보 상세 조회 및 삭제 &gt;</strong>
 	   	</div>
 	   	<div class="contents">
 		<div class="card border-success mb-3" style="max-width: 35rem;">
