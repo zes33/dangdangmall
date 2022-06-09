@@ -302,7 +302,7 @@ function replyList(nowPage, product_id) {
 								<script type="text/javascript">
 										function goBuy(user_id, product_id) {
 											if(!user_id){
-		                     					alert("로그인 이후에 장바구니 담기가 가능합니다. \n로그인 페이지로 이동합니다. ");
+		                     					alert("로그인 이후에 구매 가능합니다. \n로그인 페이지로 이동합니다. ");
 		                     					location.href="login.do";
 		                     				} else{
 											//alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());

@@ -49,6 +49,26 @@
 				<div class="col-1 text-center"></div>
 				<div class="col-10 d-flex justify-content-end align-items-center">
 
+					<!-- 검색을 위한 폼 -->
+					<form action="${pageContext.request.contextPath }/searchProduct/searchProductList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td>
+									<input type="text" name="searchKeyword"  id="searchKeyword" > 
+									<!-- <input type="submit" value="검색">  --><%-- ${productListS}  --%>
+									<button type="button" class="btn btn-block btn-success"
+									onclick="goSearch();"> 검색</button>
+								<script type="text/javascript">
+                     			function goSearch() {
+                     				var gett = document.getElementById("searchKeyword").value;
+                     					alert(gett);
+                     					location.href="${pageContext.request.contextPath }/searchProduct/searchProductList.do?searchKeyword="+gett; */
+                     				}
+                    			</script>
+								</td>
+							</tr>
+						</table>
+					</form>
 					<a class="link-secondary" href="#" aria-label="Search"> <svg
 							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 							fill="none" stroke="currentColor" stroke-linecap="round"
@@ -81,7 +101,9 @@
 							<a class="btn btn-sm btn-outline-secondary"
 								href="${pageContext.request.contextPath }/logout.do">로그아웃</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary"
-								href="${pageContext.request.contextPath }/cart/list.do">장바구니  <span class="material-icons md-36"> shopping_bag </span>(${count })</a>&nbsp;&nbsp;
+								href="${pageContext.request.contextPath }/cart/list.do">장바구니
+								<span class="material-icons md-36"> shopping_bag </span>(${count })
+							</a>&nbsp;&nbsp;
 							
 							<a class="btn btn-sm btn-outline-secondary"
 								href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>&nbsp;&nbsp;
@@ -99,9 +121,11 @@
 				<c:choose>
 					<c:when test="${user.user_state eq 2}">
 						<a class="blog-header-logo text-dark"
-							href="${pageContext.request.contextPath }/admin/adminMain.do"> <img
-							alt="로고" src="${pageContext.request.contextPath }/img/logo1.png"
-							width="500" height="200" /></a>
+							href="${pageContext.request.contextPath }/admin/adminMain.do">
+							<img alt="로고"
+							src="${pageContext.request.contextPath }/img/logo1.png"
+							width="500" height="200" />
+						</a>
 					</c:when>
 					<c:otherwise>
 						<a class="blog-header-logo text-dark"

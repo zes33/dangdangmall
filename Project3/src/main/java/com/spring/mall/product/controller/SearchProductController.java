@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.mall.product.service.SearchProductService;
 import com.spring.mall.product.vo.ProductVO;
@@ -38,23 +39,13 @@ public class SearchProductController {
 		return "store/searchProduct";
 	}
 	
-	
-	//2. 상품 검색 
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		System.out.println("=====> Map searchConditionMap() 실행");
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("상품명", "PRODUCT_NAME");
-		conditionMap.put("상품설명", "PRODUCT_INFO");
-		return conditionMap;
-	}
-	
 	@RequestMapping("searchProductList.do")
-	public String searchProductList(ProductVO vo,Model model) {
+	public String searchProductList(@RequestParam String searchKeyword, ProductVO vo,Model model) {
 		System.out.println("vo" + vo);
 		
 		List<ProductVO> productList = searchProductService.searchProductList(vo);
 		model.addAttribute("productListS", productList);
+		model.addAttribute("searchKeyword", searchKeyword);
 		
 		return "store/searchProduct";
 		
