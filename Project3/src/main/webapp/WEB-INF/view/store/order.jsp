@@ -118,7 +118,7 @@ input {
 						}
 					</script>
 					<form action="order.do" method="post">
-					<button class = "erase" onclick="clearInput()">내용 지우기</button>
+					<button class = "erase" onclick="clearInput()"> 직접 입력하기</button>
 					<button type='reset' >내 정보 다시 가져오기</button>
 					<br><br>
 					<div class="col-md-3">
