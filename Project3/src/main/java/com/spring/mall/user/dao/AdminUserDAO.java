@@ -34,5 +34,8 @@ public class AdminUserDAO {
 		mybatis.update("AdminUsersDAO.deleteUser", vo);
 	}
 	
-	
+	//4. 회원 아이디, 이름으로 검색 
+	public List<UserVO> searchUserList(UserVO vo){
+		return mybatis.selectList("AdminUsersDAO.searchUserList", vo);
+	}
 }

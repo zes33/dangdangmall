@@ -36,6 +36,12 @@ public class AdminUserServiceImpl implements AdminUserService{
 		adminUserDAO.deleteUser(vo);
 	}
 
+	//4. 회원 아이디, 이름으로 검색 
+	@Override
+	public List<UserVO> searchUserList(UserVO vo) {
+		return adminUserDAO.searchUserList(vo);
+	}
+
 
 	
 	

@@ -14,6 +14,12 @@ public class UserVO {
 	private int user_state;
 	private String user_phone;
 	
+	//------------------
+	private String searchCondition;
+	private String searchKeyword;
+	
+	
+	
 	public UserVO(String user_id) {
 		System.out.println("user_id" + user_id);
 	}
@@ -28,7 +34,6 @@ public class UserVO {
 		this.user_pw = user_pw;
 	}
 
-	
 	
 	public UserVO(String user_id, String user_pw, String user_name, String user_nickname, String user_email,
 			int user_grade, int user_point, String user_addr, String user_addr_d, String user_zipcode, int user_state,
@@ -46,6 +51,24 @@ public class UserVO {
 		this.user_zipcode = user_zipcode;
 		this.user_state = user_state;
 		this.user_phone = user_phone;
+	}
+
+	
+	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 
 	public String getUser_id() {

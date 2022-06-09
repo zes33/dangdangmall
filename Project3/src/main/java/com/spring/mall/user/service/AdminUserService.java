@@ -14,4 +14,7 @@ public interface AdminUserService {
 	
 	//3. 관리자 회원상태 휴먼회원으로 변경(0)
 	public void deleteUser(UserVO vo);
+	
+	//4. 회원 아이디, 이름으로 검색 
+	public List<UserVO> searchUserList(UserVO vo);
 }

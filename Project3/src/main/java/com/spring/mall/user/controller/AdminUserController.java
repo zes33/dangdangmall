@@ -1,6 +1,8 @@
 package com.spring.mall.user.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -62,5 +65,29 @@ public class AdminUserController {
 		System.out.println(vo);
 		return "redirect:adminUserList.do";
 	}
+	
+	//4. 회원 아이디, 이름으로 검색 
+	@ModelAttribute("conditionMapU")
+	public Map<String, String> searchConditionMap(){
+		System.out.println("==> Map searchConditionMap() 실행");
+		Map<String, String> conditionMapU = new HashMap<String, String>();
+		conditionMapU.put("아이디", "USER_ID");
+		conditionMapU.put("이름", "USER_NAME");
+		
+		return conditionMapU;
+		
+	}
+	
+	@RequestMapping("searchUserList.do")
+	public String searchProductList(@RequestParam String searchKeyword, UserVO vo,Model model) {
+		System.out.println("searchKeyword : " + searchKeyword);
+		
+		List<UserVO> searchUserList = adminUserService.searchUserList(vo);
+		model.addAttribute("AdminusersList", searchUserList);
+		model.addAttribute("searchKeyword", searchKeyword);
+		System.out.println("searchUserList : "+ searchUserList);
+		return "admin/userList";
+	}
+	
 
 }

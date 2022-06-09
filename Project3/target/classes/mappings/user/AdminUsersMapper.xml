@@ -23,4 +23,16 @@
 		SET USER_STATE = 0
 		WHERE USER_ID = #{user_id}
 	</update>
+	
+	<!-- 회원 아이디, 이름으로 검색 -->
+	<select  id="searchUserList" parameterType="string" resultType="com.spring.mall.user.vo.UserVO">
+	SELECT * FROM USERS
+		WHERE 1=1
+		<if test="searchCondition == 'USER_ID'">
+			AND USER_ID LIKE '%' || #{searchKeyword} || '%'
+		</if>
+		<if test="searchCondition == 'USER_NAME'">
+			AND USER_NAME LIKE '%' || #{searchKeyword} || '%'
+		</if>
+	</select>
 </mapper>
