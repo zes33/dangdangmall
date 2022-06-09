@@ -97,10 +97,13 @@
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월',  '11월', '12월'],
+        labels: ['5월', '6월', '7월', '8월', '9월', '10월',  '11월', '12월','1월', '2월', '3월', '4월'],
         datasets: [{
           label: '# of Votes',
-          data: [12, 10, 3, 5, 2, 3, 12, 10, 3, 5, 2, 3],
+          data: [${monthList[0].total}, ${monthList[1].total}, ${monthList[2].total},
+        	  ${monthList[3].total}, ${monthList[4].total}, ${monthList[5].total},
+        	  ${monthList[6].total}, ${monthList[7].total}, ${monthList[8].total},
+        	  ${monthList[9].total}, ${monthList[10].total}, ${monthList[11].total}],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
