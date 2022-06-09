@@ -8,8 +8,8 @@ import com.spring.mall.center.vo.CenterQnaVO;
 
 public interface CenterPagingService {
 	
-	int totalCenterQnaCnt();
-	List<Map<String, Object>> pagingCenterQnaList(int start, int end);
-	List<Map<String, Object>> pagingCenterQnaListSearch(CenterQnaVO vo, int startInt, int endInt);
+	int TotalCenterQnaPerPageSearch(String searchCondition, String searchKeyword);
+	List<Map<String, Object>> CenterQnaPerPageSearch(String searchCondition, String searchKeyword,
+			int start, int end);
 	
 }

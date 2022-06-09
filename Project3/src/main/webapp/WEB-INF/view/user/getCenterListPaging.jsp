@@ -50,20 +50,18 @@
 		<tr>
 			<td>
 				<select name="searchCondition">
-					<option value="TITLE">제목</option>
-					<option value="CONTENT">내용</option>
+				<c:forEach items="${conditionMap }" var="option">
+					<option value="${option.value }">${option.key }</option>
+				</c:forEach>	
 				</select>
 				<input type="text" name="searchKeyword">
 				<button type="submit" class="btn btn-outline-secondary btn-sm" id="ss">검색</button>
-				<!-- <input type="submit" value="검색"> -->
 			</td>
 		</tr>
 		
 	</table>
 	<br>
 	</form>
-	
-	<p>\${user.user_id } : ${user.user_id }</p>
 	<!-- 데이터 표시 영역 -->
 	<table class="table table-hover">
 		<thead>
@@ -82,22 +80,6 @@
 			</tr>
 		</thead>
 		<tbody>
-		<!-- 
-			<tr>
-				<td class="center">1</td>
-				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">제목11111111111111111111</span></td>
-				<td class="center">ID</td>
-				<td class="center">2022-05-30</td>
-				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
-			</tr>
-			<tr>
-				<td class="center">2</td>
-				<td><span class="d-inline-block text-truncate" style="max-width: 180px;">제목222222222222222222</span></td>
-				<td class="center">ID123</td>
-				<td class="center">2022-04-23</td>
-				<td class="center"><button type="button" class="btn btn-outline-secondary btn-sm">답변하기</button></td>
-			</tr>
-			 -->
 			 <c:if test="${empty getCenterListPaging }">
 				<tr>
 					<th colspan="2" class="center">등록된 고객문의가 없습니다.</th>
@@ -142,7 +124,7 @@
 		  <ul class="pagination justify-content-center">
 		  <c:if test="${paging.startPage != 1 }">
 		    <li class="page-item">
-		      <a class="page-link" href="getCenterListPaging.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}"
+		      <a class="page-link" href="getCenterListPaging.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}"
 		       aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
@@ -155,14 +137,14 @@
 						<li class="page-item"><b class="page-link" >${p }</b></li>
 					</c:when>
 					<c:when test="${p != paging.nowPage }">
-		    			<li class="page-item"><a class="page-link" href="getCenterListPaging.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+		    			<li class="page-item"><a class="page-link" href="getCenterListPaging.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}">${p }</a></li>
 					</c:when>
 				</c:choose>
 			</c:forEach>
 		   
 		    <c:if test="${paging.endPage != paging.lastPage }">
 		    <li class="page-item">
-		      <a class="page-link" href="getCenterListPaging.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+		      <a class="page-link" href="getCenterListPaging.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}" aria-label="Previous">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>

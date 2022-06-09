@@ -41,11 +41,11 @@ public class CenterQnaController {
 	// @ModelAttribute 선언된 메소드는 @RequestMapping 메소드보다 먼저 실행
 	// 뷰에 전달될 때 설정된 명칭(예: conditionMap)
 	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
+	public Map<String, Object> searchConditionMap() {
 		System.out.println("=====> Map searchConditionMap() 실행");
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("제목", "TITLE");
+		Map<String, Object> conditionMap = new HashMap<String, Object>();
 		conditionMap.put("내용", "CONTENT");
+		conditionMap.put("제목", "TITLE");
 		return conditionMap;
 	}
 	
@@ -123,25 +123,29 @@ public class CenterQnaController {
 		return "redirect:getCenterQna.do?center_qna_id="+center_qna_id;
 	}
 	
-	//페이징 처리가 되지 않은 고객문의 목록
-	@RequestMapping("/getCenterList.do")
-	public String getCenterList(Model model) {
-		CenterQnaVO vo = null;
-		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
-		model.addAttribute("getCenterList", getCenterList);
-		System.out.println(getCenterList);
-		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
-		return "user/getCenterList";
-	}
+//	//페이징 처리가 되지 않은 고객문의 목록
+//	@RequestMapping("/getCenterList.do")
+//	public String getCenterList(Model model) {
+//		CenterQnaVO vo = null;
+//		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
+//		model.addAttribute("getCenterList", getCenterList);
+//		System.out.println(getCenterList);
+//		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
+//		return "user/getCenterList";
+//	}
 	
-	//페이징 처리가 된 고객문의 목록
+	//고객문의 목록 페이징+검색
 	@RequestMapping("/getCenterListPaging.do")
-	public String getCenterListPaging(PagingVO vo, CenterQnaVO centervo, Model model
+	public String CenterQnaPerPageSearch(PagingVO paging, Model model
+			, String searchCondition, String searchKeyword
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("!!!!getCenterListPaging() 실행!!");
 		
-		int total = centerPagingService.totalCenterQnaCnt();
+		System.out.println("searchCondition : " + searchCondition);
+		System.out.println("searchKeyword : " + searchKeyword);
+		
+		int total = centerPagingService.TotalCenterQnaPerPageSearch(searchCondition, searchKeyword);
 		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -152,19 +156,16 @@ public class CenterQnaController {
 			cntPerPage = "10";
 		}
 		
-		//페이징 처리 안 한 고객문의 리스트 전체는 getCenterList이고, 페이징 처리 된 고객문의 리스트는 getCenterListPaging이다.
-		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(centervo);
-		model.addAttribute("getCenterList", getCenterList);
-		System.out.println(getCenterList);
+		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		System.out.println("paging.getStart(): " + paging.getStart());
+		System.out.println("paging.getEnd() : " +  paging.getEnd());
+		List<Map<String, Object>> getCenterListPaging = centerPagingService.CenterQnaPerPageSearch(searchCondition, searchKeyword, paging.getStart(), paging.getEnd());
 		
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		List<Map<String, Object>> getCenterListPaging = centerPagingService.pagingCenterQnaList(vo.getStart(),vo.getEnd());
-		System.out.println();
-		
-		model.addAttribute("paging", vo);
+		System.out.println("total: " + total);
+		model.addAttribute("paging", paging);
 		model.addAttribute("getCenterListPaging", getCenterListPaging);
 		System.out.println(getCenterListPaging);
-		System.out.println("!!!!!고객 문의 목록 페이징처리(getCenterListPaging.jsp)이동 - getCenterListPaging()");
+		System.out.println("!!!!!고객 문의 목록 페이징처리(getCenterListPaging.jsp)이동 - CenterQnaPerPageSearch()");
 		return "user/getCenterListPaging";
 	}
 	

@@ -6,13 +6,50 @@
 <mapper namespace="centerPaging">
 	
 	
-	<select id="totalCenterQnaCnt" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
+	<select id="TotalCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
 	resultType="int">
 		SELECT COUNT(*)
 		FROM CENTER_QNA
 	</select>
 	
-	<!-- 검색기능 완벽하게 구현되면  이 select는 지우겠음-->
+	
+	<!-- 고객센터 페이징+검색 cnt -->
+	<select id="TotalCenterQnaPerPageSearch" parameterType="map"
+	resultType="int">
+		SELECT COUNT(*) 
+  			FROM CENTER_QNA C, USERS U, CENTER_REPLY R
+  			WHERE C.USER_ID = U.USER_ID
+  			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
+	     		<if test="searchCondition == 'TITLE' ">
+				AND C.CENTER_QNA_TITLE LIKE '%' || #{searchKeyword} || '%'
+				</if>
+				<if test="searchCondition == 'CONTENT' ">
+				AND C.CENTER_QNA_CONTENT LIKE '%' || #{searchKeyword} || '%'
+				</if>
+        	ORDER BY C.CENTER_QNA_ID DESC
+	</select>
+	
+	<!-- 고객센터 페이징+검색 -->
+	<select id="CenterQnaPerPageSearch" parameterType="map"
+	resultType="map">
+		SELECT * 
+		FROM (SELECT ROWNUM R_NUM, P.*
+      		  FROM (SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+                  		   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT 
+           			FROM CENTER_QNA C, USERS U, CENTER_REPLY R
+           			WHERE C.USER_ID = U.USER_ID
+           			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
+           			<if test="searchCondition == 'TITLE' ">
+						AND C.CENTER_QNA_TITLE LIKE '%' || #{searchKeyword} || '%'
+					</if>
+					<if test="searchCondition == 'CONTENT' ">
+						AND C.CENTER_QNA_CONTENT LIKE '%' || #{searchKeyword} || '%'
+					</if>
+           			ORDER BY C.CENTER_QNA_ID DESC) P)
+			WHERE R_NUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 검색기능 완벽하게 구현되면  이 select는 지우겠음
 	<select id="CenterQnaPerPage" parameterType="map"
 	resultType="map">
 		SELECT * 
@@ -23,68 +60,8 @@
            			WHERE C.USER_ID = U.USER_ID
            			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
            			ORDER BY C.CENTER_QNA_ID DESC) P)
-			WHERE R_NUM BETWEEN #{start} AND #{end}
+			WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
 	</select>
+	-->
 	
-	<select id="CenterQnaPerPageSearch" parameterType="map"
-	resultType="map">
-		SELECT * 
-		FROM (SELECT ROWNUM R_NUM, P.*
-      		  FROM (SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
-                  		   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT 
-           			FROM CENTER_QNA C, USERS U, CENTER_REPLY R
-           			WHERE C.USER_ID = U.USER_ID
-           			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
-           			ORDER BY C.CENTER_QNA_ID DESC) P)
-			WHERE R_NUM BETWEEN TO_NUMBER('#{start}') AND TO_NUMBER('#{end}')
-			<if test="searchCondition == 'TITLE' ">
-			AND CENTER_QNA_TITLE LIKE '%' || '#{searchKeyword}' || '%'
-			</if>
-			<if test="searchCondition == 'CONTENT' ">
-			AND CENTER_QNA_CONTENT LIKE '%' || '#{searchKeyword}' || '%'
-			</if>
-	</select>
-	
-	<select id="totalCenterQnaCnt_T" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
-	resultType="int">
-		SELECT COUNT(*)
-		FROM CENTER_QNA
-		AND CENTER_QNA_TITLE LIKE '%' || '#{searchKeyword}' || '%'
-	</select>
-	
-	<select id="CenterQnaPerPage_T" parameterType="map"
-	resultType="map">
-		SELECT * 
-		FROM (SELECT ROWNUM R_NUM, P.*
-      		  FROM (SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
-                  		   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT 
-           			FROM CENTER_QNA C, USERS U, CENTER_REPLY R
-           			WHERE C.USER_ID = U.USER_ID
-           			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
-           			ORDER BY C.CENTER_QNA_ID DESC) P)
-			WHERE R_NUM BETWEEN #{start} AND #{end}
-			AND CENTER_QNA_TITLE LIKE '%' || '#{searchKeyword}' || '%'
-	</select>
-	
-	<select id="totalCenterQnaCnt_C" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
-	resultType="int">
-		SELECT COUNT(*)
-		FROM CENTER_QNA
-		AND CENTER_QNA_CONTENT LIKE '%' || '#{searchKeyword}' || '%'
-	</select>
-	
-	<select id="CenterQnaPerPage_C" parameterType="map"
-	resultType="map">
-		SELECT * 
-		FROM (SELECT ROWNUM R_NUM, P.*
-      		  FROM (SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
-                  		   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT 
-           			FROM CENTER_QNA C, USERS U, CENTER_REPLY R
-           			WHERE C.USER_ID = U.USER_ID
-           			AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+)
-           			ORDER BY C.CENTER_QNA_ID DESC) P)
-			WHERE R_NUM BETWEEN #{start} AND #{end}
-			AND CENTER_QNA_CONTENT LIKE '%' || '#{searchKeyword}' || '%'
-	</select>
-
 </mapper>

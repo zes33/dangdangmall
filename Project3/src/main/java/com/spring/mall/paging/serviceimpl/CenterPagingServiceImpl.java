@@ -17,19 +17,15 @@ public class CenterPagingServiceImpl implements CenterPagingService {
 	private CenterPagingDAO centerPagingDAO;
 
 	@Override
-	public int totalCenterQnaCnt() {
-		return centerPagingDAO.totalCenterQnaCnt();
+	public int TotalCenterQnaPerPageSearch(String searchCondition, String searchKeyword) {
+		return centerPagingDAO.TotalCenterQnaPerPageSearch(searchCondition, searchKeyword);
 	}
 
 	@Override
-	public List<Map<String, Object>> pagingCenterQnaList(int start, int end) {
-		return centerPagingDAO.pagingCenterQnaList(start, end);
+	public List<Map<String, Object>> CenterQnaPerPageSearch(String searchCondition, String searchKeyword
+			, int start, int end) {
+		return centerPagingDAO.CenterQnaPerPageSearch(searchCondition, searchKeyword, start, end);
 	}
 
-	@Override
-	public List<Map<String, Object>> pagingCenterQnaListSearch(CenterQnaVO vo, int start, int end) {
-		return centerPagingDAO.pagingCenterQnaListSearch(vo, start, end);
-	}
-	
 	
 }

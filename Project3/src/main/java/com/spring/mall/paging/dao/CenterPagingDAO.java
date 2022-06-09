@@ -20,61 +20,61 @@ public class CenterPagingDAO {
 	}
 	
 	//고객문의 전체 개수
-	public int totalCenterQnaCnt() {
-		System.out.println("===> MyBatis 사용 totalCenterQnaCnt() 실행~");
-		return mybatis.selectOne("centerPaging.totalCenterQnaCnt");
+	public int TotalCenterQna() {
+		System.out.println("===> MyBatis 사용 TotalCenterQna() 실행~");
+		return mybatis.selectOne("centerPaging.TotalCenterQna");
 	}
 	
-	//고객문의 목록 - 검색기능이 완벽해지면 pagingCenterQnaList메서드는 지워도 됨
-	public List<Map<String, Object>> pagingCenterQnaList(int start, int end) {
-		System.out.println("===> MyBatis 사용 pagingCenterQnaList() 실행");
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("start", start);
-		map.put("end", end);
-		
-		return mybatis.selectList("centerPaging.CenterQnaPerPage", map);
-	}
-	
-	//고객문의 목록 - 검색기능 추가
-	public List<Map<String, Object>> pagingCenterQnaListSearch(CenterQnaVO vo, int startInt, int endInt) {
-		System.out.println("===> MyBatis 사용 pagingCenterQnaListSearch() 실행");
+	//고객문의 페이징+검색
+	public List<Map<String, Object>> CenterQnaPerPageSearch(String searchCondition, String searchKeyword,
+			int start, int end) {
+		System.out.println("===> MyBatis 사용 CenterQnaPerPageSearch() 실행");
 		List<Map<String, Object>> list = null;
 		
-		//페이징 처리를 위해 매퍼에 인자를 전달할 map 선언하고, string으로 강제형변환
-		Map<String, String> map = new HashMap<String, String>();
-		String start = Integer.toString(startInt);
-		String end = Integer.toString(endInt);
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start", start);
 		map.put("end", end);
 		
 		//검색조건 값이 없을 때 기본값 설정
-		if (vo.getSearchCondition() == null) {
-			vo.setSearchCondition("TITLE");
+		if (searchCondition == null) {
+			searchCondition = "TITLE";
 		}
-		if (vo.getSearchKeyword() == null) {
-			vo.setSearchKeyword("");
+		if (searchCondition == "") {
+			searchCondition = "TITLE";
+		}
+		if (searchKeyword == null) {
+			searchKeyword = "";
 		}
 		
-		map.put("searchKeyword",vo.getSearchKeyword());
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
 		
-		if ("TITLE".equals(vo.getSearchCondition())) {
-			list = mybatis.selectList("centerPaging.CenterQnaPerPageSearch_T", map);
-		} else if ("CONTENT".equals(vo.getSearchCondition())) {
-			list = mybatis.selectList("centerPaging.CenterQnaPerPageSearch_C", map);
+		if ("TITLE".equals(searchCondition)) {
+			list = mybatis.selectList("centerPaging.CenterQnaPerPageSearch", map);
+		} else if ("CONTENT".equals(searchCondition)) {
+			list = mybatis.selectList("centerPaging.CenterQnaPerPageSearch", map);
 		}
 		
 		return list;
 	}
 	
-	//고객문의 전체 개수 - 제목으로 검색
-	public int totalCenterQnaCnt_T() {
-		System.out.println("===> MyBatis 사용 totalCenterQnaCnt_T() 실행~");
-		return mybatis.selectOne("centerPaging.totalCenterQnaCnt_T");
+	//고객문의 페이징+검색 출력수
+	public int TotalCenterQnaPerPageSearch(String searchCondition, String searchKeyword) {
+		System.out.println("===> MyBatis 사용 TotalCenterQnaPerPageSearch() 실행~");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		System.out.println("map" + map);
+		return mybatis.selectOne("centerPaging.TotalCenterQnaPerPageSearch", map);
 	}
 	
-	//고객문의 전체 개수 - 내용으로 검색
-	public int totalCenterQnaCnt_C() {
-		System.out.println("===> MyBatis 사용 totalCenterQnaCnt_T() 실행~");
-		return mybatis.selectOne("centerPaging.totalCenterQnaCnt_C");
-	}
+	//고객문의 목록 - 검색기능이 완벽해지면 pagingCenterQnaList메서드는 지워도 됨
+//	public List<Map<String, Object>> pagingCenterQnaList(int start, int end) {
+//		System.out.println("===> MyBatis 사용 pagingCenterQnaList() 실행");
+//		Map<String, Integer> map = new HashMap<String, Integer>();
+//		map.put("start", start);
+//		map.put("end", end);
+//		
+//		return mybatis.selectList("centerPaging.CenterQnaPerPage", map);
+//	}
 }

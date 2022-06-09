@@ -9,24 +9,18 @@ public class CenterQnaVO {
 	private String user_id;
 	private Date center_qna_date;
 	
-	//--- 검색조건 처리용
-	private String searchCondition;
-	private String searchKeyword;
-	
 	public CenterQnaVO() {
 		System.out.println(">> CenterQnaVO() 객체 생성~~ ");
 	}
 
 	public CenterQnaVO(int center_qna_id, String center_qna_content, String center_qna_title, String user_id,
-			Date center_qna_date, String searchCondition, String searchKeyword) {
+			Date center_qna_date) {
 		super();
 		this.center_qna_id = center_qna_id;
 		this.center_qna_content = center_qna_content;
 		this.center_qna_title = center_qna_title;
 		this.user_id = user_id;
 		this.center_qna_date = center_qna_date;
-		this.searchCondition = searchCondition;
-		this.searchKeyword = searchKeyword;
 	}
 
 	public int getCenter_qna_id() {
@@ -69,30 +63,12 @@ public class CenterQnaVO {
 		this.center_qna_date = center_qna_date;
 	}
 
-	//검색조건 처리용 get,set-----
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-
 	@Override
 	public String toString() {
 		return "CenterQnaVO [center_qna_id=" + center_qna_id + ", center_qna_content=" + center_qna_content
 				+ ", center_qna_title=" + center_qna_title + ", user_id=" + user_id + ", center_qna_date="
-				+ center_qna_date + ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + "]";
+				+ center_qna_date + "]";
 	}
 
 
-	
 }
