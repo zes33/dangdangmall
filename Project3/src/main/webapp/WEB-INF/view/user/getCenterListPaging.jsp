@@ -116,7 +116,7 @@
 	</table>
 	
 	<div style="float:right;">
-		<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna();">문의하기</button>
+		<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna('${user.user_id}');">문의하기</button>
 	</div>
 	<br>
 	

@@ -148,10 +148,11 @@
               <div><p><b><a href="${pageContext.request.contextPath }/myprivateinfo.do">나의 정보</a></b></p></div>
               <div><p><b><a href="cart/list.do">장바구니</a></b></p></div>
               <div><p><b><a href="${pageContext.request.contextPath }/goMyPrdQna.do">상품 문의내역</a></b></p></div>
-              <div><p><b><a href="#">기타 문의내역</a></b></p></div>
+              <div><p><b><a href="${pageContext.request.contextPath }/user/myCenterQna.do">기타 문의내역</a></b></p></div>
               <div><p><b><a href="${pageContext.request.contextPath }/goMyReview.do">후기내역</a></b></p></div>
            </div>
            <div class="col-md-10 wru">
+           <h3>&nbsp;&nbsp;&nbsp;&nbsp;[ 주문내역 ]</h3>
            <c:forEach var="orderList" items="${orderList }" varStatus="status">
              <div class="container">
                <div class="card">

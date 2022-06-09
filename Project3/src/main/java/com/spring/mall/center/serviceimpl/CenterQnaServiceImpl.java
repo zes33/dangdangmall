@@ -41,6 +41,11 @@ public class CenterQnaServiceImpl implements CenterQnaService{
 	}
 	
 	@Override
+	public Map<String, Object> myCenter (CenterQnaVO vo) {
+		return centerQnaDAO.myCenter(vo);
+	}
+	
+	@Override
 	public Map<String, Object> getCenterQna(CenterQnaVO vo) {
 		return centerQnaDAO.getCenterQna(vo);
 	}
@@ -48,6 +53,11 @@ public class CenterQnaServiceImpl implements CenterQnaService{
 	@Override
 	public List<Map<String, Object>> getCenterQnaList(CenterQnaVO vo) {
 		return centerQnaDAO.getCenterQnaList(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> myCenterQna(CenterQnaVO vo) {
+		return centerQnaDAO.myCenterQna(vo);
 	}
 
 }

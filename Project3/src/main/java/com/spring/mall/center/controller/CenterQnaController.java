@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,17 +124,6 @@ public class CenterQnaController {
 		return "redirect:getCenterQna.do?center_qna_id="+center_qna_id;
 	}
 	
-//	//페이징 처리가 되지 않은 고객문의 목록
-//	@RequestMapping("/getCenterList.do")
-//	public String getCenterList(Model model) {
-//		CenterQnaVO vo = null;
-//		List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
-//		model.addAttribute("getCenterList", getCenterList);
-//		System.out.println(getCenterList);
-//		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
-//		return "user/getCenterList";
-//	}
-	
 	//고객문의 목록 페이징+검색
 	@RequestMapping("/getCenterListPaging.do")
 	public String CenterQnaPerPageSearch(PagingVO paging, Model model
@@ -169,5 +159,58 @@ public class CenterQnaController {
 		return "user/getCenterListPaging";
 	}
 	
+	//마이페이지에서 나의 문의목록 조회
+	@RequestMapping("/myCenterQna.do")
+	public String myCenterQna(CenterQnaVO cvo, Model model, HttpServletRequest request) {
+		System.out.println("== myCenterQna() 실행!!");
+		
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("user_id");
+		System.out.println("user_id : " + user_id);
+		
+		cvo.setUser_id(user_id);
+		System.out.println("cvo: " + cvo);
+		
+		List<Map<String, Object>> myCenterQna = centerQnaService.myCenterQna(cvo);
+		model.addAttribute("myCenterQna", myCenterQna);
+		System.out.println("myCenterQna: " + myCenterQna);
+		System.out.println("== 나의 문의목록(myCenterQna.jsp)이동 - myCenterQna()");
+		return "user/myCenterQna";
+	}
+	
+	//마이페이지 문의목록 1개 조회
+	@RequestMapping("/myCenter.do")
+	public String myCenter(CenterQnaVO vo, Model model, HttpSession session) {
+		System.out.println("== myCenter() 실행!!");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		vo.setUser_id(user_id);
+		System.out.println("vo: " + vo);
+		
+		Map<String, Object> myCenter = centerQnaService.myCenter(vo);
+		System.out.println(myCenter);
+		model.addAttribute("myCenter", myCenter);
+		
+		
+		UserVO centerUser = (UserVO) session.getAttribute("user");
+		model.addAttribute("centerUser", centerUser);
+		System.out.println(centerUser);
+		
+		System.out.println("== 나의 문의 1개 조회하는 페이지로(myCenter.jsp)이동 - myCenter()");
+		return "user/myCenter";
+	}
+	
+	
+	
+//	   //페이징 처리가 되지 않은 고객문의 목록
+//	  @RequestMapping("/getCenterList.do")
+//	  public String getCenterList(Model model) {
+//	     CenterQnaVO vo = null;
+//	     List<Map<String, Object>> getCenterList = centerQnaService.getCenterQnaList(vo);
+//	     model.addAttribute("getCenterList", getCenterList);
+//	     System.out.println(getCenterList);
+//	     System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
+//	     return "user/getCenterList";
+//	  }
 	
 }

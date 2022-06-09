@@ -38,6 +38,27 @@
         AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
         AND C.CENTER_QNA_ID = #{center_qna_id}	
 	</select>
+	
+	<select id="myCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+        AND U.USER_ID = #{user_id}
+	</select>
+	
+	<select id="myCenter" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+        AND U.USER_ID = #{user_id}
+        AND C.CENTER_QNA_ID = #{center_qna_id}
+	</select>
 
 	<select id="selectCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO"
 	resultType="com.spring.mall.center.vo.CenterQnaVO">
