@@ -129,6 +129,7 @@
 	padding: 0 50px;
 }
 </style>
+		<c:if test="${user.user_state != 2 }">
 		<div class="css-swv69e emr7dkj2">
 			<style data-emotion="css zjik7">
 .css-zjik7 {
@@ -264,6 +265,7 @@ a:hover {
 			</div>
 
 		</div>
+		</c:if>
 	</div>
 	</header>
 	</div>
