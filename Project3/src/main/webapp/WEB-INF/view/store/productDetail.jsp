@@ -200,8 +200,8 @@ function replyList(nowPage, product_id) {
 
 		<nav id="navbar-example2"
 			class="navbar navbar-light bg-white px-3 sticky-lg-top border-bottom border-top">
-			<a class="navbar-brand" href="#"><img src="./img/상세페이지위로.png"
-				alt="상세페이지위로로고" width="20"></a>
+			<a class="navbar-brand" href="#"><img src="./img/위로.png"
+				alt="상세페이지위로로고" width="35"></a>
 			<ul class="nav nav-pills">
 				<li class="nav-item"><a class="nav-link text-dark"
 					href="#scrollspyHeading1"><strong>상품 설명</strong></a></li>
@@ -333,10 +333,14 @@ function replyList(nowPage, product_id) {
 			<h4 id="scrollspyHeading1">
 				<strong>상품 설명</strong>
 			</h4>
+			<br>
 			<div class="productInfo">
 				<img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
 				<img src="./img/포만감디테일.gif" alt="..." class="prdInfoPic">
-				<h1>설명은 여기에~~</h1>
+				<img src="./img/구매평.png" alt="..." class="prdInfoPic">
+				<img src="./img/point.gif" alt="..." class="prdInfoPic">
+				<img src="./img/point2.gif" alt="..." class="prdInfoPic">
+				<img src="./img/보관유통기한.png" alt="..." class="prdInfoPic">
 			</div>
 			<h4 id="scrollspyHeading2">
 				<strong>상품 정보 고시</strong>
