@@ -102,7 +102,7 @@
 							<td class="center">답변대기</td>
 						</c:when>
 						<c:otherwise>
-							<td class="center">답변완료</td>
+							<td class="center"><strong>답변완료</strong></td>
 						</c:otherwise>
 					</c:choose>
 					<!--

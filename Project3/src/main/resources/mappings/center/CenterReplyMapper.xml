@@ -4,9 +4,79 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="centerReplyDAO">
+
+	<!-- 답글 삭제 -->
 	<delete id="deleteCenterReply" parameterType="com.spring.mall.center.vo.CenterReplyVO">
 		DELETE CENTER_REPLY 
 		WHERE CENTER_QNA_ID = #{center_qna_id}
 	</delete>
+	
+	<insert id="insertCenterReply" parameterType="com.spring.mall.center.vo.CenterReplyVO">
+		INSERT INTO CENTER_REPLY 
+		(CENTER_REPLY_ID, REPLY_CONTENT, CENTER_QNA_ID, CENTER_REPLY_DATE) 
+		VALUES 
+		((SELECT NVL(MAX(CENTER_QNA_ID),0) + 1 FROM CENTER_QNA), #{reply_content}, #{center_qna_id}, SYSDATE)
+	</insert>
+	
+	<!--  
+	<select id="getCenterQnaList" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+		ORDER BY C.CENTER_QNA_ID DESC
+	</select>
+	
+	<select id="getCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+        AND C.CENTER_QNA_ID = #{center_qna_id}	
+	</select>
+	
+	<select id="myCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+        AND U.USER_ID = #{user_id}
+	</select>
+	
+	<select id="myCenter" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="map">
+		SELECT C.CENTER_QNA_ID, C.CENTER_QNA_CONTENT, C.CENTER_QNA_TITLE, C.USER_ID, U.USER_NICKNAME, C.CENTER_QNA_DATE, 
+			   R.CENTER_REPLY_ID, R.CENTER_REPLY_DATE, R.REPLY_CONTENT
+		FROM CENTER_QNA C, USERS U, CENTER_REPLY R  
+		WHERE C.USER_ID = U.USER_ID
+        AND C.CENTER_QNA_ID = R.CENTER_QNA_ID(+) 
+        AND U.USER_ID = #{user_id}
+        AND C.CENTER_QNA_ID = #{center_qna_id}
+	</select>
 
+	<select id="selectCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO"
+	resultType="com.spring.mall.center.vo.CenterQnaVO">
+		SELECT CENTER_QNA_ID, CENTER_QNA_CONTENT, CENTER_QNA_TITLE, USER_ID, CENTER_QNA_DATE 
+		FROM CENTER_QNA 
+		WHERE CENTER_QNA_ID = #{center_qna_id}
+	</select>
+		
+	<delete id="deleteCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO">
+		DELETE FROM CENTER_QNA  
+		WHERE CENTER_QNA_ID = #{center_qna_id}
+	</delete>
+	
+	<update id="updateCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO">
+		UPDATE CENTER_QNA 
+		SET CENTER_QNA_TITLE = #{center_qna_title},
+    		CENTER_QNA_CONTENT = #{center_qna_content}
+		WHERE CENTER_QNA_ID = #{center_qna_id}
+	</update>
+	-->
 </mapper>
