@@ -112,6 +112,12 @@ function insertProduct() {
   	 <div><strong>할인율</strong></div> <span><input value="${product.product_discount }" type="text" id="shot" class="form-control f5" style="float:left"
     				 value="0" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
    <br>
+   			<strong>상품 상태*</strong> 
+     		<select name="product_state" class="f2">
+		  	<option value="1" selected>판매중</option>
+		  	<option value="2" selected>판매중지</option>
+		  	</select><br/><br/><br>
+   
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품사진*</strong></label>
   		<input value="${product.product_pic }" class="form-control f6" name="pic_file" type="file" id="formFile">
@@ -122,6 +128,9 @@ function insertProduct() {
   		<input value="${product.product_info }" class="form-control f7" name="info_file" type="file" id="formFile">
 	</div>  				 
             <br/><br>
+     
+     
+     
    <table>
       <tr>
       	<td>
