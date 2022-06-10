@@ -74,9 +74,6 @@
 			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
 		</tr>
 	</table>
-		<!-- <script>
-			document.referrer ? history.back() : location.href="http://m.naver.com";
-		</script> -->
 	</form>
 
 </div>

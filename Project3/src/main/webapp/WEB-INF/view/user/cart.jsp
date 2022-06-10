@@ -241,6 +241,10 @@ nav {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+	<script type="text/javascript">
+	string = document.referrer;
+	console.log(document.referrer);
+	</script>
 	<%-- 	
  ${list} 
  ${user_id}  --%>

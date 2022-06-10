@@ -122,7 +122,8 @@ strike {
 					<!-- forEach 시작~ -->
 					<c:forEach var="food" items="${foodList }" begin="0" end="3">
 						<div class="col" style="cursor: pointer;"
-							onclick="productDetailView(${food.product_id})">
+							<%-- onclick="productDetailView(${food.product_id})"> --%>
+							onclick="location.href='viewPrdDetail.do?product_id=${food.product_id}'">
 							<div class="card shadow-sm">
 								<img src="${pageContext.request.contextPath }/img/${food.product_pic}"
 									class="bd-placeholder-img card-img-top" width="100%"
@@ -174,7 +175,8 @@ strike {
 					<c:forEach var="exercise" items="${exerciseList }" begin="0"
 						end="3">
 						<div class="col" style="cursor: pointer;"
-							onclick="productDetailView(${exercise.product_id})">
+							<%-- onclick="productDetailView(${exercise.product_id})"> --%>
+							onclick="location.href='viewPrdDetail.do?product_id=${exercise.product_id}'">
 							<div class="card shadow-sm">
 								<img src="${pageContext.request.contextPath }/img/${exercise.product_pic}"
 									class="bd-placeholder-img card-img-top" width="100%"

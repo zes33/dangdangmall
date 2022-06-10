@@ -195,6 +195,10 @@ function replyList(nowPage, product_id) {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+	<script type="text/javascript">
+	string = document.referrer;
+	console.log(document.referrer);
+	</script>
 	<!-- -------------------------------- -->
 	<div class="totPage">
 
@@ -260,7 +264,7 @@ function replyList(nowPage, product_id) {
 								<span class="a${product.category_code }"></span>
 							</div>
 
-							<form enctype="multipart/form-data">
+							<!-- <form enctype="multipart/form-data"> -->
 
 								<input type="hidden" name="product_id"
 									value="${product.product_id}"> <input type="hidden"
@@ -290,10 +294,11 @@ function replyList(nowPage, product_id) {
 								<script type="text/javascript">
                      			function goCart(user_id, product_id) {
                      				if(!user_id){
+                     					alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
                      					alert("로그인 이후에 장바구니 담기가 가능합니다. \n로그인 페이지로 이동합니다. ");
                      					location.href="login.do";
                      				} else{
-									//alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
+									alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
 									location.href="cart/insert.do?product_id="+product_id+"&cart_product_qty="+$("#cart_product_qty").val();
                      				}
                      				}
@@ -304,6 +309,7 @@ function replyList(nowPage, product_id) {
 								<script type="text/javascript">
 										function goBuy(user_id, product_id) {
 											if(!user_id){
+												alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
 		                     					alert("로그인 이후에 구매 가능합니다. \n로그인 페이지로 이동합니다. ");
 		                     					location.href="login.do";
 		                     				} else{
@@ -312,7 +318,7 @@ function replyList(nowPage, product_id) {
 		                     				}
 		                     				}
 									</script>
-								</form>
+								<!-- </form> -->
 								<%-- <form action="cart/orderDirect.do" method="post"
 									enctype="multipart/form-data">
 									<input type="hidden" name="product_id"
