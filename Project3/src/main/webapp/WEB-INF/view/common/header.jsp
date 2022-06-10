@@ -75,7 +75,7 @@
 								href="${pageContext.request.contextPath }/logout.do">로그아웃</a>&nbsp;&nbsp;
 							<a class="btn btn-sm btn-outline-secondary"
 								href="${pageContext.request.contextPath }/cart/list.do">장바구니
-								<span class="material-icons md-36"> shopping_bag </span>(${count })
+								<span style="font-size: 20px;" class="material-icons md-36"> shopping_bag </span>(${count })
 							</a>&nbsp;&nbsp;
 							
 							<a class="btn btn-sm btn-outline-secondary"
