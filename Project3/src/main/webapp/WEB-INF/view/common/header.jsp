@@ -107,7 +107,7 @@
 							width="500" height="200" /></a>
 					</c:otherwise>
 				</c:choose>
-			</div>
+			
 		</div>
 		<!-- <ul class="nav nav-pills justify-content-center">
 				<li class="nav-item"><a href="#" class="nav-link active"
@@ -139,11 +139,11 @@
 	display: flex;
 }
 </style>
-			<div class="col-sm-7 navCenter">
+			<div class="col-sm-6 navCenter">
 				<style>
 .navCenter {
-	/* margin: auto; */
-	margin-left: 120px;
+	/*  margin: auto;  */
+	margin-left: 0px; 
 }
 </style>
 				<ul class="css-zjik7 eth8ztg3">
@@ -191,6 +191,26 @@ a:hover {
 	text-decoration: none;
 	color: black;
 }
+.search {
+  position: relative;
+  width: 300px;
+}
+
+.search input {
+  width: 50;
+  border: 2px solid #006400;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.search img {
+  position : absolute; 
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+}
 </style>
 						<div class="css-3bho95 eth8ztg2">
 							<a class="hi" href="#">홈</a>
@@ -221,32 +241,19 @@ a:hover {
 							<a class="hi" href="#">새벽배송</a>
 						</div>
 					</li>
-					<div style="float:right; margin-left:50px;">
-			<!-- 검색을 위한 폼 -->
 					
-				</div>
 				</ul>
 
 			</div>
-			<!-- g -->
-			<div class="col-sm-4 " style="margin-left: 120px; margin-top: 10px;">
+			<!-- 검색을 위한 폼 -->
+			<div class="search" style="padding-left:210px;" >
 				<form action="${pageContext.request.contextPath }/searchProduct/searchProductList.do" method="get">
 						<table class="border-none">
 							<tr>
 								<td>
-									<input type="text" name="searchKeyword"  id="searchKeyword" > 
-									<!-- <input type="submit" value="검색">  --><%-- ${productListS}  
+									<input style="width: 400px;" type="text" name="searchKeyword"  id="searchKeyword" placeholder="찾으시는 상품이 있으신가요?"> 
 									
-									<button type="button" class="btn btn-block btn-success"
-									onclick="goSearch();"> 검색</button>--%>
-									<a class="link-secondary" onclick="goSearch();" aria-label="Search"> <svg
-							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="none" stroke="currentColor" stroke-linecap="round"
-							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-							viewBox="0 0 24 24">
-							<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
-							<path d="M21 21l-5.2-5.2" /></svg>
-							</a>
+									
 								<script type="text/javascript">
                      			function goSearch() {
                      				
@@ -259,14 +266,22 @@ a:hover {
                      				}
                     			</script>
 								</td>
+								<td>
+								<a class="link-secondary" onclick="goSearch();" aria-label="Search"> <svg
+							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+							fill="none" stroke="currentColor" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+							viewBox="0 0 24 24">
+							<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
+							<path d="M21 21l-5.2-5.2" /></svg>
+							</a></td>
 							</tr>
 						</table>
 					</form>
-			</div>
-
-		</div>
-		</c:if>
-	</div>
 	</header>
+					</div>
+			</div>
+</div>
+		</c:if>
 	</div>
 </html>
