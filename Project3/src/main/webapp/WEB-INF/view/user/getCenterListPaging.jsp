@@ -22,7 +22,7 @@
 <script>
 	//문의하기 버튼을 누르면 활성화되는 go_qna() 함수
 	function go_qna(userId) {
-		if (userId == undefined) {
+		if (userId == '') {
 			var con = confirm("로그인 후 이용 가능합니다. 로그인 페이지로 이동하시겠습니까?");
 			if(con) {
 				location.href = "${pageContext.request.contextPath }/login.do";
@@ -63,6 +63,7 @@
 	<br>
 	</form>
 	<!-- 데이터 표시 영역 -->
+	<h3>\${user.user_id} : ${user.user_id}</h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>
