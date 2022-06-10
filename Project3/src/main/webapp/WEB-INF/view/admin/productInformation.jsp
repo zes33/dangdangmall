@@ -121,7 +121,7 @@ function editPrrd(product_id) {
    
    <div class="contents">
    	<div class="goods">
-              <img src="./img/과일주스여러개.jpg" alt="..." width= "480px" height="448px">
+              <img src="./img/${product.product_pic }" alt="..." width= "480px" height="448px">
            <div id="tit">
               <div class="h3"><strong>${product.product_name }</strong></div>
            <hr>
