@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.mall.cart.dao.CartDAO;
 import com.spring.mall.cart.service.CartService;
+import com.spring.mall.cart.vo.CartDetailProductVO;
 import com.spring.mall.cart.vo.CartVO;
 import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.user.vo.UserVO;
@@ -34,10 +35,6 @@ public class CartServiceImpl implements CartService {
 	public List<CartVO> listCart(String user_id) {
 		return cartDAO.listCart(user_id);
 	}
-//    @Override
-//    public List<CartVO> listCart(CartVO vo) {
-//    	return cartDAO.listCart(vo);
-//    }
 
 	// 3. 장바구니 삭제
 	@Override
@@ -78,6 +75,12 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public ProductVO orderDirect(int product_id) {
 		return cartDAO.orderDirect(product_id);
+	}
+
+	@Override
+	public List<CartVO> getImg(String user_id) {
+		
+		return cartDAO.getImg(user_id);
 	}
 
 }

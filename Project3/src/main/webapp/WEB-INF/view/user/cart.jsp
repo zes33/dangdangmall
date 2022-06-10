@@ -206,8 +206,6 @@ a:hover {
 	text-decoration: none;
 }
 
-
-
 .abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button]
 	{
 	background-color: #383838;
@@ -224,7 +222,6 @@ a:hover {
 	font-size: 0.9375em;
 }
 
-
 .material-icons.md-18 {
 	font-size: 18px;
 }
@@ -232,9 +229,9 @@ a:hover {
 .material-icons.md-36 {
 	font-size: 36px;
 }
+
 nav {
-  display: inline-block;
-  
+	display: inline-block;
 }
 </style>
 </head>
@@ -247,7 +244,6 @@ nav {
 	<%-- 	
  ${list} 
  ${user_id}  --%>
-
 	<!--Content-->
 	<div class="container-fluid text-center"
 		style="margin-top: 25pt; margin-bottom: 25px;">
@@ -279,6 +275,7 @@ nav {
 
 				<table style="width: 90%; padding-top: 3pt;">
 					<tr>
+						<th></th>
 						<th>상품 이름</th>
 						<th>가격</th>
 						<th>수량</th>
@@ -288,10 +285,22 @@ nav {
 						<th>삭제</th>
 					</tr>
 
-					<c:forEach items="${map.list }" var="list" varStatus="i">
-						<div class="menuClass"
-							data-menuId=<c:out value="${list.cart_id}"/>>
+						<c:forEach items="${map.list }" var="list" varStatus="i">
+							<div class="menuClass"
+								data-menuId=<c:out value="${list.cart_id}"/>>
 							<tr>
+							<td>
+							<c:if test="${empty list.product_pic }">
+								<p> <span style=" width:200px; height:200px;">이미지가 제공되지 않는 상품입니다</span> </p>
+							</c:if>
+							<c:if test="${ not empty list.product_pic }">
+							<span id="img"  style="padding-top: 10px;">  <img src="../img/${list.product_pic }"
+								alt="..." width="200px" height="200px"> 
+								
+								</span>
+								</c:if>
+								
+								</td>
 								<td><span id="amount"> <c:out
 											value="${list.product_name }" />
 								</span></td>
@@ -323,13 +332,13 @@ nav {
 								</span></td>
 								<td><a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a></td>
 							</tr>
-						</div>
-					</c:forEach>
-
+							</div>
+						</c:forEach>
 				</table>
 				</form>
 			</div>
-			<div class="text-right" style="margin: 10pt;padding-right: 55px;" align='right' >
+			<div class="text-right" style="margin: 10pt; padding-right: 55px;"
+				align='right'>
 				<nav style="font-weight: bold; font-size: 20px;">
 					<ul>
 						<li>장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###"
@@ -342,7 +351,8 @@ nav {
 								pattern="###,###,###" /> 원
 						</li>
 						<br>
-						<span> <font color="red"> ** 10만원 이상 구매시 무료배송 **</font> </span>
+						<span> <font color="red"> ** 10만원 이상 구매시 무료배송 **</font>
+						</span>
 					</ul>
 				</nav>
 			</div>
