@@ -37,10 +37,10 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.insertProduct(vo);
 	}
 	
-//	@Override
-//	public void updateProduct(ProductVO vo) {
-//		productDAO.updateProduct(vo);
-//	}
+	@Override
+	public void updateProduct(ProductVO vo) {
+		productDAO.updateProduct(vo);
+	}
 //	
 //	@Override
 //	public void deleteProduct(ProductVO vo) {

@@ -153,7 +153,7 @@
 	<!-- 리뷰 입력 -->
 	<insert id="insertReview" parameterType="com.spring.mall.review.vo.ReviewVO">
 		INSERT INTO REVIEW (REVIEW_ID,REVIEW_CONTENT,REVIEW_GRADE,ORDER_DETAIL_ID)
-		VALUES ((SELECT NVL(MAX(REVIEW_ID)+1,0) FROM REVIEW), #{review_content},
+		VALUES ((SELECT NVL(MAX(REVIEW_ID),0)+1 FROM REVIEW), #{review_content},
 		#{review_grade},#{order_detail_id})
 	</insert>
 

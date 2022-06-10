@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.mall.paging.service.PagingService;
 import com.spring.mall.paging.vo.PagingVO;
@@ -34,13 +35,53 @@ public class ProductController {
 	}
 	
 	// 상품 수정 페이지 이동
-	@RequestMapping("/updateProduct.do")
-	public String updateProduct(ProductVO product, Model model) {
-		System.out.println("product컨트롤러.updateProduct() 실행");
+	@RequestMapping("/goUpdateProduct.do")
+	public String goUpdateProduct(ProductVO product, Model model) {
+		System.out.println("product컨트롤러.goUpdateProduct() 실행");
 		ProductVO pvo = productService.getProduct(product);
 		model.addAttribute("product", pvo);
 		
 		return "admin/updateProduct";
+	}
+	
+	// 상품 수정 처리
+	@RequestMapping("/updateProduct.do")
+	public String updateProduct(ProductVO product, RedirectAttributes reatt) throws IllegalStateException, IOException {
+		System.out.println("product컨트롤러.updateProduct() 실행");
+		
+		MultipartFile pic_file = product.getPic_file();
+		MultipartFile info_file = product.getInfo_file();
+		System.out.println(">pic_file : " + pic_file);
+		System.out.println(">info_file : " + info_file);
+		
+		System.out.println("product : " + product);
+		
+		// 수정 전 vo 
+		ProductVO before = productService.getProduct(product);
+		System.out.println("수정 전 : " + before);
+		
+		if(pic_file.isEmpty()) {
+			System.out.println("썸네일 사진 그대로");
+			product.setProduct_pic(before.getProduct_pic());
+		} else if(!pic_file.isEmpty()) {
+			String pic_name = pic_file.getOriginalFilename();
+			System.out.println(">>info_name 원본명 : " + pic_name);
+			product.setProduct_pic(pic_name);
+			pic_file.transferTo(new File("C:/MyStudy/project3/"+pic_name));
+		} 
+		if(info_file.isEmpty()) {
+			System.out.println("상세설명 사진 그대로");
+			product.setProduct_info(before.getProduct_info());
+		} else if(!info_file.isEmpty()) {
+			String info_name = info_file.getOriginalFilename();
+			System.out.println(">>info_name 원본명 : " + info_name);
+			product.setProduct_info(info_name);
+			info_file.transferTo(new File("C:/MyStudy/project3/"+info_name));
+		}
+		
+		productService.updateProduct(product);
+		reatt.addAttribute("product_id", product.getProduct_id());
+		return "redirect:/productInfo.do";
 	}
 	
 	// 관리자 상품목록 페이지
@@ -71,14 +112,6 @@ public class ProductController {
 		model.addAttribute("searchKeyword",searchKeyword);
 		model.addAttribute("prd_category",prd_category);
 		model.addAttribute("prd_state",prd_state);
-		
-		System.out.println("prdList : " + prdList);
-		System.out.println("paging : " + paging);
-		System.out.println("searchCondition : " + searchCondition);
-		System.out.println("searchKeyword : " + searchKeyword);
-		System.out.println("prd_category : " + prd_category);
-		System.out.println("prd_state : " + prd_state);
-		System.out.println("total : " + total);
 		
 		return "admin/productList";
 	}
@@ -116,7 +149,7 @@ public class ProductController {
 		} else if(!pic_file.isEmpty()) {
 			String pic_name = pic_file.getOriginalFilename();
 			System.out.println(">>info_name 원본명 : " + pic_name);
-			product.setProduct_pic(pic_name);
+	 		product.setProduct_pic(pic_name);
 			pic_file.transferTo(new File("C:/MyStudy/project3/"+pic_name));
 		} if(info_file ==  null) {
 			System.out.println(":::info_file 파라미터값이 존재하지 않습니다.");

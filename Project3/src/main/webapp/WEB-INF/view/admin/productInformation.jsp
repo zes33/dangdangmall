@@ -103,7 +103,7 @@ function editPrrd(product_id) {
 	
  	f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'updateProduct.do');
+    f.setAttribute('action', 'goUpdateProduct.do');
     document.body.appendChild(f);
     f.submit();
 }

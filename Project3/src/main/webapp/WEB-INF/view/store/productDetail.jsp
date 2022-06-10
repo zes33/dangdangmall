@@ -226,7 +226,7 @@ function replyList(nowPage, product_id) {
 			<hr>
 		</nav>
 		<div class="goods">
-			<img src="./img/과일주스여러개.jpg" alt="..." width="480px" height="448px">
+			<img src="${pageContext.request.contextPath }/img/${product.product_pic}" alt="..." width="480px" height="448px">
 			<div id="tit">
 				<div class="h3">
 					<strong>${product.product_name }</strong>
@@ -341,8 +341,8 @@ function replyList(nowPage, product_id) {
 			</h4>
 			<br>
 			<div class="productInfo">
-				<img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
-				<img src="./img/포만감디테일.gif" alt="..." class="prdInfoPic">
+				<!-- <img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
+				 --><img src="${pageContext.request.contextPath }/img/${product.product_info}" alt="..." class="prdInfoPic">
 				<img src="./img/구매평.png" alt="..." class="prdInfoPic">
 				<img src="./img/point.gif" alt="..." class="prdInfoPic">
 				<img src="./img/point2.gif" alt="..." class="prdInfoPic">

@@ -65,6 +65,10 @@
 	width: 150px;
 }
 
+.prdPic{
+	width: 400px;
+	height: 400px;
+}
 
 
 </style>
@@ -82,14 +86,35 @@ function insertProduct() {
 			return; // --------없으면 제출함
 		}
 	}
-	
 	prd.submit();
-	
+}
+
+function setThumbnail(event) {
+	let tg = event.target.name;
+	if(tg == 'pic_file'){
+		let lo = $('#thm1');
+		lo.empty();
+		addImg(lo);
+	} else if(tg == 'info_file'){
+		let lo = $('#thm2');
+		lo.empty();
+		addImg(lo);
+	}
+}
+
+function addImg(lo) {
+	var reader = new FileReader();
+
+    reader.onload = function(event) {
+    	var img = document.createElement("img");
+      	img.setAttribute("src", event.target.result);
+      	img.className = 'prdPic';
+      	lo.append(img);
+	 };
+	 reader.readAsDataURL(event.target.files[0]);
 }
 
 
-
-f
 </script>
 </head>
 <body>
@@ -128,13 +153,15 @@ f
    <br>
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품사진*</strong></label>
-  		<input title="상품사진" class="form-control f6" name="pic_file" type="file" id="formFile">
-	</div>  				 
+  		<input onchange="setThumbnail(event);" title="상품사진" class="form-control f6" name="pic_file" type="file" id="formFile">
+	</div>  
+	<div id="thm1"></div>				 
    <br>
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품정보*</strong></label>
-  		<input title="상세설명 파일" class="form-control f7" name="info_file" type="file" id="formFile">
-	</div>  				 
+  		<input onchange="setThumbnail(event);" title="상세설명 파일" class="form-control f7" name="info_file" type="file" id="formFile">
+	</div>  
+	<div id="thm2"></div>				 
             <br/><br>
    <table>
       <tr>

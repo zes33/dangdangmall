@@ -71,7 +71,7 @@
 	<insert id="insertAdminProductQna" parameterType="map">
 		INSERT INTO PRODUCT_QNA (QNA_ID, QNA_CONTENT, PRODUCT_ID, USER_ID, Q_OR_A, 
 	    QNA_GROUP_NUMBER, QNA_GROUP,PRODUCT_QNA_DATE, PRODUCT_QNA_STATE)
-	    VALUES ((SELECT NVL(MAX(QNA_ID)+1 ,0) FROM PRODUCT_QNA),#{qna_content},
+	    VALUES ((SELECT NVL(MAX(QNA_ID) ,0)+1 FROM PRODUCT_QNA),#{qna_content},
 	    		TO_NUMBER(#{product_id}),#{user_id},1,
 	            (SELECT MAX(QNA_GROUP_NUMBER)+1 FROM PRODUCT_QNA WHERE QNA_GROUP = TO_NUMBER(#{qna_group})),
 	            TO_NUMBER(#{qna_group}), SYSDATE, 0

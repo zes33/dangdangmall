@@ -68,11 +68,11 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.adminProductList",map);
 	}
 	
-//	public void updateProduct(ProductVO vo) {
-//		System.out.println("===> MyBatis 사용 updateProduct() 실행");
-//		mybatis.update("productDAO.updateProduct", vo);
-//	}
-//	
+	public void updateProduct(ProductVO vo) {
+		System.out.println("===> MyBatis 사용 updateProduct() 실행");
+		mybatis.update("productDAO.updateProduct", vo);
+	}
+	
 //	public void deleteProduct(ProductVO vo) {
 //		System.out.println("===> MyBatis 사용 deleteProduct() 실행");
 //		mybatis.delete("productDAO.deleteProduct", vo);

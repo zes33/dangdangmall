@@ -5,7 +5,20 @@
   
   <mapper namespace="productDAO">
   
-	 <!-- 카테고리별 상품 목록(이제 안 쓰는) -->
+  	<update id="updateProduct" parameterType="com.spring.mall.product.vo.ProductVO">
+		UPDATE PRODUCT
+		SET PRODUCT_NAME = #{product_name},
+		    CATEGORY_CODE = #{category_code},
+		    PRODUCT_PRICE = #{product_price},
+		    PRODUCT_STOCK = #{product_stock},
+		    PRODUCT_INFO = #{product_info},
+		    PRODUCT_DISCOUNT = (#{product_discount}*0.01),
+		    PRODUCT_PIC = #{product_pic},
+		    PRODUCT_STATE = #{product_state}
+		    WHERE PRODUCT_ID = #{product_id}
+	</update>
+  
+	 <!-- 카테고리별 상품 목록 -->
 	 <select id="getProductLists_c" parameterType="int" resultType="com.spring.mall.product.vo.ProductVO">
 	 	SELECT *
 		FROM PRODUCT
@@ -123,16 +136,7 @@
 	</select>
 	
 	
-	<update id="updateProduct" parameterType="com.spring.mall.product.dao.updateProduct">
-		UPDATE PRODUCT
-		SET PRODUCT_NAME = #{product_name},
-		    CATEGORY_CODE = #{category_code},
-		    PRODUCT_PRICE = #{product_price},
-		    PRODUCT_STOCK = #{product_stock},
-		    PRODUCT_INFO = #{product_info},
-		    PRODUCT_DISCOUNT = #{product_discount}
-		    WHERE PRODUCT_ID = #{product_id}
-	</update>
+	
 
 	<delete id="deleteProduct" parameterType="com.spring.mall.product.dao.deleteProduct">
 		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{product_id}

@@ -20,6 +20,7 @@ import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.review.service.ReviewService;
 import com.spring.mall.review.vo.ReviewVO;
 import com.spring.mall.user.vo.MyInfoVO;
+import com.spring.mall.user.vo.UserVO;
 
 @Controller
 public class ReviewController {
@@ -185,10 +186,18 @@ public class ReviewController {
 	
 	// 리뷰 삭제
 	@RequestMapping("/deleteReview.do")
-	public String deleteReview(ReviewVO review) {
+	public String deleteReview(ReviewVO review, HttpSession session) {
 		System.out.println("deleteReview() 실행");
 		reviewService.deleteReview(review);
 		
-		return "redirect:/goMyReview.do";
+		String result = "";
+		UserVO user = (UserVO) session.getAttribute("user");
+		if(user.getUser_state() == 2) {
+			result = "redirect:/adminReviewList.do";
+		} else {
+			result = "redirect:/goMyReview.do";
+		}
+		
+		return result;
 	}
 }

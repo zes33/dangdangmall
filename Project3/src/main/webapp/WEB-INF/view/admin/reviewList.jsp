@@ -85,6 +85,12 @@ $(document).ready(function () {
 	$(".category2").html("운동");
 
 })
+
+function delReview(review_id) {
+	if(confirm("리뷰를 삭제하시겠습니까?")){
+		location.href="deleteReview.do?review_id="+review_id;
+	}
+}
 </script>
 <style >
 .star {
@@ -137,13 +143,14 @@ $(document).ready(function () {
 		<thead style="text-align: center">
 			<tr>
 				<th style="text-align: center" width="4%" >NO.</th>
-				<th style="text-align: center" width="6%">상품분류</th>
-				<th style="text-align: center" width="9%">상품번호</th>
+				<th style="text-align: center" width="8%">상품분류</th>
+				<th style="text-align: center" width="8%">상품번호</th>
 				<th style="text-align: center" width="8%" >상품명</th>
 				<th style="text-align: center" width="30%">내용</th>
 				<th style="text-align: center" width="10%">작성자</th>
 				<th style="text-align: center" width="10%" >주문일</th>
 				<th style="text-align: center" width="9%">별점</th>
+				<th style="text-align: center" width="6%">삭제</th>
 			</tr>
 		</thead>
 			<%-- <c:choose>
@@ -161,22 +168,15 @@ $(document).ready(function () {
 				<td style="text-align: center">
 					<span class="d-inline-block text-truncate">${reviewList.PRODUCT_NAME}</span>
 				</td>
-				<c:set var="review_content" value="${reviewList.REVIEW_CONTENT }"/>
-				<c:choose>
-				<c:when test="${fn:length(review_content) > 20}">
-				<td style="text-align: center">
-					${fn:substring(review_content,0,20) } <b>...</b> 
-				</td>
-				</c:when>
-				<c:otherwise>
 				<td style="text-align: center">${reviewList.REVIEW_CONTENT }</td>
-				</c:otherwise>
-				</c:choose>
 				<td style="text-align: center">${reviewList.USER_ID}</td>
 				<td style="text-align: center">
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${reviewList.ORDER_DATE }"/>
 				</td>
 				<td style="text-align: center" class="star ${reviewList.REVIEW_GRADE }"></td>
+				<td>
+					<button class="btn btn-dark btn-sm" onclick="delReview(${reviewList.REVIEW_ID })" type="button">삭제</button>
+				</td>
 			</tr>
 			</c:forEach> 
 			<%-- </c:otherwise>
