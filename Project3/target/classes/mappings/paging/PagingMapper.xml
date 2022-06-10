@@ -18,14 +18,6 @@
 			AND QNA.USER_ID = USERS.USER_ID
 			ORDER BY QNA.QNA_GROUP, QNA.QNA_GROUP_NUMBER) AA)
 	    WHERE R_NUM BETWEEN #{start} AND #{end}
-		
-		<!-- SELECT *
-		FROM (SELECT ROWNUM R_NUM, P.*
-		        FROM (SELECT *
-				FROM PRODUCT_QNA
-				WHERE PRODUCT_ID = #{product_id}
-		        ORDER BY QNA_ID) P)
-		WHERE R_NUM BETWEEN #{start} AND #{end} -->
 	</select>
 	
 	<!-- total prd_qna count per product_id -->

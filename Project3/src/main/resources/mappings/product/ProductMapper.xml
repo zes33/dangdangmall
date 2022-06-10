@@ -10,6 +10,7 @@
 	 	SELECT *
 		FROM PRODUCT
 		WHERE CATEGORY_CODE = #{category_code}
+		AND PRODUCT_STATE = 1
 		ORDER BY PRODUCT_ID DESC
 	 </select>
 	 
@@ -34,7 +35,7 @@
 							 PRODUCT_PRICE,PRODUCT_STOCK, PRODUCT_INFO, PRODUCT_DISCOUNT,
 							 PRODUCT_STATE,PRODUCT_PIC)
 		VALUES ((SELECT NVL(MAX(PRODUCT_ID)+1, 0) FROM PRODUCT), #{category_code}, #{product_name},
-			 #{product_price}, #{product_stock},#{product_info}, #{product_discount},
+			 #{product_price}, #{product_stock},#{product_info}, (#{product_discount}*0.01),
 			 				1,#{product_pic})
 	</insert>
 	
@@ -50,7 +51,7 @@
         	<if test="searchCondition == 'PRODUCT_ID' ">
         		AND PRODUCT_ID = #{searchKeyword}
         	</if>
-        </if>
+         </if>
         <if test="prd_category != '' ">
         	<if test="prd_category == 1 ">
       			AND CATEGORY_CODE = 1

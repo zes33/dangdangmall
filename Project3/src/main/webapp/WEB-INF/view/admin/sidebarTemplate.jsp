@@ -33,7 +33,7 @@
          <div class="panel-heading text-center" role="tab" ><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>상품관리</strong></a></div>
          <div id="collapse1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/adminProductList.do"><strong>상품 목록</strong></a></div>
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 등록</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/goInsertProduct.do"><strong>상품 등록</strong></a></div>
          </div>
       </div>
       <div class="panel panel-default">

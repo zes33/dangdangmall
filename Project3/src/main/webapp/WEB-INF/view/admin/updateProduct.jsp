@@ -96,30 +96,30 @@ function insertProduct() {
    <div id="body-content" >
    
    <form action="insertProduct.do" method="post" class="h3" id="prdForm" enctype="multipart/form-data">
-     <strong>상품등록번호(*)</strong> <input type="text" class="form-control" disabled
+     <strong>상품등록번호(*)</strong> <input value="${product.product_id }" type="text" class="form-control" disabled
                      maxlength="20"><br/><br>
-    <strong>상품명*</strong> <input type="text" class="form-control f1" placeholder="상품명을 입력하세요." 
+    <strong>상품명*</strong> <input value="${product.product_name }" type="text" class="form-control f1" placeholder="상품명을 입력하세요." 
     				 name="product_name" maxlength="20"><br/><br>
     <strong>상품 카테고리*</strong> <select name="category_code" class="f2">
     		  	<option value="1" selected>식품</option>
     		  	<option value="2" selected>운동</option>
     		  </select><br/><br/><br>
-   <strong>상품금액*</strong> <input type="text" class="form-control f3" placeholder="금액을 입력하세요" 
+   <strong>상품금액*</strong> <input value="${product.product_price }" type="text" class="form-control f3" placeholder="금액을 입력하세요" 
     				 name="product_price" maxlength="20"><br/><br>
     
-    <div><strong>상품 입고수량*</strong></div> <span><input type="text" id="shot" class="form-control f4" style="float:left" 
+    <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="text" id="shot" class="form-control f4" style="float:left" 
     				 name="product_stock" maxlength="10"></span><p style="font-size: 20px; ">개</p><br/><br><br>
-  	 <div><strong>할인율</strong></div> <span><input type="text" id="shot" class="form-control f5" style="float:left"
+  	 <div><strong>할인율</strong></div> <span><input value="${product.product_discount }" type="text" id="shot" class="form-control f5" style="float:left"
     				 value="0" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
    <br>
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품사진*</strong></label>
-  		<input class="form-control f6" name="pic_file" type="file" id="formFile">
+  		<input value="${product.product_pic }" class="form-control f6" name="pic_file" type="file" id="formFile">
 	</div>  				 
    <br>
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품정보*</strong></label>
-  		<input class="form-control f7" name="info_file" type="file" id="formFile">
+  		<input value="${product.product_info }" class="form-control f7" name="info_file" type="file" id="formFile">
 	</div>  				 
             <br/><br>
    <table>

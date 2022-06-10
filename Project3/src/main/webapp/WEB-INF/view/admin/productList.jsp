@@ -210,7 +210,7 @@ function goInsertQna(qna_id){
 	  <ul class="navul">
 	  <c:if test="${paging.startPage != 1 }">
 	    <li>
-	      <a style=" margin-left: 10px;" href="adminProductList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${qrd_state}&prd_category=${prd_category}"
+	      <a style=" margin-left: 10px;" href="adminProductList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${prd_state}&prd_category=${prd_category}"
 	       aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&laquo;</span>
 	      </a>
@@ -223,14 +223,14 @@ function goInsertQna(qna_id){
 					<li><b style="font-size: 20px;  margin-left: 10px;" >${p }</b></li>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-	    			<li><a style="font-size: 20px;  margin-left: 10px;" href="adminProductList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${qrd_state}&prd_category=${prd_category}">${p }</a></li>
+	    			<li><a style="font-size: 20px;  margin-left: 10px;" href="adminProductList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${prd_state}&prd_category=${prd_category}">${p }</a></li>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 	   
 	    <c:if test="${paging.endPage != paging.lastPage }">
 	    <li>
-	      <a style=" margin-left: 10px;" href="adminProductList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${qrd_state}&prd_category=${prd_category}" aria-label="Previous">
+	      <a style=" margin-left: 10px;" href="adminProductList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${prd_state}&prd_category=${prd_category}" aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>
