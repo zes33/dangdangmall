@@ -91,8 +91,7 @@ th {
 					</div>
 					<div class="qnaConBaby">[상품문의]</div>
 					<div class="qnaConBaby fat">
-						<textarea rows="10" cols="134" name="qna_content">
-						${qnaOne.qna_content}</textarea>
+						<textarea rows="10" cols="134" name="qna_content">${qnaOne.qna_content}</textarea>
 					</div>
 				</td>
 			 </tr>
@@ -123,7 +122,7 @@ function writeQna() {
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.")
 	} else {
-		document.forms[0].submit();
+		$('#updatePrdQue').submit();
 	}
 }
 

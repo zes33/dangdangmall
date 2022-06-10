@@ -32,45 +32,43 @@
       <div class="panel panel-default">
          <div class="panel-heading text-center" role="tab" ><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>상품관리</strong></a></div>
          <div id="collapse1" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 목록</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/adminProductList.do"><strong>상품 목록</strong></a></div>
             <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 등록</strong></a></div>
          </div>
       </div>
       <div class="panel panel-default">
          <div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>상품 후기/문의</strong></a></div>
          <div id="collapse2" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 후기 조회</strong></a></div>
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>상품 문의 조회</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/adminReviewList.do"><strong>상품 후기 조회</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/adminProductQnaList.do"><strong>상품 문의 조회</strong></a></div>
          </div>
       </div>
       <div class="panel panel-default">
          <div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>회원관리</strong></a></div>
          <div id="collapse3" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>회원정보 조회</strong></a></div>
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>회원 삭제</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/admin/adminUserList.do"><strong>회원정보 조회</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="adminGetCenterList.do"><strong>고객 문의 목록</strong></a></div>
          </div>
       </div>
-      <div class="panel panel-default">
+      <!-- <div class="panel panel-default">
          <div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>고객센터</strong></a></div>
          <div id="collapse4" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>고객 문의 목록</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="adminGetCenterList.do"><strong>고객 문의 목록</strong></a></div>
             <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>고객 문의 삭제</strong></a></div>
          </div>
-      </div>
+      </div> -->
       <div class="panel panel-default">
          <div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>주문관리</strong></a></div>
          <div id="collapse5" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>판매내역 조회</strong></a></div>
             <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>배송상태 변경</strong></a></div>
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>환불 요청 목록</strong></a></div>
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>환불 승인</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="${pageContext.request.contextPath }/adminRefund/adminRefundView.do"><strong>환불 요청 목록</strong></a></div>
          </div>
       </div>
       <div class="panel panel-default">
          <div class="panel-heading text-center" role="tab"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" class="text-center text-muted text-decoration-none lead"><strong>매출관리</strong></a></div>
          <div id="collapse6" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>월별 매출 조회</strong></a></div>
-            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>일별 매출 조회</strong></a></div>
+            <div class="panel-body text-center"><a class="text-muted text-decoration-none" href="#"><strong>매출 조회</strong></a></div>
          </div>
       </div>
    </div>

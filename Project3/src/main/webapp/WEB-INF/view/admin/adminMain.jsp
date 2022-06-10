@@ -31,6 +31,11 @@
    .btn {
       width: 170px;
    }
+   
+   td {
+   	height: 27px;
+   }
+   
 </style>
 </head>
 <body>
@@ -44,7 +49,6 @@
             <th>상품관리</th>
             <th>상품후기/문의</th>
             <th>회원관리</th>
-            <th>고객센터</th>
             <th>주문관리</th>
             <th>매출관리</th>
          </tr>
@@ -53,33 +57,30 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductList.do'">상품 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminReviewList.do'">상품후기 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/adminUserList.do'">회원정보 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='adminGetCenterList.do'">고객 문의 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">판매내역 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='salesView.do'">매출 조회</button></td>
          </tr>
          <tr>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품 등록</button></td>
-           <!--  <td><button type="button" class="btn btn-light" onclick="location.href='#'">상품후기 삭제</button></td> -->
+            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/goInsertProduct.do'">상품 등록</button></td>
              <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
-           <!--  <td><button type="button" class="btn btn-light" onclick="location.href='adminUser.do'">회원 삭제</button></td> -->
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">고객 문의 삭제</button></td>
+             <td><button type="button" class="btn btn-light" onclick="location.href='adminGetCenterList.do'">고객 문의 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='#'">배송상태 변경</button></td>
             <td></td>
+            <!-- <td></td> -->
          </tr>
          <tr>
-            <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminRefund/adminRefundView.do'">환불 요청 목록</button></td>
             <td></td>
+             <td></td>
          </tr>
          <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">환불 승인</button></td>
             <td></td>
          </tr>
    </table>

@@ -96,10 +96,6 @@ public class ProductController {
 	@RequestMapping("/goInsertProduct.do")
 	public String goInsertProduct() {
 		System.out.println("product컨트롤러.goInsertProduct() 실행");
-		
-		
-		
-		
 		return "admin/productInsert";
 	}
 	
