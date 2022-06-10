@@ -34,6 +34,8 @@
 
 .goods {
 	position: relative;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .prdNamePrice {
@@ -138,8 +140,8 @@ function replyList(nowPage, product_id) {
 			var paging = data.paging;
 			var qnaList = data.qnaList;
 			var product = data.product;
-			
-			if(qnaList == null){
+		
+			if(qnaList == ''){
 				a += '<p>등록된 게시물이 없습니다.</p>';
 			}
 			$.each(qnaList, function(key, value){
@@ -231,9 +233,9 @@ function replyList(nowPage, product_id) {
 				<div class="h3">
 					<strong>${product.product_name }</strong>
 				</div>
-				<div class="text-black-50 h5">
+				<!-- <div class="text-black-50 h5">
 					<small>건강하게 먹는</small>
-				</div>
+				</div> -->
 				<hr>
 				<div class="item">
 					<ul class="list-inline">
@@ -476,6 +478,11 @@ function replyList(nowPage, product_id) {
 						</thead>
 						<tbody>
 							<!-- foreach 사용 -->
+							<c:if test="${empty reviewList }">
+								<tr>
+									<td style="text-align: center;" colspan="4">등록된 리뷰가 없습니다.</td>
+								</tr>
+							</c:if>
 							<c:forEach var="review" items="${reviewList }" begin="0" end="4">
 								<tr>
 									<th scope="row"
@@ -495,8 +502,10 @@ function replyList(nowPage, product_id) {
 							</c:forEach>
 						</tbody>
 					</table>
-					<button type="button" class="btn btn-outline-primary"
-						onclick="moreReview(${product.product_id })">더 보기</button>
+					<c:if test="${!empty reviewList }">
+						<button type="button" class="btn btn-outline-primary"
+							onclick="moreReview(${product.product_id })">더 보기</button>
+					</c:if>
 				</div>
 			</div>
 			<br> <br> <br>
@@ -507,7 +516,7 @@ function replyList(nowPage, product_id) {
 
 			<div class="prdList">
 
-				<script>
+		<script>
 		replyList(nowPage, product_id);
 		</script>
 
@@ -561,7 +570,7 @@ function writeQna() {
 		/* alert("formObj,qna_content :" +formObj+","+ qna_content); */
 		
 		var data = {
-			'nowPage' : null,
+			/* 'nowPage' : null, */
 			'qna_content' : qna_content,
 			'product_id' : product_id
 					};

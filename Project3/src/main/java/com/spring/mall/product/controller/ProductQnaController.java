@@ -280,11 +280,13 @@ public class ProductQnaController {
 			cntPerPage = "4";
 			int cntPerPageNum = Integer.parseInt(cntPerPage);
 			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
+			System.out.println("last : " + setLastPage);
 			nowPage = Integer.toString(setLastPage);
 		} else if (nowPage == null) {
 			cntPerPage = "4";
 			int cntPerPageNum = Integer.parseInt(cntPerPage);
 			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
+			System.out.println("last : " + setLastPage);
 			nowPage = Integer.toString(setLastPage);
 		} else if (cntPerPage == null) { 
 			cntPerPage = "4";
