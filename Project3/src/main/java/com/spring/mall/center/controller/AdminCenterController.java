@@ -71,14 +71,15 @@ public class AdminCenterController {
 		System.out.println("center_qna_id: " + center_qna_id);
 		model.addAttribute("center_qna_id", center_qna_id);
 		System.out.println("▶▶ 관리자 답글 등록 페이지로 이동(adminReplyInsert.jsp) - adminReplyInsertGo()");
-		return "admin/adminReplyInsert.do";
+		return "redirect:adminReplyInsert.do";
 	}
 	
 	//▶▶관리자 답글 등록
 	@RequestMapping("/adminReplyInsert.do")
-	public String adminReplyInsert(CenterReplyVO rvo, int center_qna_id) throws IllegalArgumentException, IOException {
+	public String adminReplyInsert(CenterReplyVO rvo, Model model, int center_qna_id) throws IllegalArgumentException, IOException {
 		System.out.println("▶▶ adminReplyInsert(관리자 답글등록) 실행~ ");
 		System.out.println("center_qna_id: " + center_qna_id);
+		model.addAttribute("center_qna_id", center_qna_id);
 		
 		System.out.println("insert할  rvo : " + rvo);
 		centerReplyService.insertCenterReply(rvo);

@@ -73,7 +73,13 @@
 <script>
 	//답변 등록
 	function go_insertReply(QnaId, ReplyId) {
-		location.href = "${pageContext.request.contextPath }/admin/adminReplyInsert.do?center_qna_id=" + QnaId;
+		var reply = $("#center_reply_content").val().trim();
+		if (reply == "") {
+			alert("답글내용을 입력하세요.");
+			document.insertCenterReply.center_reply_content.focus();
+		} else {
+			$("#insertCenterReply").submit();
+		}
 	}
 	
 	//답변 수정
@@ -104,6 +110,8 @@
 		}
 	}
 
+
+	
 </script>
 </head>
 <body>
@@ -147,11 +155,19 @@
 					<textarea name="content" rows="10" cols="40" disabled="disabled">${getCenter.CENTER_QNA_CONTENT }</textarea>
 				</td>
 			</tr>
+		<form id="insertCenterReply" action="adminReplyInsert.do" method="post">
+			<input type="hidden" id="center_qna_id" name="center_qna_id" value="${getCenter.CENTER_QNA_ID }">
 			<c:choose>
 				<c:when test="${empty getCenter.REPLY_CONTENT }">
+					
 					<tr>
-						<th colspan="2" style="text-align: center; vertical-align: middle;">등록된 답변이 없습니다.</th>
+						<th style="text-align: center; vertical-align: middle;">답변내용</th>
+						<!-- <th colspan="2" style="text-align: center; vertical-align: middle;">등록된 답변이 없습니다.</th> -->
+						<td>
+							<textarea name="reply_content" rows="10" cols="40" id="center_reply_content"></textarea>
+						</td>
 					</tr>
+					
 				</c:when>
 				<c:otherwise>
 					<tr>
@@ -166,14 +182,13 @@
 					</tr>
 				</c:otherwise>
 			</c:choose>
-			
+		
 		</table>
 		
-		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='centerList.do'">목록으로</button>
 		<div style="float:right;">
 			<c:choose>
 				<c:when test="${empty getCenter.REPLY_CONTENT }">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_insertReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 등록</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_insertReply(${getCenter.CENTER_QNA_ID });">답변 등록</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 				</c:when>
 				<c:otherwise>
@@ -182,7 +197,9 @@
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 				</c:otherwise>
 			</c:choose>
-			
+		</form>	
+		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='centerList.do'">목록으로</button>
+		
 		</div>
 		<br>
    

@@ -15,7 +15,7 @@
 		INSERT INTO CENTER_REPLY 
 		(CENTER_REPLY_ID, REPLY_CONTENT, CENTER_QNA_ID, CENTER_REPLY_DATE) 
 		VALUES 
-		((SELECT NVL(MAX(CENTER_QNA_ID),0) + 1 FROM CENTER_QNA), #{reply_content}, #{center_qna_id}, SYSDATE)
+		((SELECT NVL(MAX(CENTER_REPLY_ID),0) + 1 FROM CENTER_REPLY), #{reply_content}, #{center_qna_id}, SYSDATE)
 	</insert>
 	
 	<!--  
