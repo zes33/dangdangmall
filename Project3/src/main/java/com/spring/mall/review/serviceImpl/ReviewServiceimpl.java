@@ -18,7 +18,7 @@ public class ReviewServiceimpl implements ReviewService{
 	ReviewDAO reviewDAO;
 
 	@Override
-	public MyInfoVO getMyOrder_odi(MyInfoVO myinfo) {
+	public Map<String, Object> getMyOrder_odi(MyInfoVO myinfo) {
 		return reviewDAO.getMyOrder_odi(myinfo);
 	}
 

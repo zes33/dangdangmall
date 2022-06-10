@@ -118,7 +118,7 @@ public class ReviewController {
 		System.out.println("myReview() 실행");
 		
 		//order_detail_id로 주문정보 조회
-		MyInfoVO myOrder = reviewService.getMyOrder_odi(myinfo);
+		Map<String, Object> myOrder = reviewService.getMyOrder_odi(myinfo);
 		model.addAttribute("myOrder", myOrder);
 		return "user/writeReview";
 	}

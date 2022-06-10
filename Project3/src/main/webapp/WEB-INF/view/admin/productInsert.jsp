@@ -71,17 +71,13 @@
 <title>상품 등록(관리자)</title>
 <script>
 function insertProduct() {
-	alert("상품등록 실행");
 	
 	var prd = $('#prdForm');
-	alert("prd : " + prd);
 	
 	var length = $('input').length;
-	alert("length : " + length);
 	for (let i = 1; i < length; i++) {
 		if ($.trim($('input').eq(i).val()) == "") {
 			alert($('input').eq(i).attr('title') + '을 입력하세요');
-			
 			$('input').eq(i).focus();
 			return; // --------없으면 제출함
 		}

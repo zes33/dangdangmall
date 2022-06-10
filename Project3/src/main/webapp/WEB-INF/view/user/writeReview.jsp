@@ -134,7 +134,7 @@ function reviewSubmit() {
 
 		$.ajax({
 	       type: "POST",
-	       url: "insertReview.do?order_detail_id=${myOrder.order_detail_id }",
+	       url: "insertReview.do?order_detail_id=${myOrder.ORDER_DETAIL_ID }",
 	       data: params,      
 	        success: function (data) {
 	
@@ -156,17 +156,17 @@ function reviewSubmit() {
     	<div class="wrtRV">리뷰쓰기</div>
     </div>
 	<div class="container-fluid back">
-	<form id="reviewFrm" action="${pageContext.request.contextPath }/insertReview.do?order_detail_id=${myOrder.order_detail_id }">
+	<form id="reviewFrm" action="${pageContext.request.contextPath }/insertReview.do?order_detail_id=${myOrder.ORDER_DETAIL_ID }">
 	    <div class="row">
 	        <div class="col-sm-12 row imgLine">
 	        	<div class="col-sm-4 prdImg">
-	        		<img alt="상품사진" class="img-fluid" src="${pageContext.request.contextPath }/img/셀러드.jpg">
+	        		<img alt="상품사진" class="img-fluid" src="${pageContext.request.contextPath }/img/${myOrder.PRODUCT_PIC }">
 	        	</div>
         		<div class="col-sm-8 row nameZone">
         			<div class="container">
 					    <div class="row orderInfo">
-					        <div class="col-sm-12 prdName">${myOrder.product_name }</div>
-					        <div class="col-sm-12">구매수량 : ${myOrder.user_order_cnt }</div>
+					        <div class="col-sm-12 prdName">${myOrder.PRODUCT_NAME }</div>
+					        <div class="col-sm-12">구매수량 : ${myOrder.USER_ORDER_CNT }</div>
 					    </div>
 					</div>
         		</div>

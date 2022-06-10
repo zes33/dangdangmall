@@ -67,7 +67,7 @@ function productDetailView(product_id){
 					<div class="col" style="cursor: pointer;"
 						onclick="productDetailView(${product.product_id})">
 						<div class="card shadow-sm">
-							<img src="${pageContext.request.contextPath }/img/셀러드.jpg"
+							<img src="${pageContext.request.contextPath }/img/${product.product_pic}"
 								class="bd-placeholder-img card-img-top" width="100%"
 								height="225">
 							<div class="card-body">

@@ -50,7 +50,7 @@ public class ReviewDAO {
 	}
 	
 	// 주문상세번호로 주문정보 조회
-	public MyInfoVO getMyOrder_odi(MyInfoVO myinfo) {
+	public Map<String, Object> getMyOrder_odi(MyInfoVO myinfo) {
 		System.out.println("ReviewDAO.getMyOrder_odi() 실행");
 		return mybatis.selectOne("reviewDAO.getMyOrder_odi", myinfo);
 	}

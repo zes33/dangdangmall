@@ -8,7 +8,7 @@ import com.spring.mall.user.vo.MyInfoVO;
 
 public interface ReviewService {
 	
-	MyInfoVO getMyOrder_odi(MyInfoVO myinfo);
+	Map<String, Object> getMyOrder_odi(MyInfoVO myinfo);
 	void insertReview(ReviewVO vo);
 	int existReview(MyInfoVO myinfo);
 	List<Map<String, Object>> getMyReviewList(String user_id, String start, String end);
