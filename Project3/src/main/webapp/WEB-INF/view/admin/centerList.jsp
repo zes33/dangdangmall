@@ -54,8 +54,9 @@
 	left: 0px;
 	top: 48px;
 	width: 1145px;
-	height: 600px;
+	height: 630px;
 }
+
 </style>
 <style>
 	#container { width: 1100px; margin: auto; }
@@ -68,6 +69,33 @@
 	.center { text-align: center; }
 	
 	.border-none, .border-none td { border: none; }
+</style>
+
+<style>
+#navul {float: center;
+		text-align: center;
+		margin:auto;
+		display:inline-block;
+}
+.navul {
+    list-style:none;
+    margin:auto;
+    padding:0;
+ 	float: center;
+    text-align: center;
+    display:inline-block;
+}
+
+.navul>li {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+    /* margin: auto; */
+    text-align: center;
+    display:inline-block;
+}
+
 </style>
 <script>
 	//문의글의 제목을 누르면 글의 내용과 답변이 한눈에 보이는 상세페이지로 이동하는 함수
@@ -107,7 +135,7 @@
 					</c:forEach>	
 					</select>
 					<input type="text" name="searchKeyword">
-					<button type="submit" class="btn btn-outline-secondary btn-sm">검색</button>
+					<button type="submit" class="btn btn-outline-secondary">검색</button>
 				</td>
 			</tr>
 			
@@ -118,8 +146,8 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th style="text-align: center; vertical-align: middle;" width="5%">NO.</th>
-					<th style="text-align: center; vertical-align: middle;" width="30%">문의제목</th>
+					<th style="text-align: center; vertical-align: middle;" width="7%">NO.</th>
+					<th style="text-align: center; vertical-align: middle;" width="43%">문의제목</th>
 					<th style="text-align: center; vertical-align: middle;" width="10%">ID</th>
 					<th style="text-align: center; vertical-align: middle;" width="20%">닉네임</th>
 					<th style="text-align: center; vertical-align: middle;" width="10%">문의날짜</th>
@@ -137,7 +165,7 @@
 				 	<tr>
 						<td style="text-align: center; vertical-align: middle;">${center.R_NUM}</td>
 						<td style="vertical-align: middle;"><span class="d-inline-block text-truncate" style="max-width: 180px; cursor:pointer;" onclick="go_getCenter(${center.CENTER_QNA_ID });">
-							${center.CENTER_QNA_TITLE }</span>
+							<strong>${center.CENTER_QNA_TITLE }</strong></span>
 						</td>
 						<td style="text-align: center; vertical-align: middle;">${center.USER_ID }</td>
 						<td style="text-align: center; vertical-align: middle;">${center.USER_NICKNAME }</td>
@@ -148,14 +176,20 @@
 						<c:choose>
 							<c:when test="${empty center.CENTER_REPLY_ID }">
 								<td style="text-align: center; vertical-align: middle;">답변대기</td>
+								<td style="text-align: center; vertical-align: middle;">
+									<button type="button" class="btn btn-dark btn-sm" onclick="go_insertReply(${center.CENTER_QNA_ID}, ${center.CENTER_REPLY_ID })">답변하기</button>
+								</td>
 							</c:when>
 							<c:otherwise>
 								<td style="text-align: center; vertical-align: middle;"><strong>답변완료</strong></td>
+								<td style="text-align: center; vertical-align: middle;">
+									<button type="button" class="btn btn-outline-secondary btn-sm" style="border: 1px solid black;" onclick="go_insertReply(${center.CENTER_QNA_ID}, ${center.CENTER_REPLY_ID })" disabled>답변하기</button>
+								</td>
 							</c:otherwise>
 						</c:choose>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark btn-sm" onclick="go_insertReply(${center.CENTER_QNA_ID}, ${center.CENTER_REPLY_ID })">답변하기</button>
-						</td>
+						<c:if test="${empty center.CENTER_REPLY_ID }">
+							
+						</c:if>
 				    </tr>
 				 </c:forEach>
 				 
@@ -166,10 +200,9 @@
 			<button type="button" class="btn btn-sm btn-outline-secondary" onclick="go_qna('${user.user_id}');">문의하기</button>
 		</div>
 		 -->
-		<br>
-		
-		<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-center">
+		 <div style="text-align: center; float: center;">
+			<nav class="navul">
+			  <ul class="navul">
 			  <c:if test="${paging.startPage != 1 }">
 			    <li class="page-item">
 			      <a class="page-link" href="centerList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}"
@@ -200,8 +233,12 @@
 			    
 			  </ul>
 			</nav>
-				
-			</div>	
+			</div>
+		 
+		<br><br><br>
+			
+		</div>
+		<br><br><br><br><br><br><br><br><br><br>	
 			   
    </div>
    </div>

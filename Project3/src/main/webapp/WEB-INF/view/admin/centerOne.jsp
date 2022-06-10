@@ -54,7 +54,7 @@
 	left: 0px;
 	top: 48px;
 	width: 1145px;
-	height: 600px;
+	height: 800px;
 }
 </style>
 <style>
@@ -128,6 +128,7 @@
    <div class="contents">
    
 	<div id="container">
+		<br><br>
 		<table class="table table-hover">
 			<tr>
 				<th style="text-align: center; vertical-align: middle;">NO.</th>
@@ -188,20 +189,21 @@
 		<div style="float:right;">
 			<c:choose>
 				<c:when test="${empty getCenter.REPLY_CONTENT }">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_insertReply(${getCenter.CENTER_QNA_ID });">답변 등록</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
+					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_insertReply(${getCenter.CENTER_QNA_ID });">답변 등록</button>
+					<button type="button" class="btn btn-danger" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 				</c:when>
 				<c:otherwise>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_updateReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 수정</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_deleteReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 삭제</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
+					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_updateReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 수정</button>
+					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_deleteReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 삭제</button>
+					<button type="button" class="btn btn-danger" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 				</c:otherwise>
 			</c:choose>
 		</form>	
-		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='centerList.do'">목록으로</button>
-		
 		</div>
-		<br>
+		<div style="float:left;">
+			<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="location.href='centerList.do'">목록으로</button>
+		</div>
+		<br><br><br><br><br><br><br><br><br><br><br>
    
    
    </div>
