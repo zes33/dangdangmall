@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +35,10 @@ public class ProductController {
 	
 	// 상품 수정 페이지 이동
 	@RequestMapping("/updateProduct.do")
-	public String updateProduct() {
+	public String updateProduct(ProductVO product, Model model) {
 		System.out.println("product컨트롤러.updateProduct() 실행");
+		ProductVO pvo = productService.getProduct(product);
+		model.addAttribute("product", pvo);
 		
 		return "admin/updateProduct";
 	}
@@ -128,7 +129,8 @@ public class ProductController {
 		
 		System.out.println("product : " + product);
 		productService.insertProduct(product);
-		return "admin/productList";
+		return "redirect:/adminProductList.do";
+		
 	}
 	
 	// 상품 상세페이지
@@ -173,7 +175,28 @@ public class ProductController {
 	}
 	
 	
-	
+	// 카테고리별 목록(식품, 운동)
+	@RequestMapping("paging.do")
+	public String boardList(String prd_c, PagingVO vo, Model model
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		int category_code = Integer.parseInt(prd_c);
+		int total = pagingService.totalProductCnt_c(category_code);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "12";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "12";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewProduct", pagingService.productList_category(category_code,vo.getStart(),vo.getEnd()));
+		model.addAttribute("prd_c", prd_c);
+		return "store/productListCategory";
+	}
 	
 
 	

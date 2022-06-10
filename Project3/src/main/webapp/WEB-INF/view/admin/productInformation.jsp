@@ -93,8 +93,19 @@ function goPrdList() {
 	location.href = "${pageContext.request.contextPath }/adminProductList.do";
 }
 
-function editPrrd() {
-	location.href="${pageContext.request.contextPath }/updateProduct.do";
+function editPrrd(product_id) {
+	let f = document.createElement("form");
+	
+	let obj = document.createElement('input');
+	obj.setAttribute('type', 'hidden');
+    obj.setAttribute('name', 'product_id');
+    obj.setAttribute('value', product_id);
+	
+ 	f.appendChild(obj);
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', 'updateProduct.do');
+    document.body.appendChild(f);
+    f.submit();
 }
 </script>
 </head>
@@ -162,7 +173,7 @@ function editPrrd() {
                   <li>
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-top:36px; margin-left: -15px;">
                      <button onclick="goPrdList()" class="btn btn-success" type="button">상품 목록</button>
-                     <button onclick="editPrrd()" class="btn btn-success" type="button" >상품 수정</button>
+                     <button onclick="editPrrd(${product.product_id})" class="btn btn-success" type="button" >상품 수정</button>
                     </div>
                </li>
               </ul>

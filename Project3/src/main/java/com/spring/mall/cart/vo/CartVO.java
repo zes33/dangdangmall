@@ -28,16 +28,19 @@ public class CartVO {
 	private String product_info;
 	private double product_discount;
 	private int product_state;
+	private String product_pic; // 상품이미지 이름 
 	
 	public CartVO() {
 		System.out.println(">> cartVO 생성 ");
 	}
 
+	
+
 	public CartVO(int cart_id, String user_id, String n_user_ip, int cart_product_qty, int product_id, String user_pw,
 			String user_name, String user_nickname, String user_email, int user_grade, int user_point, String user_addr,
 			String user_addr_d, String user_zipcode, int user_state, String user_phone1, String user_phone2,
 			String user_phone3, int category_code, String product_name, int product_price, int product_stock,
-			String product_info, double product_discount, int product_state) {
+			String product_info, double product_discount, int product_state, String product_pic) {
 		super();
 		this.cart_id = cart_id;
 		this.user_id = user_id;
@@ -64,7 +67,22 @@ public class CartVO {
 		this.product_info = product_info;
 		this.product_discount = product_discount;
 		this.product_state = product_state;
+		this.product_pic = product_pic;
 	}
+
+
+
+	public String getProduct_pic() {
+		return product_pic;
+	}
+
+
+
+	public void setProduct_pic(String product_pic) {
+		this.product_pic = product_pic;
+	}
+
+
 
 	public int getCart_id() {
 		return cart_id;
@@ -266,6 +284,8 @@ public class CartVO {
 		this.product_state = product_state;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", n_user_ip=" + n_user_ip
@@ -276,9 +296,11 @@ public class CartVO {
 				+ ", user_phone1=" + user_phone1 + ", user_phone2=" + user_phone2 + ", user_phone3=" + user_phone3
 				+ ", category_code=" + category_code + ", product_name=" + product_name + ", product_price="
 				+ product_price + ", product_stock=" + product_stock + ", product_info=" + product_info
-				+ ", product_discount=" + product_discount + ", product_state=" + product_state + "]";
+				+ ", product_discount=" + product_discount + ", product_state=" + product_state + ", product_pic="
+				+ product_pic + "]";
 	}
 
+	
 	
 	
 }

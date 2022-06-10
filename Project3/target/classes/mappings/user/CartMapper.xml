@@ -27,6 +27,7 @@
 		c.CART_PRODUCT_QTY,
 		p.product_discount,
 		p.product_price,
+		p.product_pic,
 		(product_price * CART_PRODUCT_QTY) money
 		FROM
 		USERS u,
@@ -98,5 +99,13 @@
 		SELECT *
 		FROM PRODUCT
 		WHERE PRODUCT_ID = #{product_id}
+	</select>
+	
+	<!--10.  장바구니 이미지 출력  -->
+	<select id="getImg" resultType="com.spring.mall.cart.vo.CartVO">
+	SELECT P.PRODUCT_PIC
+	FROM CART C, PRODUCT P
+	WHERE C.PRODUCT_ID = P.PRODUCT_ID
+	AND C.USER_ID = #{user_id}
 	</select>
 </mapper>

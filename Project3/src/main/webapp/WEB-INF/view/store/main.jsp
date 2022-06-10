@@ -124,7 +124,7 @@ strike {
 						<div class="col" style="cursor: pointer;"
 							onclick="productDetailView(${food.product_id})">
 							<div class="card shadow-sm">
-								<img src="${pageContext.request.contextPath }/img/셀러드.jpg"
+								<img src="${pageContext.request.contextPath }/img/${food.product_pic}"
 									class="bd-placeholder-img card-img-top" width="100%"
 									height="225">
 								<div class="card-body">
@@ -176,7 +176,7 @@ strike {
 						<div class="col" style="cursor: pointer;"
 							onclick="productDetailView(${exercise.product_id})">
 							<div class="card shadow-sm">
-								<img src="${pageContext.request.contextPath }/img/아령세트.jpg"
+								<img src="${pageContext.request.contextPath }/img/${exercise.product_pic}"
 									class="bd-placeholder-img card-img-top" width="100%"
 									height="225">
 								<div class="card-body">

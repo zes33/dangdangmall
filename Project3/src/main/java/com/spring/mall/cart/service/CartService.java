@@ -37,4 +37,7 @@ public interface CartService {
 
 	// 9. 바로 구매
 	public ProductVO orderDirect(int product_id);
+	
+	//10. 장바구니 이미지 
+	public List<CartVO> getImg(String user_id);
 }

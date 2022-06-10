@@ -50,6 +50,7 @@ public class ProductDAO {
 		map.put("searchCondition", searchCondition);
 		map.put("searchKeyword", searchKeyword);
 		map.put("prd_category", prd_category);
+		map.put("prd_state", prd_state);
 		System.out.println("===> MyBatis 사용 adminProductTotCnt() 실행");
 		return mybatis.selectOne("productDAO.adminProductTotCnt",map);
 	}

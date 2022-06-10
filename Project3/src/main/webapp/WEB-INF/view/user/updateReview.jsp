@@ -168,7 +168,7 @@ function reviewSubmit() {
 	    <div class="row">
 	        <div class="col-sm-12 row imgLine">
 	        	<div class="col-sm-4 prdImg">
-	        		<img alt="상품사진" class="img-fluid" src="${pageContext.request.contextPath }/img/셀러드.jpg">
+	        		<img alt="상품사진" class="img-fluid" src="${pageContext.request.contextPath }/img/${myReview.PRODUCT_PIC }">
 	        	</div>
         		<div class="col-sm-8 row nameZone">
         			<div class="container">

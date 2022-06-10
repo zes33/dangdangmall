@@ -16,6 +16,7 @@ public class CartDetailProductVO {
 	private String product_info; // 상품 설명
 	private int product_discount; // 상품 할인율
 	private int product_state; // 상품 상태
+	private String product_pic; // 상품이미지 이름 
 	
 	//추가 
     private int salePrice;
@@ -143,14 +144,33 @@ public class CartDetailProductVO {
 		this.totalPrice = this.salePrice*this.cart_detail_cnt;
 	}
 	
+	
+	public String getProduct_pic() {
+		return product_pic;
+	}
+
+	public void setProduct_pic(String product_pic) {
+		this.product_pic = product_pic;
+	}
+
+	public int getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
+	}
+
 	@Override
 	public String toString() {
 		return "CartDetailProductVO [cart_detail_id=" + cart_detail_id + ", cart_detail_cnt=" + cart_detail_cnt
 				+ ", product_id=" + product_id + ", cart_id=" + cart_id + ", user_id=" + user_id + ", n_user_ip="
 				+ n_user_ip + ", category_code=" + category_code + ", product_name=" + product_name + ", product_price="
 				+ product_price + ", product_stock=" + product_stock + ", product_info=" + product_info
-				+ ", product_discount=" + product_discount + ", product_state=" + product_state + "]" ;
+				+ ", product_discount=" + product_discount + ", product_state=" + product_state + ", product_pic="
+				+ product_pic + ", salePrice=" + salePrice + ", totalPrice=" + totalPrice + "]";
 	}
+
 	
 	
 

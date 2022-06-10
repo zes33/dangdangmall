@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.spring.mall.cart.vo.CartDetailProductVO;
 import com.spring.mall.cart.vo.CartVO;
 import com.spring.mall.product.vo.ProductVO;
 
@@ -72,5 +74,10 @@ public class CartDAO {
 	//9. 바로 구매 
 	public ProductVO orderDirect(int product_id) {
 		return mybatis.selectOne("cartDAO.orderDirect", product_id);
+	}
+	
+	//10.  장바구니 이미지 출력
+	public List<CartVO> getImg(String user_id){
+		return mybatis.selectList("cartDAO.getImg", user_id);
 	}
 }

@@ -95,7 +95,7 @@
 		margin-bottom: 10px;
 	}
 	
-	img{
+	.aimg{
 		width:70px;
 		height:70px;
 	}
@@ -234,7 +234,7 @@ function deleteReview(review_id) {
 				<div class="col-md-11 whoruBaby">
 					<div class="row imgZone">
 				        <div class="col-sm-1">
-				        	<img alt="제품사진" src="${pageContext.request.contextPath }/img/블루베리.jpg">
+				        	<img alt="제품사진" class="aimg" src="${pageContext.request.contextPath }/img/${myReviewList.PRODUCT_PIC }">
 				        </div>
 				        <div class="col-sm-9 info">
 				        	<div class="prdname">${myReviewList.PRODUCT_NAME }</div>
