@@ -81,8 +81,8 @@ public class CenterQnaController {
 		vo.setUser_id(user_id);
 		System.out.println("insert vo : " + vo);
 		centerQnaService.insertCenterQna(vo);
-		System.out.println(">>> 고객 문의 목록 페이지로 이동(getCenterList.do)이동 - insertCenterQnaWrite()");
-		return "redirect:getCenterList.do";
+		System.out.println(">>> 고객 문의 목록 페이지로 이동(getCenterListPaging.do)이동 - insertCenterQnaWrite()");
+		return "redirect:getCenterListPaging.do";
 	}
 	
 	//고객문의 삭제
@@ -95,8 +95,8 @@ public class CenterQnaController {
 			centerReplyService.deleteCenterReply(rvo);
 		}
 		centerQnaService.deleteCenterQna(vo);
-		System.out.println("고객 문의 목록 페이지(getCenterList.jsp)이동 - getCenterList()");
-		return "redirect:getCenterList.do";
+		System.out.println("고객 문의 목록 페이지(getCenterListPaging.jsp)이동 - getCenterList()");
+		return "redirect:getCenterListPaging.do";
 	}
 	
 	//고객문의 수정 페이지로 이동

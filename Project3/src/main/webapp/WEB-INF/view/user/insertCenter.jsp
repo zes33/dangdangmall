@@ -40,7 +40,7 @@
 				alert("내용을 입력하세요.");
 				document.insertCenterQna.center_qna_content.focus();
 			} else {
-				document.forms[0].submit();
+				$("#insertCenterQna").submit();
 			}
 		}
     }
