@@ -547,7 +547,7 @@ function writeQna() {
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.");
 	} else {
-		alert("product_id, nowPage : " + product_id +','+nowPage);
+		/* alert("product_id, nowPage : " + product_id +','+nowPage); */
 		
 		var formObj = $("#prdQnaWrite form[role='form']");
 		var qna_content = $("#txtara").val();
@@ -559,14 +559,14 @@ function writeQna() {
 			'qna_content' : qna_content,
 			'product_id' : product_id
 					};
-		alert("data : " + data);
+		/* alert("data : " + data); */
 		
 		$.ajax({
 			url : 'writePrdQna.do',
 			type : 'post',
 			data : data,
 			success : function(){
-				alert("formObj,qna_content :" +formObj+","+ qna_content);
+				/* alert("formObj,qna_content :" +formObj+","+ qna_content); */
 				$("#txtara").val("");
 				replyList(nowPage, product_id);
 			},
