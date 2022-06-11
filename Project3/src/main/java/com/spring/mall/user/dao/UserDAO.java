@@ -72,5 +72,10 @@ public class UserDAO {
 		mybatis.update("userDAO.updateInfo", vo);
 	}
 	
+	//아이디에 해당하는 비번 찾기
+	public String userPWCheck(UserVO vo) {
+		return mybatis.selectOne("userDAO.userPWCheck", vo);
+	}
+	
 
 }

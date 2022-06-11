@@ -127,8 +127,8 @@ html, body {
 	padding-left: 80px;
 }
 
-.right{
-	float: right;
+.bottom{
+	padding-left: 250px;
 }
 
 </style>
@@ -195,11 +195,11 @@ html, body {
 							href="${pageContext.request.contextPath }/myprivateinfo.do">나의 정보</a></b>
 					</p>
 				</div>
-				<div>
+				<!-- <div>
 					<p>
 						<b><a href="cart/list.do">장바구니</a></b>
 					</p>
-				</div>
+				</div> -->
 				<div>
 					<p>
 						<b><a href="${pageContext.request.contextPath }/goMyPrdQna.do">상품
@@ -274,12 +274,13 @@ html, body {
 							<tr>
 								<td colspan="3"><input class="button" type="button"
 									id="update" value="회원 정보 수정"></td>
+							<td><a class="bottom"
+								href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a></td>
 							</tr>
 						</tbody>
 					</table>
 				</form>
 			</div>
-			<a class="right" href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a>
 			<table>
 				<thead>
 					<tr>

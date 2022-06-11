@@ -14,4 +14,6 @@ public interface UserJoinService {
 	int passCheck(UserVO vo);
 	
 	void updateInfo(UserVO vo);
+	
+	String userPWCheck(UserVO vo);
 }

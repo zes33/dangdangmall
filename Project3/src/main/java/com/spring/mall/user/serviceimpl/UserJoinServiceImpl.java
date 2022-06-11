@@ -48,4 +48,9 @@ public class UserJoinServiceImpl implements UserJoinService{
 		userDAO.updateInfo(vo);
 	}
 
+	@Override
+	public String userPWCheck(UserVO vo) {
+		return userDAO.userPWCheck(vo);
+	}
+
 }

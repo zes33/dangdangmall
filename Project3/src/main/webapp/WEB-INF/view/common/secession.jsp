@@ -52,19 +52,19 @@ footer {
    padding: 15px;
 }
 
-#signFrm{
+#delFrm{
 	background-color: #F3F3F3;
 	padding: 20px;
 	text-align: center;
 }
 
-.join{
+#secession{
 	float: right;
 }
 
 .element{
 	padding: 10px;
-	padding-left: 100px;
+	padding-left: 250px;
 }
 
 .ajax{
@@ -83,25 +83,28 @@ footer {
 	<h1>회원탈퇴</h1>
 	<hr />
 	<form action="secessionProc.do" name="delFrm" id="delFrm" method="post">
-		<input type="hidden" name="user_id" value="${sessionScope.userId}">
-		<table border=1>
+		<table>
 			<tr>
-				<td>패스워드</td>
+				<td class="element">아이디</td>
+				<td><input type="text" name="user_id" value="${user.user_id}" readonly></td>
+			</tr>
+			<tr>
+				<td class="element">패스워드</td>
 				<td><input type="password" name="user_pw" id="user_pw"></td>
 			</tr>
 			<tr>
-				<td>패스워드 확인</td>
+				<td class="element">패스워드 확인</td>
 				<td><input type="password" name="passwdCheck" id="passwdCheck"></td>
 			</tr>
+			<tr><p style="color: red;">${msg }</p></tr>
 			<tr>
-				<!-- <td colspan=2 align="center"><a href="#" id="secession">탈퇴하기</a></td> -->
-				<td colspan=2 align="center"><input id="secession" type="button" value="탈퇴하기"></td>
+				<td colspan=2 align="center"><input id="secession" type="submit" value="탈퇴하기"></td>
+				<td colspan=2 align="right"><a href="${pageContext.request.contextPath }/main.do">메인페이지로 돌아가기</a></td>
 			</tr>
 		</table>
 	</form>
 	</div>
 	<hr>
-	<a href="store/main">메인</a>
 	<!-- footer -->
 	<footer>
 		<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -134,7 +137,7 @@ footer {
 			}
 			
 			//패스워드 맞는지 확인
-			$.ajax({
+/* 			$.ajax({
 				url: "${pageContext.request.contextPath}/passCheck.do",
 				type: "POST",
 				data: $('#delFrm').serializeArray(),
@@ -142,7 +145,7 @@ footer {
 					if(data==0){
 						alert("패스워드가 틀렸습니다.");
 						return;
-					}else{
+					}/*else {
 						//탈퇴
 						var result = confirm('정말 탈퇴 하시겠습니까?');
 						if(result){
@@ -152,7 +155,7 @@ footer {
 				},
 				error: function(){
 					alert("서버 에러.");
-				}
+				} */
 			});
 		});
 	});

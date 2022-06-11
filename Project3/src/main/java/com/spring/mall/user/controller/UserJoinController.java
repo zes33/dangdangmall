@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,17 +62,39 @@ public class UserJoinController {
 	
 	//회원탈퇴 페이지
 	@RequestMapping(value="secession.do")
-	public String secession() {
+	public String secession(Model model,HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.getAttribute("user");
+		//model.addAttribute("user_id", user_id);
 		return "common/secession";
 	}
 	
 	//회원탈퇴
 	@RequestMapping(value="secessionProc.do")
-	public String secessionProc(UserVO vo,HttpSession session) {
+	public String secessionProc(UserVO vo,HttpSession session, Model model, String passwdCheck) {
+		String location = "";
+		String msg = "";
+		//System.out.println("vo : " + vo);
+		System.out.println("passwdCheck : " + passwdCheck);
+		System.out.println("user_pw : " + vo.getUser_pw());
 		
-		userJoinService.secession(vo,session);
+		String correctPW = userJoinService.userPWCheck(vo);
+		String user_pw = vo.getUser_pw();
 		
-		return "common/login";
+		System.out.println("correctPW : " + correctPW);
+		
+		
+		if(user_pw.equals(correctPW) && user_pw.equals(passwdCheck)) {
+			userJoinService.secession(vo,session);
+			location = "user/secessionOK";
+		}else{
+			msg = "비밀번호가 틀렸습니다. 다시 확인해 주세요.";
+			model.addAttribute("msg", msg);
+			location = "common/secession";
+		}
+		
+		return location;
 	}
 		
 	//패스워드 체크
