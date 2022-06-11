@@ -62,42 +62,48 @@ th {
 
 </style>
 <script>
-function goInsertQna(qna_id){
-    let f = document.createElement('form');
-    
+
+
+//공통
+function cmmSubmit(name1, value1, action1) {
+	let f = document.createElement('form');
+	    
     let obj;
     obj = document.createElement('input');
     obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'qna_id');
-    obj.setAttribute('value', qna_id);
+    obj.setAttribute('name', name1);
+    obj.setAttribute('value', value1);
     
     f.appendChild(obj);
     f.setAttribute('method', 'post');
-    f.setAttribute('action', 'adminInsertProductQna.do');
+    f.setAttribute('action', action1);
     document.body.appendChild(f);
     f.submit();
 }
 
+function goInsertQna(qna_id){
+	
+	var name1 = 'qna_id';
+	var value1 = qna_id;
+	var action1 = 'adminInsertProductQna.do';
+	cmmSubmit(name1, value1, action1);
+}
+
 function delPrdQna(qna_group) {
+	alert("param : " + arguments.length);
+
 	let del = confirm("문의를 삭제하면 답변까지 삭제됩니다. \n삭제하시겠습니까?");
 	if(del){
-		let f = document.createElement('form');
-	    
-	    let obj;
-	    obj = document.createElement('input');
-	    obj.setAttribute('type', 'hidden');
-	    obj.setAttribute('name', 'qna_group');
-	    obj.setAttribute('value', qna_group);
-	    
-	    f.appendChild(obj);
-	    f.setAttribute('method', 'post');
-	    f.setAttribute('action', 'delProductQue.do');
-	    document.body.appendChild(f);
-	    f.submit();
+		var name1 = 'qna_group';
+		var value1 = qna_group;
+		var action1 = 'delProductQue.do';
+		cmmSubmit(name1, value1, action1);
 	}
 }
 
 function delPrdAns(qna_group, qna_id) {
+	alert("param : " + arguments.length);
+	
 	let del = confirm("답변을 삭제하시겠습니까?");
 	if(del){
 		let f = document.createElement('form');
@@ -124,35 +130,17 @@ function delPrdAns(qna_group, qna_id) {
 }
 
 function updateAns(qna_group){
-    let f = document.createElement('form');
-    
-    let obj;
-    obj = document.createElement('input');
-    obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'qna_group');
-    obj.setAttribute('value', qna_group);
-    
-    f.appendChild(obj);
-    f.setAttribute('method', 'post');
-    f.setAttribute('action', 'updatePrdAns.do');
-    document.body.appendChild(f);
-    f.submit();
+	var name1 = 'qna_group';
+	var value1 = qna_group;
+	var action1 = 'updatePrdAns.do';
+	cmmSubmit(name1, value1, action1);
 }	
 
 function updateQue(qna_id){
-    let f = document.createElement('form');
-    
-    let obj;
-    obj = document.createElement('input');
-    obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'qna_id');
-    obj.setAttribute('value', qna_id);
-    
-    f.appendChild(obj);
-    f.setAttribute('method', 'post');
-    f.setAttribute('action', 'updatePrdQue.do');
-    document.body.appendChild(f);
-    f.submit();
+	var name1 = 'qna_id';
+	var value1 = qna_id;
+	var action1 = 'updatePrdQue.do';
+	cmmSubmit(name1, value1, action1);
 }
 
 </script>
@@ -219,7 +207,7 @@ function updateQue(qna_id){
 		
 		<c:choose> 
 			<c:when test="${user.user_state eq 2 }"> 
-				<button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'"
+				<button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do?nowPage=${paging.nowPage }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}&prd_category=${prd_category}'"
 				type="button" class="btn btn-outline-secondary">목록</button>
 			</c:when>
 			<c:otherwise>  

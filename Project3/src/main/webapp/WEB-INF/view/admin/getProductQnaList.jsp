@@ -220,7 +220,7 @@ function goInsertQna(qna_id){
 						<span class="d-inline-block text-truncate" style="max-width: 180px;">${productQna.PRODUCT_NAME }</span>
 					</td>
 					<td style="text-align: center">
-						<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${productQna.QNA_GROUP }">
+						<a class="qnaTitle " href="adminViewPrdQnaOne.do?qna_group=${productQna.QNA_GROUP }&nowPage=${paging.nowPage }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}&prd_category=${prd_category}">
 						${productQna.QNA_CONTENT }</a>
 					</td>
 					

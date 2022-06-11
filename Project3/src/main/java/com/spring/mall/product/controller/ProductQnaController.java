@@ -39,12 +39,16 @@ public class ProductQnaController {
 		System.out.println("ProductQnaController() 객체 생성");
 	}
 	
-	//수정된 상품문의답변 제출
+	//수정된 상품문의답변 제출-------------------
 	@RequestMapping("/editProductAns.do")
 	public String editProductAns(ProductQnaNickVO vo) {
 		System.out.println("editProductAns() 실행");
+		System.out.println("수정답변 제출 --qna_id, qna_group 확인 :" + vo);
 		productQnaService.updateQna(vo);
+
+		//reatt.addAttribute("qna_group",vo.getQna_group());
 		return "forward:/adminProductQnaList.do";
+		//return "redirect:/adminViewPrdQnaOne.do";
 	}
 	
 	//상품문의 수정페이지 이동
@@ -146,13 +150,26 @@ public class ProductQnaController {
 		return "user/myPrdQna";
 	}
 	
-	// 상품문의 제목 클릭 시 문의+답변 조회----
+	// 상품문의 제목 클릭 시 문의+답변 조회----------------------
 	@RequestMapping("/adminViewPrdQnaOne.do")
-	public String adminViewPrdQnaOne(ProductQnaNickVO vo, Model model) {
+	public String adminViewPrdQnaOne(ProductQnaNickVO vo, Model model,PagingVO paging,
+			String prd_category, String searchCondition, String qna_state,String searchKeyword) {
 		System.out.println("adminViewPrdQnaOne() 실행");
 		List<ProductQnaNickVO> list = productQnaService.viewPrdQnaSet(vo);
-		System.out.println("list : " + list);
+		
 		model.addAttribute("productQnaSet", list);
+		model.addAttribute("paging", paging);
+		model.addAttribute("searchCondition", searchCondition);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("qna_state", qna_state);
+		model.addAttribute("prd_category",  prd_category);
+		
+		System.out.println("개별조회------paging : " + paging);
+		System.out.println("qna_state : " + qna_state);
+		System.out.println("prd_category : " + prd_category);
+		System.out.println("searchCondition : " + searchCondition);
+		System.out.println("-------searchKeyword : " + searchKeyword);
+			
 		return "admin/veiwProductQnaSet";
 	}
 	
@@ -186,6 +203,7 @@ public class ProductQnaController {
 		}
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		System.out.println("nowPage : " + nowPage);
+		System.out.println("cntPerPage : " + cntPerPage);
 		System.out.println("startPage : " + paging.getStartPage());
 		System.out.println("endPage : " + paging.getEndPage());
 		
@@ -201,14 +219,14 @@ public class ProductQnaController {
 		model.addAttribute("qna_state",qna_state);
 		model.addAttribute("prd_category",prd_category);
 		
-		System.out.println("total : " + total);
+		System.out.println("목록------total : " + total);
 		System.out.println("list : " + list);
 		System.out.println("searchCondition : " + searchCondition);
 		System.out.println("searchKeyword : " + searchKeyword);
 		System.out.println("qna_state : " + qna_state);
 		System.out.println("prd_category : " + prd_category);
 		System.out.println("start : " + start);
-		System.out.println("end : "+end);
+		System.out.println("-----------end : "+end);
 		
 		return "admin/getProductQnaList";
 	}

@@ -112,7 +112,8 @@ th {
 		</c:forEach>
 		</table>
 		<input type="hidden" name="qna_id" value="${productQnaSet[1].qna_id}">
-	
+		<input type="hidden" name="qna_group" value="${productQnaSet[0].qna_group}">
+		
 	</div>
 	<div class="col-sm-11 row btnZone">
 		<div class="col-sm-6">
@@ -122,10 +123,8 @@ th {
         <div class="col-sm-6 rightBtn">
         	<div class="plzRight">
         	
-        	<!-- <input type="submit" class="btn btn-outline-secondary" value="등록"> -->
         	<button type="button" class="btn btn-outline-secondary"
         		onclick="writeQna()">등록</button>
-        	<!-- <button type="button" class="btn btn-danger">문의삭제</button> -->
         	</div>
         </div>
 	</div>
@@ -138,7 +137,7 @@ function writeQna() {
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.")
 	} else {
-		document.forms[0].submit();
+		$('#updatePrdAns').submit();
 	}
 }
 
