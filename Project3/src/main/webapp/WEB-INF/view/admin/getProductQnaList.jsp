@@ -260,7 +260,7 @@ function goInsertQna(qna_id){
 	<nav style="margin-left: 500px;">
 	  <ul class="navul">
 	  <c:if test="${paging.startPage != 1 }">
-	    <li>
+	    <li >
 	      <a style=" margin-left: 10px;" href="adminProductQnaList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&qna_state=${qna_state}&prd_category=${prd_category}"
 	       aria-label="Previous">
 	        <span style="font-size: 20px;" aria-hidden="true">&laquo;</span>
@@ -297,6 +297,8 @@ function goInsertQna(qna_id){
 
 
 <style>
+
+
 .navul {
     list-style:none;
     margin:0;
@@ -308,7 +310,7 @@ function goInsertQna(qna_id){
     padding: 0 0 0 0;
     border : 0;
     float: left;
-}
+} 
 
 </style>
 

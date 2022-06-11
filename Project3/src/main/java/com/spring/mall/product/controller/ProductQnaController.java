@@ -146,7 +146,7 @@ public class ProductQnaController {
 		return "user/myPrdQna";
 	}
 	
-	// 상품문의 제목 클릭 시 문의+답변 조회
+	// 상품문의 제목 클릭 시 문의+답변 조회----
 	@RequestMapping("/adminViewPrdQnaOne.do")
 	public String adminViewPrdQnaOne(ProductQnaNickVO vo, Model model) {
 		System.out.println("adminViewPrdQnaOne() 실행");
@@ -256,6 +256,10 @@ public class ProductQnaController {
 	public void wirteProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session) {
 		System.out.println("댓글입력 메소드 실행");
 		String user_id = (String) session.getAttribute("user_id");
+		
+		System.out.println("댓글등록 qnaVO : " + vo);
+		System.out.println("댓글등록 productVO : " + pv);
+		
 		vo.setUser_id(user_id);
 		productQnaService.insertProductQna(vo);
 	}
@@ -274,6 +278,7 @@ public class ProductQnaController {
 		int product_id = nv.getProduct_id();
 		int total = pagingService.totalPrdQna_prd(product_id);
 		
+		
 		int setLastPage = 0;
 		if (nowPage == null && cntPerPage == null) {
 			cntPerPage = "4";
@@ -291,11 +296,11 @@ public class ProductQnaController {
 			cntPerPage = "4";
 		}
 		
+		
 		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		ProductVO product = productService.getProduct(pv);
 		List<ProductQnaNickVO> qnaList = pagingService.prdQnaList_prd(product_id, paging.getStart(), paging.getEnd());	
 		
-		System.out.println("qnaList:" + qnaList.toString());
 		
 		map.put("paging", paging);
 		map.put("qnaList",qnaList);

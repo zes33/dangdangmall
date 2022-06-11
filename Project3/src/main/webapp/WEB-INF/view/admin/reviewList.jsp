@@ -106,6 +106,13 @@ function delReview(review_id) {
 		location.href="deleteReview.do?review_id="+review_id;
 	}
 }
+
+function resetOpt() {
+	$('#keyzone').val('');
+	$('.prd_category').prop('checked', false);
+}
+
+
 </script>
 <style >
 .star {
@@ -146,6 +153,8 @@ function delReview(review_id) {
 					<span><b>[상품분류]</b></span>
 					<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="1">식품
 					<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="2">운동
+					<button type="button" onclick="resetOpt()">초기화</button>
+					
 				</td>
 			</tr>
 		</table>

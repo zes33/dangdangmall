@@ -118,14 +118,12 @@ $(document).ready(function () {
 
 var product_id = "<c:out value='${product.product_id}'/>";
 var nowPage = "<c:out value='${paging.nowPage}'/>";	
-
+var qnaList = "<c:out value='${qnaList}'/>";	
 
 function replyList(nowPage, product_id) {
-	/* alert("replyList() 실행");
-	alert("nowPage : " + nowPage +"\nproduct_id : " + product_id); */
-	if(nowPage == 0){
+	if(qnaList == null){
 		nowPage = 1;
-	}
+	} 
 	
 	$.ajax({
 		url : "qnaWithPaging.do",
@@ -554,6 +552,8 @@ function moreReview(product_id) {
      "width=500, height=700 top=100, left=250");
 }
 
+
+
 function writeQna() {
 	console.log("writeQna() 실행~~")
 	var contentBlank = $("#prdQnaForm").children("textarea").val()
@@ -562,28 +562,22 @@ function writeQna() {
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.");
 	} else {
-		/* alert("product_id, nowPage : " + product_id +','+nowPage); */
 		
 		var formObj = $("#prdQnaWrite form[role='form']");
 		var qna_content = $("#txtara").val();
 		
-		/* alert("formObj,qna_content :" +formObj+","+ qna_content); */
-		
 		var data = {
-			/* 'nowPage' : null, */
 			'qna_content' : qna_content,
 			'product_id' : product_id
 					};
-		/* alert("data : " + data); */
 		
 		$.ajax({
 			url : 'writePrdQna.do',
 			type : 'post',
 			data : data,
 			success : function(){
-				/* alert("formObj,qna_content :" +formObj+","+ qna_content); */
 				$("#txtara").val("");
-				replyList(nowPage, product_id);
+				replyList(undefined, product_id);
 			},
 			error : function(){
 				alert("오류발생");
