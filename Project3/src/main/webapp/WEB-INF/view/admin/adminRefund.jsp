@@ -69,12 +69,13 @@ table, th, td {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
+<div class="container">
+		<jsp:include page="sidebarTemplate.jsp"></jsp:include>
 
-	<h3>환불 요청 관리 페이지</h3>
-	<%-- <div class="container">
-		 ${refundList } 
-	</div> --%>
-
+		<div class="menuname h1 text-center centers"
+			style="background-color: rgb(240, 240, 240);">
+			<strong style="font-size: 3vw">&lt; 환불 요청 관리 &gt;</strong>
+		</div>
 
 	<div class="container">
 		<c:if test="${empty refundList}">
@@ -155,7 +156,7 @@ table, th, td {
 			</table>
 		</c:if>
 	</div>
-
+</div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
