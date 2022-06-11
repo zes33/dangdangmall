@@ -53,19 +53,40 @@ function productDetailView(product_id){
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 	<div class="container">
-		
 		<h1  class="in"> '</h1><h1 class="in" style="color:red;"> ${searchKeyword }</h1><h1 class="in"> ' 에 대한 검색 결과 </h1> 
 	</div>
 	<br>
+		<div class="album py-5 bg-light">
+	<div class="text-center">
+			<c:if test="${empty productListS}">
+			<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="192" height="192"
+viewBox="0 0 24 24"
+style=" fill:#undefined;"><path d="M22 20L20 22 14 16 14 14 16 14z"></path><path d="M9,16c-3.9,0-7-3.1-7-7c0-3.9,3.1-7,7-7c3.9,0,7,3.1,7,7C16,12.9,12.9,16,9,16z M9,4C6.2,4,4,6.2,4,9c0,2.8,2.2,5,5,5 c2.8,0,5-2.2,5-5C14,6.2,11.8,4,9,4z"></path><path d="M13.7 12.5H14.7V16H13.7z" transform="rotate(-44.992 14.25 14.25)"></path></svg>
+				<br /><br>
+				<h2> 상품을 찾을 수 없습니다.</h2>
+				<br />
+				<p> 이용에 불편을 드려 대단히 죄송합니다.</p>
+			</c:if>
+		</div>
 
-
-	<div class="album py-5 bg-light">
+	
 		<div class="container">
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="product" items="${productListS }">
+				<c:if test="${empty productListS}">
+				<br />
+				<h2>찾으시는 상품이 없습니다</h2>
+				<br />
+				<br />
+			</c:if>
+			<c:if test="${not empty productListS}">
+				
 					<div class="col" style="cursor: pointer;"
-						onclick="productDetailView(${product.product_id})">
+						<%-- onclick="productDetailView(${product.product_id})"> --%>
+						onclick="location.href='${pageContext.request.contextPath }/viewPrdDetail.do?product_id=${product.product_id}'">
+							
 						<div class="card shadow-sm">
 							<img src="${pageContext.request.contextPath }/img/${product.product_pic}"
 								class="bd-placeholder-img card-img-top" width="100%"
@@ -106,6 +127,7 @@ function productDetailView(product_id){
 							</div>
 						</div>
 					</div>
+					</c:if>
 				</c:forEach>
 			</div>
 			<br>
@@ -126,6 +148,6 @@ function productDetailView(product_id){
 	<script>
 		
 	</script>
-	<div class="last_block"></div>
+	<!-- <div class="last_block"></div> -->
 </body>
 </html>
