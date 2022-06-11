@@ -43,17 +43,16 @@ h1, h3, p {
 
 table {
 	border-collapse: collapse;
+	
 }
 
 table, th, td {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	margin: 0 auto;
-	border-bottom: 1px solid #444444;
+	/* border-bottom: 1.5px solid #444444; */
 }
 
-th {
-	background-color: lightgray;
-}
+
 
 .center {
 	text-align: center;
@@ -173,23 +172,6 @@ div.contents {
 	margin-top: 30pt;
 }
 
-.category {
-	margin: 10%;
-	width: 80%;
-}
-
-.category_label:hover {
-	cursor: pointer;
-}
-
-.map_button {
-	width: inherit;
-	padding: 5pt;
-}
-
-.map_button:hover {
-	cursor: pointer;
-}
 
 a:link {
 	color: black;
@@ -277,17 +259,20 @@ nav {
 			<!--장바구니 목록-->
 			<div style="font-weight: bold; font-size: 20px;">
 
-				<table style="width: 90%; padding-top: 3pt;">
-					<tr>
+				<table class="table table-hover" style="width: 90%; padding-top: 3pt;">
+				<thead>
+					<tr style="font-size: 25px;">
 						<th></th>
 						<th>상품 이름</th>
-						<th>가격</th>
+						<th>개당 가격</th>
 						<th>수량</th>
-						<th>할인율 반영 전 금액</th>
+						<th>가격</th>
 						<th>할인율</th>
-						<th>금액</th>
-						<th>삭제</th>
+						<th>결제 금액</th>
+						<th>빼기</th>
 					</tr>
+					</thead>
+					<tbody>
 
 						<c:forEach items="${map.list }" var="list" varStatus="i">
 							<div class="menuClass"
@@ -313,9 +298,11 @@ nav {
 								</span></td>
 								<td>
 									<form action="update.do" method="post">
-										<input type="number" style="width: 80px"
+									  <input type="number" style="width: 80px"
 											name="cart_product_qty" value="${list.cart_product_qty}"
-											min="1"> <input type="hidden" name="product_id"
+											min="1" max="7">
+											
+											<input type="hidden" name="product_id"
 											value="${list.product_id}"> <input type="submit"
 											value="수량수정">
 									</form>
@@ -336,43 +323,42 @@ nav {
 								</span></td>
 								<td><a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a></td>
 							</tr>
-							</div>
 						</c:forEach>
+							</tbody>
+							</table>
+							<table style="width: 90%; padding-top: 3pt;">
+						<tfoot style="font-weight: bold; font-size: 25px;" align="right">
+							<tr>
+							<th colspan="100%" style="font-size: 30px; background-color:black; color:white; "> 결제 금액  </th>
+							</tr>
+							<tr>
+							<td  colspan="4" >장바구니 금액 합계 : </td><td colspan="4"> <fmt:formatNumber pattern="###,###,###"
+								value="${map.sumMoney}" /> 원</td> 
+							</tr>
+							<tr>
+								<td colspan="4" >배송비 : </td><td colspan="4" > <fmt:formatNumber value="${map.fee }"
+								pattern="###,###,###" /> 원</td></tr>
+							<tr> 
+								<th colspan="4" >총금액 : </th><th colspan="4" ><fmt:formatNumber value="${map.allSum }"
+								pattern="###,###,###" /> 원</th></tr>
+							
+							</tfoot>
 				</table>
-				</form>
+				<div  align="right" style=" padding-right: 105px;" ><font color="red"> ** 10만원 이상 구매시 무료배송 **</font> </div>
 			</div>
-			<div class="text-right" style="margin: 10pt; padding-right: 55px;"
-				align='right'>
-				<nav style="font-weight: bold; font-size: 20px;">
-					<ul>
-						<li>장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###"
-								value="${map.sumMoney}" /> 원
-						</li>
-						<li>배송비 <fmt:formatNumber value="${map.fee }"
-								pattern="###,###,###" /> 원
-						</li>
-						<li>총금액 <fmt:formatNumber value="${map.allSum }"
-								pattern="###,###,###" /> 원
-						</li>
-						<br>
-						<span> <font color="red"> ** 10만원 이상 구매시 무료배송 **</font>
-						</span>
-					</ul>
-				</nav>
+			<div style="margin: 30pt; padding-right: 55px;">
 			</div>
 			<div class="container-fluid">
-				<a style="font-size: 20px; font-weight: bold;" type="submit"
+				<a style="font-size: 25px; font-weight: bold;" type="submit"
 					id="product" class="btn btn-success two_button"
-					href="productList.do"> <font color="black">상품목록 </font></a> <a
-					style="font-size: 20px; font-weight: bold;" type="submit"
+					href="productList.do"> <font color="black"> 목록으로 돌아가기 </font></a> <a
+					style="font-size: 25px; font-weight: bold;" type="submit"
 					id="order" class="btn btn-success two_button"
-					href="../order/orderView.do"><font color="black"> 선택 메뉴
-						주문 </font></a>
+					href="../order/orderView.do"><font color="black"> 주문하러가기 </font></a>
 			</div>
 		</c:if>
 	</div>
-	<br>
-
+	
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
