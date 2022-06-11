@@ -174,11 +174,16 @@
                     <span class="position-absolute top-0 end-0">
                        <a href="${pageContext.request.contextPath }/viewPrdDetail.do?product_id=${orderList.product_id }"><img src="img/상세보기.png" alt="상세보기로고" width="90"></a>
                        <br><br>
-                       	<c:if test="${orderList.refund_status == 2}">
+                       	<c:if test="${orderList.refund_id != 0}">
+                       		<c:if test="${orderList.refund_status == 1 }">
+                       		<div><input type="button" class="btn btn-outline-dark btn-sm" disabled value="환불 신청중" /></div><br>
+                       		</c:if>
+                       		<c:if test="${orderList.refund_status == 2 }">
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" disabled value="환불 승인" /></div><br>
-                       	</c:if>
-                       	<c:if test="${orderList.refund_status == 3}">
+                       		</c:if>
+                       		<c:if test="${orderList.refund_status == 3 }">
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" disabled value="환불 불가" /></div><br>
+                       		</c:if>
                        	</c:if>
                        	<c:if test="${orderList.refund_id == 0}">
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.order_detail_id})" value="환불 신청" /></div><br>
