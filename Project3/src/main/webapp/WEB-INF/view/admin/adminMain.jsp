@@ -64,7 +64,7 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/goInsertProduct.do'">상품 등록</button></td>
              <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
              <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/centerList.do'">고객 문의 목록</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">배송상태 변경</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminShipping/adminShippingView.do'">배송상태 변경</button></td>
             <td></td>
             <!-- <td></td> -->
          </tr>
