@@ -1,9 +1,12 @@
 package com.spring.mall.order.serviceimpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.mall.cart.vo.CartVO;
+import com.spring.mall.inven.vo.InvenVO;
 import com.spring.mall.order.dao.OrderDAO;
 import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
@@ -47,12 +50,6 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.getOrder(user_id, order_id);
 	}
 
-	// 4-1 주문 정보 입력폼, 주문자 주소록 가져오기
-//	@Override
-//	public UserVO getUserAddr(String user_id) {
-//		return orderDAO.getUserAddr(user_id);
-//	}
-
 	// 5. 결제 완료 후, 결제 테이블로 넘기기
 	@Override
 	public void insertPayment(PaymentVO vo) {
@@ -71,6 +68,19 @@ public class OrderServiceImpl implements OrderService {
 	public void insertOrderDetailDirect(UserOrderDetailVO vo) {
 		orderDAO.insertOrderDetailDirect(vo);
 
+	}
+
+	// 8. 구매이후 재고량 수정(-)
+	@Override
+	public void deleteInven(InvenVO vo) {
+		orderDAO.deleteInven(vo);
+		
+	}
+
+	// 9. 구매 이후 구매한 상품 아이디, 수량 가져오기
+	@Override
+	public List<UserOrderDetailVO> getIdQty(String order_id) {
+		return orderDAO.getIdQty(order_id);
 	}
 
 }

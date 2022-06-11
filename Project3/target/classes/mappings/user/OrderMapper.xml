@@ -30,7 +30,6 @@
 		#{user_id}
 		)
 	</insert>
-
 	<!-- 주문 상세 정보 입력 -->
 	<insert id="insertOrderDetail">
 		INSERT INTO USERORDER_DETAIL(ORDER_DETAIL_ID,
@@ -102,11 +101,31 @@
 		ORDER_ID,
 		PRODUCT_ID,
 		USER_ID)
-		values (ORDERDETAIL_SEQ.NEXTVAL,
+		values
+		(ORDERDETAIL_SEQ.NEXTVAL,
 		#{user_order_cnt},
 		#{order_id},
 		#{product_id},
 		#{user_id})
 	</insert>
+
+	<!-- 구매이후 재고량 수정(-) -->
+	<update id="deleteInven">
+		UPDATE INVEN
+		SET INVEN_STOCK = INVEN_STOCK -
+		#{inven_stock},
+		INVEN_OUT = INVEN_OUT + #{inven_stock}
+		WHERE PRODUCT_ID
+		= #{product_id}
+	</update>
+
+	<!-- 구매 이후 구매한 상품 아이디, 수량 가져오기 -->
+	<select id="getIdQty"
+		resultType="com.spring.mall.order.vo.UserOrderDetailVO">
+		SELECT PRODUCT_ID,USER_ORDER_CNT
+		FROM USERORDER_DETAIL
+		WHERE
+		ORDER_ID = #{order_id}
+	</select>
 
 </mapper>

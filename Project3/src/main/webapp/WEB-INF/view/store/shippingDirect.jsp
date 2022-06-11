@@ -204,6 +204,7 @@ tr, td ,br{
 		</div></div>
 		<button class="w-100 btn btn-primary btn-lg" id="check_module" type="button">결제 하기</button>
 		<input type="hidden" name="product_id" id="product_id" value="${mapD.list.product_id }">
+		<input type="hidden" name = "inven_stock" id="inven_stock" value="${mapD.cnt }"> 
 			<br>
 			<script>
 			$("#check_module").click(function() {
@@ -233,7 +234,8 @@ tr, td ,br{
 						var msg = '결제가 완료되었습니다.';
 						msg += '결제 금액 : ' + rsp.paid_amount;
 						//success.submit();
-						document.location.href="payD.do?product_id="+$("#product_id").val(); //alert창 확인 후 이동할 url 설정
+						document.location.href="payD.do?product_id="+$("#product_id").val()+"&inven_stock="+$("#inven_stock").val(); //alert창 확인 후 이동할 url 설정
+						/* location.href="cart/insert.do?product_id="+product_id+"&cart_product_qty="+$("#cart_product_qty").val(); */
 						// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
 						// 자세한 설명은 구글링으로 보시는게 좋습니다.
 					} else {

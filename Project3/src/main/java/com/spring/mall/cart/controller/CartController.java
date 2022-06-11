@@ -41,13 +41,6 @@ public class CartController {
 		System.out.println(">> CartController() 객체 생성 ");
 	}
 
-//	// 헤더 장바구니 버튼을 누르면 장바구니 페이지로 연결
-//	@GetMapping("cartView.do")
-//	public String cartView() {
-//		System.out.println("장바구니 페이지(cart.jsp)이동 - cartView()");
-//		return "list.do";
-//	}
-
 	// 2. 장바구니 목록
 //	@ModelAttribute("user")
 	@GetMapping("/list.do")

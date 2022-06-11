@@ -29,7 +29,7 @@
 	<!--Content-->
 	<div class="container">
 		<!-- <h1>성공적인 결제!</h1> -->
-		
+		<%-- ${qtyId } --%>
 		<div id="body-wrapper">
 			<div id="body-content" class="container">
 								<div class="container-fluid text-center" style="margin-top: 10pt">

@@ -1,6 +1,7 @@
 package com.spring.mall.order.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.mall.cart.vo.CartVO;
+import com.spring.mall.inven.vo.InvenVO;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
@@ -63,4 +65,15 @@ public class OrderDAO {
 		 mybatis.insert("orderDAO.insertOrderDetailDirect", vo);
 		 
 	}
+	
+	//8. 구매이후 재고량 수정(-)
+	public void deleteInven(InvenVO vo) {
+		mybatis.update("orderDAO.deleteInven",vo);
+	}
+	
+	//9. 구매 이후 구매한 상품 아이디, 수량 가져오기
+	public List<UserOrderDetailVO> getIdQty(String order_id){
+		return mybatis.selectList("orderDAO.getIdQty", order_id);
+	}
+	
 }

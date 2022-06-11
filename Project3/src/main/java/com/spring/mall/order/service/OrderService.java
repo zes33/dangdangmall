@@ -1,5 +1,8 @@
 package com.spring.mall.order.service;
 
+import java.util.List;
+
+import com.spring.mall.inven.vo.InvenVO;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
 import com.spring.mall.pay.vo.PaymentVO;
@@ -32,4 +35,9 @@ public interface OrderService {
 	// 7. 바로구매 주문 상세 정보 입력
 	public void insertOrderDetailDirect(UserOrderDetailVO vo);
 
+	// 8. 구매이후 재고량 수정(-)
+	public void deleteInven(InvenVO vo);
+
+	// 9. 구매 이후 구매한 상품 아이디, 수량 가져오기
+	public List<UserOrderDetailVO> getIdQty(String order_id);
 }

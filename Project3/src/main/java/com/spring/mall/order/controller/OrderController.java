@@ -1,8 +1,10 @@
 package com.spring.mall.order.controller;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.mall.cart.service.CartService;
+import com.spring.mall.inven.vo.InvenVO;
 import com.spring.mall.order.service.OrderService;
 import com.spring.mall.order.vo.UserOrderDetailVO;
 import com.spring.mall.order.vo.UserOrderVO;
@@ -33,12 +36,6 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 
-	@Autowired
-	private CartService cartService;
-
-	@Autowired
-	   private UserLoginService userLoginService;
-	
 	public OrderController() {
 		System.out.println(">> OrderController() 객체 생성 ");
 	}
@@ -80,7 +77,6 @@ public class OrderController {
 		// 주문 테이블로 주문 정보 저장
 		String order_id = ymd + "-" + subNum;
 		order.setOrder_id(order_id);
-		// order.setOrder_total(order_total);
 		order.setUser_id(user_id);
 		orderService.insertOrder(order);
 
@@ -92,8 +88,6 @@ public class OrderController {
 		UserOrderVO orderInfo = new UserOrderVO();
 		orderInfo = orderService.getOrder(user_id, order_id);
 		session.setAttribute("orderInfo", orderInfo);
-
-		// getUserAddr 회원가입시 작성한 주소 가져오기
 
 		// 2. 결제 완료 후, 결제 테이블에 정보 삽입
 		pvo.setOrder_id(order_id);
@@ -131,10 +125,6 @@ public class OrderController {
 		orderService.insertOrder(order);
 
 		// 결제창에서 쓰일 최근 주문 정보 가져오기
-//			Map<String, String> orderMap = new HashMap<String, String>();
-//			orderMap.put("user_id", user_id);
-//			orderMap.put("order_id", order_id);
-
 		UserOrderVO orderInfo = new UserOrderVO();
 		orderInfo = orderService.getOrder(user_id, order_id);
 		session.setAttribute("orderInfo", orderInfo);
@@ -149,7 +139,7 @@ public class OrderController {
 
 	@RequestMapping("pay.do")
 	public String pay(HttpSession session, Model model, UserOrderVO order, UserOrderDetailVO orderDetail, PaymentVO pvo,
-			UserOrderPointVO point) throws Exception {
+			InvenVO iVo, UserOrderPointVO point) throws Exception {
 		session.getAttribute("payment");
 		session.getAttribute("orderInfo");
 		UserVO user = (UserVO) session.getAttribute("user");
@@ -162,6 +152,21 @@ public class OrderController {
 		orderDetail.setOrder_id(order_id);
 		orderDetail.setUser_id(user_id);
 		orderService.insertOrderDetail(orderDetail);
+
+		// 상품 재고량 감소시키지
+		// 구매 이후 구매한 상품 아이디, 수량 가져오기
+		List<UserOrderDetailVO> qtyId = orderService.getIdQty(order_id);
+		System.out.println("qtyId : " + qtyId);
+		session.setAttribute("qtyId", qtyId);
+
+		// 아이디 하나, 수량 반복문으로 분리 후 하나씩 재고 정리
+		for (int i = 0; i < qtyId.size(); i++) {
+			int product_id = qtyId.get(i).getProduct_id();
+			int user_order_cnt = qtyId.get(i).getUser_order_cnt();
+			iVo.setProduct_id(product_id);
+			iVo.setInven_stock(user_order_cnt);
+			orderService.deleteInven(iVo);
+		}
 
 		// 포인트 결제금액의 5% 적립
 		point.setOrder_id(order_id);
@@ -176,47 +181,51 @@ public class OrderController {
 	}
 
 	@RequestMapping("payD.do")
-	public String payD(@RequestParam int product_id, HttpSession session, Model model, UserOrderVO order,
-			UserOrderDetailVO orderDetail, PaymentVO pvo, UserOrderPointVO point, HttpServletRequest request)
-			throws Exception {
+	public String payD(@RequestParam int product_id, @RequestParam int inven_stock, HttpSession session, Model model, UserOrderVO order,
+			UserOrderDetailVO orderDetail, PaymentVO pvo, UserOrderPointVO point, InvenVO iVo,
+			HttpServletRequest request) throws Exception {
 		System.out.println("payD.do 로 이동 ");
+		
+		//결제 정보 가져오기 
 		session.getAttribute("payment");
+		//주문 정보 가져오기 
 		session.getAttribute("orderInfo");
+		session.getAttribute("mapD");
+		
 		UserVO user = (UserVO) session.getAttribute("user");
-		System.out.println(product_id);
+//		System.out.println(product_id);
 
-//		System.out.println(product);
 		order = (UserOrderVO) session.getAttribute("orderInfo");
 
 		String user_id = user.getUser_id();
-//		int product_id = product.getProduct_id();
 		String order_id = order.getOrder_id();
 
 		// 바로구매 주문상세 정보 입력
 		orderDetail.setOrder_id(order_id);
-		System.out.println(order_id);
-
 		orderDetail.setProduct_id(product_id);
+		orderDetail.setUser_order_cnt(inven_stock);
+		System.out.println(order_id);
 		System.out.println(product_id);
 
+		//주문 상세 테이블 정보입력 
+		orderDetail.setUser_order_cnt(inven_stock);
+		orderDetail.setOrder_id(order_id);
+		orderDetail.setProduct_id(product_id);
 		orderDetail.setUser_id(user_id);
-
 		orderService.insertOrderDetailDirect(orderDetail);
 		System.out.println(orderDetail);
-//
-//		// 포인트 결제금액의 5% 적립
+
+	// 재고 정리
+			//여기가 오류 지점 
+			iVo.setProduct_id(product_id);
+			iVo.setInven_stock(inven_stock);
+			orderService.deleteInven(iVo);
+			System.out.println("iVo : "+iVo);
+
+		// 포인트 결제금액의 5% 적립
 		point.setOrder_id(order_id);
 		point.setUser_id(user_id);
 		orderService.updatePoint(point);
-
-//		UserVO userp = new UserVO();
-//		userp.setUser_id(user_id);
-//		String pwd = point.getUser_pw();
-//		userp.setUser_pw(pwd);
-		
-//		UserVO newuser = userLoginService.getUser(userp);
-//		session = request.getSession();
-//		session.setAttribute("user", newuser);
 
 		return "store/afterPay";
 	}
