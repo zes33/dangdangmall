@@ -107,10 +107,6 @@ table, th, td {
 			method="get">
 			<table class="border-none">
 				<tr>
-					<!-- <td><select name="conditionMapU">
-							<option value="USER_ID">ID</option>
-							<option value="USER_NAME">이름</option>
-					</select>  -->
 					<td>
 					<select name="searchCondition">
 				<c:forEach var="option" items="${conditionMapU }">
@@ -121,16 +117,17 @@ table, th, td {
 					
 					<td> &nbsp;&nbsp;&nbsp;
 					<input type="text" name="searchKeyword" id="searchKeyword" >&nbsp;&nbsp;
-						<button type="button"  onclick="goSearch();">
+						<button type="button"  id="searchKeyword" onclick="goSearch();">
 							검색</button> 
 							
 							<script type="text/javascript">
 								function goSearch() {
 
-									var gett = document
-											.getElementById("searchKeyword").value;
-										location.href = "${pageContext.request.contextPath }/admin/searchUserList.do?searchKeyword="
-												+ gett;
+									var usr = document.getElementById("searchKeyword").value;
+									if (usr == "") {
+                     					alert("검색어를 입력해 주세요.");
+                     				} else{
+										location.href ="${pageContext.request.contextPath }/admin/searchUserList.do?searchKeyword="+usr;
 									}
 								}
 							</script>
