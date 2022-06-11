@@ -87,9 +87,12 @@ public class UserLoginController {
 			session.setAttribute("user_id", user.getUser_id());
 			System.out.println(session.getId());
 			
+			if (before.equals("joinAction.do")) {
+				location = "redirect:/main.do";
+			}else {
 //		location = "redirect:/main.do";
 			location = "redirect:/"+before;
-			
+			}
 //			location = before;
 			//location = "common/back";
 		}
