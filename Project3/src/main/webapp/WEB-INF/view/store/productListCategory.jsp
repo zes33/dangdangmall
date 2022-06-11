@@ -21,23 +21,6 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link href="common/styles.css" rel="stylesheet">
-<script>
-function productDetailView(product_id){
-    let f = document.createElement('form');
-    
-    let obj;
-    obj = document.createElement('input');
-    obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'product_id');
-    obj.setAttribute('value', product_id);
-    
-    f.appendChild(obj);
-    f.setAttribute('method', 'post');
-    f.setAttribute('action', 'viewPrdDetail.do'); 
-    document.body.appendChild(f);
-    f.submit();
-}
-</script>
 <style>
 .categoryName {
 	text-decoration: none;
@@ -91,7 +74,10 @@ function productDetailView(product_id){
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 				<!-- forEach 시작~ -->
 				<c:forEach var="product" items="${viewProduct }">
-					<div class="col" style=" cursor: pointer;" onclick="productDetailView(${product.product_id})">
+					<div class="col" style=" cursor: pointer;"
+					 onclick="location.href='viewPrdDetail.do?product_id=${product.product_id}'">
+					 <%-- onclick="productDetailView(${product.product_id})"> --%>
+					 
 						<div class="card shadow-sm">
 							<img src="${pageContext.request.contextPath }/img/${product.product_pic}" class="bd-placeholder-img card-img-top" width="100%"
 								height="225" >

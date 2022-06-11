@@ -76,6 +76,14 @@
 <script>
 function insertProduct() {
 	
+	//할인율 유효성 검사
+	var dc = $('#product_discount').val();
+	alert("dc : " + dc);
+	if(dc > 100 || dc < 0){
+		alert("할인율은 0~100 사이의 숫자로 입력해주세요.");
+		return false;
+	}
+	
 	var prd = $('#prdForm');
 	
 	var length = $('input').length;
@@ -146,8 +154,8 @@ function addImg(lo) {
 		   <input title="금액" type="text" class="form-control f3" placeholder="금액을 입력하세요" 
     				 name="product_price" maxlength="20"><br/><br>
     
-    <div><strong>상품 입고수량*</strong></div> <span><input title="수량" type="text" id="shot" class="form-control f4" style="float:left" 
-    				 name="product_stock" maxlength="10"></span><p style="font-size: 20px; ">개</p><br/><br><br>
+    <div><strong>상품 입고수량*</strong></div> <span><input title="수량" type="text" id="product_discount" class="form-control f4" style="float:left" 
+    				 name="product_stock" maxlength="10"></span><br/><br><br>
   	 <div><strong>할인율</strong></div> <span><input title="할인율" type="text" id="shot" class="form-control f5" style="float:left"
     				 name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
    <br>

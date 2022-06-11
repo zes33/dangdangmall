@@ -219,7 +219,6 @@ public class ProductQnaController {
 		System.out.println("===>Map prdQnaSearchMap() 실행");
 		Map<String, String> prdQnaSearchMap = new HashMap<String, String>();
 		prdQnaSearchMap.put("내용", "QNA_CONTENT");
-		//prdQnaSearchMap.put("상품분류", "CATEGORY_CODE");
 		prdQnaSearchMap.put("상품명", "PRODUCT_NAME");
 		prdQnaSearchMap.put("상품ID", "PRODUCT_ID");
 		return prdQnaSearchMap;

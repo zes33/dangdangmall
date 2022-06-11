@@ -60,7 +60,7 @@
 #body-content {
 	width: 400px;
 }
-#shot {
+#product_discount {
 	width: 100px;
 }
 #btn {
@@ -165,9 +165,9 @@ function addImg(lo) {
     				title="상품금액" name="product_price" maxlength="20"><br/><br>
     
     <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="text" id="shot" class="form-control f4" style="float:left" 
-    				title="입고수량" name="product_stock" maxlength="10"></span><p style="font-size: 20px; ">개</p><br/><br><br>
+    				title="입고수량" name="product_stock" maxlength="10"></span><br/><br><br>
   	 <div><strong>할인율</strong></div> <span>
-  	 <input value="${product.product_discount*100 }" type="text" id="shot" class="form-control f5" style="float:left"
+  	 <input value="${product.product_discount*100 }" type="text" class="form-control f5" style="float:left"
     			title="할인율"	id="product_discount" value="0" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
    <br>
    			<strong>상품 상태*</strong> 

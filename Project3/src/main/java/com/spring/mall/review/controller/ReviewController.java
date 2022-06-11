@@ -144,11 +144,11 @@ public class ReviewController {
 		
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "3";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if(cntPerPage == null) {
-			cntPerPage = "5";
+			cntPerPage = "3";
 		}
 		
 		HttpSession session = request.getSession();
@@ -160,6 +160,10 @@ public class ReviewController {
 		List<Map<String, Object>> myReviewList = reviewService.getMyReviewList(user_id, start, end);
 		model.addAttribute("myReviewList",myReviewList);
 		model.addAttribute("paging",paging);
+		
+		System.out.println("total : " +total);
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
 		
 		return "user/myReview";
 	}

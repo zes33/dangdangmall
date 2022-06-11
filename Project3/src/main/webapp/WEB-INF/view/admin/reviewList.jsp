@@ -73,6 +73,10 @@
 </style>
 <title>상품 리뷰(관리자)</title>
 <script>
+
+var condition = '<c:out value="${searchCondition}"/>';
+var category = '<c:out value="${prd_category}"/>';
+
 $(document).ready(function () {
 	
 	$(".1").html("&#9733;");
@@ -83,6 +87,17 @@ $(document).ready(function () {
 
 	$(".category1").html("식품");
 	$(".category2").html("운동");
+	
+	// 검색어 유지
+	$('option[value='+condition+']').prop('selected', true);
+	
+	// 검색조건 유지 : 상품분류
+	$('.prd_category[value='+category+']').prop('checked', true);
+	
+	// 검색어 input 초기화
+	$('#keyzone').click(function () {
+		$('#keyzone').val('');
+	})
 
 })
 
@@ -121,7 +136,7 @@ function delReview(review_id) {
 						<option value="${option.value }">${option.key }</option>
 					</c:forEach>
 					</select>
-					<input type="text" name="searchKeyword">
+					<input id="keyzone" type="text" value="${searchKeyword }" name="searchKeyword">
 					<button type="submit"  id="ss">검색</button>
 				</td>
 			</tr>
@@ -129,8 +144,8 @@ function delReview(review_id) {
 				<td style="text-align: left;">
 					<br>
 					<span><b>[상품분류]</b></span>
-					<input style="margin-left: 10px;" type="radio" name="prd_category" value="1">식품
-					<input style="margin-left: 10px;" type="radio" name="prd_category" value="2">운동
+					<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="1">식품
+					<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="2">운동
 				</td>
 			</tr>
 		</table>

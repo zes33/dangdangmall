@@ -76,24 +76,52 @@
 
 </style>
 <script>
+
+var condition = '<c:out value="${searchCondition}"/>';
+var category = '<c:out value="${prd_category}"/>';
+var qstate = '<c:out value="${qna_state}"/>';
+
 $(document).ready(function () {
 
 	$(".1").html("식품");
 	$(".2").html("운동");
-
+	
+	// 검색어 유지
+	$('option[value='+condition+']').prop('selected', true);
+	
+	// 검색조건 유지 : 상품분류
+	$('.prd_category[value='+category+']').prop('checked', true);
+	
+	// 검색조건 유지 : 답변상태
+	$('.qna_state[value='+qstate+']').prop('checked', true);
+	
+	
+	// 검색어 input 초기화
+	$('#keyzone').click(function () {
+		$('#keyzone').val('');
+	})
+	
+	
 })
+
+function resetOpt() {
+	$('#keyzone').val('');
+	$('.prd_category').prop('checked', false);
+	$('.qna_state').prop('checked', false);
+}
 
 
 function goInsertQna(qna_id){
     let f = document.createElement('form');
     
-    let obj;
-    obj = document.createElement('input');
-    obj.setAttribute('type', 'hidden');
-    obj.setAttribute('name', 'qna_id');
-    obj.setAttribute('value', qna_id);
+    let obj1;
+    obj1 = document.createElement('input');
+    obj1.setAttribute('type', 'hidden');
+    obj1.setAttribute('name', 'qna_id');
+    obj1.setAttribute('value', qna_id);
     
-    f.appendChild(obj);
+    f.appendChild(obj1);
+
     f.setAttribute('method', 'post');
     f.setAttribute('action', 'adminInsertProductQna.do');
     document.body.appendChild(f);
@@ -128,10 +156,10 @@ function goInsertQna(qna_id){
 					<td>
 						<select name="searchCondition" style="width: 80px;">
 							<c:forEach var="option" items="${prdQnaSearchMap }">
-								<option value="${option.value }">${option.key }</option>
+								<option class="opt" value="${option.value }">${option.key }</option>
 							</c:forEach>
 						</select>
-						<input type="text" name="searchKeyword">
+						<input id="keyzone" value="${searchKeyword }" type="text" name="searchKeyword">
 						
 						<button type="submit" >검색</button>
 					</td>
@@ -140,16 +168,17 @@ function goInsertQna(qna_id){
 					<td style="text-align: left;">
 						<br>
 						<span><b>[상품분류]</b></span>
-						<input style="margin-left: 10px;" type="radio" name="prd_category" value="1">식품
-						<input style="margin-left: 10px;" type="radio" name="prd_category" value="2">운동
+						<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="1">식품
+						<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="2">운동
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: left;">
 						<span><b>[답변상태]</b></span>
-						<input style="margin-left: 10px;" type="radio" name="qna_state" value="0">답변대기
-						<input style="margin-left: 10px;" type="radio" name="qna_state" value="1">답변완료
-						<input style="margin-left: 10px;" type="radio" name="qna_state" value="2">전체선택
+						<input style="margin-left: 10px;" class="qna_state" type="radio" name="qna_state" value="0">답변대기
+						<input style="margin-left: 10px;" class="qna_state" type="radio" name="qna_state" value="1">답변완료
+						<input style="margin-left: 10px;" class="qna_state" type="radio" name="qna_state" value="2">전체선택&nbsp;&nbsp;&nbsp;
+						<button type="button" onclick="resetOpt()">초기화</button>
 					</td>
 				</tr>
 			</table>
