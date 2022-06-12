@@ -89,7 +89,7 @@ footer {
             <tr>
                <td class="element">아이디</td>
                <td class="element"><input type="text" id="user_id" name="user_id" placeholder="아이디"
-                ></td>
+                required></td>
                <td class="element"><input type="button" id="check" value="중복체크"></td>
             </tr>
             <tr>
@@ -98,17 +98,17 @@ footer {
             <tr>
                <td class="element">패스워드</td>
                <td colspan="2" class="element"><input id="user_pw" name="user_pw" type="password" placeholder="비밀번호"
-               maxlength="20" class="form-control"></td>
+               maxlength="20" class="form-control" required></td>
             </tr>
             <tr>
                <td class="element">패스워드 확인</td>
                <td colspan="2" class="element"><input id="passwdCheck" name="passwdCheck" type="password" placeholder="비밀번호 확인"
-               maxlength="20" class="form-control"></td>
+               maxlength="20" class="form-control" required></td>
             </tr>
             <tr>
                <td class="element">이름 </td>
                <td colspan="2" class="element"><input id="user_name" name="user_name" type="text" placeholder="이름"
-               maxlength="20" class="form-control"></td>
+               maxlength="20" class="form-control" required></td>
             </tr>
             <tr>
                <td class="element">닉네임</td>
@@ -118,7 +118,7 @@ footer {
             <tr>
                <td class="element">e-mail</td>
                <td colspan="2" class="element"><input type="email" class="form-control" placeholder="e-mail"
-                     name="user_email" maxlength="20"></td>
+                     name="user_email" maxlength="20" required></td>
             </tr>
             <tr>
                <td class="element">전화번호</td>

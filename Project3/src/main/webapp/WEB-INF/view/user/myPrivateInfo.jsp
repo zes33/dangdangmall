@@ -131,6 +131,10 @@ html, body {
 	padding-left: 250px;
 }
 
+.right{
+	float: right;
+}
+
 </style>
 </head>
 <body>
@@ -235,7 +239,7 @@ html, body {
 									maxlength="20" class="form-control"></td>
 							</tr>
 							<tr>
-								<td class="element">비빌먼호 변경 확인</td>
+								<td class="element">비밀번호 변경 확인</td>
 								<td colspan="2" class="element"><input id="passwdCheck"
 									name="passwdCheck" type="password" placeholder="비밀번호 확인"
 									maxlength="20" class="form-control"></td>
@@ -258,7 +262,7 @@ html, body {
 								<td class="element">e-mail</td>
 								<td colspan="2" class="element"><input type="email"
 									class="form-control" placeholder="e-mail" name="user_email"
-									maxlength="20" value="${user.user_email }"></td>
+									maxlength="20" value="${user.user_email }" required></td>
 							</tr>
 							<tr>
 								<td class="element">전화번호</td>
@@ -270,10 +274,30 @@ html, body {
 								</select> - <input type="text" name="user_phone2" size="5" value="${fn:substring(user.user_phone,3,7) }"> - <input
 									type="text" name="user_phone3" size="5" value="${fn:substring(user.user_phone,7,11) }"></td>
 							</tr>
-							
 							<tr>
-								<td colspan="3"><input class="button" type="button"
+								<td class="element">우편번호</td>
+								<td colspan="2" class="element"><input id="user_zipcode" class="form-control" maxlength="20" name="user_zipcode" value="${user.user_zipcode}"
+									type="text" placeholder="우편번호 찾기" readonly onclick="findAddr()" required></td>
+							</tr>	
+							<tr>
+								<td class="element">도로명 주소</td>
+								<td colspan="2" class="element"><input id="user_addr" class= "form-control" maxlength="20" name="user_addr"
+									type="text" value="${user.user_addr}" placeholder="도로명주소" readonly></td>
+							</tr>
+							<tr>
+								<td class="element">상세 주소</td>
+								<td colspan="2" class="element"><input id="user_addr_d" class= "form-control" maxlength="20" name="user_addr_d"
+									type="text" value="${user.user_addr_d}" placeholder="도로명주소"></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input class="button" type="button"
 									id="update" value="회원 정보 수정"></td>
+								<%-- <c:if test="${user.user_addr == null}">
+								<td ><button type="button" onclick="location.href='updateAddr.do'">배송지 등록</button></td>
+								</c:if>
+								<c:if test="${user.user_addr != null}">
+								<td ><button type="button" onclick="location.href='updateAddr.do'">배송지 수정</button></td>
+								</c:if> --%>
 							<td><a class="bottom"
 								href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a></td>
 							</tr>
@@ -325,5 +349,35 @@ html, body {
          }
       });
    });
+   
+	function findAddr() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+
+				console.log(data);
+
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+				// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var roadAddr = data.roadAddress; // 도로명 주소 변수
+				var jibunAddr = data.jibunAddress; // 지번 주소 변수
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('user_zipcode').value = data.zonecode;
+				if (roadAddr !== '') {
+					document.getElementById("user_addr").value = roadAddr;
+				} else if (jibunAddr !== '') {
+					document.getElementById("user_addr").value = jibunAddr;
+				}
+			}
+		}).open();
+	}
+
+	const orderPhone = (target) => {
+		 target.value = target.value
+		   .replace(/[^0-9]/g, '')
+		  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+		}
 </script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>
