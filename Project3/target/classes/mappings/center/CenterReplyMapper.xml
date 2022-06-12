@@ -73,10 +73,7 @@
 		WHERE CENTER_QNA_ID = #{center_qna_id}
 	</select>
 		
-	<delete id="deleteCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO">
-		DELETE FROM CENTER_QNA  
-		WHERE CENTER_QNA_ID = #{center_qna_id}
-	</delete>
+	
 	
 	
 	-->

@@ -93,6 +93,20 @@ public class AdminCenterController {
 		return "redirect:getCenterListPaging.do";
 	}
 	
+	//▶▶관리자 답글 삭제
+	@RequestMapping("/adminReplyDelete.do")
+	public String adminReplyDelete(CenterQnaVO vo, CenterReplyVO rvo, int center_qna_id, Model model) {
+		System.out.println("▶▶ delete 할 rvo : " + rvo);
+		centerReplyService.deleteCenterReply(rvo);
+		
+		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
+		model.addAttribute("getCenter", getCenter);
+		System.out.println("getCenter: " + getCenter);
+		
+		System.out.println("▶▶고객 문의 상세페이지(centerOne.jsp)이동 - adminReplyDelete()");
+		return "redirect:adminCenter.do?center_qna_id=" + center_qna_id;
+	}
+	
 	//▶▶관리자 답글 수정 페이지로 이동
 	@RequestMapping("/adminReplyUpdateGo.do")
 	public String adminReplyUpdateGo(CenterQnaVO vo, Model model, int center_qna_id) {

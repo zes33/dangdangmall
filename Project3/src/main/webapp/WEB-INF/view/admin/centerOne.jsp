@@ -88,7 +88,7 @@
 	}
 	
 	//답변 삭제
-	function go_deleteReply(QnaId, ReplyId) {
+	function go_deleteReply(QnaId) {
 		var real = confirm("답글을 정말로 삭제하시겠습니까?");
 		if (real) {
 			location.href = "${pageContext.request.contextPath }/admin/adminReplyDelete.do?center_qna_id=" + QnaId;
@@ -193,7 +193,7 @@
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_updateReply(${getCenter.CENTER_QNA_ID });">답변 수정</button>
-					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_deleteReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 삭제</button>
+					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_deleteReply(${getCenter.CENTER_QNA_ID });">답변 삭제</button>
 					<button type="button" class="btn btn-danger" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 				</c:otherwise>
 			</c:choose>
