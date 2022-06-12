@@ -57,7 +57,7 @@
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductList.do'">상품 목록</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminReviewList.do'">상품후기 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/adminUserList.do'">회원정보 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='#'">판매내역 조회</button></td>
+            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/salesHistory/salesHistoryView.do'">판매내역 조회</button></td>
             <td><button type="button" class="btn btn-light" onclick="location.href='salesView.do'">매출 조회</button></td>
          </tr>
          <tr>
