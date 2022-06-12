@@ -97,7 +97,6 @@ textarea {
 	color: red;
 }
 
-
 </style>
 <body>
 	<script>
@@ -475,7 +474,7 @@ function replyList(nowPage, product_id) {
 										style="vertical-align: inherit;">구매일</font></font></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody >
 							<!-- foreach 사용 -->
 							<c:if test="${empty reviewList }">
 								<tr>
@@ -483,14 +482,14 @@ function replyList(nowPage, product_id) {
 								</tr>
 							</c:if>
 							<c:forEach var="review" items="${reviewList }" begin="0" end="4">
-								<tr>
+								<tr >
 									<th scope="row"
 										class="grade star text-start ${review.REVIEW_GRADE }"></th>
 									<td><font style="vertical-align: inherit;"><font
 											style="vertical-align: inherit;">${review.REVIEW_CONTENT }</font></font></td>
 									<td class="reviewid text-end"><font
 										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;"><strong>${review.USER_NICKNAME }</strong></font></font></td>
+											style="text-align:ca vertical-align: inherit;"><strong>${review.USER_NICKNAME }</strong></font></font></td>
 									<td class="reviewdt text-end"><font
 										style="vertical-align: inherit;"><font
 											style="vertical-align: inherit;"><small

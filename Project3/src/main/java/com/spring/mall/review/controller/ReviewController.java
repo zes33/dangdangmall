@@ -81,9 +81,8 @@ public class ReviewController {
 		System.out.println("====> Map searchConditionMap() 실행");
 		Map<String, String> reviewConditionMap = new HashMap<String, String>();
 		reviewConditionMap.put("내용", "REVIEW_CONTENT");
-		//reviewConditionMap.put("분류", "CATEGORY_CODE");
 		reviewConditionMap.put("상품명", "PRODUCT_NAME");
-		reviewConditionMap.put("상픔ID", "PRODUCT_ID");
+		reviewConditionMap.put("상픔번호", "PRODUCT_ID");
 		return reviewConditionMap;
 	}
 
@@ -99,11 +98,11 @@ public class ReviewController {
 		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "7";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			cntPerPage = "7";
 		}
 		
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
@@ -144,11 +143,11 @@ public class ReviewController {
 		
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "3";
+			cntPerPage = "5";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if(cntPerPage == null) {
-			cntPerPage = "3";
+			cntPerPage = "5";
 		}
 		
 		HttpSession session = request.getSession();

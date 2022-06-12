@@ -88,6 +88,18 @@ function updateProduct() {
 		return false;
 	}
 	
+	// 금액, 수량 유효성 검사
+	var price = $('#price').val();
+	var stock = $('#stock').val();
+	if(price < 0){
+		alert("금액은 0원 이하 입력이 불가능합니다.");
+		return false;
+	}
+	if(stock < 0){
+		alert("수량은 0개 이하 입력이 불가능합니다.");
+		return false;
+	}
+	
 	var prd = $('#prdForm');
 	
 	var length = $('input').length;
@@ -166,9 +178,9 @@ $(document).ready(function () {
     		  	<option class="category" value="2" >운동</option>
     		  </select><br/><br/><br>
    <strong>상품금액*</strong> <input value="${product.product_price }" type="number" min="0" class="form-control f3" placeholder="금액을 입력하세요" 
-    				title="상품금액" name="product_price" maxlength="20"><br/><br>
+    				id="price" title="상품금액" name="product_price" maxlength="20"><br/><br>
     
-    <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="number" min="1" id="shot" class="form-control f4" style="float:left" 
+    <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="number" min="1" id="stock" class="form-control f4" style="float:left" 
     				title="입고수량" name="product_stock" maxlength="10"></span><br/><br><br>
   	 <div><strong>할인율</strong></div> <span>
   	 <input value="${product.product_discount*100 }" type="number" min='0' max='100' class="form-control f5" style="float:left"

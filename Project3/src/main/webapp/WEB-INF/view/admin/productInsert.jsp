@@ -83,10 +83,22 @@ function insertProduct() {
 		return false;
 	}
 	
+	// 금액, 수량 유효성 검사
+	var price = $('#price').val();
+	var stock = $('#stock').val();
+	if(price < 0){
+		alert("금액은 0원 이하 입력이 불가능합니다.");
+		return false;
+	}
+	if(stock < 0){
+		alert("수량은 0개 이하 입력이 불가능합니다.");
+		return false;
+	}
+	
 	var prd = $('#prdForm');
 	
 	var length = $('input').length;
-	for (let i = 1; i < length; i++) {
+	for (let i = 2; i < length; i++) {
 		if ($.trim($('input').eq(i).val()) == "") {
 			alert($('input').eq(i).attr('title') + '을 입력하세요');
 			$('input').eq(i).focus();
@@ -141,7 +153,7 @@ function addImg(lo) {
    
    <form action="insertProduct.do" method="post" class="h3" id="prdForm" enctype="multipart/form-data">
    		<strong>상품등록번호(*) 자동생성</strong> 
-     	<input type="text" class="form-control" disabled maxlength="20"><br/><br>
+     	<input type="text" class="form-control" disabled maxlength="20" title="p_id"><br/><br>
     	<strong>상품명*</strong> <input title="상품명" type="text" class="form-control f1" placeholder="상품명을 입력하세요." 
     				 name="product_name" maxlength="20"><br/><br>
     	<strong>상품 카테고리*</strong> 
@@ -151,12 +163,12 @@ function addImg(lo) {
  		 </select><br/><br/><br>
 		  <strong>상품금액*</strong> 
 		   <input title="금액" type="number" min="0" class="form-control f3" placeholder="금액을 입력하세요" 
-    				 name="product_price" maxlength="20"><br/><br>
+    				id="price" name="product_price" maxlength="20"><br/><br>
     
-    <div><strong>상품 입고수량*</strong></div> <span><input title="수량" type="number" min="0" id="product_discount" class="form-control f4" style="float:left" 
+    <div><strong>상품 입고수량*</strong></div> <span><input title="수량" type="number" min="0" id="stock" class="form-control f4" style="float:left" 
     				 name="product_stock" maxlength="10"></span><br/><br><br>
-  	 <div><strong>할인율</strong></div> <span><input title="할인율" type="number" min="0" max="100" id="shot" class="form-control f5" style="float:left"
-    				 name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
+  	 <div><strong>할인율</strong></div> <span><input title="할인율" type="number" min="0" max="100" class="form-control f5" style="float:left"
+    				id="product_discount" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
    <br>
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품사진*</strong></label>
