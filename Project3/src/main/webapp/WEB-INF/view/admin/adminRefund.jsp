@@ -104,9 +104,9 @@ table, th, td {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-<div class="container">
+<%-- <div class="container">
 		<jsp:include page="sidebarTemplate.jsp"></jsp:include>
-
+ --%>
 	<div class="container">
    <jsp:include page="sidebarTemplate.jsp"></jsp:include>
 	   	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);">
@@ -174,7 +174,6 @@ table, th, td {
 								<td class="center" style="color: #C9C7C7;" colspan="2">[환불
 									불가]</td>
 							</c:if>
-							
 							<td>
 							<c:if test="${1 eq list.refund_status }">
 								<td colspan="2" class="center">
