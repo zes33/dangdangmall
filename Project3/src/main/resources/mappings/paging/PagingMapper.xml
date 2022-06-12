@@ -41,6 +41,7 @@
 		FROM (SELECT ROWNUM R_NUM, P.*
 		         FROM (SELECT * FROM PRODUCT
 		            WHERE CATEGORY_CODE = #{category_code}
+		            AND PRODUCT_STATE = 1
 		            ORDER BY PRODUCT_ID DESC) P)
 		WHERE R_NUM BETWEEN #{start} AND #{end}
 	</select>
