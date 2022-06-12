@@ -108,7 +108,7 @@ table, th, td {
 	
 		<div class="container">
    <jsp:include page="sidebarTemplate.jsp"></jsp:include>
-	   	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);">
+	   	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);  padding-top: 45px !important;">
 	   		<strong style="font-size:3vw">&lt; 회원정보 관리 &gt;</strong>
 	   	</div>
 
