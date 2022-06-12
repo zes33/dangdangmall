@@ -212,7 +212,7 @@ html, body {
 				</div>
 				<div>
 					<p>
-						<b><a href="#">기타 문의내역</a></b>
+						<b><a href="${pageContext.request.contextPath }/user/myCenterQna.do">기타 문의내역</a></b>
 					</p>
 				</div>
 				<div>
