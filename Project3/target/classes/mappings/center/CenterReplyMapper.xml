@@ -18,6 +18,12 @@
 		((SELECT NVL(MAX(CENTER_REPLY_ID),0) + 1 FROM CENTER_REPLY), #{reply_content}, #{center_qna_id}, SYSDATE)
 	</insert>
 	
+	<update id="updateCenterReply" parameterType="com.spring.mall.center.vo.CenterReplyVO">
+		UPDATE CENTER_REPLY 
+		SET REPLY_CONTENT = #{reply_content} 
+		WHERE CENTER_QNA_ID = #{center_qna_id}
+	</update>
+	
 	<!--  
 	<select id="getCenterQnaList" parameterType="com.spring.mall.center.vo.CenterQnaVO" 
 	resultType="map">
@@ -72,11 +78,6 @@
 		WHERE CENTER_QNA_ID = #{center_qna_id}
 	</delete>
 	
-	<update id="updateCenterQna" parameterType="com.spring.mall.center.vo.CenterQnaVO">
-		UPDATE CENTER_QNA 
-		SET CENTER_QNA_TITLE = #{center_qna_title},
-    		CENTER_QNA_CONTENT = #{center_qna_content}
-		WHERE CENTER_QNA_ID = #{center_qna_id}
-	</update>
+	
 	-->
 </mapper>

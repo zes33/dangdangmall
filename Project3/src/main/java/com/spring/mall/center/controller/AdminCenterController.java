@@ -57,22 +57,9 @@ public class AdminCenterController {
 		model.addAttribute("getCenter", getCenter);
 		System.out.println(getCenter);
 		
-//		UserVO centerUser = (UserVO) session.getAttribute("user");
-//		model.addAttribute("centerUser", centerUser);
-//		System.out.println(centerUser);
-		
 		System.out.println("고객 문의 상세페이지(centerOne.jsp)이동 - adminCenter()");
 		return "admin/centerOne";
 	}
-	
-//	//▶▶관리자 답글 등록 페이지로 이동
-//	@RequestMapping("/adminReplyInsertGo.do")
-//	public String adminReplyInsertGo(int center_qna_id, Model model) {
-//		System.out.println("center_qna_id: " + center_qna_id);
-//		model.addAttribute("center_qna_id", center_qna_id);
-//		System.out.println("▶▶ 관리자 답글 등록 페이지로 이동(adminReplyInsert.jsp) - adminReplyInsertGo()");
-//		return "redirect:adminReplyInsert.do";
-//	}
 	
 	//▶▶관리자 답글 등록
 	@RequestMapping("/adminReplyInsert.do")
@@ -106,29 +93,37 @@ public class AdminCenterController {
 		return "redirect:getCenterListPaging.do";
 	}
 	
-	//고객문의 수정 페이지로 이동
-	@RequestMapping("/updateCenterQna.do")
-	public String updateCenterQna(CenterQnaVO vo, Model model) {
+	//▶▶관리자 답글 수정 페이지로 이동
+	@RequestMapping("/adminReplyUpdateGo.do")
+	public String adminReplyUpdateGo(CenterQnaVO vo, Model model, int center_qna_id) {
+		System.out.println("▶▶!!!관리자 답글 수정 페이지로 이동하는 쩜두");
+		System.out.println("center_qna_id: " + center_qna_id);
+		model.addAttribute("center_qna_id", center_qna_id);
+		
 		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
-		model.addAttribute("getCenter", getCenter);
 		System.out.println("getCenter: " + getCenter);
-		System.out.println(">>> 고객 문의 수정 페이지로 이동(updateCenter.jsp) - updateCenterQna()");
-		return "user/updateCenter";
+		model.addAttribute("getCenter", getCenter);
+		
+		System.out.println("▶▶관리자 답글 수정 페이지로 이동(centerReplyUpdate.jsp) - adminReplyUpdateGo()");
+		return "admin/centerReplyUpdate";
 	}
 	
-	//고객문의 수정 페이지
-	@RequestMapping("/updateCenterQnaWrite.do")
-	public String updateCenterQnaWrite(CenterQnaVO vo, Model model) {
-		System.out.println("updateCenterQnaWrite 쩜두 실행~ ");
+	//▶▶관리자 답글 수정
+	@RequestMapping("/adminReplyUpdate.do")
+	public String adminReplyUpdate(CenterQnaVO vo, CenterReplyVO rvo, Model model, int center_qna_id) throws IllegalArgumentException, IOException {
+		System.out.println("▶▶adminReplyUpdate(관리자 답글수정) 쩜두 실행~ ");
+		System.out.println("center_qna_id: " + center_qna_id);
+		model.addAttribute("center_qna_id", center_qna_id);
+		
+		System.out.println("update할  rvo : " + rvo);
+		centerReplyService.updateCenterReply(rvo);
+		
 		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
 		model.addAttribute("getCenter", getCenter);
 		System.out.println("getCenter: " + getCenter);
 		
-		System.out.println(">> update 할 vo : " + vo);
-		String center_qna_id = Integer.toString(vo.getCenter_qna_id());
-		centerQnaService.updateCenterQna(vo);
-		System.out.println("고객 문의 상세페이지(getCenter.jsp)이동 - updateCenterQnaWrite()");
-		return "redirect:getCenterQna.do?center_qna_id="+center_qna_id;
+		System.out.println("▶▶고객 문의 상세페이지(centerOne.jsp)이동 - adminReplyUpdate()");
+		return "redirect:adminCenter.do";
 	}
 	
 	//▶▶관리자 고객문의 목록 페이징+검색

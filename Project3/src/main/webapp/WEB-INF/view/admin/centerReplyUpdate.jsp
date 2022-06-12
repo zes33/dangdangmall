@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객 문의 하나 조회</title>
+<title>고객 문의 답글 수정 페이지</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -71,20 +71,15 @@
 </style>
 
 <script>
-	//답변 등록
-	function go_insertReply(QnaId, ReplyId) {
-		var reply = $("#center_reply_content").val().trim();
+	//답변 수정
+	function go_updateReply(QnaId) {
+		var reply = $("#reply_content").val().trim();
 		if (reply == "") {
 			alert("답글내용을 입력하세요.");
-			document.insertCenterReply.center_reply_content.focus();
+			document.updateCenterReply.reply_content.focus();
 		} else {
-			$("#insertCenterReply").submit();
+			$("#updateCenterReply").submit();
 		}
-	}
-	
-	//답변 수정
-	function go_updateReply(QnaId, ReplyId) {
-		location.href = "${pageContext.request.contextPath }/admin/adminReplyUpdateGo.do?center_qna_id=" + QnaId;
 	}
 	
 	//답변 삭제
@@ -129,7 +124,7 @@
    
 	<div id="container">
 		<br><br>
-		<form id="insertCenterReply" action="adminReplyInsert.do" method="post">
+		<form id="updateCenterReply" action="adminReplyUpdate.do" method="post">
    		<input type="hidden" id="center_qna_id" name="center_qna_id" value="${getCenter.CENTER_QNA_ID }">
 		<table class="table table-hover">
 			<tr>
@@ -158,50 +153,26 @@
 					<textarea name="content" rows="10" cols="40" disabled="disabled">${getCenter.CENTER_QNA_CONTENT }</textarea>
 				</td>
 			</tr>
-			<c:choose>
-				<c:when test="${empty getCenter.REPLY_CONTENT }">
-					<tr>
-						<th style="text-align: center; vertical-align: middle;">답변내용</th>
-						<!-- <th colspan="2" style="text-align: center; vertical-align: middle;">등록된 답변이 없습니다.</th> -->
-						<td>
-							<textarea name="reply_content" rows="10" cols="40" id="center_reply_content"></textarea>
-						</td>
-					</tr>
-					
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<th style="text-align: center; vertical-align: middle;">답변내용</th>
-						<td>
-							<textarea name="content" rows="10" cols="40" disabled="disabled">${getCenter.REPLY_CONTENT }</textarea>
-						</td>
-					</tr>
-					<tr>
-						<th style="text-align: center; vertical-align: middle;">답변날짜</th>
-						<td><fmt:formatDate value="${getCenter.CENTER_REPLY_DATE }" pattern="yyyy-MM-dd"/></td>
-					</tr>
-				</c:otherwise>
-			</c:choose>
-		
+				<tr>
+					<th style="text-align: center; vertical-align: middle;">답변내용</th>
+					<td>
+						<textarea name="reply_content" rows="10" cols="40" id="reply_content">${getCenter.REPLY_CONTENT }</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th style="text-align: center; vertical-align: middle;">답변날짜</th>
+					<td><fmt:formatDate value="${getCenter.CENTER_REPLY_DATE }" pattern="yyyy-MM-dd"/></td>
+				</tr>
 		</table>
 		
 		<div style="float:right;">
-			<c:choose>
-				<c:when test="${empty getCenter.REPLY_CONTENT }">
-					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_insertReply(${getCenter.CENTER_QNA_ID });">답변 등록</button>
-					<button type="button" class="btn btn-danger" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
-				</c:when>
-				<c:otherwise>
-					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_updateReply(${getCenter.CENTER_QNA_ID });">답변 수정</button>
-					<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_deleteReply(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">답변 삭제</button>
-					<button type="button" class="btn btn-danger" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
-				</c:otherwise>
-			</c:choose>
-		</div>
+			<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="go_updateReply(${getCenter.CENTER_QNA_ID });">답변 수정</button>
+			</div>
 		</form>	
 		
 		<div style="float:left;">
 			<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="location.href='centerList.do'">목록으로</button>
+			<button type="reset" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;">초기화</button>
 		</div>
 		<br><br><br><br><br><br><br><br><br><br><br>
    
