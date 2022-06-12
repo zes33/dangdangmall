@@ -129,6 +129,8 @@
    
 	<div id="container">
 		<br><br>
+		<form id="insertCenterReply" action="adminReplyInsert.do" method="post">
+   		<input type="hidden" id="center_qna_id" name="center_qna_id" value="${getCenter.CENTER_QNA_ID }">
 		<table class="table table-hover">
 			<tr>
 				<th style="text-align: center; vertical-align: middle;">NO.</th>
@@ -156,11 +158,8 @@
 					<textarea name="content" rows="10" cols="40" disabled="disabled">${getCenter.CENTER_QNA_CONTENT }</textarea>
 				</td>
 			</tr>
-		<form id="insertCenterReply" action="adminReplyInsert.do" method="post">
-			<input type="hidden" id="center_qna_id" name="center_qna_id" value="${getCenter.CENTER_QNA_ID }">
 			<c:choose>
 				<c:when test="${empty getCenter.REPLY_CONTENT }">
-					
 					<tr>
 						<th style="text-align: center; vertical-align: middle;">답변내용</th>
 						<!-- <th colspan="2" style="text-align: center; vertical-align: middle;">등록된 답변이 없습니다.</th> -->
@@ -198,8 +197,9 @@
 					<button type="button" class="btn btn-danger" onclick="go_deleteCenter(${getCenter.CENTER_QNA_ID },${getCenter.CENTER_REPLY_ID });">문의 삭제</button>
 				</c:otherwise>
 			</c:choose>
-		</form>	
 		</div>
+		</form>	
+		
 		<div style="float:left;">
 			<button type="button" class="btn btn-outline-primary" style="border: 1px solid #0D5EFD;" onclick="location.href='centerList.do'">목록으로</button>
 		</div>

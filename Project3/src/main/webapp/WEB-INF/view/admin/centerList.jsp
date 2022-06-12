@@ -104,8 +104,8 @@
 	}
 	
 	//답변 등록 - 답변하기 버튼을 누르면 활성화되는 함수
-	function go_insertReply(QnaId, ReplyId) {
-		location.href = "${pageContext.request.contextPath }/admin/adminReplyInsertGo.do?center_qna_id=" + QnaId;
+	function go_insertReply(center_qna_id) {
+		location.href = "${pageContext.request.contextPath }/admin/adminCenter.do?center_qna_id=" + center_qna_id;
 	}
 </script>
 
@@ -183,7 +183,7 @@
 							<c:otherwise>
 								<td style="text-align: center; vertical-align: middle;"><strong>답변완료</strong></td>
 								<td style="text-align: center; vertical-align: middle;">
-									<button type="button" class="btn btn-outline-secondary btn-sm" style="border: 1px solid black;" onclick="go_insertReply(${center.CENTER_QNA_ID}, ${center.CENTER_REPLY_ID })" disabled>답변하기</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm" style="border: 1px solid black;" onclick="go_insertReply(${center.CENTER_QNA_ID})" disabled>답변하기</button>
 								</td>
 							</c:otherwise>
 						</c:choose>

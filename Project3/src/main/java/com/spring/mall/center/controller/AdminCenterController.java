@@ -65,24 +65,28 @@ public class AdminCenterController {
 		return "admin/centerOne";
 	}
 	
-	//▶▶관리자 답글 등록 페이지로 이동
-	@RequestMapping("/adminReplyInsertGo.do")
-	public String adminReplyInsertGo(int center_qna_id, Model model) {
-		System.out.println("center_qna_id: " + center_qna_id);
-		model.addAttribute("center_qna_id", center_qna_id);
-		System.out.println("▶▶ 관리자 답글 등록 페이지로 이동(adminReplyInsert.jsp) - adminReplyInsertGo()");
-		return "redirect:adminReplyInsert.do";
-	}
+//	//▶▶관리자 답글 등록 페이지로 이동
+//	@RequestMapping("/adminReplyInsertGo.do")
+//	public String adminReplyInsertGo(int center_qna_id, Model model) {
+//		System.out.println("center_qna_id: " + center_qna_id);
+//		model.addAttribute("center_qna_id", center_qna_id);
+//		System.out.println("▶▶ 관리자 답글 등록 페이지로 이동(adminReplyInsert.jsp) - adminReplyInsertGo()");
+//		return "redirect:adminReplyInsert.do";
+//	}
 	
 	//▶▶관리자 답글 등록
 	@RequestMapping("/adminReplyInsert.do")
-	public String adminReplyInsert(CenterReplyVO rvo, Model model, int center_qna_id) throws IllegalArgumentException, IOException {
+	public String adminReplyInsert(CenterQnaVO vo, CenterReplyVO rvo, Model model, int center_qna_id) throws IllegalArgumentException, IOException {
 		System.out.println("▶▶ adminReplyInsert(관리자 답글등록) 실행~ ");
 		System.out.println("center_qna_id: " + center_qna_id);
 		model.addAttribute("center_qna_id", center_qna_id);
 		
 		System.out.println("insert할  rvo : " + rvo);
 		centerReplyService.insertCenterReply(rvo);
+		
+		Map<String, Object> getCenter = centerQnaService.getCenterQna(vo);
+		model.addAttribute("getCenter", getCenter);
+		System.out.println(getCenter);
 		
 		System.out.println("▶▶고객 문의 상세페이지(centerOne.jsp)이동 - adminReplyInsert()");
 		return "redirect:adminCenter.do";
