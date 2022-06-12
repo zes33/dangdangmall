@@ -2,22 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="salesDAO">
-	
+
 	<!-- 당해년도 월 별 매출 합계 -->
-	<select id="salesMonth" resultType="com.spring.mall.sales.vo.SalesVO">
-		SELECT SUBSTR(IAMPORT_IMP_UID, 1, 4) AS YEAR, 
-			   SUBSTR(IAMPORT_IMP_UID, 5,2) AS MONTH, 
-			   SUBSTR(IAMPORT_IMP_UID, 7,2) AS DAY , 
-			   SUM(ALLSUM) as TOTAL
-			FROM PAYMENT 
-			GROUP BY ROLLUP(SUBSTR(IAMPORT_IMP_UID, 1, 4), 
-							SUBSTR(IAMPORT_IMP_UID, 5,2), 
-							SUBSTR(IAMPORT_IMP_UID, 7,2))
-           HAVING SUBSTR(IAMPORT_IMP_UID, 1, 4) = '2022'
-           AND  SUBSTR(IAMPORT_IMP_UID, 7,2) IS NULL
-           AND SUBSTR(IAMPORT_IMP_UID, 5,2) IS NOT NULL
+	<select id="salesMonth"
+		resultType="com.spring.mall.sales.vo.SalesVO">
+		SELECT SUBSTR(IAMPORT_IMP_UID, 1, 4) AS YEAR,
+		SUBSTR(IAMPORT_IMP_UID, 5,2) AS MONTH,
+		SUBSTR(IAMPORT_IMP_UID, 7,2) AS DAY ,
+		SUM(ALLSUM) as TOTAL
+		FROM PAYMENT
+		GROUP BY ROLLUP(SUBSTR(IAMPORT_IMP_UID, 1, 4),
+		SUBSTR(IAMPORT_IMP_UID, 5,2),
+		SUBSTR(IAMPORT_IMP_UID, 7,2))
+		HAVING SUBSTR(IAMPORT_IMP_UID, 1, 4) = '2022'
+		AND SUBSTR(IAMPORT_IMP_UID, 7,2) IS NULL
+		AND SUBSTR(IAMPORT_IMP_UID, 5,2) IS NOT NULL
 	</select>
 
 
