@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.mall.paging.service.PagingService;
 import com.spring.mall.paging.vo.PagingVO;
@@ -289,13 +288,13 @@ public class ProductQnaController {
 	public Map<String,Object> qnsListPaging(ProductQnaNickVO nv,ProductVO pv ,PagingVO paging,
 			@RequestParam(value="nowPage", required = false) String nowPage,
 			@RequestParam(value="cntPerPage", required = false) String cntPerPage){
-		System.out.println("qnsListPaging() 실행");
+		System.out.println("::::::::qnsListPaging() 실행");
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		
 		int product_id = nv.getProduct_id();
 		int total = pagingService.totalPrdQna_prd(product_id);
-		
+		System.out.println("total : " + total);
 		
 		int setLastPage = 0;
 		if (nowPage == null && cntPerPage == null) {

@@ -89,9 +89,6 @@ $(document).ready(function () {
 
 })
 
-function goPrdList() {
-	location.href = "${pageContext.request.contextPath }/adminProductList.do";
-}
 
 function editPrrd(product_id) {
 	let f = document.createElement("form");
@@ -172,7 +169,10 @@ function editPrrd(product_id) {
                   <li><br><br></li>
                   <li>
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-top:36px; margin-left: -15px;">
-                     <button onclick="goPrdList()" class="btn btn-success" type="button">상품 목록</button>
+                     <a href="${pageContext.request.contextPath }/adminProductList.do?nowPage=${paging.nowPage }&cntPerPage=${paging.cntPerPage }&searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&prd_state=${prd_state }&prd_category=${prd_category}" 
+                     class="btn btn-success" type="button">상품 목록</a>
+                     <!-- <button onclick="goPrdList()" class="btn btn-success" type="button">상품 목록</button>
+                      -->
                      <button onclick="editPrrd(${product.product_id})" class="btn btn-success" type="button" >상품 수정</button>
                     </div>
                </li>

@@ -196,7 +196,7 @@ function reviewSubmit() {
 	        	<input type="hidden" id="rvGrade" name="review_grade">
 	        </div>
 	        <div class="col-sm-12 txtZone">
-	        	<textarea style="width:100%;" rows="18" name="review_content">${myReview.REVIEW_CONTENT }</textarea>
+	        	<textarea style="width:100%;" rows="14" name="review_content">${myReview.REVIEW_CONTENT }</textarea>
 	        </div>
 	        <div class="col-sm-12 row btnZone">
 		        <div class="col-sm-6" >

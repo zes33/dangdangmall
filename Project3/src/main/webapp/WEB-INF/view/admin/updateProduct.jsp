@@ -80,11 +80,9 @@
 <title>상품 수정(관리자)</title>
 <script>
 function updateProduct() {
-	alert("상품수정 실행");
 	
 	//할인율 유효성 검사
 	var dc = $('#product_discount').val();
-	alert("dc : " + dc);
 	if(dc > 100 || dc < 0){
 		alert("할인율은 0~100 사이의 숫자로 입력해주세요.");
 		return false;
@@ -101,7 +99,6 @@ function updateProduct() {
 			return false;
 		}
 	}
-	
 	
 	prd.submit();
 }
@@ -134,6 +131,13 @@ function addImg(lo) {
 	 reader.readAsDataURL(event.target.files[0]);
 }
 
+var condition = '<c:out value="${product.category_code}"/>';
+
+$(document).ready(function () {
+	$('.category[value='+condition+']').prop('selected', true);
+	
+})
+
 </script>
 </head>
 <body>
@@ -158,22 +162,22 @@ function addImg(lo) {
     <strong>상품명*</strong> <input value="${product.product_name }" type="text" class="form-control f1" placeholder="상품명을 입력하세요." 
     				title="상품명" name="product_name" maxlength="20"><br/><br>
     <strong>상품 카테고리*</strong> <select name="category_code" class="f2">
-    		  	<option value="1" selected>식품</option>
-    		  	<option value="2" selected>운동</option>
+    		  	<option class="category" value="1" >식품</option>
+    		  	<option class="category" value="2" >운동</option>
     		  </select><br/><br/><br>
-   <strong>상품금액*</strong> <input value="${product.product_price }" type="text" class="form-control f3" placeholder="금액을 입력하세요" 
+   <strong>상품금액*</strong> <input value="${product.product_price }" type="number" min="0" class="form-control f3" placeholder="금액을 입력하세요" 
     				title="상품금액" name="product_price" maxlength="20"><br/><br>
     
-    <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="text" id="shot" class="form-control f4" style="float:left" 
+    <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="number" min="1" id="shot" class="form-control f4" style="float:left" 
     				title="입고수량" name="product_stock" maxlength="10"></span><br/><br><br>
   	 <div><strong>할인율</strong></div> <span>
-  	 <input value="${product.product_discount*100 }" type="text" class="form-control f5" style="float:left"
+  	 <input value="${product.product_discount*100 }" type="number" min='0' max='100' class="form-control f5" style="float:left"
     			title="할인율"	id="product_discount" value="0" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
    <br>
    			<strong>상품 상태*</strong> 
      		<select name="product_state" class="f2">
-		  	<option value="1" selected>판매중</option>
-		  	<option value="2" >판매중지</option>
+		  	<option value="1" class="pst">판매중</option>
+		  	<option value="2" class="pst">판매중지</option>
 		  	</select><br/><br/><br>
    
 	<div class="mb-3">

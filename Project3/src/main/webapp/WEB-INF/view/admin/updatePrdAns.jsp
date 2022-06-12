@@ -117,8 +117,9 @@ th {
 	</div>
 	<div class="col-sm-11 row btnZone">
 		<div class="col-sm-6">
-			<button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'"
+			<%-- <button onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'"
 			type="button" class="btn btn-outline-secondary">목록</button>
+			 --%><button onclick="backQna()" type="button" class="btn btn-outline-danger">취소</button>
 		</div>
         <div class="col-sm-6 rightBtn">
         	<div class="plzRight">
@@ -139,6 +140,10 @@ function writeQna() {
 	} else {
 		$('#updatePrdAns').submit();
 	}
+}
+
+function backQna() {
+	history.back();
 }
 
 </script>

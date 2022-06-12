@@ -93,14 +93,29 @@ public class ProductController {
 		System.out.println("product컨트롤러.productInfo() 실행");
 		int total = productService.adminProductTotCnt(searchCondition, searchKeyword, prd_category, prd_state);
 		
-		if (nowPage == null && cntPerPage == null) {
+		System.out.println("total " + total);
+		System.out.println("nowPage " + nowPage);
+		System.out.println("cntPerPage " + cntPerPage);
+		
+//		if (nowPage == null && cntPerPage == null) {
+//			nowPage = "1";
+//			cntPerPage = "7";
+//		} else if (nowPage == null || nowPage.equals("0")) {
+//			nowPage = "1";
+//			cntPerPage = "7";
+//		} else if (cntPerPage == null || cntPerPage.equals("0")) { 
+//			cntPerPage = "7";
+//		}
+		
+		if (nowPage == null || nowPage.equals("0")) {
 			nowPage = "1";
-			cntPerPage = "10";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) { 
-			cntPerPage = "10";
-		}
+		} 
+		cntPerPage = "7";
+		
+		System.out.println("----------");
+		System.out.println("nowPage " + nowPage);
+		System.out.println("cntPerPage " + cntPerPage);
+		
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		String start = Integer.toString(paging.getStart());
 		String end = Integer.toString(paging.getEnd());
@@ -118,10 +133,17 @@ public class ProductController {
 	
 	// 관리자 상품 상세페이지 이동
 	@RequestMapping("/productInfo.do")
-	public String productInfo(ProductVO vo, Model model) {
+	public String productInfo(ProductVO vo, Model model,String searchCondition, 
+			String searchKeyword,String prd_category, String prd_state, PagingVO paging) {
 		System.out.println("product컨트롤러.productInfo() 실행");
 		ProductVO product = productService.getProduct(vo);
+		
 		model.addAttribute("product",product);
+		model.addAttribute("paging", paging);
+		model.addAttribute("searchCondition", searchCondition);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("prd_state", prd_state);
+		model.addAttribute("prd_category",  prd_category);
 		
 		return "admin/productInformation";
 	}

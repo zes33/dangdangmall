@@ -129,7 +129,7 @@ function resetOpt() {
 <div class="container">
   <jsp:include page="sidebarTemplate.jsp"></jsp:include>
   	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);">
-  		<strong style="font-size:3vw">&lt; 상품 리뷰 &gt;</strong>
+  		<strong style="font-size:3vw">&lt; 상품 후기 조회 &gt;</strong>
   	</div>
   
   <div class="contents ">

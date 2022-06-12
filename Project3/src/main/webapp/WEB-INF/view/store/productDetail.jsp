@@ -118,12 +118,13 @@ $(document).ready(function () {
 
 var product_id = "<c:out value='${product.product_id}'/>";
 var nowPage = "<c:out value='${paging.nowPage}'/>";	
-var qnaList = "<c:out value='${qnaList}'/>";	
+/* var qnaList = "<c:out value='${qnaList}'/>"; */	
 
 function replyList(nowPage, product_id) {
-	if(qnaList == null){
+	
+	/* if(qnaList == null){
 		nowPage = 1;
-	} 
+	}  */
 	
 	$.ajax({
 		url : "qnaWithPaging.do",
@@ -570,7 +571,6 @@ function writeQna() {
 			'qna_content' : qna_content,
 			'product_id' : product_id
 					};
-		
 		$.ajax({
 			url : 'writePrdQna.do',
 			type : 'post',

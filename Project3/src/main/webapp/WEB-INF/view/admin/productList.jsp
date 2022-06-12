@@ -76,6 +76,11 @@
 
 </style>
 <script>
+
+var condition = '<c:out value="${searchCondition}"/>';
+var category = '<c:out value="${prd_category}"/>';
+var pstate = '<c:out value="${prd_state}"/>';
+
 $(document).ready(function () {
 
 	$(".1").html("식품");
@@ -83,6 +88,21 @@ $(document).ready(function () {
 
 	$(".a1").html("판매중");
 	$(".a2").html("판매중지");
+	
+	// 검색어 유지
+	$('option[value='+condition+']').prop('selected', true);
+	
+	// 검색조건 유지 : 상품분류
+	$('.prd_category[value='+category+']').prop('checked', true);
+	
+	// 검색조건 유지 : 상품상태
+	$('.prd_state[value='+pstate+']').prop('checked', true);
+	
+	
+	// 검색어 input 초기화
+	$('#keyzone').click(function () {
+		$('#keyzone').val('');
+	})
 
 })
 
@@ -103,6 +123,11 @@ function goInsertQna(qna_id){
     f.submit();
 }
 
+function resetOpt() {
+	$('#keyzone').val('');
+	$('.prd_category').prop('checked', false);
+	$('.prd_state').prop('checked', false);
+}
 
 </script>
 
@@ -131,7 +156,7 @@ function goInsertQna(qna_id){
 							<option value="PRODUCT_NAME">상품명</option>
 							<option value="PRODUCT_ID">상품번호</option>
 						</select>
-						<input type="text" name="searchKeyword">
+						<input type="text" value="${searchKeyword }" id="keyzone" name="searchKeyword">
 						<button type="submit" >검색</button>
 					</td>
 				</tr>
@@ -139,15 +164,16 @@ function goInsertQna(qna_id){
 					<td style="text-align: left;">
 						<br>
 						<span><b>[상품분류]</b></span>
-						<input style="margin-left: 10px;" type="radio" name="prd_category" value="1">식품
-						<input style="margin-left: 10px;" type="radio" name="prd_category" value="2">운동
+						<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="1">식품
+						<input style="margin-left: 10px;" class="prd_category" type="radio" name="prd_category" value="2">운동
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: left;">
 						<span><b>[상품상태]</b></span>
-						<input style="margin-left: 10px;" type="radio" name="prd_state" value="1">판매중
-						<input style="margin-left: 10px;" type="radio" name="prd_state" value="2">판매중지
+						<input style="margin-left: 10px;" id="state1" class="prd_state" type="radio" name="prd_state" value="1">판매중
+						<input style="margin-left: 10px;" id="state2" class="prd_state" type="radio" name="prd_state" value="2">판매중지
+						<button type="button" onclick="resetOpt()">초기화</button>
 					</td>
 				</tr>
 			</table>
@@ -164,9 +190,9 @@ function goInsertQna(qna_id){
 					<th style="text-align: center" width="5%" >NO.</th>
 					<th style="text-align: center" width="7%" >상품분류</th>
 					<th style="text-align: center" width="7%">상품번호</th>
-					<th style="text-align: center" width="10%" >상품명</th>
-					<th style="text-align: center" width="10%">가격(원)</th>
-					<th style="text-align: center" width="8%">할인율(%)</th>
+					<th style="text-align: center" width="20%" >상품명</th>
+					<th style="text-align: center" width="8%">가격(원)</th>
+					<th style="text-align: center" width="6%">할인율(%)</th>
 					<th style="text-align: center" width="11%">상품상태</th>
 				</tr>
 			</thead>
@@ -184,7 +210,7 @@ function goInsertQna(qna_id){
 					<td style="text-align: center" class="aa ${prdList.CATEGORY_CODE }"></td>
 					<td style="text-align: center" >${prdList.PRODUCT_ID }</td>
 					<td style="text-align: center">
-						<a href="${pageContext.request.contextPath }/productInfo.do?product_id=${prdList.PRODUCT_ID}">
+						<a href="${pageContext.request.contextPath }/productInfo.do?product_id=${prdList.PRODUCT_ID}&nowPage=${paging.nowPage }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&prd_state=${prd_state}&prd_category=${prd_category}">
 						${prdList.PRODUCT_NAME }
 						</a>
 					</td>
