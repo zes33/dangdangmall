@@ -1,15 +1,171 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매 내역</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<link rel="canonical"
+	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+
+<!-- Bootstrap core CSS -->
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link href="common/styles.css" rel="stylesheet">
+<style>
+#container {
+	width: 1200px;
+	margin: auto;
+}
+
+h1, h3, p {
+	text-align: center;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid black;
+	margin: 0 auto;
+}
+
+.center {
+	text-align: center;
+}
+
+.border-none, .border-none td {
+	border: none;
+}
+
+/* adminTemplate 아래 */
+.container {
+ position: relative;
+}
+
+.menuname {
+	position:relative;
+	top: 35px;
+	/*left: -205px;*/
+	left: -25px;
+	border: 1px solid LightGray;
+	border-radius: 7px;
+	width: 1170px;
+	height: 140px;
+	font-family: "Audiowide", sans-serif;	
+}
+/*
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ .contents {
+	position:relative;
+	left: 0px;
+	top: 48px;
+	width: 1145px;
+	height: 600px;
+} */
+</style>
 </head>
 <body>
+<header>
+		<jsp:include page="../common/header.jsp"></jsp:include>
+	</header>
 
-<h1>salesHistory.jsp</h1>
-${all }
+		<div class="container">
+			<jsp:include page="sidebarTemplate.jsp"></jsp:include>
+			<div class="menuname h1 text-center center"
+				style="background-color: rgb(240, 240, 240);  padding-top: 45px !important;">
+				<strong style="font-size: 3vw">&lt; 판매내역 &gt;</strong>
+			</div>
+<%-- <h1>salesHistory.jsp</h1>
+${all } --%>
+
+<div style="margin-top: 60px;">
+				<c:if test="${empty all}">
+					<br />
+					<h2>판매내역이 존재하지 않습니다.</h2>
+				</c:if>
+
+
+				<c:if test="${not empty all}">
+					<!--판매 내역 목록 -->
+					<table class="table table-hover table1">
+						<thead>
+							<tr>
+								<th class="center" width="15%">주문 번호</th>
+								<th class="center" width="10%">총구매 가격 </th>
+								<th class="center" width="10%">고객 아이디</th>
+								<th class="center" width="10%">주문일자</th>
+								<th class="center" width="10%">수령인</th>
+								<th class="center" width="13%">연락처</th>
+								<th class="center" width="25%">배송주소</th>
+								<th class="center" width="25%">배송상태</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="list" items="${all }">
+								<tr>
+									<td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark">${list.order_id}</a></td>
+									<td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark"><fmt:formatNumber
+										type="number" maxFractionDigits="3"
+										value="${list.order_total }" />원</a></td>
+									<td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark">${list.user_id }</a></td>
+									 <td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark">${list.order_date}</a></td> 
+									<td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark">${list.order_receiver }</a></td>
+									 <td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark">
+								<c:set var="user_phone" value="${list.order_phone }" />
+								<c:if test="${ '-' eq fn:substring(user_phone,3,4)}"> 
+									${list.order_phone }
+									</c:if> 
+									<c:if test="${ '-' ne fn:substring(user_phone,3,4)}"> 
+									${fn:substring(user_phone,0,3) } - 
+									${fn:substring(user_phone,3,7) } - 
+									${fn:substring(user_phone,7,11) }
+									</c:if> 
+								
+								</a></td>
+									<td class="center"><a
+								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
+								class="text-decoration-none text-dark">${list.order_addr }<br>
+										${list.order_addr_d }&nbsp;[${list.order_zipcode }]
+									</a></td>
+									<td class="center">
+									<c:if test="${1 eq list.user_status }"> [주문 완료] </c:if> 
+									<c:if test="${2 eq list.user_status }"> [배송중] </c:if> 
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:if>
+			</div>
+		</div>
 
 </body>
 </html>

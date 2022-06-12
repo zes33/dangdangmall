@@ -19,8 +19,14 @@ public class SalesHistoryDAO {
 		System.out.println(">> SalesHistoryDAO() 객체 생성");
 	}
 	
-	//월 매출
+	//판매리스트 
 	public List<MyInfoVO> getHistoryAll(MyInfoVO vo){
 		return mybatis.selectList("salesHistoryDAO.getHistoryAll", vo);
 	}
+	
+	//상세 주문 리스트 
+	public List<MyInfoVO> historyOne(String order_id){
+		return mybatis.selectList("salesHistoryDAO.historyOne", order_id);
+	}
+	
 }
