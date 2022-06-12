@@ -165,7 +165,7 @@
 							<th class="center" width="7%">NO.</th>
 							<th class="center" width="15%">상품명</th>
 							<th class="center" width="39%">내용</th>
-							<th class="center" width="15%">문의날짜</th>
+							<th class="center" width="15%">작성일</th>
 							<th class="center" width="15%">답변상태</th>
 						</tr>
 					</thead>
@@ -187,7 +187,9 @@
 								${myPrdQna.QNA_CONTENT }</a>
 							</td>
 							
-							<td class="center">${myPrdQna.PRODUCT_QNA_DATE }</td>
+							<td class="center">
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${myPrdQna.PRODUCT_QNA_DATE }"/>
+							</td>
 							<c:choose>
 							<c:when test="${0 eq myPrdQna.PRODUCT_QNA_STATE }">
 								<td class="center">답변대기</td>

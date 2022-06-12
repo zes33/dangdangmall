@@ -189,12 +189,12 @@
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.order_detail_id})" value="환불 신청" /></div><br>
                        	</c:if>
                      <c:choose>
-                     <c:when test="${existList[status.index] eq 0 }">
+                     <c:when test="${existList[status.index] eq 0 && orderList.user_status == 2}">
                         <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" onclick="goMyReview(${orderList.order_detail_id})">리뷰 작성</button></div>
                      </c:when>
-                     <c:otherwise>
+                     <c:when test="${existList[status.index] eq 1 }">
                         <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">리뷰 완료</button></div>
-                     </c:otherwise>
+                     </c:when>
                      </c:choose>
                   </span>
                </div>

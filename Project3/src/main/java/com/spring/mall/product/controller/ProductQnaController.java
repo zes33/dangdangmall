@@ -237,7 +237,7 @@ public class ProductQnaController {
 		Map<String, String> prdQnaSearchMap = new HashMap<String, String>();
 		prdQnaSearchMap.put("내용", "QNA_CONTENT");
 		prdQnaSearchMap.put("상품명", "PRODUCT_NAME");
-		prdQnaSearchMap.put("상품ID", "PRODUCT_ID");
+		prdQnaSearchMap.put("상품번호", "PRODUCT_ID");
 		return prdQnaSearchMap;
 	}
 	

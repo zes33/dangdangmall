@@ -90,7 +90,6 @@ function goInsertQna(qna_id){
 }
 
 function delPrdQna(qna_group) {
-	alert("param : " + arguments.length);
 
 	let del = confirm("문의를 삭제하면 답변까지 삭제됩니다. \n삭제하시겠습니까?");
 	if(del){
@@ -141,6 +140,10 @@ function updateQue(qna_id){
 	var value1 = qna_id;
 	var action1 = 'updatePrdQue.do';
 	cmmSubmit(name1, value1, action1);
+}
+
+function customerList() {
+	history.back();
 }
 
 </script>
@@ -211,7 +214,9 @@ function updateQue(qna_id){
 				type="button" class="btn btn-outline-secondary">목록</button>
 			</c:when>
 			<c:otherwise>  
-				<button onclick="location.href='${pageContext.request.contextPath }/goMyPrdQna.do'"
+				<%-- <button onclick="location.href='${pageContext.request.contextPath }/goMyPrdQna.do'"
+				type="button" class="btn btn-outline-secondary">목록</button>
+				 --%><button onclick="customerList()"
 				type="button" class="btn btn-outline-secondary">목록</button>
 			
 			</c:otherwise>
