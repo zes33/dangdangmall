@@ -49,21 +49,35 @@ table, th, td {
 	border: none;
 }
 
-.colorBtn {
-	background-color: white;
-	border-color: #ECECEC;
-	border-radius: 10%;
+/* adminTemplate 아래 */
+.container {
+ position: relative;
 }
 
-.qnaTitle {
-	text-decoration: none;
-	color: black;
+.menuname {
+	position:relative;
+	top: 35px;
+	/*left: -205px;*/
+	left: -25px;
+	border: 1px solid LightGray;
+	border-radius: 7px;
+	width: 1170px;
+	height: 140px;
+	font-family: "Audiowide", sans-serif;	
 }
-
-.bowl {
-	text-align: center;
-	margin: auto;
+/*
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+ .contents {
+	position:relative;
+	left: 0px;
+	top: 48px;
+	width: 1145px;
+	height: 600px;
+} */
 </style>
 </head>
 <body>
@@ -71,17 +85,14 @@ table, th, td {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 
-	<div class="container">
-		<jsp:include page="sidebarTemplate.jsp"></jsp:include>
-
 		<div class="container">
 			<jsp:include page="sidebarTemplate.jsp"></jsp:include>
 			<div class="menuname h1 text-center center"
-				style="background-color: rgb(240, 240, 240);">
-				<strong style="font-size: 3vw">&lt; 회원 배송정보 관리 &gt;</strong>
+				style="background-color: rgb(240, 240, 240);  padding-top: 45px !important;">
+				<strong style="font-size: 3vw">&lt; 배송상태 변경 &gt;</strong>
 			</div>
 
-			<div style="margin-top: 25px;">
+			<div style="margin-top: 60px;">
 				<c:if test="${empty getOrderList}">
 					<br />
 					<h2>배송 요청건이 존재하지 않습니다.</h2>
