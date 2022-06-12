@@ -48,7 +48,7 @@ div{
 	<h3>회원가입이 완료 되었습니다.</h3>
 	<p>${joinUser.user_nickname }님의 회원가입이 성공적으로 완료되었습니다.</p>
 	 <a class="btn btn-sm btn-outline-secondary" href="login.do">로그인</a>
-	 <a class="btn btn-sm btn-outline-secondary" href="#">메인화면으로 이동</a>
+	 <a class="btn btn-sm btn-outline-secondary" href="main.do">메인화면으로 이동</a>
 </div>
 
 

@@ -117,10 +117,13 @@ public class UserLoginController {
 	}
 	
 	@RequestMapping("/findIdAction.do")
-	public String findIdAction(UserVO vo, Model model, String user_email) {
+	public String findIdAction(UserVO vo, Model model, String user_email, String user_phone1, String user_phone2, String user_phone3) {
 		System.out.println(">>아이디찾기  - findIdView()");
-		vo.setUser_email(user_email);
 		String msg = "";
+		String user_phone = user_phone1 + user_phone2 + user_phone3;
+		
+		vo.setUser_email(user_email);
+		vo.setUser_phone(user_phone);
 		UserVO getUser = userLoginService.gerId(vo);
 		System.out.println("getUser : " + getUser);
 		model.addAttribute("getUser", getUser);

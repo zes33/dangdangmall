@@ -128,8 +128,8 @@ footer {
                   <option>031</option>
                   <option>070</option>
                </select> -
-               <input type="text" name="user_phone2" size="5"> -
-               <input type="text" name="user_phone3" size="5"></td>
+               <input type="text" id ="user_phone2" name="user_phone2" size="5" required> -
+               <input type="text" id ="user_phone3" name="user_phone3" size="5" required></td>
             </tr>
             <tr>
                <td colspan="3"><input class="join" type="button" id="signUp" value="회원가입"></td>
@@ -170,6 +170,18 @@ footer {
          if(idx==false){
             alert("아이디 중복체크를 해주세요.");
             return;
+         }else if($.trim($('#user_name').val()) == ''){
+        	 alert('이름을 입력해 주세요.');
+        	 $('#user_name').focus();
+             return false;
+    	}else if($.trim($('#user_phone2').val().length) != 4){
+        	 alert('전화번호 형식이 올바르지 않습니다.\n 다시 입력해 주세요.');
+        	 $('#user_phone2').focus();
+             return false;
+         }else if($.trim($('#user_phone3').val().length) != 4){
+        	 alert('전화번호 형식이 올바르지 않습니다.\n 다시 입력해 주세요.');
+        	 $('#user_phone3').focus();
+             return false;
          }else{
             $('#signFrm').submit();
          }
@@ -202,5 +214,6 @@ footer {
          });
       });
    });
+   
 </script>
 </html>

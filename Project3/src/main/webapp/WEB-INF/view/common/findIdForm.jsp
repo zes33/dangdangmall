@@ -57,6 +57,18 @@
 				      <input type="email" class="form-control form-control-user" name="user_email" id="user_email" aria-describedby="emailHelp" placeholder="이메일 주소 전체를 입력해주세요." style="width: 500px">
 				      <small id="emailHelp" class="form-text text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">귀하의 이메일을 다른 사람과 공유하지 않습니다.</font></font></small>
 				    </div>
+				    <div class="form-group">
+				      <label for="exampleInputEmail1" class="form-label mt-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">전화번호</font></font></label>
+				      <!-- <input type="text" class="form-control form-control-user" name="user_phone" id="user_phone" aria-describedby="emailHelp" placeholder="" style="width: 500px"> -->
+				    <select name="user_phone1">
+	                  <option>010</option>
+	                  <option>02</option>
+	                  <option>031</option>
+	                  <option>070</option>
+	               </select> -
+	               <input type="text" name="user_phone2" size="5"> -
+	               <input type="text" name="user_phone3" size="5">
+				    </div>
 			</fieldset>
 		  <hr>
 		  	<input type="submit" class="btn btn-outline-success"
