@@ -86,6 +86,19 @@ table, th, td {
 	padding-left: 30px;
 }
 </style>
+	<script type="text/javascript">
+								function goSearch() {
+
+									var usr = document.getElementById('searchKeyword').value;
+									var key = document.getElementById('searchCondition').value;
+									if (usr == "") {
+                     					alert("검색어를 입력해 주세요.");
+                     				} else{
+                     					/* alert(usr); */
+										location.href ="${pageContext.request.contextPath }/admin/searchUserList.do?searchKeyword="+usr+"&searchCondition="+key;
+									}
+								}
+							</script>
 </head>
 <body>
 	<header>
@@ -94,43 +107,33 @@ table, th, td {
 	<%--  ${AdminusersList } --%>
 	<div class="container">
 		<jsp:include page="sidebarTemplate.jsp"></jsp:include>
-
-		<div class="menuname h1 text-center centers"
-			style="background-color: rgb(240, 240, 240);">
-			<strong style="font-size: 3vw">&lt; 회원정보 조회 &gt;</strong>
-		</div>
+		
+		<div class="container">
+   <jsp:include page="sidebarTemplate.jsp"></jsp:include>
+	   	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);">
+	   		<strong style="font-size:3vw">&lt; 회원정보 관리 &gt;</strong>
+	   	</div>
 
 		<!-- 검색을 위한 폼 -->
-		<!-- <form action="getBoardList.do" method="get">  -->
 		<form style="margin-top: 60px;"
-			action="${pageContext.request.contextPath }/admin/searchUserList.do"
+			action="admin/searchUserList.do"
 			method="get">
 			<table class="border-none">
 				<tr>
 					<td>
-					<select name="searchCondition">
+					<select name="searchCondition" id="searchCondition">
 				<c:forEach var="option" items="${conditionMapU }">
 					<option value="${option.value }">${option.key}</option>
 				</c:forEach>
 				</select>
-					</td>
 					
-					<td> &nbsp;&nbsp;&nbsp;
+					
+					 &nbsp;&nbsp;&nbsp;
 					<input type="text" name="searchKeyword" id="searchKeyword" >&nbsp;&nbsp;
 						<button type="button"  id="searchKeyword" onclick="goSearch();">
 							검색</button> 
 							
-							<script type="text/javascript">
-								function goSearch() {
-
-									var usr = document.getElementById("searchKeyword").value;
-									if (usr == "") {
-                     					alert("검색어를 입력해 주세요.");
-                     				} else{
-										location.href ="${pageContext.request.contextPath }/admin/searchUserList.do?searchKeyword="+usr;
-									}
-								}
-							</script>
+						
 							</td>
 				</tr>
 			</table>

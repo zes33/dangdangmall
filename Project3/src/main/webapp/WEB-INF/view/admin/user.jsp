@@ -127,7 +127,7 @@ p {
 										<button type="button" class="btn btn-outline-secondary btn-sm" onclick="goDelete('${userA.user_id }')">회원삭제</button>
 										<script type="text/javascript">
 											function goDelete(user_id){
-												alert(user_id);
+												//alert(user_id);
 												location.href="deleteUser.do?user_id="+user_id;
 											}
 										</script>

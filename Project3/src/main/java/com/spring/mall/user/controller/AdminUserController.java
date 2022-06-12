@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.mall.product.service.ProductService;
-import com.spring.mall.product.vo.ProductVO;
 import com.spring.mall.user.service.AdminUserService;
 import com.spring.mall.user.vo.UserVO;
 
@@ -74,18 +72,23 @@ public class AdminUserController {
 		conditionMapU.put("아이디", "USER_ID");
 		conditionMapU.put("이름", "USER_NAME");
 		
+
 		return conditionMapU;
 		
 	}
 	
 	@RequestMapping("searchUserList.do")
-	public String searchProductList(@RequestParam String searchKeyword, UserVO vo,Model model) {
+	public String searchProductList(@RequestParam String searchKeyword, @RequestParam String searchCondition,UserVO vo,Model model) {
 		System.out.println("searchKeyword : " + searchKeyword);
+		System.out.println("searchCondition : "+ searchCondition);
+		vo.setSearchKeyword(searchKeyword);
+		System.out.println(vo);
+		
 		
 		List<UserVO> searchUserList = adminUserService.searchUserList(vo);
 		model.addAttribute("AdminusersList", searchUserList);
 		model.addAttribute("searchKeyword", searchKeyword);
-		System.out.println("searchUserList : "+ searchUserList);
+//		return "redirect:adminUserList.do";
 		return "admin/userList";
 	}
 	
