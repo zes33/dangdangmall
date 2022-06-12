@@ -70,69 +70,69 @@ table, th, td {
 	<header>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
-	 <%-- ${getOrderList }  --%>
-	<div class="menuname h1 text-center centers"
-			style="background-color: rgb(240, 240, 240);">
-			<strong style="font-size: 3vw">&lt; 고객 배송 요청 조회 &gt;</strong>
-		</div>
-		<br>
 
 	<div class="container">
-		<c:if test="${empty getOrderList}">
-			<br />
-			<h2>배송 요청건이 존재하지 않습니다.</h2>
-		</c:if>
+		<jsp:include page="sidebarTemplate.jsp"></jsp:include>
+
+		<div class="container">
+			<jsp:include page="sidebarTemplate.jsp"></jsp:include>
+			<div class="menuname h1 text-center center"
+				style="background-color: rgb(240, 240, 240);">
+				<strong style="font-size: 3vw">&lt; 회원 배송정보 관리 &gt;</strong>
+			</div>
+
+			<div style="margin-top: 25px;">
+				<c:if test="${empty getOrderList}">
+					<br />
+					<h2>배송 요청건이 존재하지 않습니다.</h2>
+				</c:if>
 
 
-		<c:if test="${not empty getOrderList}">
-			<!--배송 요청건 목록 -->
-			<table class="table table-hover table1">
-				<thead>
-					<tr>
-						<th class="center" width="10%">주문 아이디</th>
-						<th class="center" width="10%"> 고객 아이디</th>
-						<th class="center" width="10%">주문일자</th>
-						<th class="center" width="10%">수령인</th>
-						<th class="center" width="13%">연락처</th>
-						<th class="center" width="25%">배송주소</th>
-						<th class="center" width="20%">[배송시작] </th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="list" items="${getOrderList }">
-						<tr>
-							<td class="center">${list.order_id}</td>
-							<td class="center">${list.user_id }</td>
-							<td class="center"><fmt:formatDate
-									value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
-							<td class="center">${list.order_receiver }</td>
-							<td class="center">
-							<c:set var="user_phone" value="${list.order_phone }" />
-									${fn:substring(user_phone,0,3) } - 
-									${fn:substring(user_phone,3,7) } - 
-									${fn:substring(user_phone,7,11) }
-							</td>
-							<td class="center">${list.order_addr }<br> ${list.order_addr_d }&nbsp;[${list.order_zipcode }]</td>
-							<td class="center">
-							<c:if test="${1 eq list.user_status }">
-							<button>
-							<a href="adminShipping/adminShippingUpdate.do?order_id=${list.order_id }"
-								class="text-decoration-none text-dark">
-							[배송시작하기]</a></button>
-							</c:if>
-							<c:if test="${2 eq list.user_status }">
+				<c:if test="${not empty getOrderList}">
+					<!--배송 요청건 목록 -->
+					<table class="table table-hover table1">
+						<thead>
+							<tr>
+								<th class="center" width="10%">주문 아이디</th>
+								<th class="center" width="10%">고객 아이디</th>
+								<th class="center" width="10%">주문일자</th>
+								<th class="center" width="10%">수령인</th>
+								<th class="center" width="13%">연락처</th>
+								<th class="center" width="25%">배송주소</th>
+								<th class="center" width="20%">[배송시작]</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="list" items="${getOrderList }">
+								<tr>
+									<td class="center">${list.order_id}</td>
+									<td class="center">${list.user_id }</td>
+									<td class="center"><fmt:formatDate
+											value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
+									<td class="center">${list.order_receiver }</td>
+									<td class="center"><c:set var="user_phone"
+											value="${list.order_phone }" />
+										${fn:substring(user_phone,0,3) } -
+										${fn:substring(user_phone,3,7) } -
+										${fn:substring(user_phone,7,11) }</td>
+									<td class="center">${list.order_addr }<br>
+										${list.order_addr_d }&nbsp;[${list.order_zipcode }]
+									</td>
+									<td class="center"><c:if test="${1 eq list.user_status }">
+											<button>
+												<a
+													href="adminShipping/adminShippingUpdate.do?order_id=${list.order_id }"
+													class="text-decoration-none text-dark"> 배송시작하기</a>
+											</button>
+										</c:if> <c:if test="${2 eq list.user_status }">
 							[배송중]
-							</c:if>
-							
-							</td>
-						</tr>
-						 </c:forEach> 
-				</tbody>
-			</table>
-		</c:if>
-	</div>
-	</div>
-	<!-- footer -->
-	<jsp:include page="../common/footer.jsp"></jsp:include>
+							</c:if></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:if>
+			</div>
+		</div>
 </body>
 </html>
