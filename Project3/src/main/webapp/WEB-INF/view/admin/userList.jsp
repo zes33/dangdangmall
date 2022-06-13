@@ -144,7 +144,7 @@ table, th, td {
 		 
 		
 		<!-- 데이터 표시 영역 -->
-		<div style="margin-top: 25px;">
+		<div style="margin-top: 25px; margin-bottom: 30px;">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -182,7 +182,9 @@ table, th, td {
 				</tbody>
 			</table>
 		</div>
-		<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/adminUserList.do'">전체 목록으로 돌아가기</button>
+		<div style="margin-bottom: 100px;">
+			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/adminUserList.do'">전체 목록으로 돌아가기</button>
+		</div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
