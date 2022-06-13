@@ -23,11 +23,11 @@
 .container {
  position: relative;
 }
-#ss {
+/* #ss {
 	position:relative;
 	width: 700px;
 	top: 250px;
-}
+} */
 
 .menuname {
 	position:relative;
@@ -56,7 +56,10 @@
     position: relative;
 }
 #body-content {
-	width: 400px;
+	margin: auto;
+	width: 800px;
+	padding: 70px;
+	background-color: #F3F3F3;
 }
 #shot {
 	width: 100px;
@@ -167,8 +170,8 @@ function addImg(lo) {
     
     <div><strong>상품 입고수량*</strong></div> <span><input title="수량" type="number" min="0" id="stock" class="form-control f4" style="float:left" 
     				 name="product_stock" maxlength="10"></span><br/><br><br>
-  	 <div><strong>할인율</strong></div> <span><input title="할인율" type="number" min="0" max="100" class="form-control f5" style="float:left"
-    				id="product_discount" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
+  	 <div><strong>할인율(%)</strong></div> <span><input title="할인율" type="number" min="0" max="100" class="form-control f5" style="float:left"
+    				id="product_discount" name="product_discount" maxlength="3"></span><br/><br><br>
    <br>
 	<div class="mb-3">
   		<label for="formFile" class="form-label"><strong>상품사진*</strong></label>
