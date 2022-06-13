@@ -89,8 +89,6 @@ public class UserLoginController {
 
 			if (before.equals("joinAction.do")) {
 				location = "redirect:/main.do";
-			} else if (before.equals("findPwdAction.do")) {
-				location = "redirect:/main.do";
 			} else if (before.equals("findIdView.do")) {
 				location = "redirect:/main.do";
 			} else {
@@ -121,8 +119,8 @@ public class UserLoginController {
 	}
 
 	@RequestMapping("/findIdAction.do")
-	public String findIdAction(UserVO vo,HttpSession session, Model model, String user_email, String user_phone1, String user_phone2,
-			String user_phone3) {
+	public String findIdAction(UserVO vo, HttpSession session, Model model, String user_email, String user_phone1,
+			String user_phone2, String user_phone3) {
 		System.out.println(">>아이디찾기  - findIdView()");
 		String msg = "";
 		String user_phone = user_phone1 + user_phone2 + user_phone3;
@@ -139,16 +137,17 @@ public class UserLoginController {
 		String before = refer.substring(27);
 		System.out.println(before);
 		if (getUser == null) {
-			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
-			return "common/findIdFail";
-		} else {
-			if (before.equals("findAction.do")) {
+			if (before.equals("findIdAction.do")) {
 				return "redirect:/main.do";
 			} else {
+			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
+			return "common/findIdFail";
+			}
+		} else {
 				return "common/findIdOK";
 			}
 		}
-	}
+	
 
 	@GetMapping("/findPwdView.do")
 	public String findPwdView() {
@@ -157,20 +156,29 @@ public class UserLoginController {
 	}
 
 	@RequestMapping("/findPwdAction.do")
-	public String findPwdAction(UserVO vo, Model model, String user_id, String user_email) {
+	public String findPwdAction(UserVO vo, HttpSession session, Model model, String user_id, String user_email) {
 		System.out.println(">>비밀번호 찾기  - findPwdAction()");
 		vo.setUser_id(user_id);
 		vo.setUser_email(user_email);
 		UserVO getUser = userLoginService.getPwd(vo);
 		System.out.println("getUser : " + getUser);
 		model.addAttribute("getUser", getUser);
+		// 이전 페이지 정보 가져오기
+				String refer = (String) session.getAttribute("referer");
 
+				System.out.println(refer);
+				String before = refer.substring(27);
+				System.out.println(before);
 		if (getUser == null) {
 			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
 			return "common/findPwdFail";
 		} else {
+			if (before.equals("findPwdAction.do")) {
+				return "redirect:/main.do";
+			} else {
 			return "common/findPwdOK";
 		}
 	}
 
+	}
 }
