@@ -140,14 +140,13 @@ public class UserLoginController {
 			if (before.equals("findIdAction.do")) {
 				return "redirect:/main.do";
 			} else {
-			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
-			return "common/findIdFail";
+				model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
+				return "common/findIdFail";
 			}
 		} else {
-				return "common/findIdOK";
-			}
+			return "common/findIdOK";
 		}
-	
+	}
 
 	@GetMapping("/findPwdView.do")
 	public String findPwdView() {
@@ -164,21 +163,22 @@ public class UserLoginController {
 		System.out.println("getUser : " + getUser);
 		model.addAttribute("getUser", getUser);
 		// 이전 페이지 정보 가져오기
-				String refer = (String) session.getAttribute("referer");
+		String refer = (String) session.getAttribute("referer");
 
-				System.out.println(refer);
-				String before = refer.substring(27);
-				System.out.println(before);
+		System.out.println(refer);
+		String before = refer.substring(27);
+		System.out.println(before);
 		if (getUser == null) {
-			model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
-			return "common/findPwdFail";
-		} else {
 			if (before.equals("findPwdAction.do")) {
 				return "redirect:/main.do";
 			} else {
+				model.addAttribute("msg", "가입된 정보가 없습니다. 다시 확인해 주세요.");
+				return "common/findPwdFail";
+			}
+		} else {
+
 			return "common/findPwdOK";
 		}
 	}
 
-	}
 }

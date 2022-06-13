@@ -309,7 +309,7 @@ function replyList(nowPage, product_id) {
 								<script type="text/javascript">
 										function goBuy(user_id, product_id) {
 											if(!user_id){
-												alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
+												//alert(user_id + " : " +product_id + " : " + $("#cart_product_qty").val());
 		                     					alert("로그인 이후에 구매 가능합니다. \n로그인 페이지로 이동합니다. ");
 		                     					location.href="login.do";
 		                     				} else{
