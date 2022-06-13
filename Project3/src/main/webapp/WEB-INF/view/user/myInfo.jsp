@@ -233,7 +233,7 @@
        }
        function goMyReview(order_detail_id){
           window.open("writeReview.do?order_detail_id="+order_detail_id,"pop1",
-                "width=500, height=700 top=100, left=150");
+                "width=600, height=700 top=100, left=150");
        }
        </script>
    </div>
