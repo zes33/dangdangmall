@@ -44,6 +44,37 @@ function productDetailView(product_id){
 .in {display: inline;
 	
 }
+
+
+.categoryName {
+	text-decoration: none;
+	color: black;
+	font-weight: 550;
+	font-size: 50px;
+}
+
+.testcost {
+	font-weight: 700;
+	font-size: 20px;
+}
+.testdcPrice {
+	font-weight: 700;
+	font-size: 20px;
+}
+.testPct {
+	font-size: 18px;
+}
+
+.testdiscountPct {
+	font-size: 19px;
+	color: #F74E2C;
+	font-weight: 700;
+}
+
+.cat {
+	margin-bottom: 15px;
+}
+
 </style>
 </head>
 <body>
