@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,6 +155,10 @@ $(document).ready(function () {
 	
 })
 
+function noUpdate() {
+	history.back();
+}
+
 </script>
 </head>
 <body>
@@ -227,7 +233,7 @@ $(document).ready(function () {
    <table class="position-absolute bottom-5 start-50 translate-middle-x">
       <tr>
       	<td>
-         <input type="reset" class="btn btn-secondary btn-lg" id="btn" value="취소">&nbsp;&nbsp;&nbsp;
+         <input type="reset" onclick="noUpdate()" class="btn btn-secondary btn-lg" id="btn" value="취소">&nbsp;&nbsp;&nbsp;
       	</td>
       	<td>
       	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
