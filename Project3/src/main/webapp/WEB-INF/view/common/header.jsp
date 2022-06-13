@@ -218,27 +218,27 @@ a:hover {
 					</li>
 					<li class="css-1a76w4f eth8ztg0">
 						<div class="css-3bho95 eth8ztg2">
-							<a class="hi" href="newPrd.do?prd_c=1">신상품</a>
+							<a class="hi" href="${pageContext.request.contextPath }/newPrd.do?prd_c=1">신상품</a>
 						</div>
 					</li>
 					<li class="css-1a76w4f eth8ztg0">
 						<div class="css-3bho95 eth8ztg2">
-							<a class="hi" href="paging.do?prd_c=1">식품</a>
+							<a class="hi" href="${pageContext.request.contextPath }/paging.do?prd_c=1">식품</a>
 						</div>
 					</li>
 					<li class="css-1a76w4f eth8ztg0">
 						<div class="css-3bho95 eth8ztg2">
-							<a class="hi" href="paging.do?prd_c=2">운동</a>
+							<a class="hi" href="${pageContext.request.contextPath }/paging.do?prd_c=2">운동</a>
 						</div>
 					</li>
 					<li class="css-1a76w4f eth8ztg0">
 						<div class="css-3bho95 eth8ztg2">
-							<a class="hi" href="newDiscount.do">특가</a>
+							<a class="hi" href="${pageContext.request.contextPath }/newDiscount.do">특가</a>
 						</div>
 					</li>
 					<li class="css-1a76w4f eth8ztg0">
 						<div class="css-3bho95 eth8ztg2">
-							<a class="hi" href="morning.do">새벽배송</a>
+							<a class="hi" href="${pageContext.request.contextPath }/morning.do">새벽배송</a>
 						</div>
 					</li>
 					
