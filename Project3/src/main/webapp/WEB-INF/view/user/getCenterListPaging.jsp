@@ -63,7 +63,6 @@
 	<br>
 	</form>
 	<!-- 데이터 표시 영역 -->
-	<h3>\${user.user_id} : ${user.user_id}</h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>
