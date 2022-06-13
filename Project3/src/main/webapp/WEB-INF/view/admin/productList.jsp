@@ -129,6 +129,10 @@ function resetOpt() {
 	$('.prd_state').prop('checked', false);
 }
 
+function goInsert() {
+	location.href = "goInsertProduct.do";
+}
+
 </script>
 
 </head>
@@ -226,7 +230,10 @@ function resetOpt() {
 			</c:otherwise>
 			</c:choose>
 			</tbody>
-		</table>	
+		</table>
+		<div>
+			<button type="button" style="float: right" onclick="goInsert()">상품 등록</button>
+		</div>	
 		</div>
 		</div>
    
