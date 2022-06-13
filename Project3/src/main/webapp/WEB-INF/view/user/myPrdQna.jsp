@@ -170,14 +170,14 @@
                   </tr>
                </thead>
                <tbody>
-               <c:forEach var="myPrdQna" items="${myPrdQnaList }" varStatus="i">
                <c:choose>
-               <c:when test="${empty myPrdQna  }">
+               <c:when test="${empty myPrdQnaList  }">
                   <tr>
-                     <td>등록된 상품문의가 없습니다.</td>
+                     <td colspan="5">등록된 상품문의가 없습니다.</td>
                   </tr>
                </c:when>
                <c:otherwise> 
+               <c:forEach var="myPrdQna" items="${myPrdQnaList }" varStatus="i">
                   <tr>
                      <td class="center">${myPrdQna.R_NUM }</td>
                      <td><span class="d-inline-block text-truncate" style="max-width: 180px;">${myPrdQna.PRODUCT_NAME }</span></td>
@@ -199,9 +199,9 @@
                      </c:otherwise>
                      </c:choose>
                   </tr>
+               </c:forEach>
                </c:otherwise>
                </c:choose>
-               </c:forEach>
                </tbody>
             </table>            
             

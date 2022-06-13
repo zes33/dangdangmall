@@ -82,18 +82,26 @@ var category = '<c:out value="${prd_category}"/>';
 var qstate = '<c:out value="${qna_state}"/>';
 
 $(document).ready(function () {
-
+	
 	$(".1").html("식품");
 	$(".2").html("운동");
 	
 	// 검색어 유지
-	$('option[value='+condition+']').prop('selected', true);
+	if(condition != ''){
+		$('option[value='+condition+']').prop('selected', true);
+	}
 	
 	// 검색조건 유지 : 상품분류
-	$('.prd_category[value='+category+']').prop('checked', true);
+	if(category != ''){
+		$('.prd_category[value='+category+']').prop('checked', true);
+	}
+		
 	
 	// 검색조건 유지 : 답변상태
-	$('.qna_state[value='+qstate+']').prop('checked', true);
+	if(qstate != ''){
+		$('.qna_state[value='+qstate+']').prop('checked', true);
+	}
+		
 	
 	
 	// 검색어 input 초기화

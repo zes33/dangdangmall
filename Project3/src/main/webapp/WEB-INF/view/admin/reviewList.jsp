@@ -89,10 +89,14 @@ $(document).ready(function () {
 	$(".category2").html("운동");
 	
 	// 검색어 유지
-	$('option[value='+condition+']').prop('selected', true);
+	if(condition != ''){
+		$('option[value='+condition+']').prop('selected', true);
+	}
 	
 	// 검색조건 유지 : 상품분류
-	$('.prd_category[value='+category+']').prop('checked', true);
+	if(category != ''){
+		$('.prd_category[value='+category+']').prop('checked', true);
+	}
 	
 	// 검색어 input 초기화
 	$('#keyzone').click(function () {
