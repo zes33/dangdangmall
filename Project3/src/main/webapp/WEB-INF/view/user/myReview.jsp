@@ -140,7 +140,7 @@ $(".5").html("&#9733;&#9733;&#9733;&#9733;&#9733;");
 	
 function editReview(review_id) {
 	window.open("editReview.do?review_id="+review_id,"pop1",
-	"width=800, height=700 top=100, left=150");
+	"width=600, height=700 top=100, left=150");
 }
 
 function deleteReview(review_id) {
