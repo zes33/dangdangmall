@@ -49,7 +49,7 @@
   align-items: center;
 }
 .contents {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	position:relative;
 	left: 0px;
 	top: 48px;
