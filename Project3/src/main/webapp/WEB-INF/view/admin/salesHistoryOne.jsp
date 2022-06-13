@@ -166,7 +166,8 @@ table, th, td {
 								<td class="center">${list.product_name}</td>
 								<td class="center">${list.category_code }</td>
 								<td class="center">${list.product_price }</td>
-								<td class="center"><c:choose>
+								<td class="center">
+								<c:choose>
 										<c:when test="${0.0 eq list.product_discount}">[적용 없음]</c:when>
 										<c:otherwise>
 											<fmt:formatNumber value="${list.product_discount *100 }"

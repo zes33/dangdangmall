@@ -124,9 +124,18 @@ ${all } --%>
 								class="text-decoration-none text-dark">${list.order_id}</a></td>
 									<td class="center"><a
 								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
-								class="text-decoration-none text-dark"><fmt:formatNumber
+								class="text-decoration-none text-dark">
+								<c:choose>
+										<c:when test="${100000  lt list.order_total}"><fmt:formatNumber
 										type="number" maxFractionDigits="3"
-										value="${list.order_total }" />원</a></td>
+										value="${list.order_total } - 2500" />원</c:when>
+										<c:otherwise>
+											<fmt:formatNumber value="${list.order_total }"
+												type="number" /> 
+										</c:otherwise>
+									</c:choose>
+								
+								</a></td>
 									<td class="center"><a
 								href="salesHistory/salesHistoryOne.do?order_id=${list.order_id }"
 								class="text-decoration-none text-dark">${list.user_id }</a></td>
