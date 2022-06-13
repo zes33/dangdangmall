@@ -173,7 +173,7 @@ tr, td ,br{
 					<td><fmt:formatNumber pattern="###,###,###"
 							value="${mapD.sumMoney *(1- mapD.discount)}" />원</td>
 				</tr>
-				<tr>
+				<%-- <tr>
 					<td>쿠폰 사용 :</td>
 					<td> - <fmt:formatNumber pattern="###,###,###" value="${mapD.coupon * 100 }" />
 						% </td>
@@ -182,7 +182,7 @@ tr, td ,br{
 					<td>마일리지 사용 :</td>
 					<td><fmt:formatNumber pattern="###,###,###" value="${user.user_point }" />
 						point</td>
-				</tr>
+				</tr> --%>
 				<tr>
 					<td>배송비 :</td>
 					<td><fmt:formatNumber value="${mapD.fee }"
