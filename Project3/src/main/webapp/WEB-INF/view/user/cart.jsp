@@ -293,8 +293,9 @@ nav {
 								<td style="vertical-align:middle;"><span id="amount"> <c:out
 											value="${list.product_name }" />
 								</span></td>
-								<td style="vertical-align:middle;"><span id="amount"> <c:out
-											value="${list.product_price }" />
+								<td style="vertical-align:middle;"><span id="amount"> 
+											<fmt:formatNumber value="${list.product_price }"
+											type="number" /> 
 								</span></td>
 								<td style="vertical-align:middle;">
 									<form action="update.do" method="post">
