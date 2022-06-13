@@ -93,6 +93,8 @@ public class UserLoginController {
 				location = "redirect:/main.do";
 			} else if (before.equals("findIdView.do")) {
 				location = "redirect:/main.do";
+			} else if (before.equals("findAction.do")) {
+				location = "redirect:/main.do";
 			} else {
 //		location = "redirect:/main.do";
 			location = "redirect:/"+before;
