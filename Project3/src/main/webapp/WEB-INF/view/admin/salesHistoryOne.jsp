@@ -128,9 +128,7 @@ table, th, td {
 									${one[0].order_phone }
 									</c:if> 
 									<c:if test="${ '-' ne fn:substring(user_phone,3,4)}"> 
-									${fn:substring(user_phone,0,3) } - 
-									${fn:substring(user_phone,3,7) } - 
-									${fn:substring(user_phone,7,11) }
+									${fn:substring(user_phone,0,3)}-${fn:substring(user_phone,3,7)}-${fn:substring(user_phone,7,11)}
 									</c:if> 
 										
 										
