@@ -39,7 +39,53 @@ public class MainController{
 		return "store/main";
 	}
 	
+	@GetMapping("/newPrd.do")
+	public String newPrdView(Model model, HttpSession session) {
+		System.out.println("메인페이지(main.jsp)이동 - mainView()");
+		System.out.println(session.getId());
+		int food = 1;
+		int exercise = 2;
+		
+		List<ProductVO> foodList = productService.getProductListCategory(food);
+		List<ProductVO> exerciseList = productService.getProductListCategory(exercise);
+		model.addAttribute("foodList",foodList);
+		model.addAttribute("exerciseList",exerciseList);
+		session.getAttribute("count");
+		
+		return "store/newPrd";
+	}
 	
+	@GetMapping("/newDiscount.do")
+	public String newDiscount(Model model, HttpSession session) {
+		System.out.println("메인페이지(main.jsp)이동 - mainView()");
+		System.out.println(session.getId());
+		int food = 1;
+		int exercise = 2;
+		
+		List<ProductVO> foodList = productService.getProductListCategory(food);
+		List<ProductVO> exerciseList = productService.getProductListCategory(exercise);
+		model.addAttribute("foodList",foodList);
+		model.addAttribute("exerciseList",exerciseList);
+		session.getAttribute("count");
+		
+		return "store/newDiscount";
+	}
+	
+	@GetMapping("/morning.do")
+	public String morning(Model model, HttpSession session) {
+		System.out.println("메인페이지(main.jsp)이동 - mainView()");
+		System.out.println(session.getId());
+		int food = 1;
+		int exercise = 2;
+		
+		List<ProductVO> foodList = productService.getProductListCategory(food);
+		List<ProductVO> exerciseList = productService.getProductListCategory(exercise);
+		model.addAttribute("foodList",foodList);
+		model.addAttribute("exerciseList",exerciseList);
+		session.getAttribute("count");
+		
+		return "store/morning";
+	}
 	
 
 
