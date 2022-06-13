@@ -129,14 +129,14 @@ ${all } --%>
 					<table class="table table-hover table1">
 						<thead>
 							<tr>
-								<th class="center" width="15%">주문 번호</th>
-								<th class="center" width="10%">총구매 가격 </th>
+								<th class="center" width="10%">주문 번호</th>
+								<th class="center" width="7%">총구매 가격 </th>
 								<th class="center" width="10%">고객 아이디</th>
 								<th class="center" width="10%">주문일자</th>
-								<th class="center" width="10%">수령인</th>
+								<th class="center" width="5%">수령인</th>
 								<th class="center" width="13%">연락처</th>
 								<th class="center" width="25%">배송주소</th>
-								<th class="center" width="25%">배송상태</th>
+								<th class="center" width="8%">배송상태</th>
 							</tr>
 						</thead>
 						<tbody>
