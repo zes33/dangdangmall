@@ -22,13 +22,8 @@
 <style>
 .container {
  position: relative;
- margin-bottom: 200px;
+ /*margin-bottom: 200px;*/
  
-}
-#ss {
-	position:relative;
-	width: 700px;
-	top: 250px;
 }
 
 .menuname {
@@ -57,7 +52,7 @@
     min-height: 100%;
     position: relative;
     
-    	padding-top: 30px;
+    	/*padding-top: 30px;*/
 }
 #body-content {
 	/* width: 400px; */
@@ -71,17 +66,18 @@
 	width: 100px;
 } */
 #btn {
-	width: 150px;
+	width: 210px;
 }
 
 .prdPic{
 	width: 400px;
 	height: 400px;
 }
+/*
 .bao {
 	margin: 10px;
 	font-size: 15px;
-}
+}*/
 
 </style>
 <title>상품 수정(관리자)</title>
@@ -228,12 +224,15 @@ $(document).ready(function () {
      
      
      
-   <table>
+   <table class="position-absolute bottom-5 start-50 translate-middle-x">
       <tr>
       	<td>
          <input type="reset" class="btn btn-secondary btn-lg" id="btn" value="취소">&nbsp;&nbsp;&nbsp;
-         <a class="btn btn-secondary btn-lg" onclick="updateProduct()" id="btn">수정</a>
       	</td>
+      	<td>
+      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	</td>
+      	<td><a class="btn btn-secondary btn-lg" onclick="updateProduct()" id="btn">수정</a></td>
       </tr>
    </table>
    </form>
