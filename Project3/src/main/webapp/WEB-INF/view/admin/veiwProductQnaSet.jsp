@@ -101,7 +101,6 @@ function delPrdQna(qna_group) {
 }
 
 function delPrdAns(qna_group, qna_id) {
-	alert("param : " + arguments.length);
 	
 	let del = confirm("답변을 삭제하시겠습니까?");
 	if(del){
