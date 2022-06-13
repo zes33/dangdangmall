@@ -137,11 +137,11 @@ table, th, td {
 					<tr>
 						<th style="text-align: center;" width="5%">NO.</th>
 						<th style="text-align: center;" width="9%">고객 아이디</th>
-						<th style="text-align: center;" width="10%">주문 아이디</th>
-						<th style="text-align: center;" width="13%">주문 상세 아이디</th>
+						<th style="text-align: center;" width="10%">주문 번호</th>
+						<th style="text-align: center;" width="12%">주문 상세 번호</th>
 						<th style="text-align: center;" width="8%">상품 번호</th>
 						<th style="text-align: center;" width="10%">상품명</th>
-						<th style="text-align: center;" width="8%">구매 수량</th>
+						<th style="text-align: center;" width="7%">구매 수량</th>
 						<th style="text-align: center;" width="15%">환불 사유</th>
 						<th style="text-align: center;" width="10%">구매 날짜</th>
 						<th style="text-align: center;" width="10%" colspan="2">답변상태</th>
