@@ -20,13 +20,18 @@ public class SalesHistoryServiceImpl implements SalesHistoryService{
 	}
 
 	@Override
-	public List<MyInfoVO> getHistoryAll(MyInfoVO vo) {
-		return salesHistoryDAO.getHistoryAll(vo);
+	public List<MyInfoVO> getHistoryAll(String start, String end) {
+		return salesHistoryDAO.getHistoryAll(start, end);
 	}
 
 	@Override
 	public List<MyInfoVO> historyOne(String order_id) {
 		return salesHistoryDAO.historyOne(order_id);
+	}
+
+	@Override
+	public int cntHistoryAll() {
+		return salesHistoryDAO.cntHistoryAll();
 	}
 
 	
