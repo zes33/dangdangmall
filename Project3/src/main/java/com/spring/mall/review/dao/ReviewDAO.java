@@ -95,12 +95,20 @@ public class ReviewDAO {
 		mybatis.delete("reviewDAO.deleteReview", review);
 	}
 	
-	// 한 상품의 모든 리뷰 목록
+	// 한 상품의 모든 리뷰 목록(페이징x)
 	public List<Map<String, Object>> reviewPerPrd(int product_id){
 		System.out.println("ReviewDAO.reviewPerPrd() 실행");
 		return mybatis.selectList("reviewDAO.reviewPerPrd", product_id);
 	}
 	
+	// 리뷰 더보기 페이징
+	public List<Map<String, Object>> reviewPerPrdPaging(String product_id, String start, String end){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("product_id", product_id);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("reviewDAO.reviewPerPrdPaging", map);
+	}
 	
 	
 	

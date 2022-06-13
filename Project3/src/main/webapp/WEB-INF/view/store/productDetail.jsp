@@ -550,7 +550,7 @@ function replyList(nowPage, product_id) {
 
 function moreReview(product_id) {
 	 window.open("moreReview.do?product_id="+product_id,"pop1",
-     "width=500, height=700 top=100, left=250");
+     "width=600, height=700 top=100, left=250");
 }
 
 

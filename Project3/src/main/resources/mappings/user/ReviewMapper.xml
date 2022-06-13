@@ -77,9 +77,9 @@
 		        AND D.ORDER_ID = UO.ORDER_ID
 		        AND D.PRODUCT_ID = P.PRODUCT_ID
 		        AND UO.USER_ID = U.USER_ID
-		        AND P.PRODUCT_ID = #{product_id}
+		        AND P.PRODUCT_ID = TO_NUMBER(#{product_id})
 		        ORDER BY R.REVIEW_ID DESC) A)
-		WHERE R_NUM BETWEEN #{start} AND #{end}
+		WHERE R_NUM BETWEEN TO_NUMBER(#{start}) AND TO_NUMBER(#{end})
 	</select>
 	
 	<!-- 한 상품의 모든 리뷰 -->

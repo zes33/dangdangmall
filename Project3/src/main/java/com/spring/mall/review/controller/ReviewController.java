@@ -92,8 +92,10 @@ public class ReviewController {
 			@RequestParam(value="nowPage", required=false)String nowPage,
 			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("moreReview() 실행");
-		int product_id = pvo.getProduct_id();
-		List<Map<String, Object>> reviewList = reviewService.reviewPerPrd(product_id);
+		int p_id = pvo.getProduct_id();
+		
+		// 페이징 안 들어간 리뷰 목록
+		List<Map<String, Object>> reviewList = reviewService.reviewPerPrd(p_id);
 		int total = reviewList.size();
 		
 		if (nowPage == null && cntPerPage == null) {
@@ -106,7 +108,12 @@ public class ReviewController {
 		}
 		
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		model.addAttribute("reviewList", reviewList);
+		String start = Integer.toString(paging.getStart());
+		String end = Integer.toString(paging.getEnd());
+		String product_id = Integer.toString(p_id);
+		List<Map<String, Object>> reviewListPaging = reviewService.reviewPerPrdPaging(product_id, start, end);
+		
+		model.addAttribute("reviewListPaging", reviewListPaging);
 		model.addAttribute("paging",paging);
 		
 		return "store/productReview";

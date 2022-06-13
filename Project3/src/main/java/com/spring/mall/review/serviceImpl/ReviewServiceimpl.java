@@ -72,4 +72,9 @@ public class ReviewServiceimpl implements ReviewService{
 		return reviewDAO.totCntMyReview(user_id);
 	}
 
+	@Override
+	public List<Map<String, Object>> reviewPerPrdPaging(String product_id, String start, String end) {
+		return reviewDAO.reviewPerPrdPaging(product_id, start, end);
+	}
+
 }

@@ -19,4 +19,5 @@ public interface ReviewService {
 	List<Map<String, Object>> adminReviewList(String searchCondition, String searchKeyword,String prd_category, String start, String end);
 	int adminTotReviewCnt(String searchCondition,String searchKeyword,String prd_category);
 	int totCntMyReview(String user_id);
+	public List<Map<String, Object>> reviewPerPrdPaging(String product_id, String start, String end);
 }
