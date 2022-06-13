@@ -51,11 +51,11 @@ table, th, td {
 
 /* adminTemplate 아래 */
 .container {
- position: relative;
+	position: relative;
 }
 
 .menuname {
-	position:relative;
+	position: relative;
 	top: 35px;
 	/*left: -205px;*/
 	left: -25px;
@@ -63,7 +63,7 @@ table, th, td {
 	border-radius: 7px;
 	width: 1170px;
 	height: 140px;
-	font-family: "Audiowide", sans-serif;	
+	font-family: "Audiowide", sans-serif;
 }
 /*
 .center {
@@ -85,65 +85,72 @@ table, th, td {
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 
-		<div class="container">
-			<jsp:include page="sidebarTemplate.jsp"></jsp:include>
-			<div class="menuname h1 text-center center"
-				style="background-color: rgb(240, 240, 240);  padding-top: 45px !important;">
-				<strong style="font-size: 3vw">&lt; 배송상태 변경 &gt;</strong>
-			</div>
+	<div class="container">
+		<jsp:include page="sidebarTemplate.jsp"></jsp:include>
+		<div class="menuname h1 text-center center"
+			style="background-color: rgb(240, 240, 240); padding-top: 45px !important;">
+			<strong style="font-size: 3vw">&lt; 배송상태 변경 &gt;</strong>
+		</div>
 
-			<div style="margin-top: 60px;">
-				<c:if test="${empty getOrderList}">
-					<br />
-					<h2>배송 요청건이 존재하지 않습니다.</h2>
-				</c:if>
+		<div style="margin-top: 60px;">
+			<c:if test="${empty getOrderList}">
+				<br />
+				<h2>배송 요청건이 존재하지 않습니다.</h2>
+			</c:if>
 
 
-				<c:if test="${not empty getOrderList}">
-					<!--배송 요청건 목록 -->
-					<table class="table table-hover table1">
-						<thead>
+			<c:if test="${not empty getOrderList}">
+				<!--배송 요청건 목록 -->
+				<table class="table table-hover table1">
+					<thead>
+						<tr>
+							<th class="center" width="10%">주문 아이디</th>
+							<th class="center" width="10%">고객 아이디</th>
+							<th class="center" width="10%">주문일자</th>
+							<th class="center" width="10%">수령인</th>
+							<th class="center" width="13%">연락처</th>
+							<th class="center" width="25%">배송주소</th>
+							<th class="center" width="20%">[배송시작]</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="list" items="${getOrderList }">
 							<tr>
-								<th class="center" width="10%">주문 아이디</th>
-								<th class="center" width="10%">고객 아이디</th>
-								<th class="center" width="10%">주문일자</th>
-								<th class="center" width="10%">수령인</th>
-								<th class="center" width="13%">연락처</th>
-								<th class="center" width="25%">배송주소</th>
-								<th class="center" width="20%">[배송시작]</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="list" items="${getOrderList }">
-								<tr>
-									<td class="center">${list.order_id}</td>
-									<td class="center">${list.user_id }</td>
-									<td class="center"><fmt:formatDate
-											value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
-									<td class="center">${list.order_receiver }</td>
-									<td class="center"><c:set var="user_phone"
-											value="${list.order_phone }" />
-										${fn:substring(user_phone,0,3) } -
-										${fn:substring(user_phone,3,7) } -
-										${fn:substring(user_phone,7,11) }</td>
-									<td class="center">${list.order_addr }<br>
-										${list.order_addr_d }&nbsp;[${list.order_zipcode }]
-									</td>
-									<td class="center"><c:if test="${1 eq list.user_status }">
-											<button>
-												<a
-													href="adminShipping/adminShippingUpdate.do?order_id=${list.order_id }"
-													class="text-decoration-none text-dark"> 배송시작하기</a>
-											</button>
-										</c:if> <c:if test="${2 eq list.user_status }">
+								<td class="center">${list.order_id}</td>
+								<td class="center">${list.user_id }</td>
+								<td class="center"><fmt:formatDate
+										value="${list.order_date}" pattern="yyyy-MM-dd HH:MM" /></td>
+								<td class="center">${list.order_receiver }</td>
+								<td class="center"><c:set var="user_phone"
+										value="${list.order_phone }" />
+										<c:if test="${ '-' eq fn:substring(user_phone,3,4)}"> 
+									${list.order_phone }
+									</c:if> 
+									<c:if test="${ '-' ne fn:substring(user_phone,3,4)}"> 
+									${fn:substring(user_phone,0,3)}-
+									${fn:substring(user_phone,3,7)}-
+									${fn:substring(user_phone,7,11)}
+									</c:if>
+										
+										</td>
+								<td class="center">${list.order_addr }<br>
+									${list.order_addr_d }&nbsp;[${list.order_zipcode }]
+								</td>
+								<td class="center"><c:if test="${1 eq list.user_status }">
+										<button>
+											<a
+												href="adminShipping/adminShippingUpdate.do?order_id=${list.order_id }"
+												class="text-decoration-none text-dark"> 배송시작하기</a>
+										</button>
+									</c:if> <c:if test="${2 eq list.user_status }">
 							[배송중]
 							</c:if></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</c:if>
-			</div>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 		</div>
+	</div>
 </body>
 </html>
