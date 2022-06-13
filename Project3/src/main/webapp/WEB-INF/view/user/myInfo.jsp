@@ -196,7 +196,7 @@
                        	<c:if test="${orderList.refund_id == 0}">
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.order_detail_id})" value="환불 신청" /></div><br>
                        	</c:if>
-                     <c:choose>
+                     <%-- <c:choose>
                      <c:when test="${existList[status.index] eq 0 && orderList.user_status != 1}">
                         <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" onclick="goMyReview(${orderList.order_detail_id})">리뷰 작성</button></div>
                      </c:when>
@@ -206,7 +206,18 @@
                       <c:when test="${existList[status.index] eq 0  && orderList.user_status == 1}">
                         <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">&nbsp;&nbsp;리뷰 &nbsp;&nbsp;</button></div>
                      </c:when>
-                     </c:choose>
+                     </c:choose> --%>
+                     <c:if test="${existList[status.index] eq 1 }">
+                     <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">리뷰 완료</button></div>
+                     </c:if>
+                     <c:if test="${existList[status.index] eq 0 }">
+                     	<c:if test="${orderList.user_status != 1 }">
+                     		 <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" onclick="goMyReview(${orderList.order_detail_id})">리뷰 작성</button></div>
+                     	</c:if>
+                     	<c:if test="${orderList.user_status == 1 }">
+                     		<div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">&nbsp;&nbsp;리뷰 &nbsp;&nbsp;</button></div>
+                     	</c:if>
+                     </c:if>
                   </span>
                </div>
             </div>
