@@ -56,13 +56,20 @@
 #body-wrapper {
     min-height: 100%;
     position: relative;
+    
+    	padding-top: 30px;
 }
 #body-content {
-	width: 400px;
+	/* width: 400px; */
+	
+		margin: auto;
+		width: 800px;
+		padding: 70px;
+		background-color: #F3F3F3;
 }
-#product_discount {
+/* #product_discount {
 	width: 100px;
-}
+} */
 #btn {
 	width: 150px;
 }
@@ -163,11 +170,11 @@ $(document).ready(function () {
    		<strong style="font-size:3vw">&lt; 상품 수정 &gt;</strong>
    	</div>
    
-   <div class="contents">
-   <div id="body-wrapper" >
+   <div class="contents" >
+   <div id="body-wrapper">
    <div id="body-content" >
    
-   <form action="updateProduct.do" method="post" class="h3" id="prdForm" enctype="multipart/form-data">
+   <form style="" action="updateProduct.do" method="post" class="h3" id="prdForm" enctype="multipart/form-data">
      <strong>상품등록번호(*)</strong> <input value="${product.product_id }" type="text" class="form-control" disabled
                      maxlength="20"><br/><br>
                      <input type="hidden" name="product_id" value="${product.product_id }" >
@@ -182,9 +189,9 @@ $(document).ready(function () {
     
     <div><strong>상품 입고수량*</strong></div> <span><input value="${product.product_stock }" type="number" min="1" id="stock" class="form-control f4" style="float:left" 
     				title="입고수량" name="product_stock" maxlength="10"></span><br/><br><br>
-  	 <div><strong>할인율</strong></div> <span>
+  	 <div><strong>할인율(%)</strong></div> <span>
   	 <input value="${product.product_discount*100 }" type="number" min='0' max='100' class="form-control f5" style="float:left"
-    			title="할인율"	id="product_discount" value="0" name="product_discount" maxlength="3"></span><strong>%</strong><br/><br><br>
+    			title="할인율"	id="product_discount" value="0" name="product_discount" maxlength="3"></span><br/><br><br>
    <br>
    			<strong>상품 상태*</strong> 
      		<select name="product_state" class="f2">
