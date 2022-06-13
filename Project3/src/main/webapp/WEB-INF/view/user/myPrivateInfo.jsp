@@ -222,7 +222,7 @@ html, body {
 				</div>
 			</div>
 			<div class="col-md-10 wrapper">
-				<h3 class="padding">회원 정보 수정</h3>
+				<h3 class="padding">[회원 정보 수정]</h3>
 			<form id="updateFrm" name="updateFrm" action="updateAction.do" method="post">
 					<table>
 						<tbody>

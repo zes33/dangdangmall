@@ -227,9 +227,16 @@ function deleteReview(review_id) {
 	        </div>
 	        <div class="col-md-10 whoru">
 	        <br>
-				<h3><b>나의 상품 후기 </b></h3>
+				<h3>[나의 상품 후기]</h3>
 				<br>
-				
+				<div class="text-center">
+				<c:if test="${empty myReviewList}">
+					<br />
+					<h2>후기 내역이 없습니다.</h2>
+					<br />
+					<br />
+				</c:if>
+				</div>
 				<c:forEach var="myReviewList" items="${myReviewList }">
 				<div class="col-md-11 whoruBaby">
 					<div class="row imgZone">

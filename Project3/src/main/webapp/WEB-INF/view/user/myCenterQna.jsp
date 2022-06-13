@@ -29,7 +29,7 @@
 <link href="common/styles.css" rel="stylesheet">
 <style>
 	#container { width: 700px; margin: auto; }
-	h1, h3, p { text-align: center; }
+	h1, p { text-align: center; }
 	table { border-collapse: collapse; }
 	.ct>th .ct td {
 		border: 1px solid black;
@@ -173,7 +173,7 @@
 	        </div>
 	        <div class="col-md-10 whoru">
 				<h3>
-				<h3>&nbsp;&nbsp;&nbsp;&nbsp;[ 기타 문의내역]</h3>
+				<h3>[기타 문의내역]</h3>
 					<!-- 데이터 표시 영역 -->
 					<table class="table table-hover ct">
 						<thead>

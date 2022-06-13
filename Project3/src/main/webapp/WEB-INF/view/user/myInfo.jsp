@@ -152,14 +152,22 @@
               <div><p><b><a href="${pageContext.request.contextPath }/goMyReview.do">후기내역</a></b></p></div>
            </div>
            <div class="col-md-10 wru">
-           <h3>&nbsp;&nbsp;&nbsp;&nbsp;[ 주문내역 ]</h3>
+           <h3>&nbsp;&nbsp;&nbsp;[주문내역]</h3>
+           <div class="text-center">
+			<c:if test="${empty orderList}">
+				<br />
+				<h2>주문 내역이 없습니다.</h2>
+				<br />
+				<br />
+			</c:if>
+			</div>
            <c:forEach var="orderList" items="${orderList }" varStatus="status">
              <div class="container">
                <div class="card">
                  <div class="card-body">
                    <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><strong>${orderList.product_name }</strong></font></font></h3>
                    <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>주문 번호 ${orderList.order_id} </span></font></font></h5>
-                   <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>${orderList.product_price }원 | 수량 : ${orderList.user_order_cnt }개 | ${orderList.order_date } 주문</span></font></font></h5>
+                   <h5 class="card-subtitle mb-2 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><span>개당 ${orderList.product_price }원 | 수량 : ${orderList.user_order_cnt }개 | ${orderList.order_date } 주문</span></font></font></h5>
                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></p>
                    <br><br>
                    <div>
@@ -189,11 +197,14 @@
                        		<div><input type="button" class="btn btn-outline-dark btn-sm" onclick="refundView(${orderList.order_detail_id})" value="환불 신청" /></div><br>
                        	</c:if>
                      <c:choose>
-                     <c:when test="${existList[status.index] eq 0 && orderList.user_status == 2}">
+                     <c:when test="${existList[status.index] eq 0 && orderList.user_status != 1}">
                         <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" onclick="goMyReview(${orderList.order_detail_id})">리뷰 작성</button></div>
                      </c:when>
                      <c:when test="${existList[status.index] eq 1 }">
                         <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">리뷰 완료</button></div>
+                     </c:when>
+                      <c:when test="${existList[status.index] eq 0  && orderList.user_status == 1}">
+                        <div><button type="button" class="btn btn-outline-dark btn-sm" id="wbtn" disabled="disabled">&nbsp;&nbsp;리뷰 &nbsp;&nbsp;</button></div>
                      </c:when>
                      </c:choose>
                   </span>

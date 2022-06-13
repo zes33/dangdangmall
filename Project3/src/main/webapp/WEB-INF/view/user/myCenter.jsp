@@ -23,7 +23,7 @@
 <link href="common/styles.css" rel="stylesheet">
 <style>
 	#container { width: 700px; margin: auto; }
-	h1, h3, p { text-align: center; }
+	h1, p { text-align: center; }
 	table { border-collapse: collapse; }
 	.ct>th .ct td {
 		border: 1px solid black;
