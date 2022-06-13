@@ -36,7 +36,7 @@
 				alert("내용을 입력하세요.");
 				document.insertCenterQna.center_qna_content.focus();
 			} else {
-				document.forms[0].submit();
+				$("#center_qna_id").submit();
 			}
 		}
 	}
@@ -47,12 +47,8 @@
 		<jsp:include page="../common/header.jsp"></jsp:include>
 	</header>
 <div id="container">
-
-	<p>\${getCenter } : ${getCenter }</p>
-	<p>\${CENTER_QNA_ID } : ${getCenter.CENTER_QNA_ID }</p>
 	
-	
-	<form action="updateCenterQnaWrite.do" method="post">
+	<form action="updateCenterQnaWrite.do" method="post" id="center_qna_id">
 	<input type="hidden" id="center_qna_id" name="center_qna_id" value="${getCenter.CENTER_QNA_ID }" >
 	<table class="table table-hover">
 		<tr>
