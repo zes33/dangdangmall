@@ -185,10 +185,12 @@ table, th, td {
 					</tbody>
 				</table>
 			</c:if>
+			
+			<div style="margin-bottom: 70px;">
 			<button type="button" class="btn btn-light"
 				onclick="location.href='${pageContext.request.contextPath }/salesHistory/salesHistoryView.do'">전체
 				목록으로 돌아가기</button>
-		</div>
+			</div>
 	</div>
 </body>
 </html>
