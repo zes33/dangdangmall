@@ -28,11 +28,9 @@
 				class="nav-link px-2 text-muted">홈</a></li>
 			<li class="nav-item"><a href="join.do"
 				class="nav-link px-2 text-muted">회원가입</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">정책</a></li>
-			<li class="nav-item"><a href="#"
+			<li class="nav-item"><a href="${pageContext.request.contextPath }/user/getCenterListPaging.do"
 				class="nav-link px-2 text-muted">고객센터</a></li>
-			<li class="nav-item"><a href="#"
+			<li class="nav-item"><a href="main.do"
 				class="nav-link px-2 text-muted">당당몰</a></li>
 		</ul>
                 <style data-emotion="css btcd6w">
@@ -41,7 +39,7 @@
                     font-size: 0;
                 }
                 </style>
-                <div class="css-btcd6w e8ds1hd1">
+                <div style="border-left-style: solid !important; border-left-width: 50px !important;" class="css-btcd6w e8ds1hd1">
                     <style data-emotion="css 1qv9dtj">
                     .css-1qv9dtj {
                         display: inline-block;
@@ -63,10 +61,10 @@
                         content: '';
                     }
                     </style>
-                    <a class="css-1qv9dtj e8ds1hd0" href="https://www.29cm.co.kr/home/private">
+                    <a class="css-1qv9dtj e8ds1hd0" href="#">
                         <strong>개인정보처리방침</strong>
                     </a>
-                    <a class="css-1qv9dtj e8ds1hd0" href="https://www.29cm.co.kr/home/agreement">이용약관</a>
+                    <a class="css-1qv9dtj e8ds1hd0" href="#">이용약관</a>
                 </div>
                 <style data-emotion="css 16ccl6">
                 .css-16ccl6 {
@@ -142,7 +140,7 @@
                                     line-height: 20px;
                                 }
                                 </style>
-                                <a class="css-l6wyy9 e1918wdd0" target="_blank" href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118879575&amp;apv_perm_no=">사업자정보확인</a>
+                                <a class="css-l6wyy9 e1918wdd0" target="_blank" href="#">사업자정보확인</a>
                             </dd>
                         </dl>
                     </div>
@@ -156,6 +154,10 @@
                                     -webkit-text-decoration: none;
                                     text-decoration: none;
                                 }
+                                :root{
+                                	--bs-body-color:white;
+                                }
+                                
                                 </style>
                                 <a class="css-vcptzx e1918wdd1" href="tel:1644-0560">1688-0909</a>
                             </dd>
