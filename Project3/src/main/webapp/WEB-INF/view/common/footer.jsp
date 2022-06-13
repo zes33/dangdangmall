@@ -1,45 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>푸터</title>
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+   crossorigin="anonymous">
 
 <link rel="canonical"
-	href="https://getbootstrap.kr/docs/5.1/examples/album/">
+   href="https://getbootstrap.kr/docs/5.1/examples/album/">
 
 <!-- Bootstrap core CSS -->
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+   crossorigin="anonymous">
 
 <link href="common/styles.css" rel="stylesheet">
 </head>
 <body>
-	<footer class="py-3 my-4">
-		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-			<li class="nav-item"><a href="main.do"
-				class="nav-link px-2 text-muted">홈</a></li>
-			<li class="nav-item"><a href="join.do"
-				class="nav-link px-2 text-muted">회원가입</a></li>
-			<li class="nav-item"><a href="${pageContext.request.contextPath }/user/getCenterListPaging.do"
-				class="nav-link px-2 text-muted">고객센터</a></li>
-			<li class="nav-item"><a href="main.do"
-				class="nav-link px-2 text-muted">당당몰</a></li>
-		</ul>
+   <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+         <li class="nav-item"><a href="main.do"
+            class="nav-link px-2 text-muted">홈</a></li>
+         <li class="nav-item"><a href="join.do"
+            class="nav-link px-2 text-muted">회원가입</a></li>
+         <li class="nav-item"><a href="${pageContext.request.contextPath }/user/getCenterListPaging.do"
+            class="nav-link px-2 text-muted">고객센터</a></li>
+         <li class="nav-item"><a href="main.do"
+            class="nav-link px-2 text-muted">당당몰</a></li>
+      </ul>
                 <style data-emotion="css btcd6w">
                 .css-btcd6w {
                     margin: 12px 0 4px;
                     font-size: 0;
                 }
                 </style>
-                <div style="border-left-style: solid !important; border-left-width: 50px !important;" class="css-btcd6w e8ds1hd1">
+                <div style=" margin-left: 50px !important;" class="css-btcd6w e8ds1hd1">
                     <style data-emotion="css 1qv9dtj">
                     .css-1qv9dtj {
                         display: inline-block;
@@ -79,7 +79,7 @@
                     clear: both;
                 }
                 </style>
-                <div class="css-16ccl6 e1918wdd6">
+                <div style=" margin-left: 50px !important;" class="css-16ccl6 e1918wdd6">
                     <style data-emotion="css 1rc0381">
                     .css-1rc0381 {
                         display: block;
@@ -154,10 +154,7 @@
                                     -webkit-text-decoration: none;
                                     text-decoration: none;
                                 }
-                                :root{
-                                	--bs-body-color:white;
-                                }
-                                
+                               
                                 </style>
                                 <a class="css-vcptzx e1918wdd1" href="tel:1644-0560">1688-0909</a>
                             </dd>
@@ -183,10 +180,10 @@
                     </div>
                 </div>
             </section>
-	</footer>
+   </footer>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+   crossorigin="anonymous"></script>
 </body>
 </html>
