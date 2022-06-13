@@ -151,7 +151,7 @@ ${all } --%>
 								<c:choose>
 										<c:when test="${100000  lt list.order_total}"><fmt:formatNumber
 										type="number" maxFractionDigits="3"
-										value="${list.order_total } - 2500" />원</c:when>
+										value="${list.order_total- 2500 }" />원</c:when>
 										<c:otherwise>
 											<fmt:formatNumber value="${list.order_total }"
 												type="number" /> 
