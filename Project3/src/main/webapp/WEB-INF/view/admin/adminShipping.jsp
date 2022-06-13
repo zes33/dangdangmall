@@ -78,6 +78,31 @@ table, th, td {
 	width: 1145px;
 	height: 600px;
 } */
+
+
+#navul {float: center;
+		text-align: center;
+		margin:auto;
+		display:inline-block;
+}
+.navul {
+    list-style:none;
+    margin:auto;
+    padding:0;
+ 	float: center;
+    text-align: center;
+    display:inline-block;
+}
+
+.navul>li {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+    /* margin: auto; */
+    text-align: center;
+    display:inline-block;
+}
 </style>
 </head>
 <body>
@@ -149,6 +174,43 @@ table, th, td {
 				</table>
 			</c:if>
 		</div>
+		
+		<div  style="text-align: center; float: center; margin-bottom: 70px;">
+			<nav class="navul">
+              <ul class="navul">
+              
+              <c:if test="${paging.startPage != 1 }">
+                <li class="page-item">
+                  <a class="page-link" href="adminShippingView.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+               </c:if> 
+               
+               <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+                  <c:choose>
+                     <c:when test="${p == paging.nowPage }">
+                        <li class="page-item"><b class="page-link" >${p }</b></li>
+                     </c:when>
+                     <c:when test="${p != paging.nowPage }">
+                         <li class="page-item"><a class="page-link" href="adminShippingView.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+                     </c:when>
+                  </c:choose>
+               </c:forEach>
+               
+                <c:if test="${paging.endPage != paging.lastPage }">
+                <li class="page-item">
+                  <a class="page-link" href="adminShippingView.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+               </c:if> 
+                
+              </ul>
+            </nav>
+		</div>
+		
 	</div>
 </body>
 </html>

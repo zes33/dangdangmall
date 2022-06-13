@@ -21,8 +21,8 @@ public class AdminShippingServiceImpl implements AdminShippingService {
 	
 	//1. 관리자 상품 주문 테이블 목록 불러오기
 	@Override
-	public List<UserOrderVO> getOrderList(UserOrderVO vo) {
-		return adminShippingDAO.getOrderList(vo);
+	public List<UserOrderVO> getOrderList(String start, String end) {
+		return adminShippingDAO.getOrderList(start,end);
 	}
 
 	//2. 관리자 주문 상태 변경
