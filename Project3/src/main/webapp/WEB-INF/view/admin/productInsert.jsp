@@ -23,11 +23,6 @@
 .container {
  position: relative;
 }
-/* #ss {
-	position:relative;
-	width: 700px;
-	top: 250px;
-} */
 
 .menuname {
 	position:relative;
@@ -65,7 +60,7 @@
 	width: 100px;
 }
 #btn {
-	width: 150px;
+	width: 210px;
 }
 
 .prdPic{
@@ -185,11 +180,16 @@ function addImg(lo) {
 	</div>  
 	<div id="thm2"></div>				 
             <br/><br>
-   <table>
+   <table class="position-absolute bottom-5 start-50 translate-middle-x">
       <tr>
       	<td>
-         <button type="reset" class="btn btn-secondary btn-lg" id="btn" >&nbsp;&nbsp;초기화</button>
-         <button type="button" class="btn btn-secondary btn-lg" onclick="insertProduct()" id="btn">상품 등록하기</button>
+         <button type="reset" class="btn btn-secondary btn-lg" id="btn" >초기화</button>
+      	</td>
+      	<td>
+      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	</td>
+      	<td>
+      	 <button type="button" class="btn btn-secondary btn-lg" onclick="insertProduct()" id="btn">상품 등록하기</button>
       	</td>
       </tr>
    </table>

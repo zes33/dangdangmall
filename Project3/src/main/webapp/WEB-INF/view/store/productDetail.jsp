@@ -341,8 +341,9 @@ function replyList(nowPage, product_id) {
 			</h4>
 			<br>
 			<div class="productInfo">
-				<!-- <img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
-				 --><img src="${pageContext.request.contextPath }/img/${product.product_info}" alt="..." class="prdInfoPic">
+				 <!-- <img src="${pageContext.request.contextPath }/img/${product.product_info}" alt="..." class="prdInfoPic">  -->
+				<img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
+				<img src="./img/포만감디테일.gif" alt="..." class="prdInfoPic">
 				<img src="./img/구매평.png" alt="..." class="prdInfoPic">
 				<img src="./img/point.gif" alt="..." class="prdInfoPic">
 				<img src="./img/point2.gif" alt="..." class="prdInfoPic">
