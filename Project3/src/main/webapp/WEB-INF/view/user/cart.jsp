@@ -290,13 +290,13 @@ nav {
 								</c:if>
 								
 								</td>
-								<td><span id="amount"> <c:out
+								<td style="vertical-align:middle;"><span id="amount"> <c:out
 											value="${list.product_name }" />
 								</span></td>
-								<td><span id="amount"> <c:out
+								<td style="vertical-align:middle;"><span id="amount"> <c:out
 											value="${list.product_price }" />
 								</span></td>
-								<td>
+								<td style="vertical-align:middle;">
 									<form action="update.do" method="post">
 									  <input type="number" style="width: 80px"
 											name="cart_product_qty" value="${list.cart_product_qty}"
@@ -306,22 +306,22 @@ nav {
 											value="${list.product_id}"> <input type="submit"
 											value="수량수정">
 									</form>
-								<td><span id="amount"
+								<td style="vertical-align:middle;"><span id="amount"
 									data-amount=<c:out value="${list.product_price * list.cart_product_qty}"/>><fmt:formatNumber
 											value="${list.product_price * list.cart_product_qty}"
 											pattern="###,###,###" /></span></td>
-								<td><span id="discount" style="color: red;"
+								<td style="vertical-align:middle;"><span id="discount" style="color: red;"
 									data-amount=<c:out value="${list.product_discount }"/>>
 										<fmt:formatNumber value="${list.product_discount *100 }"
 											type="number" /> %
 								</span></td>
-								<td><span id="total"
+								<td style="vertical-align:middle;"><span id="total"
 									data-amount=<c:out value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount}"/>>
 										<fmt:formatNumber
 											value="${(list.product_price * list.cart_product_qty) - (list.product_price * list.cart_product_qty)* list.product_discount }"
 											pattern="###,###,###" />
 								</span></td>
-								<td><a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a></td>
+								<td style="vertical-align:middle;"><a href="delete.do?cart_id=${list.cart_id}">상품 빼기</a></td>
 							</tr>
 						</c:forEach>
 							</tbody>
