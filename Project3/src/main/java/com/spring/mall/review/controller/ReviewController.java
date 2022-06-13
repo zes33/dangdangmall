@@ -115,6 +115,7 @@ public class ReviewController {
 		
 		model.addAttribute("reviewListPaging", reviewListPaging);
 		model.addAttribute("paging",paging);
+		model.addAttribute("product_id",product_id);
 		
 		return "store/productReview";
 	}

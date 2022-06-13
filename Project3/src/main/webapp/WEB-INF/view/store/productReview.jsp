@@ -114,7 +114,7 @@ $(document).ready(function () {
 		  
 		  <c:if test="${paging.startPage != 1 }">
 		    <li class="page-item">
-		      <a class="page-link" href="moreReview.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}"
+		      <a class="page-link" href="moreReview.do?product_id=${product_id}&nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}"
 		       aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
@@ -127,14 +127,14 @@ $(document).ready(function () {
 						<li class="page-item"><b class="page-link" >${p }</b></li>
 					</c:when>
 					<c:when test="${p != paging.nowPage }">
-		    			<li class="page-item"><a class="page-link" href="moreReview.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}">${p }</a></li>
+		    			<li class="page-item"><a class="page-link" href="moreReview.do?product_id=${product_id}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
 					</c:when>
 				</c:choose>
 			</c:forEach>
 		   
 		    <c:if test="${paging.endPage != paging.lastPage }">
 		    <li class="page-item">
-		      <a class="page-link" href="moreReview.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&prd_c=${prd_c}" aria-label="Previous">
+		      <a class="page-link" href="moreReview.do?product_id=${product_id}&nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>
