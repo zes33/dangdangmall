@@ -24,13 +24,13 @@
 <body>
    <footer class="py-3 my-4">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-         <li class="nav-item"><a href="main.do"
+         <li class="nav-item"><a href="${pageContext.request.contextPath }/main.do"
             class="nav-link px-2 text-muted">홈</a></li>
-         <li class="nav-item"><a href="join.do"
+         <li class="nav-item"><a href="${pageContext.request.contextPath }/join.do"
             class="nav-link px-2 text-muted">회원가입</a></li>
          <li class="nav-item"><a href="${pageContext.request.contextPath }/user/getCenterListPaging.do"
             class="nav-link px-2 text-muted">고객센터</a></li>
-         <li class="nav-item"><a href="main.do"
+         <li class="nav-item"><a href="${pageContext.request.contextPath }/main.do"
             class="nav-link px-2 text-muted">당당몰</a></li>
       </ul>
                 <style data-emotion="css btcd6w">
