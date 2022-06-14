@@ -32,7 +32,10 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
+.btnh {
+	width: 110px;
+}
+/*
 .material-icons.md-18 {
 	font-size: 18px;
 }
@@ -40,6 +43,7 @@
 .material-icons.md-36 {
 	font-size: 36px;
 }
+*/
 </style>
 <body>
 	<div class="blog-header py-3">
@@ -53,34 +57,34 @@
 					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<c:choose>
 						<c:when test="${empty user }">
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/login.do">로그인</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/join.do">회원가입</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/user/getCenterListPaging.do">고객센터</a>
 						</c:when>
 						<c:when test="${user.user_state eq 2}">
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/admin/adminMain.do">관리자뷰</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/main.do">고객뷰</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/logout.do">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<a class="right" href="#">${user.user_nickname }님</a>
 							<br> &nbsp;&nbsp;&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/logout.do">로그아웃</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
-								href="${pageContext.request.contextPath }/cart/list.do">장바구니
-								<span style="font-size: 20px;" class="material-icons md-36"> shopping_bag </span>(${count })
+							<a class="btn btn-sm btn-outline-secondary btnh"
+								href="${pageContext.request.contextPath }/cart/list.do">장바구니(<strong  class="text-danger">${count }</strong>)
+								<!-- <span style="font-size: 15px;" class="material-icons md-36"> shopping_bag </span>(${count })  -->
 							</a>&nbsp;&nbsp;
 							
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/myinfo.do">마이페이지</a>&nbsp;&nbsp;
-							<a class="btn btn-sm btn-outline-secondary"
+							<a class="btn btn-sm btn-outline-secondary btnh"
 								href="${pageContext.request.contextPath }/user/getCenterListPaging.do">고객센터</a>
 						</c:otherwise>
 					</c:choose>
