@@ -71,6 +71,7 @@ footer {
 .ajax{
 	padding-top: 0px;
 	padding-left: 80px;
+	margin-left: 70px;
 }
 </style>
 </head>
@@ -93,7 +94,8 @@ footer {
                <td class="element"><input type="button" id="check" value="중복체크"></td>
             </tr>
             <tr>
-               <td colspan=3 id="idCheck" class="ajax"></td>
+            	<td></td>
+                <td id="idCheck" class="ajax"></td>
             </tr>
             <tr>
                <td class="element">패스워드</td>
@@ -198,12 +200,12 @@ footer {
                if(data == 0 && $.trim($('#user_id').val()) != '' ){
                   idx=true;
                   $('#user_id').attr("readonly",true);
-                  var html="<tr><td colspan='3' style='color: green'>사용가능</td></tr>";
+                  var html="<tr><td colspan='3' style='color: green'>&nbsp;&nbsp;&nbsp;사용가능</td></tr>";
                   $('#idCheck').empty();
                   $('#idCheck').append(html);
                }else{
 
-                  var html="<tr><td colspan='3' style='color: red'>사용불가능한 아이디 입니다.</td></tr>";
+                  var html="<tr><td colspan='3' style='color: red'>&nbsp;&nbsp;&nbsp;사용불가능한 아이디 입니다.</td></tr>";
                   $('#idCheck').empty();
                   $('#idCheck').append(html);
                }
