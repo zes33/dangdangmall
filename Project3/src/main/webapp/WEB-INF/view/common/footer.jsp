@@ -61,8 +61,7 @@
                         content: '';
                     }
                     </style>
-                        <strong>개인정보처리방침</strong>
-                   | 이용약관
+                        <strong>개인정보처리방침</strong> | 이용약관
                    <br><br>
                 </div>
                 <style data-emotion="css 16ccl6">
