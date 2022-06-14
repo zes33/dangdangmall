@@ -52,6 +52,9 @@
 .center {
 	text-align: center;
 }
+.lip {
+  text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -68,9 +71,9 @@
 		  </div>
 		  <hr>
 		  <div class="text-center">
-		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>
-			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
-		  	<a class="right btn btn-sm btn-outline-secondary" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
+		  	<a class="text-dark lip" href="${pageContext.request.contextPath }/login.do">로그인</a><strong class="text-black-50">&nbsp;&nbsp;|&nbsp;</strong>
+			<a class="text-dark lip" href="findIdView.do">아이디 찾기</a><strong class="text-black-50">&nbsp;&nbsp;|</strong>
+		  	<a class="text-dark lip" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
 		  </div>
 		  </font></font></div>
 		</div>

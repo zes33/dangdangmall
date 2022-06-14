@@ -46,7 +46,7 @@
 	.bbtt {
 	position: absolute;
 	top: 330px;
-	left: -128px;
+	left: -120px;
 	}
 	.log {
 		position: relative;
@@ -85,8 +85,8 @@
 		<tr>
 		<!-- <a onClick="history.back();">돌아가기 </a> -->
 		<td>
-			<a class="idpw text-dark" href="findPwdView.do">비밀번호 찾기</a> <span class="text-black-50">&nbsp;<small> | </small>&nbsp;</span>
-			<a class="idpw text-dark" href="findIdView.do">아이디 찾기</a>
+			<a class="idpw text-dark" href="findIdView.do">아이디 찾기</a> <span class="text-black-50">&nbsp;<small> | </small>&nbsp;</span>
+			<a class="idpw text-dark" href="findPwdView.do">비밀번호 찾기</a>
 		</td>
 			<!-- <a class="right btn btn-sm btn-outline-secondary" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
 			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>  -->

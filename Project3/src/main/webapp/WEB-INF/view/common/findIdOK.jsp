@@ -46,6 +46,9 @@
 .center {
 	text-align: center;
 }
+.btnok {
+	width: 120px;
+}
 </style>
 </head>
 <body>
@@ -60,8 +63,8 @@
 		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><strong>${getUser.user_id}</strong></div>
 		  <hr>
 		  <div class="text-center">
-		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>
-		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/findPwdView.do">비밀번호 찾기</a>
+		  	<a class="btn btn-sm btn-outline-success btnok" href="${pageContext.request.contextPath }/login.do">로그인</a>
+		  	<a class="btn btn-sm btn-outline-secondary btnok" href="${pageContext.request.contextPath }/findPwdView.do">비밀번호 찾기</a>
 		  	<p style="color: red;">${msg }</p>
 		  </div>
 		  </font></font></div>

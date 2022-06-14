@@ -52,6 +52,9 @@
 .center {
 	text-align: center;
 }
+.btnok {
+	width: 150px;
+}
 </style>
 </head>
 <body>
@@ -68,7 +71,7 @@
 		  </div>
 		  <hr>
 		  <div class="text-center">
-		  	<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath }/login.do">로그인</a>
+		  	<a class="btn btn-sm btn-outline-success btnok" href="${pageContext.request.contextPath }/login.do">로그인</a>
 		  </div>
 		  </font></font></div>
 		</div>
