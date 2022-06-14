@@ -43,8 +43,9 @@
 	height: 40px;
 	
 	}
-	.searchh{
-	top: -45px;
+	.bbtt {
+	position: absolute;
+	top: 320px;
 	left: -128px;
 	}
 	.log {
@@ -80,7 +81,7 @@
 			<input class="right btn btn-outline-success" type="submit" value="로그인"><p style="color: red;">${msg }</p>
 			</div>
 				<br/><br/>
-	<table class="searchh">
+	<table class="bbtt">
 		<tr>
 		<!-- <a onClick="history.back();">돌아가기 </a> -->
 		<td>
