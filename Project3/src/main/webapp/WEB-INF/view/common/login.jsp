@@ -22,12 +22,12 @@
 <!-- 여기까지 헤더링크 -->
 <style>
 
-#body-wrapper {
+#body-wrapperr {
     min-height: 100%;
     position: relative;
 }
 
-#body-content {
+#body-contentt {
 	background-color : #F3F3F3;
 	width: 500px;
 	height: 450px;
@@ -36,14 +36,14 @@
     padding-left: 300px;
     padding-right: 300px;
 }
-	.container { width: 700px; margin: auto; }
+	.container1 { width: 700px; margin: auto; }
 	.right { 
 	text-align: center; 
 	width: 250px;
 	height: 40px;
 	
 	}
-	.search{
+	.searchh{
 	top: -45px;
 	left: -128px;
 	}
@@ -64,8 +64,8 @@
 <header>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 </header>
-<div id="body-wrapper">
-	<div id="body-content" class="container">
+<div id="body-wrapperr">
+	<div id="body-contentt" class="container1">
 	
 	<br>
 	<form action="loginAction.do" method="post" class="foo">
@@ -80,7 +80,7 @@
 			<input class="right btn btn-outline-success" type="submit" value="로그인"><p style="color: red;">${msg }</p>
 			</div>
 				<br/><br/>
-	<table class="search">
+	<table class="searchh">
 		<tr>
 		<!-- <a onClick="history.back();">돌아가기 </a> -->
 		<td>
