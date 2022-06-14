@@ -55,23 +55,39 @@ footer {
 
 #signFrm{
 	background-color: #F3F3F3;
-	padding: 20px;
+	padding: 15px;
 	text-align: center;
 }
-
+/*
 .join{
-	float: right;
-}
+	float: left;
+}*/
 
 .element{
 	padding: 10px;
-	padding-left: 100px;
+	padding-left: 40px;
 }
 
 .ajax{
 	padding-top: 0px;
-	padding-left: 80px;
+	padding-left: 39px;
 	margin-left: 70px;
+}
+.op {
+	width: 173px;
+	height: 32px;
+	border-radius: 0.5px solid black;
+	text-align:center
+}
+.userid {
+	width: 425px;
+}
+.btnj {
+	width: 200px;
+}
+.inp {
+	padding: 10px;
+	padding-left: 40px;
 }
 </style>
 </head>
@@ -83,13 +99,14 @@ footer {
 <div id="body-wrapper">
      <div id="body-content" class="container">
      <br/></br/>
-   <h2>회원가입</h2>
+   <h2 class="text-center"><strong>회원가입</strong></h2><br>
    <form id="signFrm" name="signFrm" action="joinAction.do" method="post">
+   <h3 class="text-start inp"><strong>회원 정보입력</strong></h3><br>
    <table>
       <tbody>
             <tr>
-               <td class="element">아이디</td>
-               <td class="element"><input type="text" id="user_id" name="user_id" placeholder="아이디"
+               <td class="element text-start">아이디</td>
+               <td class="element"><input type="text" class="userid" id="user_id" name="user_id" placeholder="아이디"
                 required></td>
                <td class="element"><input type="button" id="check" value="중복체크"></td>
             </tr>
@@ -98,46 +115,49 @@ footer {
                 <td id="idCheck" class="ajax"></td>
             </tr>
             <tr>
-               <td class="element">패스워드</td>
+               <td class="element text-start">패스워드</td>
                <td colspan="2" class="element"><input id="user_pw" name="user_pw" type="password" placeholder="비밀번호"
                maxlength="20" class="form-control" required></td>
             </tr>
             <tr>
-               <td class="element">패스워드 확인</td>
+               <td class="element text-start">패스워드 확인</td>
                <td colspan="2" class="element"><input id="passwdCheck" name="passwdCheck" type="password" placeholder="비밀번호 확인"
                maxlength="20" class="form-control" required></td>
             </tr>
             <tr>
-               <td class="element">이름 </td>
+               <td class="element text-start">이름 </td>
                <td colspan="2" class="element"><input id="user_name" name="user_name" type="text" placeholder="이름"
                maxlength="20" class="form-control" required></td>
             </tr>
             <tr>
-               <td class="element">닉네임</td>
+               <td class="element text-start">닉네임</td>
                <td colspan="2" class="element"><input id="user_nickname" name="user_nickname" type="text" placeholder="닉네임"
                maxlength="20" class="form-control"></td>
             </tr>
             <tr>
-               <td class="element">e-mail</td>
+               <td class="element text-start">e-mail</td>
                <td colspan="2" class="element"><input type="email" class="form-control" placeholder="e-mail"
                      name="user_email" maxlength="20" required></td>
             </tr>
             <tr>
-               <td class="element">전화번호</td>
-               <td colspan="2" class="element"><select name="user_phone1">
+               <td class="element text-start">전화번호</td>
+               <td colspan="2" class="element"><select name="user_phone1" class="op text-center">
                   <option>010</option>
                   <option>02</option>
                   <option>031</option>
                   <option>070</option>
                </select> -
-               <input type="text" id ="user_phone2" name="user_phone2" size="5" required> -
-               <input type="text" id ="user_phone3" name="user_phone3" size="5" required></td>
-            </tr>
-            <tr>
-               <td colspan="3"><input class="join" type="button" id="signUp" value="회원가입"></td>
+               <input type="text" class="op" id ="user_phone2" name="user_phone2" size="5" style="border:0 padding-top:2; text-align:center;" required> -
+               <input type="text" class="op" id ="user_phone3" name="user_phone3" size="5" style="border:0 padding-top:2; text-align:center;" required></td>
             </tr>
          </tbody>
       </table>
+      <br>
+      	<div>
+      		<a class="btn bbtn btn btn-outline-dark btnj" type="text" href="${pageContext.request.contextPath }/main.do">홈</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      		<input class="join btn btn-outline-success btnj" type="button" id="signUp" value="회원가입">
+      	</div>
+      	<br>
    </form>
    </div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -200,12 +220,12 @@ footer {
                if(data == 0 && $.trim($('#user_id').val()) != '' ){
                   idx=true;
                   $('#user_id').attr("readonly",true);
-                  var html="<tr><td colspan='3' style='color: green'>&nbsp;&nbsp;&nbsp;사용가능</td></tr>";
+                  var html="<tr><td colspan='3' style='color: green'>사용가능</td></tr>";
                   $('#idCheck').empty();
                   $('#idCheck').append(html);
                }else{
 
-                  var html="<tr><td colspan='3' style='color: red'>&nbsp;&nbsp;&nbsp;사용불가능한 아이디 입니다.</td></tr>";
+                  var html="<tr><td colspan='3' style='color: red'>사용불가능한 아이디 입니다.</td></tr>";
                   $('#idCheck').empty();
                   $('#idCheck').append(html);
                }

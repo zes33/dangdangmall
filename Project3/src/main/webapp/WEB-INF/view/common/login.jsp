@@ -45,7 +45,7 @@
 	}
 	.bbtt {
 	position: absolute;
-	top: 320px;
+	top: 330px;
 	left: -128px;
 	}
 	.log {
