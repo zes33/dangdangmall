@@ -54,7 +54,7 @@
 		<jsp:include page="../common/header.jsp"></jsp:include>
 </header>	
 			<div class="container">
-			<a href="#"><img src="./img/아이디찾기.png" alt="아이디찾기로고" width="450"></a>
+			<a href="#"><img src="./img/아이디찾기1.png" alt="아이디찾기로고" width="450"></a>
 			<div class="center"><strong>아이디 찾기</strong>가 완료되었습니다</div><br>
 		<div class="card border-success mb-3" style="max-width: 30rem; max-width: 600px; margin-left: 350px;">
 		  <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="text-center h4"><strong>${getUser.user_id}</strong></div>

@@ -44,7 +44,7 @@
 	<script type="text/javascript">
 </script>
 	<div class="container">
-			<a href="#"><img src="./img/아이디찾기.png" alt="아이디찾기로고" width="450"></a>
+			<a href="#"><img src="./img/아이디찾기1.png" alt="아이디찾기로고" width="450"></a>
 			<div class="h5"><strong>아이디를 모르시나요?</strong></div>
 			<p><small>이메일을 입력해주세요!</small></p>
 		<div class="card border-success mb-3" style="max-width: 30rem; max-width: 600px; margin-left: 350px;">
@@ -68,16 +68,17 @@
 	               </select> -
 	               <input type="text" name="user_phone2" size="5"> -
 	               <input type="text" name="user_phone3" size="5">
-				    </div>
+				   </div>
 			</fieldset>
 		  <hr>
 		  	<input type="submit" class="btn btn-outline-success"
 				value="아이디 찾기">
+		  <br>
 		  </form>
 		  </div>
 		  </font></font></div>
 		</div>
-		<p>비밀번호가 기억나지 않는다면? <a href="findPwdView.do">비밀번호 찾기 바로가기</a></p>
+		<p>비밀번호가 기억나지 않는다면? <a href="findPwdView.do" class="text-success">비밀번호 찾기 바로가기</a></p>
 		</div>
 	
 	

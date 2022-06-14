@@ -68,7 +68,7 @@
         </div>
         </font></font></div>
       </div>
-      <p>아이디가 기억나지 않는다면? <a href="findIdView.do">아이디 찾기 바로가기</a></p>
+      <p>아이디가 기억나지 않는다면? <a href="findIdView.do" class="text-success">아이디 찾기 바로가기</a></p>
       </div>
    
    
