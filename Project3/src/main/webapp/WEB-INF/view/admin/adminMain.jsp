@@ -28,7 +28,7 @@
    th {
       border-bottom: 1px solid black;
    }
-   .btn {
+   .btns {
       width: 170px;
    }
    
@@ -54,17 +54,17 @@
          </tr>
       </thead>
          <tr>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductList.do'">상품 목록</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminReviewList.do'">상품후기 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/adminUserList.do'">회원정보 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/salesHistory/salesHistoryView.do'">판매내역 조회</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='salesView.do'">매출 조회</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/adminProductList.do'">상품 목록</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/adminReviewList.do'">상품후기 조회</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/admin/adminUserList.do'">회원정보 조회</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/salesHistory/salesHistoryView.do'">판매내역 조회</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='salesView.do'">매출 조회</button></td>
          </tr>
          <tr>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/goInsertProduct.do'">상품 등록</button></td>
-             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
-             <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/admin/centerList.do'">고객 문의 목록</button></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminShipping/adminShippingView.do'">배송상태 변경</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/goInsertProduct.do'">상품 등록</button></td>
+             <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/adminProductQnaList.do'">상품 문의 조회</button></td>
+             <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/admin/centerList.do'">고객 문의 목록</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/adminShipping/adminShippingView.do'">배송상태 변경</button></td>
             <td></td>
             <!-- <td></td> -->
          </tr>
@@ -72,7 +72,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath }/adminRefund/adminRefundView.do'">환불 요청 목록</button></td>
+            <td><button type="button" class="btn btn-light btns" onclick="location.href='${pageContext.request.contextPath }/adminRefund/adminRefundView.do'">환불 요청 목록</button></td>
             <td></td>
              <td></td>
          </tr>
