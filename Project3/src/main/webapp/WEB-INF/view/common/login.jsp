@@ -29,26 +29,34 @@
 
 #body-content {
 	background-color : #F3F3F3;
-    margin-top: 100px;
+	width: 500px;
+	height: 450px;
+    margin-top: 60px;
     padding-bottom: 170px; /* footer의 높이 */
     padding-left: 300px;
     padding-right: 300px;
 }
 	.container { width: 700px; margin: auto; }
-	h1 { text-align: center; }
-	table { border-collapse: collapse; }
-	table, th, td {
-		border: 1px solid black;
-		margin: 0 auto;
-	}
 	.right { 
 	text-align: center; 
-	float: right;
+	width: 250px;
+	height: 40px;
+	
 	}
 	.search{
-	padding-left: 15px;
+	top: -45px;
+	left: -128px;
 	}
-	
+	.log {
+		position: relative;
+		left: -138px;
+	}
+	.foo {
+		position: absolute;
+	}
+	.idpw {
+  text-decoration: none;
+	}
 </style>
 </head>
 <body>
@@ -58,24 +66,33 @@
 </header>
 <div id="body-wrapper">
 	<div id="body-content" class="container">
-	<br/><br/>
-	<h2>로그인</h2>
-	<form action="loginAction.do" method="post">
-	  아이디 <input type="text" class="form-control" placeholder="아이디"
+	
+	<br>
+	<form action="loginAction.do" method="post" class="foo">
+	<div class="log">
+	<br/>
+	<h2 style="margin-left: 88px;"><strong>로그인</strong></h2><br>
+	  아이디 <input type="text" class="form-control" placeholder="아이디" style="width:250px;"
                      name="user_id" maxlength="20"><br/>
-	 비밀번호 <input type="password" class="form-control" placeholder="비밀번호"
+	 비밀번호 <input type="password" class="form-control" placeholder="비밀번호" style="width:250px;"
                    name="user_pw" maxlength="20"><br/>
-			<input class="right" type="submit" value="로그인"><p style="color: red;">${msg }</p>
+         
+			<input class="right btn btn-outline-success" type="submit" value="로그인"><p style="color: red;">${msg }</p>
+			</div>
 				<br/><br/>
 	<table class="search">
 		<tr>
 		<!-- <a onClick="history.back();">돌아가기 </a> -->
-			<a class="right btn btn-sm btn-outline-secondary" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
-			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>
+		<td>
+			<a class="idpw text-dark" href="findPwdView.do">비밀번호 찾기</a> <span class="text-black-50">&nbsp;<small> | </small>&nbsp;</span>
+			<a class="idpw text-dark" href="findIdView.do">아이디 찾기</a>
+		</td>
+			<!-- <a class="right btn btn-sm btn-outline-secondary" href="findPwdView.do" style="padding-left : 10px;">비밀번호 찾기</a>
+			<a class="right btn btn-sm btn-outline-secondary" href="findIdView.do">아이디 찾기</a>  -->
 		</tr>
 	</table>
 	</form>
-
+</div>
 </div>
 
 	<!-- footer -->
