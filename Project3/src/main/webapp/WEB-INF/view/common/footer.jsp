@@ -39,7 +39,7 @@
                     font-size: 0;
                 }
                 </style>
-                <div style=" margin-left: 150px !important;" class="center">
+                <div style=" margin-left: 300px !important;" class="center">
                     <style data-emotion="css 1qv9dtj">
                     .css-1qv9dtj {
                         display: inline-block;
@@ -78,7 +78,7 @@
                     clear: both;
                 }
                 </style>
-                <div style=" margin-left: 150px !important;" class="center">
+                <div style=" margin-left: 300px !important;" class="center">
                     <style data-emotion="css 1rc0381">
                     .css-1rc0381 {
                         display: block;
@@ -139,7 +139,6 @@
                                     line-height: 20px;
                                 }
                                 </style>
-                                <a class="css-l6wyy9 e1918wdd0" target="_blank" href="#">사업자정보확인</a>
                             </dd>
                         </dl>
                     </div>
