@@ -39,11 +39,11 @@
                     font-size: 0;
                 }
                 </style>
-                <div style=" margin-left: 50px !important;" class="css-btcd6w e8ds1hd1">
+                <div style=" margin-left: 150px !important;" class="center">
                     <style data-emotion="css 1qv9dtj">
                     .css-1qv9dtj {
                         display: inline-block;
-                        font-size: 12px;
+                        font-size: px;
                         line-height: 22px;
                         font-weight: 500;
                         color: #000000;
@@ -61,10 +61,9 @@
                         content: '';
                     }
                     </style>
-                    <a class="css-1qv9dtj e8ds1hd0" href="#">
                         <strong>개인정보처리방침</strong>
-                    </a>
-                    <a class="css-1qv9dtj e8ds1hd0" href="#">이용약관</a>
+                   | 이용약관
+                   <br><br>
                 </div>
                 <style data-emotion="css 16ccl6">
                 .css-16ccl6 {
@@ -79,7 +78,7 @@
                     clear: both;
                 }
                 </style>
-                <div style=" margin-left: 50px !important;" class="css-16ccl6 e1918wdd6">
+                <div style=" margin-left: 150px !important;" class="center">
                     <style data-emotion="css 1rc0381">
                     .css-1rc0381 {
                         display: block;
