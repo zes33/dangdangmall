@@ -81,7 +81,7 @@ p {
 							<span class="text-success position-absolute top-0 end-0">
 								<strong> <c:if test="${1 eq userA.user_state }"> 일반회원 </c:if>
 									<c:if test="${2 eq userA.user_state }"> 관리자 </c:if> <c:if
-										test="${0 eq userA.user_state }"> 휴먼회원 </c:if> &nbsp;
+										test="${0 eq userA.user_state }"> 휴면회원 </c:if> &nbsp;
 							</strong>
 						</span><br>${userA.user_email }</font></font>
 				</div>
