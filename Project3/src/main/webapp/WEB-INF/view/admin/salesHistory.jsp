@@ -187,7 +187,7 @@ ${all } --%>
 									</a></td>
 									<td class="center">
 									<c:if test="${1 eq list.user_status }"> [주문 완료] </c:if> 
-									<c:if test="${2 eq list.user_status }"> [배송중] </c:if> 
+									<c:if test="${2 eq list.user_status }"> [배송 완료] </c:if> 
 									</td>
 								</tr>
 							</c:forEach>

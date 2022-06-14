@@ -135,7 +135,7 @@ table, th, td {
 							<th class="center" width="10%">수령인</th>
 							<th class="center" width="13%">연락처</th>
 							<th class="center" width="25%">배송주소</th>
-							<th class="center" width="20%">[배송시작]</th>
+							<th class="center" width="20%">[배송]</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -166,7 +166,7 @@ table, th, td {
 												class="text-decoration-none text-dark"> 배송시작하기</a>
 										</button>
 									</c:if> <c:if test="${2 eq list.user_status }">
-							[배송중]
+							[완료]
 							</c:if></td>
 							</tr>
 						</c:forEach>

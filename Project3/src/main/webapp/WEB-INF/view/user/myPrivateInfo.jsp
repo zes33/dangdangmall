@@ -301,8 +301,12 @@ html, body {
 								<c:if test="${user.user_addr != null}">
 								<td ><button type="button" onclick="location.href='updateAddr.do'">배송지 수정</button></td>
 								</c:if> --%>
-							<td><a class="bottom"
-								href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a></td>
+							<td>
+							<button>
+							<a style=" text-decoration: none; color: black;" class="botton"
+								href="${pageContext.request.contextPath }/secession.do">회원탈퇴</a></button>
+								
+								</td>
 							</tr>
 						</tbody>
 					</table>
