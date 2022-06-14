@@ -71,6 +71,9 @@ footer {
 	padding-top: 0px;
 	padding-left: 80px;
 }
+.btn {
+	width: 186px;
+}
 </style>
 </head>
 <body>
@@ -97,9 +100,9 @@ footer {
 				<td><input type="password" name="passwdCheck" id="passwdCheck"></td>
 			</tr>
 			<tr><p style="color: red;">${msg }</p></tr>
+			
 			<tr>
-				<td colspan=2 align="center"><input id="secession" type="submit" value="탈퇴하기"></td>
-				<td colspan=2 align="right"><a href="${pageContext.request.contextPath }/main.do">메인페이지로 돌아가기</a></td>
+				<td colspan=4 align="center"><br><input id="secession" class="btn btn-danger" type="submit" value="탈퇴하기"></td>
 			</tr>
 		</table>
 	</form>
