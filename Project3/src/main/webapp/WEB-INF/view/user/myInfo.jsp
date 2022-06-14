@@ -173,7 +173,7 @@
                    <div>
                          <c:choose>
                          <c:when test="${orderList.user_status == 1 }"><strong>결제완료</strong></c:when>
-                         <c:when test="${orderList.user_status == 2 }"><strong>배송중</strong></c:when>
+                         <c:when test="${orderList.user_status == 2 }"><strong>배송완료</strong></c:when>
                          <c:otherwise><strong>배송완료</strong></c:otherwise>
                          </c:choose>
                   </div>
