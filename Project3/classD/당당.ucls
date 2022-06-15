@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.spring.mall.user.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/user/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="233" x="322" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="com.spring.mall.order.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/order/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="191" x="595" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="com.spring.mall.product.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/product/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="240" x="826" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="com.spring.mall.center.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/center/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="197" x="1106" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="com.spring.mall.review.serviceImpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/review/serviceImpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="260" x="1343" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="com.spring.mall.sales.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/sales/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="200" x="1643" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="com.spring.mall.cart.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/cart/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="214" x="1883" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="8" language="java" name="com.spring.mall.cart.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/cart/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="230" x="2137" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="9" language="java" name="com.spring.mall.center.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/center/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="229" x="2407" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="10" language="java" name="com.spring.mall.sales.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/sales/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="239" x="2676" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="11" language="java" name="com.spring.mall.paging.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/paging/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="202" x="2955" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="12" language="java" name="com.spring.mall.center.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/center/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="245" x="3197" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="13" language="java" name="com.spring.mall.user.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/user/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="217" x="3482" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="14" language="java" name="com.spring.mall.sales.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/sales/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="252" x="3739" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="15" language="java" name="com.spring.mall.pay.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/pay/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="188" x="4031" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="16" language="java" name="com.spring.mall.product.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/product/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="208" x="4259" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="17" language="java" name="com.spring.mall.product.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/product/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="269" x="4507" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="18" language="java" name="com.spring.mall.pay.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/pay/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="240" x="4816" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="19" language="java" name="com.spring.mall.review.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/review/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="231" x="5096" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="20" language="java" name="com.spring.mall.order.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/order/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="223" x="5367" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="21" language="java" name="com.spring.mall.user.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/user/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="193" x="5630" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="22" language="java" name="com.spring.mall.category.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/category/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="213" x="5863" y="686"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="23" language="java" name="com.spring.mall.review.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/review/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="616" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="24" language="java" name="com.spring.mall.pay.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/pay/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="865" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="25" language="java" name="com.spring.mall.order.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/order/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1130" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="26" language="java" name="com.spring.mall.user.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/user/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1382" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="27" language="java" name="com.spring.mall.pay.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/pay/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1628" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="28" language="java" name="com.spring.mall.product.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/product/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1910" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="29" language="java" name="com.spring.mall.pay.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/pay/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2167" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="30" language="java" name="com.spring.mall.sales.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/sales/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2392" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="31" language="java" name="com.spring.mall.inven.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/inven/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2624" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="32" language="java" name="com.spring.mall.cart.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/cart/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2852" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="33" language="java" name="com.spring.mall.order.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/order/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3083" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="34" language="java" name="com.spring.mall.paging.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/paging/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3340" y="1155"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="35" language="java" name="com.spring.mall.review.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/review/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2354" y="1955"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="36" language="java" name="com.spring.mall.paging.controller" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/paging/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2643" y="1955"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="37" language="java" name="com.spring.mall.cart.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/cart/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2903" y="1955"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="38" language="java" name="com.spring.mall.paging.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/paging/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3143" y="1955"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="39" language="java" name="com.spring.mall.user.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/user/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3423" y="1968"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="40" language="java" name="com.spring.mall.product.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/product/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="222" x="409" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="41" language="java" name="com.spring.mall.center.dao" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/center/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="211" x="666" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="42" language="java" name="com.spring.mall.center.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/center/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="263" x="912" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="43" language="java" name="com.spring.mall.sales.service" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/sales/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="228" x="1210" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="44" language="java" name="com.spring.mall.review.vo" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/review/vo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="204" x="1473" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="45" language="java" name="com.spring.mall.cart.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/cart/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="247" x="1712" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="46" language="java" name="com.spring.mall.order.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/order/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="257" x="1994" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="47" language="java" name="com.spring.mall.paging.serviceimpl" project="Project3" 
+    file="/Project3/src/main/java/com/spring/mall/paging/serviceimpl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="268" x="2286" y="2479"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
