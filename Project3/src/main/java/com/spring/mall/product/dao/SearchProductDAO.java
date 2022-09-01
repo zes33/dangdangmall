@@ -26,21 +26,7 @@ public class SearchProductDAO {
 	
 	//2. 상품이름/설명으로 검색 
 	public List<ProductVO> searchProductList(ProductVO vo){
-//		List<ProductVO> pList = null;
 		return mybatis.selectList("searchProductDAO.searchProductList",vo);
-//		//1)검색 단어가 없을 때 기본 값 설정
-//		if (vo.getSearchCondition() == null) {
-//			vo.setSearchCondition("PRODUCT_NAME");
-//		}
-//		if (vo.getSearchKeyword() == null) {
-//			vo.setSearchKeyword("");
-//		}
-//		if ("PRODUCT_NAME".equals(vo.getSearchCondition())) {
-//			pList = mybatis.selectList("searchProductDAO.searchProductList_N", vo.getSearchKeyword());
-//			
-//		} else if ("PRODUCT_INFO".equals(vo.getSearchCondition())) {
-//			pList = mybatis.selectList("searchProductDAO.searchProductList_I",vo.getSearchKeyword());
-//		}
-//		return pList;
+
 	}
 }
