@@ -34,7 +34,6 @@ public class SearchProductController {
 		
 		List<ProductVO> productList = searchProductService.getProductList(vo);
 		System.out.println(productList + " : productList");
-		//model.addAttribute("productList", productList);
 		session.setAttribute("productList", productList);
 		return "store/searchProduct";
 	}
