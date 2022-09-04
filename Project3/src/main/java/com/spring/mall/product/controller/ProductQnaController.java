@@ -38,7 +38,7 @@ public class ProductQnaController {
 		System.out.println("ProductQnaController() 객체 생성");
 	}
 	
-	//수정된 상품문의답변 제출-------------------
+	//수정된 상품문의답변 제출
 	@RequestMapping("/editProductAns.do")
 	public String editProductAns(ProductQnaNickVO vo) {
 		System.out.println("editProductAns() 실행");
