@@ -149,7 +149,7 @@ public class ProductQnaController {
 		return "user/myPrdQna";
 	}
 	
-	// 상품문의 제목 클릭 시 문의+답변 조회----------------------
+	// 상품문의 제목 클릭 시 문의+답변 조회
 	@RequestMapping("/adminViewPrdQnaOne.do")
 	public String adminViewPrdQnaOne(ProductQnaNickVO vo, Model model,PagingVO paging,
 			String prd_category, String searchCondition, String qna_state,String searchKeyword) {
@@ -183,7 +183,7 @@ public class ProductQnaController {
 	}
 
 		
-	//----상품문의목록 불러오기(관리자)
+	//상품문의목록 불러오기(관리자)
 	@RequestMapping("/adminProductQnaList.do")
 	public String adminGetProductQnaList(String searchCondition, String qna_state,
 			String searchKeyword, PagingVO paging, Model model, String prd_category,
@@ -267,7 +267,7 @@ public class ProductQnaController {
 		return "forward:/adminProductQnaList.do";
 	}
 	
-	//댓글입력 
+	// 상품문의 댓글입력 
 	@ResponseBody
 	@RequestMapping("/writePrdQna.do")
 	public void wirteProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session) {
@@ -282,7 +282,7 @@ public class ProductQnaController {
 	}
 	
 	
-	// 댓글 페이징
+	// 상품문의 댓글 페이징
 	@ResponseBody
 	@RequestMapping("/qnaWithPaging.do")
 	public Map<String,Object> qnsListPaging(ProductQnaNickVO nv,ProductVO pv ,PagingVO paging,
