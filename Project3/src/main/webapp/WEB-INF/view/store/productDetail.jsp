@@ -450,13 +450,8 @@ function replyList(nowPage, product_id) {
 			</h4>
 			<div class="reviewZone">
 				<hr>
-				<!-- <p>
-					<a class="text-dark text-decoration-none"><strong>별점순</strong></a><small
-						class="text-muted"> | </small> <a
-						class="text-dark text-decoration-none"><strong>최신순</strong></a>
-				</p> -->
 
-				<!-- forEach 쓰걸아 -->
+				<!-- forEach  -->
 				<div class="reviewComment">
 					<table class="table table-hover">
 						<thead style="text-align: center;">

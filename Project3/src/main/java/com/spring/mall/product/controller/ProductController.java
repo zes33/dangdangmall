@@ -96,16 +96,7 @@ public class ProductController {
 		System.out.println("total " + total);
 		System.out.println("nowPage " + nowPage);
 		System.out.println("cntPerPage " + cntPerPage);
-		
-//		if (nowPage == null && cntPerPage == null) {
-//			nowPage = "1";
-//			cntPerPage = "7";
-//		} else if (nowPage == null || nowPage.equals("0")) {
-//			nowPage = "1";
-//			cntPerPage = "7";
-//		} else if (cntPerPage == null || cntPerPage.equals("0")) { 
-//			cntPerPage = "7";
-//		}
+
 		
 		if (nowPage == null || nowPage.equals("0")) {
 			nowPage = "1";

@@ -15,9 +15,9 @@
    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
          destroy-method="close">
       <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-      <property name="url" value="jdbc:oracle:thin:@DB202203011259_medium?TNS_ADMIN=/C:wallet/Wallet_DB202203011259" />
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
       <property name="username" value="PROJECT3" />
-      <property name="password" value="ciel369Kim^^" />
+      <property name="password" value="project3" />
    </bean>
    
    <!-- 스프링JDBC : JdbcTemplate 객체 생성 -->

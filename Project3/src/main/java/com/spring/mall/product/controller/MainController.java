@@ -23,6 +23,7 @@ public class MainController{
 		System.out.println("MainController() 객체 생성");
 	}
 	
+	// 메인 페이지
 	@GetMapping("/main.do")
 	public String mainView(Model model, HttpSession session) {
 		System.out.println("메인페이지(main.jsp)이동 - mainView()");

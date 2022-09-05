@@ -18,31 +18,4 @@
 		AND PRODUCT_NAME LIKE '%' || #{searchKeyword} || '%' 
 		ORDER BY PRODUCT_ID DESC </select> 
 
-	<!-- <select id="searchProductList_N" parameterType="string"
-		resultType="com.spring.mall.product.vo.ProductVO">
-		SELECT *
-		FROM PRODUCT
-		WHERE PRODUCT_NAME LIKE '%' ||
-		#{searchKeyword} || '%'
-		ORDER BY PRODUCT_ID DESC
-	</select>
-
-	<select id="searchProductList_I" parameterType="string"
-		resultType="com.spring.mall.product.vo.ProductVO">
-		SELECT *
-		FROM PRODUCT
-		WHERE PRODUCT_INFO LIKE '%' ||
-		#{searchKeyword} || '%'
-		ORDER BY PRODUCT_ID DESC
-	</select> -->
-
-
-	<!-- 2. 상품 카테고리 별로 검색 -->
-
-	<!-- 3. 상품 할인율로 검색 -->
-
-	<!-- 4. 상품 가격순으로 정렬 -->
-
-	<!-- 5. 상품 설명으로 검색 -->
-
 </mapper>
