@@ -96,7 +96,7 @@ function insertProduct() {
 	var prd = $('#prdForm');
 	
 	var length = $('input').length;
-	for (let i = 2; i < length; i++) {
+	for (let i = 1; i < length; i++) {
 		if ($.trim($('input').eq(i).val()) == "") {
 			alert($('input').eq(i).attr('title') + '을 입력하세요');
 			$('input').eq(i).focus();
@@ -142,7 +142,7 @@ function addImg(lo) {
 <div class="container">
    <jsp:include page="sidebarTemplate.jsp"></jsp:include>
    	<div class="menuname h1 text-center center" style="background-color:rgb(240, 240, 240);">
-   		<strong style="font-size:3vw">&lt; 상품 등록 &gt;</strong>
+   		<strong style="font-size:2vw">상품 등록</strong>
    	</div>
    
    <div class="contents" style="margin-bottom: 100px;">
