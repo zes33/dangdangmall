@@ -241,7 +241,7 @@ public class ProductQnaController {
 		return prdQnaSearchMap;
 	}
 	
-	// 상품문의 답변 제출
+	// (관리자) 상품문의 답변 제출
 	@RequestMapping("/submitAdminProductQna.do")
 	public String submitAdminProductQna(ProductQnaNickVO vo, HttpServletRequest request) {
 		System.out.println("submitAdminProductQna() 실행");
