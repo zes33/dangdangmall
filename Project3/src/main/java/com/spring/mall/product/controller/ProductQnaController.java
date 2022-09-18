@@ -163,12 +163,6 @@ public class ProductQnaController {
 		model.addAttribute("qna_state", qna_state);
 		model.addAttribute("prd_category",  prd_category);
 		
-		System.out.println("개별조회------paging : " + paging);
-		System.out.println("qna_state : " + qna_state);
-		System.out.println("prd_category : " + prd_category);
-		System.out.println("searchCondition : " + searchCondition);
-		System.out.println("-------searchKeyword : " + searchKeyword);
-			
 		return "admin/veiwProductQnaSet";
 	}
 	
@@ -201,10 +195,6 @@ public class ProductQnaController {
 			cntPerPage = "5";
 		}
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		System.out.println("nowPage : " + nowPage);
-		System.out.println("cntPerPage : " + cntPerPage);
-		System.out.println("startPage : " + paging.getStartPage());
-		System.out.println("endPage : " + paging.getEndPage());
 		
 		String start = Integer.toString(paging.getStart());
 		String end = Integer.toString(paging.getEnd());
@@ -217,15 +207,6 @@ public class ProductQnaController {
 		model.addAttribute("searchKeyword",searchKeyword);
 		model.addAttribute("qna_state",qna_state);
 		model.addAttribute("prd_category",prd_category);
-		
-		System.out.println("목록------total : " + total);
-		System.out.println("list : " + list);
-		System.out.println("searchCondition : " + searchCondition);
-		System.out.println("searchKeyword : " + searchKeyword);
-		System.out.println("qna_state : " + qna_state);
-		System.out.println("prd_category : " + prd_category);
-		System.out.println("start : " + start);
-		System.out.println("-----------end : "+end);
 		
 		return "admin/getProductQnaList";
 	}
