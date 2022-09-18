@@ -520,15 +520,12 @@ function replyList(nowPage, product_id) {
 					</div>
 				</c:otherwise>
 			</c:choose>
-
-
-
-
 		</div>
 	</div>
 
 	<script>
 
+// 리뷰창 오픈
 function moreReview(product_id) {
 	 window.open("moreReview.do?product_id="+product_id,"pop1",
      "width=600, height=700 top=100, left=250");

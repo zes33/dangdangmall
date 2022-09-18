@@ -248,16 +248,12 @@ public class ProductQnaController {
 		return "forward:/adminProductQnaList.do";
 	}
 	
-	// 상품문의 댓글입력 
+	// (고객)상품문의 댓글입력 
 	@ResponseBody
 	@RequestMapping("/writePrdQna.do")
 	public void wirteProductQna(ProductQnaVO vo ,ProductVO pv,HttpSession session) {
-		System.out.println("댓글입력 메소드 실행");
+		
 		String user_id = (String) session.getAttribute("user_id");
-		
-		System.out.println("댓글등록 qnaVO : " + vo);
-		System.out.println("댓글등록 productVO : " + pv);
-		
 		vo.setUser_id(user_id);
 		productQnaService.insertProductQna(vo);
 	}
@@ -279,7 +275,7 @@ public class ProductQnaController {
 			cntPerPage = "4";
 			int cntPerPageNum = Integer.parseInt(cntPerPage);
 			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
-			nowPage = Integer.toString(setLastPage);
+			nowPage = Integer.toString(setLastPage);     // 현재 페이지를 마지막 페이지로 설정
 		} else if (nowPage == null) {
 			cntPerPage = "4";
 			int cntPerPageNum = Integer.parseInt(cntPerPage);
@@ -297,7 +293,6 @@ public class ProductQnaController {
 		map.put("paging", paging);
 		map.put("qnaList",qnaList);
 		map.put("product",product);
-		
 		return map;
 	}
 	
