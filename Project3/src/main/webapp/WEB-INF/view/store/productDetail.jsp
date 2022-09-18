@@ -535,7 +535,7 @@ function moreReview(product_id) {
 }
 
 
-
+// 상품문의 입력
 function writeQna() {
 	
 	var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
