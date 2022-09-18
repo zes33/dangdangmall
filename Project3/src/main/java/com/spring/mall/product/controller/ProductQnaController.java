@@ -263,43 +263,37 @@ public class ProductQnaController {
 	}
 	
 	
-	// 상품문의 댓글 페이징
+	// 상품 상세 페이지에서 상품문의 목록 로드
 	@ResponseBody
 	@RequestMapping("/qnaWithPaging.do")
 	public Map<String,Object> qnsListPaging(ProductQnaNickVO nv,ProductVO pv ,PagingVO paging,
 			@RequestParam(value="nowPage", required = false) String nowPage,
 			@RequestParam(value="cntPerPage", required = false) String cntPerPage){
-		System.out.println("::::::::qnsListPaging() 실행");
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		
 		int product_id = nv.getProduct_id();
 		int total = pagingService.totalPrdQna_prd(product_id);
-		System.out.println("total : " + total);
 		
 		int setLastPage = 0;
 		if (nowPage == null && cntPerPage == null) {
 			cntPerPage = "4";
 			int cntPerPageNum = Integer.parseInt(cntPerPage);
 			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
-			System.out.println("last : " + setLastPage);
 			nowPage = Integer.toString(setLastPage);
 		} else if (nowPage == null) {
 			cntPerPage = "4";
 			int cntPerPageNum = Integer.parseInt(cntPerPage);
 			setLastPage = (int) Math.ceil((double)total / (double)cntPerPageNum);
-			System.out.println("last : " + setLastPage);
 			nowPage = Integer.toString(setLastPage);
 		} else if (cntPerPage == null) { 
 			cntPerPage = "4";
 		}
 		
-		
 		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		ProductVO product = productService.getProduct(pv);
 		List<ProductQnaNickVO> qnaList = pagingService.prdQnaList_prd(product_id, paging.getStart(), paging.getEnd());	
 		
-		
+		// 페이징, 상품문의목록, 상품정보 모델 등록
 		map.put("paging", paging);
 		map.put("qnaList",qnaList);
 		map.put("product",product);

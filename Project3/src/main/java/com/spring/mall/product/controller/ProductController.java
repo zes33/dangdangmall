@@ -179,7 +179,7 @@ public class ProductController {
 		
 	}
 	
-	// 상품 상세페이지
+	// 상품 상세 페이지
 	@RequestMapping("/viewPrdDetail.do")
 	public String viewPrdRepl(PagingVO paging, Model model, ProductQnaNickVO nv, ProductVO pv,
 					@RequestParam(value="nowPage", required = false) String nowPage,
@@ -203,7 +203,6 @@ public class ProductController {
 			cntPerPage = "4";
 		}
 		
-		
 		//페이징객체, 상품정보, 상품별 문의목록, 상품후기 목록
 		paging = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		ProductVO product = productService.getProduct(pv);
@@ -214,8 +213,6 @@ public class ProductController {
 		model.addAttribute("paging",paging);
 		model.addAttribute("qnaList",qnaList);
 		model.addAttribute("reviewList",reviewList);
-		
-		System.out.println("reviewList " + reviewList);
 		
 		return "store/productDetail";
 	}

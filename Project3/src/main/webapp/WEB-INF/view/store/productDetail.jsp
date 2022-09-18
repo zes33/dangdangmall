@@ -117,19 +117,13 @@ $(document).ready(function () {
 
 var product_id = "<c:out value='${product.product_id}'/>";
 var nowPage = "<c:out value='${paging.nowPage}'/>";	
-/* var qnaList = "<c:out value='${qnaList}'/>"; */	
 
 function replyList(nowPage, product_id) {
-	
-	/* if(qnaList == null){
-		nowPage = 1;
-	}  */
-	
 	$.ajax({
-		url : "qnaWithPaging.do",
+		url : "qnaWithPaging.do",    // 상품문의 목록 로드 컨트롤러
 		type : "post",
 		data : {
-			'product_id' : product_id,
+			'product_id' : product_id,  // 상품번호와 현재페이지 데이터를 전송한다.
 			'nowPage' : nowPage
 		},
 		dataType : "json",
@@ -160,10 +154,10 @@ function replyList(nowPage, product_id) {
 			a+='<nav aria-label="Page navigation example">';
 			a+='<ul class="pagination">';
 			
-			/* alert("paging.startPage : " + paging.startPage+"\npaging.endPage : " + paging.endPage); */
 			if (paging.startPage != 1){
+				var startPagePlus = paging.startPage + 1;
 				a+='<li class="page-item">';
-				a+='<a class="page-link" onclick="replyList('+paging.startPage+'-'+1+',\''+product.product_id+'\')" aria-label="Previous">';
+				a+='<a class="page-link" onclick="replyList('+startPagePlus+','+product.product_id+')" aria-label="Previous">';
 				a+='<span aria-hidden="true">&laquo;</span></a></li>';
 			} 
 			
@@ -171,13 +165,14 @@ function replyList(nowPage, product_id) {
 				 if(num == paging.nowPage){
 					a+='<li class="page-item"><b class="page-link" >'+num+'</b></li>';
 				} else {
-					a+='<li class="page-item"><a class="page-link" onclick="replyList('+num+',\''+product.product_id+'\')">'+num+'</a></li>';
+					a+='<li class="page-item"><a class="page-link" onclick="replyList('+num+','+product.product_id+')">'+num+'</a></li>';
 				} 
 			}
 			
 			if(paging.endPage != paging.lastPage){
+				var endPagePlus = paging.endPage + 1;
 				a+='<li class="page-item">';
-				a+='<a class="page-link" onclick="replyList('+paging.endPage+'+'+1+',\''+product.product_id+'\')" aria-label="Previous">';
+				a+='<a class="page-link" onclick="replyList('+endPagePlus+','+product.product_id+')" aria-label="Previous">';
 				a+='<span aria-hidden="true">&raquo;</span></a></li>';
 			}
 					
@@ -318,13 +313,6 @@ function replyList(nowPage, product_id) {
 		                     				}
 		                     				}
 									</script>
-								<!-- </form> -->
-								<%-- <form action="cart/orderDirect.do" method="post"
-									enctype="multipart/form-data">
-									<input type="hidden" name="product_id"
-										value="${product.product_id}"> <input type="hidden"
-										id="cart_product_qty" value="cart_product_qty">
-								</form> --%>
 
 							</div>
 						</li>
@@ -341,7 +329,6 @@ function replyList(nowPage, product_id) {
 			</h4>
 			<br>
 			<div class="productInfo">
-				 <!-- <img src="${pageContext.request.contextPath }/img/${product.product_info}" alt="..." class="prdInfoPic">  -->
 				<img src="./img/상품디테일1.png" alt="..." class="prdInfoPic">
 				<img src="./img/포만감디테일.gif" alt="..." class="prdInfoPic">
 				<img src="./img/구매평.png" alt="..." class="prdInfoPic">
@@ -471,7 +458,6 @@ function replyList(nowPage, product_id) {
 							</tr>
 						</thead>
 						<tbody >
-							<!-- foreach 사용 -->
 							<c:if test="${empty reviewList }">
 								<tr>
 									<td style="text-align: center;" colspan="4">등록된 리뷰가 없습니다.</td>
@@ -551,10 +537,8 @@ function moreReview(product_id) {
 
 
 function writeQna() {
-	console.log("writeQna() 실행~~")
-	var contentBlank = $("#prdQnaForm").children("textarea").val()
-			.trim();
-	console.log("contentBlank : " + contentBlank);
+	
+	var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.");
 	} else {
