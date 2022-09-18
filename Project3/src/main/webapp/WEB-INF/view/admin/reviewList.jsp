@@ -181,13 +181,6 @@ function resetOpt() {
 				<th style="text-align: center" width="6%">삭제</th>
 			</tr>
 		</thead>
-			<%-- <c:choose>
-			<c:when test="${0 == reviewList} ">
-			<tr>
-				<td colspan="8">등록된 상품문의가 없습니다.</td>
-			</tr>
-			</c:when>
-			<c:otherwise> --%>
 			<c:forEach var="reviewList" items="${reviewList }">
 			<tr>
 				<td style="text-align: center">${reviewList.R_NUM }</td>
@@ -207,8 +200,6 @@ function resetOpt() {
 				</td>
 			</tr>
 			</c:forEach> 
-			<%-- </c:otherwise>
-			</c:choose> --%>
 		</tbody>
 	</table>
 	<br><br>
@@ -249,46 +240,9 @@ function resetOpt() {
 	</nav>
   </div>
 </div>
-	
-	<%-- <nav aria-label="Page navigation" style="margin-left: 100px;">
-	  <ul class="pagination">
-	  
-	  <c:if test="${paging.startPage != 1 }">
-	    <li class="page-item">
-	      <a class="page-link" href="adminReviewList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}"
-	       aria-label="Previous">
-	        <span aria-hidden="true">&laquo;</span>
-	      </a>
-	    </li>
-	   </c:if> 
-	   
-	   <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-			<c:choose>
-				<c:when test="${p == paging.nowPage }">
-					<li class="page-item"><b class="page-link" >${p }</b></li>
-				</c:when>
-				<c:when test="${p != paging.nowPage }">
-	    			<li class="page-item"><a class="page-link" href="adminReviewList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}">${p }</a></li>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-	   
-	    <c:if test="${paging.endPage != paging.lastPage }">
-	    <li class="page-item">
-	      <a class="page-link" href="adminReviewList.do?nowPage=${paging.endPage+1  }&cntPerPage=${paging.cntPerPage}&searchCondition=${searchCondition}&searchKeyword=${searchKeyword}" aria-label="Previous">
-	        <span aria-hidden="true">&raquo;</span>
-	      </a>
-	    </li>
-	   </c:if> 
-	    
-	  </ul>
-	</nav> --%>
-	
-	
   	</div>
   </div>
   
-  <!-- 효과 뺀 버전 -->
  
 <style>
 .navul {

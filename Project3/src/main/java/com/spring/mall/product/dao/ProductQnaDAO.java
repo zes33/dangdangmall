@@ -95,7 +95,7 @@ public class ProductQnaDAO {
 		return mybatis.selectOne("productQnaDAO.adminTotPrdQnaCnt",map);
 	}
 	
-	// 상품문의 목록(운영자)
+	// (관리자)상품문의 목록
 	public List<Map<String, Object>> getProductQnaListAdmin(String searchCondition, 
 			String searchKeyword, String qna_state,String prd_category, String start, String end){
 		System.out.println("ProductQnaDAO.getProductQnaListAdmin() 실행");

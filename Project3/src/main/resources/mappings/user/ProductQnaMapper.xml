@@ -138,7 +138,7 @@
 		ORDER BY QNA.QNA_ID DESC
 	</select>
 
-	<!-- 전체 상품문의 조회(운영자) 페이징+검색 -->
+	<!-- (관리자)전체 상품문의 조회 페이징+검색 -->
 	<select id="getProductQnaListAdmin" resultType="map" parameterType="map">
 		SELECT *
 		FROM (SELECT ROWNUM R_NUM, A.*

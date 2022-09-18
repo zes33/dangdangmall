@@ -37,20 +37,9 @@ public class UserLoginController {
 		request.getSession().setAttribute("redirectURI", referer);
 		session.setAttribute("referer", referer);
 
-//		System.out.println(product_id);
-
 		return "common/login";
 	}
 
-//	@RequestMapping("/loginbefore.do")
-//	public String loginGET(HttpServletRequest request,HttpSession session) {
-//		String referer = request.getHeader("Referer");
-//		request.getSession().setAttribute("redirectURI", referer);
-//		session.setAttribute("referer", referer);
-
-//		
-//		return "loginAction.do";
-//	}
 
 	@PostMapping("/loginAction.do")
 	public String loginAction(UserVO vo, HttpSession session, HttpServletRequest request, Model model, String user_id,

@@ -86,29 +86,22 @@ $(document).ready(function () {
 	$(".1").html("식품");
 	$(".2").html("운동");
 	
-	// 검색어 유지
+	// 검색조건 유지 : 키워드
 	if(condition != ''){
 		$('option[value='+condition+']').prop('selected', true);
 	}
-	
 	// 검색조건 유지 : 상품분류
 	if(category != ''){
 		$('.prd_category[value='+category+']').prop('checked', true);
 	}
-		
-	
 	// 검색조건 유지 : 답변상태
 	if(qstate != ''){
 		$('.qna_state[value='+qstate+']').prop('checked', true);
 	}
-		
-	
-	
 	// 검색어 input 초기화
 	$('#keyzone').click(function () {
 		$('#keyzone').val('');
 	})
-	
 	
 })
 

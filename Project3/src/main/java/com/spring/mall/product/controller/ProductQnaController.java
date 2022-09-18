@@ -177,7 +177,7 @@ public class ProductQnaController {
 	}
 
 		
-	//상품문의목록 불러오기(관리자)
+	//(관리자) 상품문의목록 불러오기
 	@RequestMapping("/adminProductQnaList.do")
 	public String adminGetProductQnaList(String searchCondition, String qna_state,
 			String searchKeyword, PagingVO paging, Model model, String prd_category,

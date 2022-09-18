@@ -110,7 +110,7 @@ function closeReview() {
 
 //별점 vlaue 추가
 function mark(star) {
-	$('#rvGrade').attr('value',star);
+	$('#rvGrade').attr('value',star);    // value값에 별점 부여
 	show(star);
 }
 // 별점 색상 변경
@@ -119,8 +119,8 @@ function show(star) {
 	$('p>a').slice(0,star).css('color','red');
 }
 
+// 리뷰 제출
 function reviewSubmit() {
-	 
 	let contentBlank = $("#reviewFrm").find("textarea").val().trim();
 	let starGrade = $('#rvGrade').val();
 	if(starGrade == 0){
@@ -128,8 +128,6 @@ function reviewSubmit() {
 	} else if(contentBlank.length == 0){
 		alert("내용을 입력해주세요.");
 	} else {
-		
-		
 		var params = $("#reviewFrm").serialize();
 
 		$.ajax({
@@ -144,10 +142,8 @@ function reviewSubmit() {
 	       }, error: function (jqXHR, textStatus, errorThrown) {
 	          alert(jqXHR + ' ' + textStatus.msg);
 	       }
-
 		});
 	}
-	
 }
 </script>
 </head>

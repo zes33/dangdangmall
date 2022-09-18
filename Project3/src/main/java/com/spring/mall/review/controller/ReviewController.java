@@ -54,10 +54,6 @@ public class ReviewController {
 			cntPerPage = "5";
 		}
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
-		System.out.println("nowPage : " + nowPage);
-		System.out.println("startPage : " + paging.getStartPage());
-		System.out.println("endPage : " + paging.getEndPage());
-		
 		String start = Integer.toString(paging.getStart());
 		String end = Integer.toString(paging.getEnd());
 		List<Map<String, Object>> reviewList = reviewService.adminReviewList(searchCondition, searchKeyword,prd_category, start, end);
@@ -67,15 +63,10 @@ public class ReviewController {
 		model.addAttribute("searchCondition",searchCondition);
 		model.addAttribute("searchKeyword",searchKeyword);
 		model.addAttribute("prd_category",prd_category);
-		
-		System.out.println("searchCondition : " + searchCondition);
-		System.out.println("searchKeyword : " + searchKeyword);
-		System.out.println("prd_category : " + prd_category);
-		System.out.println("total : " + total);
 		return "admin/reviewList";
 	}
 	
-	// 관리자 리뷰 페이지 검색 조건
+	// (관리자) 리뷰 페이지 검색 조건
 	@ModelAttribute("reviewConditionMap")
 	public Map<String, String> searchConditionMap(){
 		System.out.println("====> Map searchConditionMap() 실행");
@@ -94,7 +85,7 @@ public class ReviewController {
 		System.out.println("moreReview() 실행");
 		int p_id = pvo.getProduct_id();
 		
-		// 페이징 안 들어간 리뷰 목록
+		// 리뷰 목록
 		List<Map<String, Object>> reviewList = reviewService.reviewPerPrd(p_id);
 		int total = reviewList.size();
 		
@@ -134,10 +125,7 @@ public class ReviewController {
 	// 리뷰 등록
 	@RequestMapping("/insertReview.do")
 	public String insertReview(ReviewVO vo) {
-		System.out.println("insertReview() 실행");
-		System.out.println("review : " + vo);
 		reviewService.insertReview(vo);
-		
 		return "redirect:/myinfo.do";
 	}
 	
@@ -188,10 +176,7 @@ public class ReviewController {
 	// 리뷰 수정 처리
 	@RequestMapping("/updateReview.do")
 	public String updateReview(ReviewVO review) {
-		System.out.println("updateReview() 실행");
 		reviewService.updateReview(review);
-		System.out.println("review : " + review);
-		
 		return "redirect:/goMyReview.do";
 	}
 	

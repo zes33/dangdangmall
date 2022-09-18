@@ -42,7 +42,7 @@
 		ORDER BY PRODUCT_ID DESC
 	</select>
 	
-	
+	<!-- 상품 등록 -->
 	<insert id="insertProduct" parameterType="com.spring.mall.product.vo.ProductVO">
 		INSERT INTO PRODUCT (PRODUCT_ID, CATEGORY_CODE, PRODUCT_NAME, 
 							 PRODUCT_PRICE,PRODUCT_STOCK, PRODUCT_INFO, PRODUCT_DISCOUNT,

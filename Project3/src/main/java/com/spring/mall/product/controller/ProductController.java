@@ -92,20 +92,11 @@ public class ProductController {
 			@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		System.out.println("product컨트롤러.productInfo() 실행");
 		int total = productService.adminProductTotCnt(searchCondition, searchKeyword, prd_category, prd_state);
-		
-		System.out.println("total " + total);
-		System.out.println("nowPage " + nowPage);
-		System.out.println("cntPerPage " + cntPerPage);
 
-		
 		if (nowPage == null || nowPage.equals("0")) {
 			nowPage = "1";
 		} 
 		cntPerPage = "7";
-		
-		System.out.println("----------");
-		System.out.println("nowPage " + nowPage);
-		System.out.println("cntPerPage " + cntPerPage);
 		
 		paging = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		String start = Integer.toString(paging.getStart());
@@ -146,7 +137,7 @@ public class ProductController {
 		return "admin/productInsert";
 	}
 	
-	// 상품등록 처리-----
+	// 상품등록 처리
 	@RequestMapping("/insertProduct.do")
 	public String insertProduct(ProductVO product) throws IllegalStateException, IOException {
 		System.out.println("product컨트롤러.insertProduct()");
@@ -173,7 +164,6 @@ public class ProductController {
 			info_file.transferTo(new File("C:/MyStudy/project3/"+info_name));
 		}
 		
-		System.out.println("product : " + product);
 		productService.insertProduct(product);
 		return "redirect:/adminProductList.do";
 		

@@ -72,6 +72,7 @@
 </style>
 <title>상품 등록(관리자)</title>
 <script>
+// 상품 등록
 function insertProduct() {
 	
 	//할인율 유효성 검사
@@ -105,20 +106,20 @@ function insertProduct() {
 	}
 	prd.submit();
 }
-
+// 이미지파일 미리보기
 function setThumbnail(event) {
 	let tg = event.target.name;
-	if(tg == 'pic_file'){
+	if(tg == 'pic_file'){       // 타겟 이름이 상품사진일 경우
 		let lo = $('#thm1');
 		lo.empty();
 		addImg(lo);
-	} else if(tg == 'info_file'){
+	} else if(tg == 'info_file'){   // 타겟 이름이 상세사진일 경우
 		let lo = $('#thm2');
 		lo.empty();
 		addImg(lo);
 	}
 }
-
+// 이미지 띄우기
 function addImg(lo) {
 	var reader = new FileReader();
 

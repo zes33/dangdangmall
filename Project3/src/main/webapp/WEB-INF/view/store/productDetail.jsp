@@ -531,10 +531,8 @@ function moreReview(product_id) {
      "width=600, height=700 top=100, left=250");
 }
 
-
 // 상품문의 입력
 function writeQna() {
-	
 	var contentBlank = $("#prdQnaForm").children("textarea").val().trim();
 	if (contentBlank.length == 0) {
 		alert("내용이 없어요.");

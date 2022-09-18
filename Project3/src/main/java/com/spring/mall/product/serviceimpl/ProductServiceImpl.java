@@ -41,17 +41,7 @@ public class ProductServiceImpl implements ProductService {
 	public void updateProduct(ProductVO vo) {
 		productDAO.updateProduct(vo);
 	}
-//	
-//	@Override
-//	public void deleteProduct(ProductVO vo) {
-//		productDAO.deleteProduct(vo);
-//	}
-//	
-//	@Override
-//	public List<ProductVO> getProductList(ProductVO vo) {
-//		return productDAO.getProductList(vo);
-//	}
-	
+
 	@Override
 	public List<ProductVO> getProductList(ProductVO vo) {
 		return productDAO.getProductList_admin(vo);
